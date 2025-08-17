@@ -7,6 +7,8 @@ import React, { use, useRef } from 'react';
 import ServicesSection from './components/servies';
 import ProjectsSection from './components/projects';
 import { useLenis } from './hooks/Lenis';
+import { Infinity } from 'lucide-react';
+import InfiniteScrollSection from './components/infinityscrollbar';
 
 export default function HomePage() {
   const navRef = useRef(null);
@@ -14,9 +16,10 @@ export default function HomePage() {
   return (
 
     <div className="relative">
-      <Navigation ref={navRef} />
+ 
       <HeroSection navRef={navRef} />
       <EnhancedContentSection />
+      <InfiniteScrollSection />
       <ServicesSection />
       <WhyChooseUs />
       <ProjectsSection />

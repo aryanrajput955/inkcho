@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const HeroSection = ({ navRef }) => {
   const containerRef = useRef(null);
   const videoContainerRef = useRef(null);
+  const whiteBackgroundRef = useRef(null);
   const videoRef = useRef(null);
   const heroTextRef = useRef(null);
   const studiosTextRef = useRef(null);
@@ -16,27 +17,47 @@ const HeroSection = ({ navRef }) => {
   useEffect(() => {
     const container = containerRef.current;
     const videoContainer = videoContainerRef.current;
+    const whiteBackground = whiteBackgroundRef.current;
     const video = videoRef.current;
     const heroText = heroTextRef.current;
     const studiosText = studiosTextRef.current;
     const nav = navRef?.current;
 
-    // Set initial states
-    gsap.set([heroText, studiosText], { opacity: 1 });
+    // Set initial states for page load animation
+    gsap.set(heroText, { x: -200, opacity: 0 });
+    gsap.set(studiosText, { x: 200, opacity: 0 });
+    gsap.set(whiteBackground, { scaleX: 1, scaleY: 1 });
+    gsap.set(videoContainer, { scaleX: 1, scaleY: 1 });
     if (nav) gsap.set(nav, { y: 0, opacity: 1 });
 
-    // Create timeline for hero animations
-    const tl = gsap.timeline({
+    // Page load animation - texts slide in slowly
+    const loadTl = gsap.timeline({ delay: 0.3 });
+    loadTl.to([heroText, studiosText], {
+      x: 0,
+      opacity: 1,
+      duration: 2.5,
+      ease: "power2.out"
+    });
+
+    // Calculate scale values to fit screen
+    const screenScale = Math.max(
+      window.innerWidth / (videoContainer.offsetWidth || 320),
+      window.innerHeight / (videoContainer.offsetHeight || 200)
+    ) * 1.1;
+
+    // Main ScrollTrigger that pins the section and handles all animations
+    const mainTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: container,
         start: "top top",
-        end: "+=400vh",
-        scrub: 2,
-        pin: true,
+        end: "+=400vh", // Total scroll distance for all phases
+        scrub: 1,
+        pin: true, // Only ONE pin for the entire section
         anticipatePin: 1,
+        invalidateOnRefresh: true,
         onUpdate: (self) => {
           if (video && video.duration && isFinite(video.duration) && video.readyState >= 2) {
-            const newTime = video.duration * self.progress * 0.2;
+            const newTime = video.duration * self.progress * 0.4;
             if (isFinite(newTime) && newTime >= 0 && newTime <= video.duration) {
               video.currentTime = newTime;
             }
@@ -45,41 +66,48 @@ const HeroSection = ({ navRef }) => {
       }
     });
 
-    // Animate upper text fade out first
-    tl.to([heroText, studiosText], {
-      opacity: 0,
-      y: -50,
-      duration: 0.2,
-      ease: "power2.out"
+    // Phase 1: Horizontal expansion of white background (0-25% of scroll)
+    mainTimeline.to(whiteBackground, {
+      scaleX: screenScale,
+      scaleY: 1,
+      duration: 1,
+      ease: "power1.inOut"
     }, 0);
 
-    // Animate nav fade out if available
+    // Gap for distinct scroll feel (25-50% of scroll)
+    mainTimeline.to({}, { duration: 1 }, 1);
+
+    // Phase 2: Vertical expansion of white background (50-62.5% of scroll)
+    mainTimeline.to(whiteBackground, {
+      scaleY: screenScale,
+      duration: 1,
+      ease: "power1.inOut"
+    }, 2);
+
+    // Phase 3: Video scaling (62.5-87.5% of scroll)
+    mainTimeline.to(videoContainer, {
+      scaleX: screenScale,
+      scaleY: screenScale,
+      duration: 1.5,
+      ease: "power0.5.inout"
+    }, 2.5);
+
+    // Phase 4: Text fade out (87.5-95% of scroll)
+    mainTimeline.to([heroText, studiosText], {
+      opacity: 0,
+      duration: 0.3,
+      ease: "power1.inOut"
+    }, 3.5);
+
+    // Phase 5: Navigation fade out (95-100% of scroll)
     if (nav) {
-      tl.to(nav, {
+      mainTimeline.to(nav, {
         y: -100,
         opacity: 0,
-        duration: 0.15
-      }, 0.05);
+        duration: 0.2,
+        ease: "power1.inOut"
+      }, 3.8);
     }
-
-    // Start video scaling slowly
-    tl.to(videoContainer, {
-      scale: 1.8,
-      duration: 0.4,
-      ease: "power1.inOut"
-    }, 0.25)
-    // Continue scaling more gradually
-    .to(videoContainer, {
-      scale: 2.8,
-      duration: 0.35,
-      ease: "power1.inOut"
-    }, 0.65)
-    // Final scale to full screen
-    .to(videoContainer, {
-      scale: 4.5,
-      duration: 0.25,
-      ease: "power2.out"
-    }, 0.9);
 
     // Cleanup
     return () => {
@@ -100,29 +128,43 @@ const HeroSection = ({ navRef }) => {
         {/* Video and Side Text Container */}
         <div className="relative w-full flex items-center justify-center">
           {/* Left Side Text - Desktop Only */}
-          <div className="hidden lg:block absolute left-10 xl:left-20">
+          <div className="hidden lg:block absolute left-10 xl:left-20 z-30">
             <p className="text-lg font-medium tracking-wide text-[#EB5B00] whitespace-nowrap">
               Not Just Expression
             </p>
           </div>
 
-          {/* Video Container */}
-          <div ref={videoContainerRef} className="relative w-80 h-48 md:w-96 md:h-56 mb-10 mt-2 rounded-2xl overflow-hidden shadow-2xl z-10">
-            <video
-              ref={videoRef}
-              className="w-full h-full object-cover"
-              muted
-              playsInline
-              loop
-              autoPlay
+          {/* Video Container with White Background */}
+          <div className="relative w-80 h-48 md:w-96 md:h-56 mb-10 mt-2">
+            {/* White Background Container */}
+            <div 
+              ref={whiteBackgroundRef}
+              className="absolute inset-0 bg-white rounded-2xl shadow-2xl"
+              style={{ transformOrigin: 'center center' }}
+            ></div>
+            
+            {/* Video Container */}
+            <div 
+              ref={videoContainerRef} 
+              className="relative w-full h-full rounded-2xl overflow-hidden z-40"
+              style={{ transformOrigin: 'center center' }}
             >
-              <source src="vid2.mp4" type="video/mp4" />
-            </video>
-            <div className="absolute inset-0 bg-gradient-to-r from-green-900/20 via-transparent to-green-900/20 pointer-events-none"></div>
+              <video
+                ref={videoRef}
+                className="w-full h-full object-cover"
+                muted
+                playsInline
+                loop
+                autoPlay
+              >
+                <source src="vid2.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-gradient-to-r from-green-900/20 via-transparent to-green-900/20 pointer-events-none"></div>
+            </div>
           </div>
 
           {/* Right Side Text - Desktop Only */}
-          <div className="hidden lg:block absolute right-10 xl:right-20">
+          <div className="hidden lg:block absolute right-10 xl:right-20 z-30">
             <p className="text-lg font-medium tracking-wide text-[#EB5B00] whitespace-nowrap">
               A Lasting Impression.
             </p>
