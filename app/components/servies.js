@@ -377,25 +377,7 @@ const ServicesSection = () => {
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="mt-24 lg:mt-32 text-center">
-          <div className="max-w-2xl mx-auto">
-            <h3 className="text-3xl lg:text-4xl font-bold text-gray-100 mb-6">
-              Let's create something exceptional together
-            </h3>
-            <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-              Ready to transform your digital presence? Let's discuss your project and explore how our expertise can drive your success.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-white cursor-pointer text-[#EB5B00] font-medium rounded-lg hover:bg-gray-800 transition-colors duration-300">
-                Start a project
-              </button>
-              <button className="px-8 py-4 border cursor-pointer border-[#EB5B00] text-white font-medium rounded-lg hover:border-gray-400 hover:bg-white hover:text-[#EB5B00] transition-colors duration-300">
-                View our work
-              </button>
-            </div>
-          </div>
-        </div>
+    
       </div>
     </div>
   );

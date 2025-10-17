@@ -39,11 +39,21 @@ const HeroSection = ({ navRef }) => {
       ease: "power2.out"
     });
 
-    // Calculate scale values to fit screen
-    const screenScale = Math.max(
-      window.innerWidth / (videoContainer.offsetWidth || 320),
-      window.innerHeight / (videoContainer.offsetHeight || 200)
-    ) * 1.1;
+    // Calculate scale values to fit screen perfectly
+    const isMobile = window.innerWidth < 768;
+    
+    // For white background - fill the entire screen width
+    const whiteBackgroundHorizontalScale = window.innerWidth / (videoContainer.offsetWidth || 320);
+    
+    // For white background vertical - match to fill screen height
+    const whiteBackgroundVerticalScale = window.innerHeight / (videoContainer.offsetHeight || 200);
+    
+    // For video - fill screen with small margin (3% on desktop, 2% on mobile)
+    const videoMargin = isMobile ? 0.98 : 0.97;
+    const videoMaxScale = Math.max(
+      (window.innerWidth * videoMargin) / (videoContainer.offsetWidth || 320),
+      (window.innerHeight * videoMargin) / (videoContainer.offsetHeight || 200)
+    );
 
     // Main ScrollTrigger that pins the section and handles all animations
     const mainTimeline = gsap.timeline({
@@ -52,7 +62,7 @@ const HeroSection = ({ navRef }) => {
         start: "top top",
         end: "+=400vh", // Total scroll distance for all phases
         scrub: 1,
-        pin: true, // Only ONE pin for the entire section
+        pin: true,
         anticipatePin: 1,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
@@ -66,38 +76,42 @@ const HeroSection = ({ navRef }) => {
       }
     });
 
-    // Phase 1: Horizontal expansion of white background (0-25% of scroll)
-    mainTimeline.to(whiteBackground, {
-      scaleX: screenScale,
-      scaleY: 1,
-      duration: 1,
-      ease: "power1.inOut"
-    }, 0);
-
-    // Gap for distinct scroll feel (25-50% of scroll)
-    mainTimeline.to({}, { duration: 1 }, 1);
-
-    // Phase 2: Vertical expansion of white background (50-62.5% of scroll)
-    mainTimeline.to(whiteBackground, {
-      scaleY: screenScale,
-      duration: 1,
-      ease: "power1.inOut"
-    }, 2);
-
-    // Phase 3: Video scaling (62.5-87.5% of scroll)
-    mainTimeline.to(videoContainer, {
-      scaleX: screenScale,
-      scaleY: screenScale,
-      duration: 1.5,
-      ease: "power0.5.inout"
-    }, 2.5);
-
-    // Phase 4: Text fade out (87.5-95% of scroll)
+    // Phase 1: Text fade out first (0-15% of scroll)
     mainTimeline.to([heroText, studiosText], {
       opacity: 0,
-      duration: 0.3,
+      y: -30,
+      duration: 0.6,
+      ease: "power2.inOut"
+    }, 0);
+
+    // Phase 2: Horizontal expansion of white background ONLY (15-40% of scroll)
+    mainTimeline.to(whiteBackground, {
+      scaleX: whiteBackgroundHorizontalScale,
+      scaleY: 1, // Keep vertical scale at 1
+      duration: 1,
       ease: "power1.inOut"
-    }, 3.5);
+    }, 0.6);
+
+    // Small gap (40-45% of scroll)
+    mainTimeline.to({}, { duration: 0.2 }, 1.6);
+
+    // Phase 3: Vertical expansion of white background (45-70% of scroll)
+    mainTimeline.to(whiteBackground, {
+      scaleY: whiteBackgroundVerticalScale,
+      duration: 1,
+      ease: "power1.inOut"
+    }, 1.8);
+
+    // Small gap (70-75% of scroll)
+    mainTimeline.to({}, { duration: 0.2 }, 2.8);
+
+    // Phase 4: Video scaling slowly to fill white bg and almost fill screen (75-95% of scroll)
+    mainTimeline.to(videoContainer, {
+      scaleX: videoMaxScale,
+      scaleY: videoMaxScale,
+      duration: 0.8,
+      ease: "power1.inOut"
+    }, 3.0);
 
     // Phase 5: Navigation fade out (95-100% of scroll)
     if (nav) {
@@ -127,13 +141,6 @@ const HeroSection = ({ navRef }) => {
 
         {/* Video and Side Text Container */}
         <div className="relative w-full flex items-center justify-center">
-          {/* Left Side Text - Desktop Only */}
-          <div className="hidden lg:block absolute left-10 xl:left-20 z-30">
-            <p className="text-lg font-medium tracking-wide text-[#EB5B00] whitespace-nowrap">
-              Not Just Expression
-            </p>
-          </div>
-
           {/* Video Container with White Background */}
           <div className="relative w-80 h-48 md:w-96 md:h-56 mb-10 mt-2">
             {/* White Background Container */}
@@ -161,13 +168,6 @@ const HeroSection = ({ navRef }) => {
               </video>
               <div className="absolute inset-0 bg-gradient-to-r from-green-900/20 via-transparent to-green-900/20 pointer-events-none"></div>
             </div>
-          </div>
-
-          {/* Right Side Text - Desktop Only */}
-          <div className="hidden lg:block absolute right-10 xl:right-20 z-30">
-            <p className="text-lg font-medium tracking-wide text-[#EB5B00] whitespace-nowrap">
-              A Lasting Impression.
-            </p>
           </div>
         </div>
 
