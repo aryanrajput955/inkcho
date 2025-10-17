@@ -1,4 +1,3 @@
-// components/HeroSection.js
 'use client';
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
@@ -15,126 +14,146 @@ const HeroSection = ({ navRef }) => {
   const studiosTextRef = useRef(null);
 
   useEffect(() => {
-    const container = containerRef.current;
-    const videoContainer = videoContainerRef.current;
-    const whiteBackground = whiteBackgroundRef.current;
-    const video = videoRef.current;
-    const heroText = heroTextRef.current;
-    const studiosText = studiosTextRef.current;
-    const nav = navRef?.current;
+    window.addEventListener('load', initAnimations);
+    const timer = setTimeout(initAnimations, 100);
 
-    // Set initial states for page load animation
-    gsap.set(heroText, { x: -200, opacity: 0 });
-    gsap.set(studiosText, { x: 200, opacity: 0 });
-    gsap.set(whiteBackground, { scaleX: 1, scaleY: 1 });
-    gsap.set(videoContainer, { scaleX: 1, scaleY: 1 });
-    if (nav) gsap.set(nav, { y: 0, opacity: 1 });
+    function initAnimations() {
+      const container = containerRef.current;
+      const videoContainer = videoContainerRef.current;
+      const whiteBackground = whiteBackgroundRef.current;
+      const video = videoRef.current;
+      const heroText = heroTextRef.current;
+      const studiosText = studiosTextRef.current;
+      const nav = navRef?.current;
 
-    // Page load animation - texts slide in slowly
-    const loadTl = gsap.timeline({ delay: 0.3 });
-    loadTl.to([heroText, studiosText], {
-      x: 0,
-      opacity: 1,
-      duration: 2.5,
-      ease: "power2.out"
-    });
+      if (!container || !videoContainer || !whiteBackground || !video || !heroText || !studiosText) {
+        return;
+      }
 
-    // Calculate scale values to fit screen perfectly
-    const isMobile = window.innerWidth < 768;
-    
-    // For white background - fill the entire screen width
-    const whiteBackgroundHorizontalScale = window.innerWidth / (videoContainer.offsetWidth || 320);
-    
-    // For white background vertical - match to fill screen height
-    const whiteBackgroundVerticalScale = window.innerHeight / (videoContainer.offsetHeight || 200);
-    
-    // For video - fill screen with small margin (3% on desktop, 2% on mobile)
-    const videoMargin = isMobile ? 0.98 : 0.97;
-    const videoMaxScale = Math.max(
-      (window.innerWidth * videoMargin) / (videoContainer.offsetWidth || 320),
-      (window.innerHeight * videoMargin) / (videoContainer.offsetHeight || 200)
-    );
+      // Kill existing ScrollTriggers and tweens
+      ScrollTrigger.getAll().forEach(trigger => trigger?.kill());
+      gsap.killTweensOf([heroText, studiosText, whiteBackground, videoContainer, nav]);
 
-    // Main ScrollTrigger that pins the section and handles all animations
-    const mainTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: container,
-        start: "top top",
-        end: "+=400vh", // Total scroll distance for all phases
-        scrub: 1,
-        pin: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          if (video && video.duration && isFinite(video.duration) && video.readyState >= 2) {
-            const newTime = video.duration * self.progress * 0.4;
-            if (isFinite(newTime) && newTime >= 0 && newTime <= video.duration) {
-              video.currentTime = newTime;
+      // Set initial states
+      gsap.set([heroText, studiosText], { x: 0, y: 0, opacity: 1 });
+      gsap.set(whiteBackground, { scaleX: 1, scaleY: 1 });
+      gsap.set(videoContainer, { scaleX: 1, scaleY: 1 });
+      if (nav) gsap.set(nav, { y: 0, opacity: 1 });
+
+      // Page load animation
+      const loadTl = gsap.timeline({ delay: 0.3 });
+      loadTl.to([heroText, studiosText], {
+        x: 0,
+        opacity: 1,
+        duration: 2.5,
+        ease: "power2.out"
+      });
+
+      // Calculate scale values
+      const isMobile = window.innerWidth < 768;
+      const whiteBackgroundHorizontalScale = window.innerWidth / (videoContainer.offsetWidth || 320);
+      const whiteBackgroundVerticalScale = window.innerHeight / (videoContainer.offsetHeight || 200);
+      const videoMargin = isMobile ? 0.98 : 0.97;
+      const videoMaxScale = Math.max(
+        (window.innerWidth * videoMargin) / (videoContainer.offsetWidth || 320),
+        (window.innerHeight * videoMargin) / (videoContainer.offsetHeight || 200)
+      );
+
+      // Main ScrollTrigger timeline
+      const mainTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: container,
+          start: "top top",
+          end: "+=300vh", // Increased for smoother progression
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onRefresh: () => {
+            gsap.set([heroText, studiosText], { opacity: 1, y: 0 }); // Ensure text visibility on refresh
+          },
+          onUpdate: (self) => {
+            if (video && video.duration && isFinite(video.duration) && video.readyState >= 2) {
+              const newTime = video.duration * self.progress * 0.4;
+              if (isFinite(newTime) && newTime >= 0 && newTime <= video.duration) {
+                video.currentTime = newTime;
+              }
             }
           }
         }
-      }
-    });
+      });
 
-    // Phase 1: Text fade out first (0-15% of scroll)
-    mainTimeline.to([heroText, studiosText], {
-      opacity: 0,
-      y: -30,
-      duration: 0.6,
-      ease: "power2.inOut"
-    }, 0);
-
-    // Phase 2: Horizontal expansion of white background ONLY (15-40% of scroll)
-    mainTimeline.to(whiteBackground, {
-      scaleX: whiteBackgroundHorizontalScale,
-      scaleY: 1, // Keep vertical scale at 1
-      duration: 1,
-      ease: "power1.inOut"
-    }, 0.6);
-
-    // Small gap (40-45% of scroll)
-    mainTimeline.to({}, { duration: 0.2 }, 1.6);
-
-    // Phase 3: Vertical expansion of white background (45-70% of scroll)
-    mainTimeline.to(whiteBackground, {
-      scaleY: whiteBackgroundVerticalScale,
-      duration: 1,
-      ease: "power1.inOut"
-    }, 1.8);
-
-    // Small gap (70-75% of scroll)
-    mainTimeline.to({}, { duration: 0.2 }, 2.8);
-
-    // Phase 4: Video scaling slowly to fill white bg and almost fill screen (75-95% of scroll)
-    mainTimeline.to(videoContainer, {
-      scaleX: videoMaxScale,
-      scaleY: videoMaxScale,
-      duration: 0.8,
-      ease: "power1.inOut"
-    }, 3.0);
-
-    // Phase 5: Navigation fade out (95-100% of scroll)
-    if (nav) {
-      mainTimeline.to(nav, {
-        y: -100,
+      // Phase 1: Text fade out (0-15% of scroll)
+      mainTimeline.to([heroText, studiosText], {
         opacity: 0,
-        duration: 0.2,
+        y: -30,
+        duration: 0.6,
+        ease: "power2.inOut"
+      }, 0);
+
+      // Phase 2: Horizontal expansion of white background (15-40% of scroll)
+      mainTimeline.to(whiteBackground, {
+        scaleX: whiteBackgroundHorizontalScale,
+        scaleY: 1,
+        duration: 1,
         ease: "power1.inOut"
-      }, 3.8);
+      }, 0.6);
+
+      // Phase 3: Vertical expansion of white background (40-60% of scroll)
+      mainTimeline.to(whiteBackground, {
+        scaleY: whiteBackgroundVerticalScale,
+        duration: 1,
+        ease: "power1.inOut"
+      }, 1.6);
+
+      // Phase 4: Video scaling (60-90% of scroll)
+      mainTimeline.to(videoContainer, {
+        scaleX: videoMaxScale,
+        scaleY: videoMaxScale,
+        duration: 1.2, // Increased for smoother scaling
+        ease: "power2.inOut" // Smoother easing
+      }, 2.5);
+
+      // Phase 5: Navigation fade out (90-100% of scroll)
+      if (nav) {
+        mainTimeline.to(nav, {
+          y: -100,
+          opacity: 0,
+          duration: 0.3,
+          ease: "power1.inOut"
+        }, 3.6);
+      }
+
+      ScrollTrigger.refresh();
     }
 
-    // Cleanup
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      window.removeEventListener('load', initAnimations);
+      clearTimeout(timer);
+      ScrollTrigger.getAll().forEach(trigger => trigger?.kill());
     };
   }, [navRef]);
 
+  // Handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      try {
+        ScrollTrigger.refresh();
+      } catch (e) {
+        console.warn('Error refreshing ScrollTrigger:', e);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <div ref={containerRef} className="relative h-screen text-gray-50 bg-[#111] overflow-hidden">
+    <div ref={containerRef} className="relative h-[100vh] text-gray-50 bg-[#111] overflow-hidden">
       {/* Hero Text */}
-      <div className="absolute inset-0 flex flex-col justify-center items-center z-20 px-6">
+      <div className="absolute inset-0 flex flex-col justify-center items-center z-50 px-6">
         <div ref={heroTextRef} className="text-center lg:text-left mb-2 lg:ml-20 w-full lg:mt-[-5rem]">
-          <h1 className="text-8xl uppercase md:text-9xl lg:text-[12rem] font-black tracking-tighter leading-none">
+          <h1 className="text-8xl uppercase md:text-9xl lg:text-[12rem] font-black tracking-tighter leading-none relative z-50">
             From Ink
           </h1>
         </div>
@@ -146,7 +165,7 @@ const HeroSection = ({ navRef }) => {
             {/* White Background Container */}
             <div 
               ref={whiteBackgroundRef}
-              className="absolute inset-0 bg-white rounded-2xl shadow-2xl"
+              className="absolute inset-0 bg-white rounded-2xl shadow-2xl z-30"
               style={{ transformOrigin: 'center center' }}
             ></div>
             
@@ -172,7 +191,7 @@ const HeroSection = ({ navRef }) => {
         </div>
 
         <div className="absolute bottom-0 w-full text-center lg:text-right lg:pr-10">
-          <h2 ref={studiosTextRef} className="text-6xl uppercase md:text-8xl lg:text-[12rem] font-black tracking-tighter leading-none pb-8">
+          <h2 ref={studiosTextRef} className="text-6xl uppercase md:text-8xl lg:text-[12rem] font-black tracking-tighter leading-none pb-8 relative z-20">
             to Echo
           </h2>
         </div>
