@@ -245,9 +245,9 @@ export default function ContactPage() {
       <div className="max-w-2xl w-full text-center">
         <h1 className="heading text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 leading-tight tracking-tight text-left sm:text-center">
           <span className="text-orange-400">Say Hi!</span>
-          <span className="text-orange-600"> and tell me</span>
+          <span className="text-black"> and tell me</span>
           <br />
-          <span className="text-orange-600">about your idea</span>
+          <span className="text-black">about your idea</span>
         </h1>
 
         <p className="subheading text-gray-600 text-base sm:text-lg mb-12 text-left sm:text-center">
@@ -266,7 +266,7 @@ export default function ContactPage() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Hello..."
-                className="form-input w-full bg-transparent border-b border-gray-300 px-0 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-600 transition-colors"
+                className="form-input w-full bg-transparent border-b border-gray-300 px-0 pt-3 pb-[6px] text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-600 transition-colors"
               />
             </div>
 
@@ -280,7 +280,7 @@ export default function ContactPage() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Where can I reply?"
-                className="form-input w-full bg-transparent border-b border-gray-300 px-0 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-600 transition-colors"
+                className="form-input w-full bg-transparent border-b border-gray-300 px-0 pt-3 pb-[6px] text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-600 transition-colors"
               />
             </div>
           </div>
@@ -295,7 +295,7 @@ export default function ContactPage() {
               value={formData.company}
               onChange={handleChange}
               placeholder="Your company or website?"
-              className="form-input w-full bg-transparent border-b border-gray-300 px-0 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-600 transition-colors"
+              className="form-input w-full bg-transparent border-b border-gray-300 px-0 pt-3 pb-[6px] text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-600 transition-colors"
             />
           </div>
 
