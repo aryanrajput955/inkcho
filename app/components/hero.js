@@ -14,127 +14,137 @@ const HeroSection = ({ navRef }) => {
   const studiosTextRef = useRef(null);
 
   useEffect(() => {
-    window.addEventListener('load', initAnimations);
-    const timer = setTimeout(initAnimations, 100);
+    let ctx = gsap.context(() => {
+      const initAnimations = () => {
+        const container = containerRef.current;
+        const videoContainer = videoContainerRef.current;
+        const whiteBackground = whiteBackgroundRef.current;
+        const video = videoRef.current;
+        const heroText = heroTextRef.current;
+        const studiosText = studiosTextRef.current;
+        const nav = navRef?.current;
 
-    function initAnimations() {
-      const container = containerRef.current;
-      const videoContainer = videoContainerRef.current;
-      const whiteBackground = whiteBackgroundRef.current;
-      const video = videoRef.current;
-      const heroText = heroTextRef.current;
-      const studiosText = studiosTextRef.current;
-      const nav = navRef?.current;
+        if (!container || !videoContainer || !whiteBackground || !video || !heroText || !studiosText) {
+          console.warn('Missing required elements for animation');
+          return;
+        }
 
-      if (!container || !videoContainer || !whiteBackground || !video || !heroText || !studiosText) {
-        return;
-      }
+        // Kill existing ScrollTriggers and tweens
+        ScrollTrigger.getAll().forEach(trigger => trigger?.kill());
+        gsap.killTweensOf([heroText, studiosText, whiteBackground, videoContainer, nav]);
 
-      // Kill existing ScrollTriggers and tweens
-      ScrollTrigger.getAll().forEach(trigger => trigger?.kill());
-      gsap.killTweensOf([heroText, studiosText, whiteBackground, videoContainer, nav]);
+        // Set initial states
+        gsap.set([heroText, studiosText], { x: 0, y: 0, opacity: 1 });
+        gsap.set(whiteBackground, { scaleX: 1, scaleY: 1 });
+        gsap.set(videoContainer, { scaleX: 1, scaleY: 1 });
+        if (nav) gsap.set(nav, { y: 0, opacity: 1 });
 
-      // Set initial states
-      gsap.set([heroText, studiosText], { x: 0, y: 0, opacity: 1 });
-      gsap.set(whiteBackground, { scaleX: 1, scaleY: 1 });
-      gsap.set(videoContainer, { scaleX: 1, scaleY: 1 });
-      if (nav) gsap.set(nav, { y: 0, opacity: 1 });
+        // Page load animation
+        const loadTl = gsap.timeline({ delay: 0.3 });
+        loadTl.to([heroText, studiosText], {
+          x: 0,
+          opacity: 1,
+          duration: 2.5,
+          ease: "power2.out"
+        });
 
-      // Page load animation
-      const loadTl = gsap.timeline({ delay: 0.3 });
-      loadTl.to([heroText, studiosText], {
-        x: 0,
-        opacity: 1,
-        duration: 2.5,
-        ease: "power2.out"
-      });
+        // Calculate scale values
+        const isMobile = window.innerWidth < 768;
+        const whiteBackgroundHorizontalScale = window.innerWidth / (videoContainer.offsetWidth || 320);
+        const whiteBackgroundVerticalScale = window.innerHeight / (videoContainer.offsetHeight || 200);
+        const videoMargin = isMobile ? 0.98 : 0.97;
+        const videoMaxScale = Math.max(
+          (window.innerWidth * videoMargin) / (videoContainer.offsetWidth || 320),
+          (window.innerHeight * videoMargin) / (videoContainer.offsetHeight || 200)
+        );
 
-      // Calculate scale values
-      const isMobile = window.innerWidth < 768;
-      const whiteBackgroundHorizontalScale = window.innerWidth / (videoContainer.offsetWidth || 320);
-      const whiteBackgroundVerticalScale = window.innerHeight / (videoContainer.offsetHeight || 200);
-      const videoMargin = isMobile ? 0.98 : 0.97;
-      const videoMaxScale = Math.max(
-        (window.innerWidth * videoMargin) / (videoContainer.offsetWidth || 320),
-        (window.innerHeight * videoMargin) / (videoContainer.offsetHeight || 200)
-      );
-
-      // Main ScrollTrigger timeline
-      const mainTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: container,
-          start: "top top",
-          end: "+=300vh", // Increased for smoother progression
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          onRefresh: () => {
-            gsap.set([heroText, studiosText], { opacity: 1, y: 0 }); // Ensure text visibility on refresh
-          },
-          onUpdate: (self) => {
-            if (video && video.duration && isFinite(video.duration) && video.readyState >= 2) {
-              const newTime = video.duration * self.progress * 0.4;
-              if (isFinite(newTime) && newTime >= 0 && newTime <= video.duration) {
-                video.currentTime = newTime;
+        // Main ScrollTrigger timeline
+        const mainTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: container,
+            start: "top top",
+            end: "+=300vh",
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            onRefresh: () => {
+              console.log('ScrollTrigger refreshed');
+              gsap.set([heroText, studiosText], { opacity: 1, y: 0 });
+            },
+            onUpdate: (self) => {
+              console.log('ScrollTrigger progress:', self.progress);
+              if (video && video.duration && isFinite(video.duration) && video.readyState >= 2) {
+                const newTime = video.duration * self.progress * 0.4;
+                if (isFinite(newTime) && newTime >= 0 && newTime <= video.duration) {
+                  video.currentTime = newTime;
+                }
               }
             }
           }
-        }
-      });
+        });
 
-      // Phase 1: Text fade out (0-15% of scroll)
-      mainTimeline.to([heroText, studiosText], {
-        opacity: 0,
-        y: -30,
-        duration: 0.6,
-        ease: "power2.inOut"
-      }, 0);
-
-      // Phase 2: Horizontal expansion of white background (15-40% of scroll)
-      mainTimeline.to(whiteBackground, {
-        scaleX: whiteBackgroundHorizontalScale,
-        scaleY: 1,
-        duration: 1,
-        ease: "power1.inOut"
-      }, 0.6);
-
-      // Phase 3: Vertical expansion of white background (40-60% of scroll)
-      mainTimeline.to(whiteBackground, {
-        scaleY: whiteBackgroundVerticalScale,
-        duration: 1,
-        ease: "power1.inOut"
-      }, 1.6);
-
-      // Phase 4: Video scaling (60-90% of scroll)
-      mainTimeline.to(videoContainer, {
-        scaleX: videoMaxScale,
-        scaleY: videoMaxScale,
-        duration: 1.2, // Increased for smoother scaling
-        ease: "power2.inOut" // Smoother easing
-      }, 2.5);
-
-      // Phase 5: Navigation fade out (90-100% of scroll)
-      if (nav) {
-        mainTimeline.to(nav, {
-          y: -100,
+        mainTimeline.to([heroText, studiosText], {
           opacity: 0,
-          duration: 0.3,
-          ease: "power1.inOut"
-        }, 3.6);
-      }
+          y: -30,
+          duration: 0.6,
+          ease: "power2.inOut"
+        }, 0);
 
-      ScrollTrigger.refresh();
-    }
+        mainTimeline.to(whiteBackground, {
+          scaleX: whiteBackgroundHorizontalScale,
+          scaleY: 1,
+          duration: 1,
+          ease: "power1.inOut"
+        }, 0.6);
+
+        mainTimeline.to(whiteBackground, {
+          scaleY: whiteBackgroundVerticalScale,
+          duration: 1,
+          ease: "power1.inOut"
+        }, 1.6);
+
+        mainTimeline.to(videoContainer, {
+          scaleX: videoMaxScale,
+          scaleY: videoMaxScale,
+          duration: 1.2,
+          ease: "power2.inOut"
+        }, 2.5);
+
+        if (nav) {
+          mainTimeline.to(nav, {
+            y: -100,
+            opacity: 0,
+            duration: 0.3,
+            ease: "power1.inOut"
+          }, 3.6);
+        }
+
+        ScrollTrigger.refresh();
+      };
+
+      const imagesLoaded = () => {
+        const video = videoRef.current;
+        if (video && video.readyState >= 2) {
+          initAnimations();
+        } else {
+          video?.addEventListener('loadeddata', initAnimations, { once: true });
+        }
+      };
+
+      if (document.readyState === 'complete') {
+        imagesLoaded();
+      } else {
+        window.addEventListener('load', imagesLoaded, { once: true });
+      }
+    }, containerRef);
 
     return () => {
-      window.removeEventListener('load', initAnimations);
-      clearTimeout(timer);
-      ScrollTrigger.getAll().forEach(trigger => trigger?.kill());
+      ctx.revert();
     };
   }, [navRef]);
 
-  // Handle window resize
+  // Handle resize
   useEffect(() => {
     const handleResize = () => {
       try {
@@ -146,6 +156,13 @@ const HeroSection = ({ navRef }) => {
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Force refresh after hydration
+  useEffect(() => {
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
   }, []);
 
   return (
@@ -182,8 +199,9 @@ const HeroSection = ({ navRef }) => {
                 playsInline
                 loop
                 autoPlay
+                poster="/fallback-image.jpg"
               >
-                <source src="vid2.mp4" type="video/mp4" />
+                <source src="/vid2.mp4" type="video/mp4" />
               </video>
               <div className="absolute inset-0 bg-gradient-to-r from-green-900/20 via-transparent to-green-900/20 pointer-events-none"></div>
             </div>

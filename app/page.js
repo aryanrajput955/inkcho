@@ -1,6 +1,7 @@
 'use client';
 
-import HeroSection from './components/hero';
+import dynamic from 'next/dynamic';
+
 import EnhancedContentSection from './components/para';
 
 import React, { use, useRef } from 'react';
@@ -14,6 +15,10 @@ import CardsSection from './components/service2';
 import LightRaysContainer from './components/cta';
 
 export default function HomePage() {
+  
+const HeroSection = dynamic(() => import('./components/hero'), {
+  ssr: false,
+});
   const navRef = useRef(null);
   useLenis();
   return (
