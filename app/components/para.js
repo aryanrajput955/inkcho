@@ -4,7 +4,7 @@ import React from 'react';
 
 const EnhancedContentSection = () => {
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-[#F9F9F9] to-white text-gray-800 flex flex-col items-center justify-center py-20 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-b from-[#F9F9F9] to-white text-gray-800 flex flex-col items-center justify-center py-10 overflow-hidden">
       {/* Soft Overlay */}
       <div className="absolute inset-0 bg-white/40 backdrop-blur-sm"></div>
 
