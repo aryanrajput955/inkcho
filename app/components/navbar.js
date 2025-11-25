@@ -1,5 +1,6 @@
-'use client'
+'use client';
 import { useState, useEffect, useRef } from 'react';
+import Link from "next/link";
 import { Instagram, Twitter } from 'lucide-react';
 
 export default function AnimatedMenu() {
@@ -9,83 +10,63 @@ export default function AnimatedMenu() {
   const cursorRef = useRef(null);
 
   const menuItems = [
+    { title: 'About', number: '01', link: '/about' },
     { 
-      title: 'About', 
-      number: '01',
-      link: '#about',
-      video: 'https://player.vimeo.com/external/434045526.sd.mp4?s=c27eecc69a27dbc4ff2b87d38afc35f1a9e7c02d'
-    },
-    { 
-      title: 'Services', 
-      number: '02',
-      link: '#services',
-      video: 'https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf',
+      title: 'Services', number: '02', link: '/services',
       subItems: [
-        { name: 'Web Development', link: '#web' },
-        { name: 'UI/UX Design', link: '#design' },
-        { name: 'Digital Strategy', link: '#strategy' }
+        { name: 'Brand Identity', link: '/services/brand-identity' },
+        { name: 'UI/UX Design', link: '/services/design' },
+        { name: 'Digital Strategy', link: '/services/strategy' },
       ]
     },
-    { 
-      title: 'Work', 
-      number: '03',
-      link: '#work',
-      video: 'https://player.vimeo.com/external/460718428.sd.mp4?s=7cb12c7f0fb52df3845fc0265e1a0ef8b2f1c85f'
-    },
-    { 
-      title: 'Contact', 
-      number: '04',
-      link: '#contact',
-      video: 'https://player.vimeo.com/external/395925944.sd.mp4?s=6d2b5e4f1c8e39b5a68cbfb5de00b09ab8d0f3c3'
-    }
+    { title: 'Work', number: '03', link: '/work' },
+    { title: 'Contact', number: '04', link: '/contact' }
   ];
 
   const [expandedService, setExpandedService] = useState(false);
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen]);
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setCursorPos({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+  const closeMenu = () => {
+    setIsOpen(false);
     setExpandedService(false);
   };
 
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    if (isOpen) setExpandedService(false);
+  };
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : 'unset';
+  }, [isOpen]);
+
+  useEffect(() => {
+    const move = (e) => setCursorPos({ x: e.clientX, y: e.clientY });
+    window.addEventListener('mousemove', move);
+    return () => window.removeEventListener('mousemove', move);
+  }, []);
+
   return (
     <>
-      {/* Custom Cursor */}
-      <div 
+      {/* CUSTOM CURSOR */}
+      <div
         ref={cursorRef}
-        className={`fixed w-4 h-4 bg-white rounded-full pointer-events-none z-[100] transition-transform duration-200 mix-blend-difference ${isOpen ? 'scale-150' : 'scale-100'}`}
+        className={`fixed w-4 h-4 bg-[#e8e2d9] rounded-full pointer-events-none z-[100] transition-transform duration-200 ${isOpen ? 'scale-150' : 'scale-100'}`}
         style={{
           left: `${cursorPos.x}px`,
           top: `${cursorPos.y}px`,
-          transform: 'translate(-50%, -50%)'
+          transform: 'translate(-50%, -50%)',
+          mixBlendMode: "difference"
         }}
       />
 
-      {/* Navbar */}
+      {/* CLOSED TOP NAV */}
       {!isOpen && (
         <nav className="fixed top-0 left-0 right-0 z-50 mix-blend-difference">
           <div className="flex items-center justify-between px-12 py-8">
-            <div className="text-sm font-light tracking-[0.3em] text-white">
-              INKCHO
-            </div>
+            <Link href="/">
+              <div className="text-sm font-light tracking-[0.3em] text-white">INKCHO</div>
+            </Link>
+
             <button
               onClick={toggleMenu}
               className="text-sm font-light tracking-[0.2em] text-white hover:opacity-60 transition-opacity"
@@ -96,131 +77,135 @@ export default function AnimatedMenu() {
         </nav>
       )}
 
-      {/* Full Screen Menu */}
+      {/* MENU OVERLAY */}
       <div
-        className={`fixed inset-0 bg-black z-50 transition-all duration-1000 ${
+        className={`fixed inset-0 z-50 transition-all duration-1000 ${
           isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
-        style={{ 
-          overflowY: isOpen ? 'auto' : 'hidden',
-          WebkitOverflowScrolling: 'touch'
-        }}
+        style={{ backgroundColor: "#e2dbd2" }}
       >
-        {/* Header */}
-        <div className="fixed top-0 left-0 right-0 z-50 mix-blend-difference">
+        {/* HEADER */}
+        <div className="fixed top-0 left-0 right-0 z-50">
           <div className="flex items-center justify-between px-12 py-8">
             <button
               onClick={toggleMenu}
-              className="text-sm font-light tracking-[0.2em] text-white hover:opacity-60 transition-opacity"
+              className="text-sm font-light tracking-[0.2em] text-[#333] hover:text-orange-600 transition-colors"
             >
               CLOSE
             </button>
+
             <div className="flex items-center gap-8">
-              <a 
-                href="https://instagram.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-white hover:opacity-60 transition-opacity"
-              >
+              <a href="https://instagram.com" className="text-[#333] hover:text-orange-600">
                 <Instagram className="w-5 h-5" strokeWidth={1} />
               </a>
-              <a 
-                href="https://twitter.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-white hover:opacity-60 transition-opacity"
-              >
+              <a href="https://twitter.com" className="text-[#333] hover:text-orange-600">
                 <Twitter className="w-5 h-5" strokeWidth={1} />
               </a>
             </div>
           </div>
         </div>
 
+        {/* MAIN MENU */}
         <div className="min-h-screen flex">
-          {/* Left Side - Menu */}
+
+          {/* LEFT PANEL */}
           <div className="w-full lg:w-1/2 flex items-center justify-center px-12 lg:px-20">
             <div className="w-full max-w-2xl">
+
               {menuItems.map((item, index) => (
                 <div key={item.number}>
                   <div
-                    className={`group border-b border-white/10 transition-all duration-700 ${
-                      isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+                    className={`group border-b border-[#d6d0c8] transition-all duration-700 ${
+                      isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
                     }`}
                     style={{ transitionDelay: `${index * 100}ms` }}
                     onMouseEnter={() => setActiveIndex(index)}
                   >
-                    <div 
-                      className="py-8 cursor-pointer flex items-center justify-between"
-                      onClick={() => {
-                        if (item.title === 'Services') {
-                          setExpandedService(!expandedService);
-                        } else {
-                          window.location.href = item.link;
-                        }
-                      }}
-                    >
+
+                    <div className="py-8 cursor-pointer flex items-center justify-between">
+
+                      {/* NUMBER + TITLE */}
                       <div className="flex items-baseline gap-8">
-                        <span className="text-white/40 text-sm font-light tracking-wider group-hover:text-white transition-colors">
+                        <span className="text-[#8d857b] text-sm font-light">
                           {item.number}
                         </span>
-                        <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-white tracking-tight group-hover:translate-x-4 transition-transform duration-500">
-                          {item.title}
-                        </h2>
+
+                        {/* NOT SERVICES → LINK */}
+                        {item.title !== "Services" ? (
+                          <Link
+                            href={item.link}
+                            onClick={closeMenu}
+                            className="text-5xl md:text-6xl lg:text-7xl font-light text-[#333] tracking-tight group-hover:text-orange-600 group-hover:translate-x-4 transition-all"
+                          >
+                            {item.title}
+                          </Link>
+                        ) : (
+                          <span
+                            onClick={() => setExpandedService(!expandedService)}
+                            className="text-5xl md:text-6xl lg:text-7xl font-light text-[#333] tracking-tight cursor-pointer group-hover:text-orange-600 group-hover:translate-x-4 transition-all"
+                          >
+                            {item.title}
+                          </span>
+                        )}
                       </div>
-                      <div className="text-white/40 text-2xl group-hover:text-white group-hover:translate-x-2 transition-all duration-500">
+
+                      <div className="text-[#8d857b] text-2xl group-hover:text-orange-600 transition-all">
                         →
                       </div>
                     </div>
 
-                    {/* Sub Items */}
+                    {/* SUBMENU */}
                     {item.subItems && (
-                      <div className={`overflow-hidden transition-all duration-500 ${
-                        expandedService ? 'max-h-64 opacity-100 mb-6' : 'max-h-0 opacity-0'
-                      }`}>
+                      <div
+                        className={`overflow-hidden transition-all duration-500 ${
+                          expandedService ? "max-h-64 opacity-100 mb-6" : "max-h-0 opacity-0"
+                        }`}
+                      >
                         <div className="pl-20 space-y-3">
-                          {item.subItems.map((sub, subIndex) => (
-                            <a
-                              key={subIndex}
+                          {item.subItems.map((sub, i) => (
+                            <Link
+                              key={i}
                               href={sub.link}
-                              className="block text-xl md:text-2xl font-light text-white/50 hover:text-white hover:translate-x-4 transition-all duration-300"
+                              onClick={closeMenu}
+                              className="block text-xl md:text-2xl font-light text-[#777] hover:text-orange-600 hover:translate-x-4 transition-all"
                             >
                               {sub.name}
-                            </a>
+                            </Link>
                           ))}
                         </div>
                       </div>
                     )}
+
                   </div>
                 </div>
               ))}
 
-              {/* Footer Text */}
-              <div className={`mt-16 text-white/30 text-xs tracking-widest transition-all duration-700 ${
-                isOpen ? 'opacity-100' : 'opacity-0'
-              }`} style={{ transitionDelay: '600ms' }}>
+              {/* FOOTER TEXT */}
+              <div className={`mt-16 text-[#8d857b] text-xs tracking-widest font-light ${isOpen ? "opacity-100" : "opacity-0"} transition-all`}>
                 <p>INKCHO</p>
                 <p className="mt-2">CREATING DIGITAL EXPERIENCES</p>
               </div>
             </div>
           </div>
 
-          {/* Right Side - Video Preview */}
+          {/* RIGHT PANEL PREVIEW */}
           <div className="hidden lg:block w-1/2 fixed right-0 top-0 h-screen">
             <div className="relative w-full h-full flex items-center justify-center p-20">
-              <div className={`relative w-full h-full transition-all duration-1000 ${
-                isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-              }`} style={{ transitionDelay: '400ms' }}>
-                {/* Video Container */}
-                <div className="relative w-full h-full overflow-hidden">
+              <div
+                className={`relative w-full h-full transition-all duration-1000 ${
+                  isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                }`}
+              >
+                <div className="relative w-full h-full overflow-hidden rounded-3xl">
                   {menuItems.map((item, index) => (
                     <div
                       key={item.number}
                       className={`absolute inset-0 transition-opacity duration-700 ${
-                        activeIndex === index ? 'opacity-100' : 'opacity-0'
+                        activeIndex === index ? "opacity-100" : "opacity-0"
                       }`}
                     >
-                      <div className="w-full h-full bg-gradient-to-br from-zinc-900 to-zinc-800 flex items-center justify-center">
-                        <div className="text-white/10 text-9xl font-light">
+                      <div className="w-full h-full bg-[#d7cfc6] flex items-center justify-center">
+                        <div className="text-[#b8afa5] text-9xl font-light">
                           {item.number}
                         </div>
                       </div>
@@ -228,18 +213,19 @@ export default function AnimatedMenu() {
                   ))}
                 </div>
 
-                {/* Title Overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-12">
-                  <div className="text-white/40 text-sm tracking-widest mb-2">
+                  <div className="text-[#8d857b] text-sm tracking-widest mb-2">
                     {menuItems[activeIndex].number}
                   </div>
-                  <h3 className="text-5xl font-light text-white">
+                  <h3 className="text-5xl font-light text-[#333]">
                     {menuItems[activeIndex].title}
                   </h3>
                 </div>
+
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </>

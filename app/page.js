@@ -1,9 +1,6 @@
 'use client';
-
-import dynamic from 'next/dynamic';
-
-import EnhancedContentSection from './components/para';
-
+// import EnhancedContentSection from './components/para';
+import HeroSection from './components/hero';
 import React, { use, useRef } from 'react';
 import ServicesSection from './components/servies';
 
@@ -13,24 +10,22 @@ import ScrollHijackGallery from './components/animated-portfolio';
 import CardsSection from './components/service2';
 
 import LightRaysContainer from './components/cta';
+import TestimonialCarousel from './components/testimonials';
 
 export default function HomePage() {
-  
-const HeroSection = dynamic(() => import('./components/hero'), {
-  ssr: false,
-});
-  const navRef = useRef(null);
+
   useLenis();
   return (
 
     <div className="relative">
  
-      <HeroSection navRef={navRef} />
-      <EnhancedContentSection />
+      <HeroSection/>
+      {/* <EnhancedContentSection /> */}
       {/* <InfiniteScrollSection /> */}
       <ScrollHijackGallery />
       <CardsSection />
       <ServicesSection />
+      <TestimonialCarousel />
       {/* <WhyChooseUs /> */}
       {/* <ProjectsSection /> */}
       <LightRaysContainer />

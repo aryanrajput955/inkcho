@@ -1,221 +1,175 @@
-'use client';
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+"use client";
 
-gsap.registerPlugin(ScrollTrigger);
+import { motion } from "framer-motion";
 
-const HeroSection = ({ navRef }) => {
-  const containerRef = useRef(null);
-  const videoContainerRef = useRef(null);
-  const whiteBackgroundRef = useRef(null);
-  const videoRef = useRef(null);
-  const heroTextRef = useRef(null);
-  const studiosTextRef = useRef(null);
+const PORTFOLIO_IMAGES = [
+  "https://images.unsplash.com/photo-1634986666676-ec8fd927c23d?w=800&q=80",
+  "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80",
+  "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=800&q=80",
+  "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+  "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
+  "https://images.unsplash.com/photo-1600096194534-95cf5ece04cf?w=800&q=80",
+];
 
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      const initAnimations = () => {
-        const container = containerRef.current;
-        const videoContainer = videoContainerRef.current;
-        const whiteBackground = whiteBackgroundRef.current;
-        const video = videoRef.current;
-        const heroText = heroTextRef.current;
-        const studiosText = studiosTextRef.current;
-        const nav = navRef?.current;
-
-        if (!container || !videoContainer || !whiteBackground || !video || !heroText || !studiosText) {
-          console.warn('Missing required elements for animation');
-          return;
-        }
-
-        // Kill existing ScrollTriggers and tweens
-        ScrollTrigger.getAll().forEach(trigger => trigger?.kill());
-        gsap.killTweensOf([heroText, studiosText, whiteBackground, videoContainer, nav]);
-
-        // Set initial states
-        gsap.set([heroText, studiosText], { x: 0, y: 0, opacity: 1 });
-        gsap.set(whiteBackground, { scaleX: 1, scaleY: 1 });
-        gsap.set(videoContainer, { scaleX: 1, scaleY: 1 });
-        if (nav) gsap.set(nav, { y: 0, opacity: 1 });
-
-        // Page load animation
-        const loadTl = gsap.timeline({ delay: 0.3 });
-        loadTl.to([heroText, studiosText], {
-          x: 0,
-          opacity: 1,
-          duration: 2.5,
-          ease: "power2.out"
-        });
-
-        // Calculate scale values
-        const isMobile = window.innerWidth < 768;
-        const whiteBackgroundHorizontalScale = window.innerWidth / (videoContainer.offsetWidth || 320);
-        const whiteBackgroundVerticalScale = window.innerHeight / (videoContainer.offsetHeight || 200);
-        const videoMargin = isMobile ? 0.98 : 0.97;
-        const videoMaxScale = Math.max(
-          (window.innerWidth * videoMargin) / (videoContainer.offsetWidth || 320),
-          (window.innerHeight * videoMargin) / (videoContainer.offsetHeight || 200)
-        );
-
-        // Main ScrollTrigger timeline
-        const mainTimeline = gsap.timeline({
-          scrollTrigger: {
-            trigger: container,
-            start: "top top",
-            end: "+=300vh",
-            scrub: 1,
-            pin: true,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            onRefresh: () => {
-              console.log('ScrollTrigger refreshed');
-              gsap.set([heroText, studiosText], { opacity: 1, y: 0 });
-            },
-            onUpdate: (self) => {
-              console.log('ScrollTrigger progress:', self.progress);
-              if (video && video.duration && isFinite(video.duration) && video.readyState >= 2) {
-                const newTime = video.duration * self.progress * 0.4;
-                if (isFinite(newTime) && newTime >= 0 && newTime <= video.duration) {
-                  video.currentTime = newTime;
-                }
-              }
-            }
-          }
-        });
-
-        mainTimeline.to([heroText, studiosText], {
-          opacity: 0,
-          y: -30,
-          duration: 0.6,
-          ease: "power2.inOut"
-        }, 0);
-
-        mainTimeline.to(whiteBackground, {
-          scaleX: whiteBackgroundHorizontalScale,
-          scaleY: 1,
-          duration: 1,
-          ease: "power1.inOut"
-        }, 0.6);
-
-        mainTimeline.to(whiteBackground, {
-          scaleY: whiteBackgroundVerticalScale,
-          duration: 1,
-          ease: "power1.inOut"
-        }, 1.6);
-
-        mainTimeline.to(videoContainer, {
-          scaleX: videoMaxScale,
-          scaleY: videoMaxScale,
-          duration: 1.2,
-          ease: "power2.inOut"
-        }, 2.5);
-
-        if (nav) {
-          mainTimeline.to(nav, {
-            y: -100,
-            opacity: 0,
-            duration: 0.3,
-            ease: "power1.inOut"
-          }, 3.6);
-        }
-
-        ScrollTrigger.refresh();
-      };
-
-      const imagesLoaded = () => {
-        const video = videoRef.current;
-        if (video && video.readyState >= 2) {
-          initAnimations();
-        } else {
-          video?.addEventListener('loadeddata', initAnimations, { once: true });
-        }
-      };
-
-      if (document.readyState === 'complete') {
-        imagesLoaded();
-      } else {
-        window.addEventListener('load', imagesLoaded, { once: true });
-      }
-    }, containerRef);
-
-    return () => {
-      ctx.revert();
-    };
-  }, [navRef]);
-
-  // Handle resize
-  useEffect(() => {
-    const handleResize = () => {
-      try {
-        ScrollTrigger.refresh();
-      } catch (e) {
-        console.warn('Error refreshing ScrollTrigger:', e);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Force refresh after hydration
-  useEffect(() => {
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 100);
-  }, []);
+export default function Hero() {
+  const duplicatedImages = [...PORTFOLIO_IMAGES, ...PORTFOLIO_IMAGES];
 
   return (
-    <div ref={containerRef} className="relative h-[100vh] text-gray-50 bg-[#111] overflow-hidden">
-      {/* Hero Text */}
-      <div className="absolute inset-0 flex flex-col justify-center items-center z-50 px-6">
-        <div ref={heroTextRef} className="text-center lg:text-left mb-2 lg:ml-20 w-full lg:mt-[-5rem]">
-          <h1 className="text-8xl uppercase md:text-9xl lg:text-[12rem] font-black tracking-tighter leading-none relative z-50">
-            From Ink
-          </h1>
-        </div>
+    <section className="relative h-screen w-full overflow-hidden bg-[#FAF9F6]">
 
-        {/* Video and Side Text Container */}
-        <div className="relative w-full flex items-center justify-center">
-          {/* Video Container with White Background */}
-          <div className="relative w-80 h-48 md:w-96 md:h-56 mb-10 mt-2">
-            {/* White Background Container */}
-            <div 
-              ref={whiteBackgroundRef}
-              className="absolute inset-0 bg-white rounded-2xl shadow-2xl z-30"
-              style={{ transformOrigin: 'center center' }}
-            ></div>
-            
-            {/* Video Container */}
-            <div 
-              ref={videoContainerRef} 
-              className="relative w-full h-full rounded-2xl overflow-hidden z-40"
-              style={{ transformOrigin: 'center center' }}
+      {/* Soft gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.05] via-transparent to-black/[0.03]" />
+
+      {/* Noise texture */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.06]"
+        style={{
+          backgroundImage:
+            "url('https://transparenttextures.com/patterns/white-diamond.png')",
+        }}
+      />
+
+      {/* ---------------- CENTER CONTENT ---------------- */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
+
+        {/* Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="mb-6 px-4 py-1 bg-black/5 rounded-full border border-black/10 text-[11px] font-medium tracking-[0.2em] uppercase text-black/60"
+        >
+          Creative Studio
+        </motion.div>
+
+        {/* INKCHO Brand Name */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-5xl md:text-7xl font-serif tracking-tight text-black mb-4"
+        >
+          INKCHO
+        </motion.h1>
+
+        {/* ---------------- HEADLINE BLOCK ---------------- */}
+        <div className="relative flex flex-col items-center text-center mb-10">
+
+ 
+          {/* First Line With Animated Doodle */}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="flex items-center justify-center gap-3 flex-wrap mb-3"
+          >
+            <h2 className="text-3xl md:text-6xl font-light uppercase tracking-tight text-black/80">
+              Where Ideas
+            </h2>
+
+            {/* Animated Doodle SVG */}
+            <motion.svg
+              width="55"
+              height="55"
+              viewBox="0 0 100 100"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 1.2, ease: "easeInOut", delay: 0.3 }}
+              className="opacity-70"
             >
-              <video
-                ref={videoRef}
-                className="w-full h-full object-cover"
-                muted
-                playsInline
-                loop
-                autoPlay
-                poster="/fallback-image.jpg"
-              >
-                <source src="/vid2.mp4" type="video/mp4" />
-              </video>
-              <div className="absolute inset-0 bg-gradient-to-r from-green-900/20 via-transparent to-green-900/20 pointer-events-none"></div>
-            </div>
-          </div>
+              <path
+                d="M20 50 C40 20, 60 80, 80 50"
+                stroke="#EB5B00"
+                strokeWidth="6"
+                strokeLinecap="round"
+              />
+            </motion.svg>
+          </motion.div>
+
+          {/* Second Line With Animated Underline */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="relative text-3xl md:text-6xl font-serif italic text-[#EB5B00]"
+          >
+            Become Art
+
+            {/* Animated underline */}
+            <motion.span
+              className="absolute left-1/2 -bottom-2 w-[60%] h-[2px] bg-[#EB5B00]"
+              initial={{ scaleX: 0, x: "-50%" }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1, ease: "easeInOut", delay: 1.1 }}
+              style={{ transformOrigin: "center" }}
+            />
+          </motion.h2>
         </div>
 
-        <div className="absolute bottom-0 w-full text-center lg:text-right lg:pr-10">
-          <h2 ref={studiosTextRef} className="text-6xl uppercase md:text-8xl lg:text-[12rem] font-black tracking-tighter leading-none pb-8 relative z-20">
-            to Echo
-          </h2>
-        </div>
+        {/* ---------------- SUBLINE ---------------- */}
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 1 }}
+          className="text-black/60 text-lg md:text-xl max-w-2xl mt-3 leading-relaxed"
+        >
+          INKCHO is a multidisciplinary creative studio specializing in 
+          illustration, product photography, posters, and 3D design.
+        </motion.p>
+
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 1 }}
+          className="flex gap-4 mt-10"
+        >
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-8 py-3 bg-black text-white font-medium rounded-full hover:bg-black/90 transition-all"
+          >
+            View Portfolio
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-8 py-3 border border-black/20 text-black rounded-full hover:bg-black/5 transition-all"
+          >
+            Contact Us
+          </motion.button>
+        </motion.div>
       </div>
-    </div>
-  );
-};
 
-export default HeroSection;
+      {/* ---------------- FLOATING MARQUEE ---------------- */}
+      <div className="absolute bottom-0 left-0 w-full h-1/3 md:h-2/5 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]">
+        <motion.div
+          className="flex gap-6"
+          animate={{ x: ["0%", "-100%"] }}
+          transition={{
+            ease: "linear",
+            duration: 40,
+            repeat: Infinity,
+          }}
+        >
+          {duplicatedImages.map((src, index) => (
+            <div
+              key={index}
+              className="relative aspect-[3/4] h-40 md:h-56 lg:h-64 flex-shrink-0"
+              style={{ rotate: `${index % 2 === 0 ? -2 : 4}deg` }}
+            >
+              <img
+                src={src}
+                alt=""
+                className="w-full h-full object-cover rounded-2xl shadow-sm border border-black/5"
+              />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}

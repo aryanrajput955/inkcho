@@ -1,114 +1,180 @@
 'use client';
-import React, { useState, useEffect } from 'react';
-import { ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 
-const Footer = () => {
+export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const [isVisible, setIsVisible] = useState(false);
+  const [email, setEmail] = useState('');
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true);
-      },
-      { threshold: 0.3 }
-    );
-
-    const footerElement = document.getElementById('footer-section');
-    if (footerElement) observer.observe(footerElement);
-
-    return () => {
-      if (footerElement) observer.unobserve(footerElement);
-    };
-  }, []);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Email submitted:', email);
+    setEmail('');
+  };
 
   return (
-    <footer
-      id="footer-section"
-      className="bg-black text-white relative overflow-hidden"
-    >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20">
+    <footer className="bg-[#f5f1eb] text-[#333] border-t border-[#d6d3cd]">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 pt-24 pb-16">
 
-        {/* ======== TOP SECTION ======== */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 border-b border-gray-800 pb-16">
+        {/* === Top CTA === */}
+        <div className="mb-24">
+          <h2 className="text-4xl md:text-6xl font-semibold leading-tight tracking-tight text-[#333] mb-6">
+            Ready to create <br />
+            <span className="text-orange-600 italic font-serif font-normal">
+              something extraordinary?
+            </span>
+          </h2>
+
+          <a
+            href="/contact"
+            className="group inline-flex items-center gap-2 text-base font-light border-b border-[#d6d3cd] hover:border-orange-600 transition-all"
+          >
+            <span>Get in touch</span>
+            <ArrowRight
+              size={18}
+              className="group-hover:translate-x-1 transition-transform"
+            />
+          </a>
+        </div>
+
+        {/* === Main Grid === */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 mb-24">
 
           {/* Brand + Newsletter */}
-          <div className="md:col-span-2 space-y-6">
-            <div className="font-bold text-3xl tracking-widest">INKCHO</div>
-            <p className="text-gray-400 text-lg leading-relaxed max-w-md">
-              Get valuable strategy, design, and brand insights straight to your inbox.
+          <div className="lg:col-span-5 space-y-8">
+            <div className="text-4xl font-light tracking-wide text-[#333]">
+              INKCHO
+            </div>
+
+            <p className="text-[#666] max-w-sm font-light">
+              Subscribe to receive the latest insights on design, branding, and digital strategy.
             </p>
 
-            <form className="flex items-center border border-gray-700 rounded overflow-hidden max-w-md">
-              <input
-                type="email"
-                placeholder="Your email here"
-                className="w-full px-4 py-3 bg-transparent text-sm text-white placeholder-gray-500 focus:outline-none"
-              />
-              <button
-                type="submit"
-                className="bg-white text-black px-5 py-3 text-sm font-medium hover:bg-gray-200 transition flex items-center gap-2"
-              >
-                Subscribe <ArrowRight size={16} />
-              </button>
+            {/* Email */}
+            <form onSubmit={handleSubmit} className="space-y-4 pt-4">
+              <div className="relative">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your email address"
+                  className="w-full bg-transparent border-b border-[#d6d3cd] focus:border-orange-600 transition-colors py-3 outline-none placeholder-[#999] font-light text-sm"
+                />
+
+                <button
+                  type="submit"
+                  className="absolute right-0 top-1/2 -translate-y-1/2
+                             flex items-center justify-center border border-gray-300 bg-white text-black
+                             rounded-full w-10 h-10 transition-all duration-500 hover:border-orange-600 hover:text-orange-600"
+                >
+                  <ArrowRight size={16} />
+                </button>
+              </div>
+
+              <p className="text-xs text-[#777] font-light">
+                By subscribing, you agree to our{" "}
+                <a href="#" className="underline hover:text-orange-600">Privacy Policy</a>.
+              </p>
             </form>
-
-            <p className="text-xs text-gray-500 max-w-sm leading-relaxed">
-              By signing up to receive emails from INKCHO, you agree to our{" "}
-              <a href="#" className="underline hover:text-gray-300">Privacy Policy</a>.
-              You can unsubscribe anytime.
-            </p>
           </div>
 
-          {/* Company */}
-          <div>
-            <h3 className="text-sm font-semibold text-gray-400 uppercase mb-4">Company</h3>
-            <ul className="space-y-2 text-white">
-              <li><a href="#" className="hover:text-gray-300">Home</a></li>
-              <li><a href="#" className="hover:text-gray-300">Services</a></li>
-              <li><a href="#" className="hover:text-gray-300">About</a></li>
-              <li><a href="#" className="hover:text-gray-300">Work</a></li>
-              <li><a href="#" className="hover:text-gray-300">Contact</a></li>
-            </ul>
-          </div>
+          {/* Navigation */}
+          <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-16">
 
-          {/* Discover */}
-          <div>
-            <h3 className="text-sm font-semibold text-gray-400 uppercase mb-4">Discover</h3>
-            <ul className="space-y-2 text-white">
-              <li><a href="#" className="hover:text-gray-300">LinkedIn</a></li>
-              <li><a href="#" className="hover:text-gray-300">Instagram</a></li>
-              <li><a href="#" className="hover:text-gray-300">TikTok</a></li>
-              <li><a href="#" className="hover:text-gray-300">Dribbble</a></li>
-            </ul>
+            {/* Navigation */}
+            <div>
+              <h3 className="text-xs tracking-wider text-[#777] uppercase mb-6 font-light">
+                Navigation
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  { label: 'Home', href: '/' },
+                  { label: 'Services', href: '/services' },
+                  { label: 'About', href: '/about' },
+                  { label: 'Work', href: '/work' },
+                  { label: 'Contact', href: '/contact' },
+                ].map((item, i) => (
+                  <li key={i}>
+                    <a
+                      href={item.href}
+                      className="text-[#555] hover:text-orange-600 transition-colors font-light"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Services */}
+            <div>
+              <h3 className="text-xs tracking-wider text-[#777] uppercase mb-6 font-light">
+                Services
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  { label: 'Branding', href: '/services/branding' },
+                  { label: 'Web Design', href: '/services/web-design' },
+                  { label: 'Strategy', href: '/services/strategy' },
+                  { label: 'Marketing', href: '/services/marketing' },
+                  { label: 'Development', href: '/services/development' },
+                ].map((item, i) => (
+                  <li key={i}>
+                    <a
+                      href={item.href}
+                      className="text-[#555] hover:text-orange-600 transition-colors font-light"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Social */}
+            <div>
+              <h3 className="text-xs tracking-wider text-[#777] uppercase mb-6 font-light">
+                Connect
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  { label: 'LinkedIn', href: '#' },
+                  { label: 'Instagram', href: '#' },
+                  { label: 'Dribbble', href: '#' },
+                  { label: 'Behance', href: '#' },
+                  { label: 'Twitter', href: '#' },
+                ].map((item, i) => (
+                  <li key={i}>
+                    <a
+                      href={item.href}
+                      className="flex items-center gap-1 text-[#555] hover:text-orange-600 transition-colors font-light"
+                    >
+                      {item.label}
+                      <ArrowUpRight size={12} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
           </div>
         </div>
 
+        {/* Bottom */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-t border-[#d6d3cd] pt-10 text-sm font-light">
 
+          <div className="text-[#666]">
+            © {currentYear} INKCHO — All rights reserved
+          </div>
 
-        {/* ======== BOTTOM SECTION ======== */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pt-8 border-t border-gray-800">
-          <div className="text-gray-500 text-sm">
-            © {currentYear} INKCHO. All rights reserved.
+          <div className="flex gap-8 text-[#666]">
+            <a href="/privacy" className="hover:text-orange-600">Privacy</a>
+            <a href="/terms" className="hover:text-orange-600">Terms</a>
+            <a href="/cookies" className="hover:text-orange-600">Cookies</a>
           </div>
-          <div className="flex flex-wrap items-center gap-6 text-sm">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
-              Cookies Policy
-            </a>
-            <a
-              href="#"
-              className="text-gray-500 hover:text-white text-xs uppercase tracking-wide"
-            >
-              Back to top
-            </a>
-          </div>
+
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

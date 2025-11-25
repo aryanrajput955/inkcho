@@ -77,55 +77,63 @@ const ScrollHijackGallery = () => {
   // Calculate position for each image - coming from complete right side
   const getImageTransform = (index) => {
     // Stagger the start of each animation - start later so all images begin off-screen
-    const startPoint = 0.1 + (index * 0.15);
-    const animationDuration = 0.4;
+    const startPoint = 0.05 + (index * 0.12);
+    const animationDuration = 0.5;
     
     // Calculate individual progress for this image
     let imageProgress = (scrollProgress - startPoint) / animationDuration;
     imageProgress = Math.max(0, Math.min(1, imageProgress));
 
     // Easing for smooth horizontal movement
-    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
-    const easedProgress = easeOutCubic(imageProgress);
+    const easeInOutQuart = (t) => {
+      return t < 0.5 
+        ? 8 * t * t * t * t 
+        : 1 - Math.pow(-2 * t + 2, 4) / 2;
+    };
+    const easedProgress = easeInOutQuart(imageProgress);
 
     // Horizontal movement from right (complete right side of screen) to final position
     // On desktop: 300% off screen, on mobile: 150% off screen
     const startX = isMobile ? 150 : 400;
     const translateX = startX - (easedProgress * startX);
 
-    // Bouncing vertical movement - multiple bounces while traveling
+    // Bouncing vertical movement - decreasing bounces for each card
+    // Bounces happen throughout the entire journey from right to left
     const getBounceY = (t) => {
       if (t === 0) return 0;
       if (t >= 1) return 0;
       
-      // Create multiple bounces during the journey
-      const bounceCount = 3;
+      // Each card has fewer bounces: card 0 = 3 bounces, card 1 = 2 bounces, card 2 = 1 bounce, card 3 = 0.5 bounce
+      const bounceCount = Math.max(0.5, 3 - index);
       const bounceProgress = t * bounceCount;
       const currentBounce = Math.floor(bounceProgress);
       const bouncePhase = bounceProgress - currentBounce;
       
-      // Decrease amplitude with each bounce
-      const amplitude = 80 * Math.pow(0.5, currentBounce);
+      // Much higher amplitude for more visible bounces
+      const baseAmplitude = 180 - (index * 25); // First card bounces much higher (180px)
+      // Slower decay so bounces stay visible longer
+      const amplitude = baseAmplitude * Math.pow(0.65, currentBounce);
       
-      // Parabolic motion for each bounce
-      const bounceHeight = amplitude * (1 - Math.pow((bouncePhase * 2 - 1), 2));
+      // More pronounced parabolic motion for each bounce
+      const bounceHeight = amplitude * Math.sin(bouncePhase * Math.PI);
       
       return -bounceHeight; // Negative because we want to bounce up
     };
 
+    // The bounce happens throughout the entire horizontal movement
+    // So it starts bouncing from the complete right side
     const translateY = getBounceY(imageProgress);
 
-    // Rotation effect - rotates while moving, settles when fixed
+    // Rotation effect - smoother rotates while moving, settles when fixed
     const getRotation = (t) => {
       if (t >= 1) return 0;
       
-      // Start tilted, rotate during movement
-      const baseRotation = -20; // Start tilted left
-      const rotationSpeed = 4; // Number of rotations during journey
-      const oscillation = Math.sin(t * Math.PI * rotationSpeed) * 15;
+      // Gentler rotation during movement
+      const rotationSpeed = 2.5; // Reduced from 4 for smoother motion
+      const oscillation = Math.sin(t * Math.PI * rotationSpeed) * 8; // Reduced from 15
       
       // Gradually reduce rotation as it settles
-      return (baseRotation + oscillation) * (1 - t);
+      return oscillation * (1 - t * 0.7);
     };
 
     const rotate = getRotation(imageProgress);
@@ -139,14 +147,16 @@ const ScrollHijackGallery = () => {
     return {
       transform: `translateX(${translateX}%) translateY(${translateY}px) rotate(${rotate}deg) scale(${scale})`,
       opacity: opacity,
-      transition: imageProgress >= 1 ? 'transform 0.3s ease-out' : 'none'
+      transition: imageProgress >= 1 ? 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)' : 'none',
+      willChange: imageProgress < 1 ? 'transform, opacity' : 'auto'
     };
   };
 
   return (
     <section 
       ref={sectionRef}
-      className="relative min-h-[900vh] bg-white "
+      className="relative min-h-[900vh] bg-white"
+      style={{ willChange: 'scroll-position' }}
     >
       {/* Sticky container */}
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
