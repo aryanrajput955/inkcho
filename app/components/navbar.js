@@ -15,7 +15,7 @@ export default function AnimatedMenu() {
       title: 'Services', number: '02', link: '/services',
       subItems: [
         { name: 'Brand Identity', link: '/services/brand-identity' },
-        { name: 'UI/UX Design', link: '/services/design' },
+        { name: 'Visual Identity', link: '/services/visual-identity' },
         { name: 'Digital Strategy', link: '/services/strategy' },
       ]
     },

@@ -1,16 +1,18 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Serif_Display, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/footer";
 import Navigation from "./components/navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const headingFont = DM_Serif_Display({
   subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-heading",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const bodyFont = Source_Sans_3({
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-body",
 });
 
 export const metadata = {
@@ -20,10 +22,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className={`${headingFont.variable} ${bodyFont.variable}`}>
+      <body className="antialiased font-[var(--font-body)]">
         <Navigation />
         {children}
         <Footer />

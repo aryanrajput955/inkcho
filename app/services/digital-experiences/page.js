@@ -8,7 +8,7 @@ const fadeUp = {
   show: { opacity: 1, y: 0 },
 };
 
-export default function BrandFoundationsPage() {
+export default function DigitalExperiencesPage() {
   const scrollRefs = useRef([]);
 
   useEffect(() => {
@@ -48,24 +48,24 @@ export default function BrandFoundationsPage() {
 
   const categories = [
     {
-      title: "Strategic Positioning & Research",
-      outcome: "We uncover where your brand truly belongs in the market.",
-      points: ["Market Intelligence", "Audience Insights", "Positioning Strategy"],
-      projects: ["INKCHO", "Solara"],
+      title: "UX & Interface Design",
+      outcome: "We design intuitive interfaces that guide users seamlessly toward meaningful interactions.",
+      points: ["User Research & Journey Mapping", "Wireframing & Prototyping", "Usability Testing & Iteration"],
+      projects: ["Solara App", "INKCHO Dashboard"],
       images: ["/s2.jpg", "/s2.jpg", "/s2.jpg", "/s2.jpg"],
     },
     {
-      title: "Brand Architecture & Direction",
-      outcome: "We structure brand systems that scale with clarity and control.",
-      points: ["Brand Hierarchy", "Design Frameworks", "Visual Direction"],
-      projects: ["Oak & Clay", "INKCHO"],
+      title: "Custom Web Development",
+      outcome: "We build robust, scalable websites tailored to your business goals and user needs.",
+      points: ["Frontend & Backend Integration", "Responsive & Cross-Platform Compatibility", "API Development & Security"],
+      projects: ["Oak & Clay Site", "Solara Platform"],
       images: ["/s2.jpg", "/s2.jpg", "/s2.jpg", "/s2.jpg"],
     },
     {
-      title: "Purpose, Vision & Brand Voice",
-      outcome: "We define what your brand stands for — and how it speaks.",
-      points: ["Purpose & Vision", "Messaging Pillars", "Tone of Voice"],
-      projects: ["Solara", "Oak & Clay"],
+      title: "Animation, CMS & Performance",
+      outcome: "We enhance experiences with dynamic animations, efficient content management, and optimized performance.",
+      points: ["Motion Design & Micro-Interactions", "CMS Implementation & Customization", "Performance Auditing & Optimization"],
+      projects: ["INKCHO Portal", "Oak & Clay E-commerce"],
       images: ["/s2.jpg", "/s2.jpg", "/s2.jpg", "/s2.jpg"],
     },
   ];
@@ -85,27 +85,27 @@ export default function BrandFoundationsPage() {
           >
             <div className="flex items-center gap-4 text-xs tracking-[0.22em] uppercase text-[#9d909a] font-medium">
               <span className="h-px w-8 bg-[#9d909a]/60" />
-              <span>Service · Brand Foundations</span>
+              <span>Service · Digital Experiences</span>
             </div>
 
             <h1 className="text-6xl md:text-8xl font-serif leading-[0.95] text-[#9a1b40]">
-              Brand
-              <span className="block">Foundations</span>
+              Digital
+              <span className="block">Experiences</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-[#1e4389] font-light leading-relaxed">
-              We define how your brand thinks, speaks, and is remembered — long before it is ever seen.
+              Designing immersive online spaces that connect and convert.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">
               <div className="px-6 py-3 rounded-full border border-black/10 bg-white/60 backdrop-blur">
-                <p className="text-sm text-[#1e4389] font-medium">Strategic Clarity</p>
+                <p className="text-sm text-[#1e4389] font-medium">UX Design</p>
               </div>
               <div className="px-6 py-3 rounded-full border border-black/10 bg-white/60 backdrop-blur">
-                <p className="text-sm text-[#1e4389] font-medium">Market Positioning</p>
+                <p className="text-sm text-[#1e4389] font-medium">Web Development</p>
               </div>
               <div className="px-6 py-3 rounded-full border border-black/10 bg-white/60 backdrop-blur">
-                <p className="text-sm text-[#1e4389] font-medium">Brand Architecture</p>
+                <p className="text-sm text-[#1e4389] font-medium">Performance Optimization</p>
               </div>
             </div>
           </motion.div>
@@ -120,7 +120,7 @@ export default function BrandFoundationsPage() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img
                 src="/s2.jpg"
-                alt="Brand Strategy"
+                alt="Digital Experiences"
                 className="w-full h-[500px] md:h-[600px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1e4389]/30 to-transparent" />
@@ -131,7 +131,7 @@ export default function BrandFoundationsPage() {
                 Our Approach
               </p>
               <p className="text-sm text-[#1e4389]/80 leading-relaxed">
-                Strategy, narrative, and brand systems designed for clarity, distinction, and long-term growth.
+                User-centered digital solutions that prioritize engagement, accessibility, and measurable results.
               </p>
             </div>
           </motion.div>
@@ -150,16 +150,16 @@ export default function BrandFoundationsPage() {
             >
               <div className="flex items-center gap-4 text-xs tracking-[0.22em] uppercase text-[#9d909a] font-medium mb-8">
                 <span className="h-px w-8 bg-[#9d909a]/60" />
-                <span>Why Foundations Matter</span>
+                <span>Why Digital Experiences Matter</span>
               </div>
               <h2 className="text-4xl md:text-6xl font-serif text-[#9a1b40] mb-8 leading-tight">
-                Without strategy, design is decoration.
+                In a digital-first world, experiences define loyalty.
               </h2>
               <p className="text-lg text-[#1e4389]/85 leading-relaxed mb-6">
-                Brand foundations are the invisible infrastructure that determines whether your brand leads, follows, or fades. They shape decisions, guide growth, and ensure every touchpoint reinforces who you are.
+                Your online presence is where connections are forged and conversions happen. Poor experiences lead to abandonment; exceptional ones drive growth.
               </p>
               <p className="text-lg text-[#1e4389]/85 leading-relaxed">
-                We don't start with logos. We start with clarity — because a brand built on solid ground doesn't need to reinvent itself every year.
+                We engineer digital ecosystems that captivate users, streamline journeys, and deliver lasting impact.
               </p>
             </motion.div>
 
@@ -171,10 +171,10 @@ export default function BrandFoundationsPage() {
               className="grid grid-cols-2 gap-6"
             >
               {[
-                { number: "87%", label: "Clarity on brand direction" },
-                { number: "3.2x", label: "Faster decision-making" },
-                { number: "92%", label: "Team alignment increase" },
-                { number: "68%", label: "Market differentiation" }
+                { number: "88%", label: "User retention from intuitive UX" },
+                { number: "3.2x", label: "Conversion lift from optimized sites" },
+                { number: "92%", label: "Engagement via animations" },
+                { number: "76%", label: "Revenue growth from performance" }
               ].map((stat, i) => (
                 <div key={i} className="p-8 rounded-2xl border border-black/10 bg-white/60 backdrop-blur text-center">
                   <p className="text-4xl md:text-5xl font-serif text-[#9a1b40] mb-3">{stat.number}</p>
@@ -237,15 +237,15 @@ export default function BrandFoundationsPage() {
                         <span className="text-xs tracking-[0.3em] uppercase text-[#9d909a] font-medium">0{i + 1}</span>
                       </div>
                       <p className="text-sm text-[#1e4389]/70 leading-relaxed">
-                        {index === 0 && i === 0 && "Deep dive into competitive landscape, market dynamics, and whitespace opportunities."}
-                        {index === 0 && i === 1 && "Behavioral analysis, psychographics, and decision-making patterns of your ideal customers."}
-                        {index === 0 && i === 2 && "Strategic framework that defines your unique market position and competitive advantage."}
-                        {index === 1 && i === 0 && "Multi-tier brand structure that clarifies relationships between parent, sub-brands, and offerings."}
-                        {index === 1 && i === 1 && "Scalable systems for visual language, components, and design principles."}
-                        {index === 1 && i === 2 && "Creative guardrails that ensure consistency while enabling flexibility."}
-                        {index === 2 && i === 0 && "The 'why' behind your brand and the future you're building toward."}
-                        {index === 2 && i === 1 && "Core themes that guide all brand communications and storytelling."}
-                        {index === 2 && i === 2 && "Distinct personality and language patterns that make your brand instantly recognizable."}
+                        {index === 0 && i === 0 && "In-depth user interviews, personas, and journey maps to uncover pain points and opportunities."}
+                        {index === 0 && i === 1 && "High-fidelity wireframes and interactive prototypes to visualize and test design concepts."}
+                        {index === 0 && i === 2 && "Rigorous testing sessions with real users to refine interfaces for optimal usability."}
+                        {index === 1 && i === 0 && "Seamless integration of modern frontend frameworks with secure backend architectures."}
+                        {index === 1 && i === 1 && "Fully responsive designs ensuring flawless performance across devices and browsers."}
+                        {index === 1 && i === 2 && "Custom APIs and robust security protocols to handle data efficiently and safely."}
+                        {index === 2 && i === 0 && "Engaging motion graphics and subtle interactions that enhance user delight without distraction."}
+                        {index === 2 && i === 1 && "Tailored CMS setups with intuitive admin panels for effortless content updates."}
+                        {index === 2 && i === 2 && "Comprehensive audits and optimizations for lightning-fast load times and superior SEO."}
                       </p>
                     </motion.div>
                   ))}
@@ -257,7 +257,7 @@ export default function BrandFoundationsPage() {
             <div className="space-y-6">
               <div className="flex items-center justify-between">
                 <p className="text-sm uppercase tracking-wide text-[#9d909a] font-medium">
-                  Brand Foundations in Action
+                  Digital Experiences in Action
                 </p>
                 <p className="text-xs tracking-[0.3em] uppercase text-[#9d909a] font-medium">
                   {cat.projects.join(" · ")}
@@ -302,19 +302,19 @@ export default function BrandFoundationsPage() {
               <span className="h-px w-8 bg-[#9d909a]/60" />
             </div>
             <h2 className="text-4xl md:text-6xl font-serif text-[#9a1b40] mb-6">
-              How We Build Your Foundation
+              How We Build Your Digital Experiences
             </h2>
             <p className="text-lg text-[#1e4389]/85 max-w-3xl mx-auto">
-              A proven methodology that transforms ambiguity into strategic clarity through collaborative discovery and rigorous analysis.
+              A collaborative development process that aligns user needs with technical excellence for transformative results.
             </p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { phase: "Discover", weeks: "1-2 weeks", desc: "Stakeholder interviews, market research, competitive analysis, and audience deep-dive." },
-              { phase: "Define", weeks: "2-3 weeks", desc: "Strategic positioning, brand architecture, purpose articulation, and messaging frameworks." },
-              { phase: "Direct", weeks: "1-2 weeks", desc: "Visual direction, design principles, tone of voice guidelines, and creative guardrails." },
-              { phase: "Deliver", weeks: "1 week", desc: "Comprehensive brand book, presentation, and strategic roadmap for activation." }
+              { phase: "Discovery", weeks: "1-2 weeks", desc: "User research, technical audits, goal alignment, and project scoping with wireframe sketches." },
+              { phase: "Design", weeks: "2-4 weeks", desc: "Interface prototyping, visual design refinement, user testing, and iterative feedback loops." },
+              { phase: "Development", weeks: "4-6 weeks", desc: "Code implementation, integration testing, CMS setup, and performance benchmarking." },
+              { phase: "Launch", weeks: "1 week", desc: "Deployment, final optimizations, training handover, and post-launch monitoring support." }
             ].map((step, i) => (
               <motion.div
                 key={i}
@@ -349,24 +349,24 @@ export default function BrandFoundationsPage() {
             transition={{ duration: 0.8 }}
           >
             <h3 className="text-4xl md:text-6xl font-serif text-[#9a1b40] mb-8">
-              Begin With Strategy.
+              Elevate Your Digital Presence.
             </h3>
             <p className="text-lg text-[#1e4389]/85 mb-8 leading-relaxed">
-              Every great brand starts with a foundation built to last. Let's discover yours together.
+              In today's connected world, exceptional digital experiences turn visitors into advocates. Let's design yours.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
               <div className="flex items-center gap-2 text-sm text-[#1e4389]/70">
                 <span className="w-2 h-2 rounded-full bg-[#9a1b40]" />
-                <span>Discovery call · No obligation</span>
+                <span>Discovery session · Complimentary</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-[#1e4389]/70">
                 <span className="w-2 h-2 rounded-full bg-[#9a1b40]" />
-                <span>Limited onboarding each month</span>
+                <span>Custom proposals</span>
               </div>
             </div>
 
             <button className="mt-6 px-14 py-5 bg-[#9a1b40] text-white rounded-full text-sm tracking-[0.25em] uppercase hover:bg-[#7e1534] transition-all duration-300 hover:shadow-xl">
-              Start Your Brand Strategy
+              Start Your Digital Experience
             </button>
           </motion.div>
         </div>
