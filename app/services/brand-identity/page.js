@@ -365,7 +365,7 @@ export default function BrandFoundationsPage() {
               </div>
             </div>
 
-            <button className="mt-6 px-14 py-5 bg-[#9a1b40] text-white rounded-full text-sm tracking-[0.25em] uppercase hover:bg-[#7e1534] transition-all duration-300 hover:shadow-xl">
+            <button className="mt-6 hover:scale-105 ease-in-out  cursor-pointer px-14 py-5 bg-[#1e4389] text-white rounded-full text-sm tracking-[0.25em] uppercase hover:bg-[#7e1534] transition-all duration-300 hover:shadow-xl">
               Start Your Brand Strategy
             </button>
           </motion.div>
