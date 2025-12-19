@@ -3,26 +3,22 @@ import { ArrowRight } from 'lucide-react';
 
 export default function CardsSection() {
   return (
-    <section className="bg-[#f5f1eb] py-24 px-6 md:px-12 lg:px-24">
+    <section className="bg-[#f7f4ec] py-24 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
 
         {/* === Heading Section === */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 gap-6">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight tracking-tight">
+        <div className="mb-16">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1e4389] leading-tight tracking-tight">
             Pick Your <br />
-            <span className="text-orange-600 italic font-serif">Creative Direction</span>
+            <span className="text-[#9a1b40] italic font-serif">Creative Direction</span>
           </h2>
-          <p className="text-gray-600 text-base sm:text-lg max-w-md md:text-right">
-            Every project follows a unique rhythm. Whether you’re shaping a product or 
-            crafting a brand experience — choose the approach that fits your vision best.
-          </p>
         </div>
 
         {/* === Cards Grid === */}
         <div className="grid md:grid-cols-2 gap-10">
 
           {/* === CARD 1 === */}
-          <div className="relative rounded-3xl overflow-hidden group border border-gray-300 bg-[#f5f1eb] transition-all duration-700">
+          <div className="relative rounded-3xl overflow-hidden group border border-gray-300 bg-[#f7f4ec] transition-all duration-700">
             <img
               src="/s5.webp"
               alt="Website"
@@ -36,27 +32,20 @@ export default function CardsSection() {
                   Fixed Scope
                 </span>
 
-                <h2 className="text-4xl md:text-5xl font-semibold mb-6 text-black group-hover:text-white transition-colors duration-700">
+                <h2 className="text-4xl md:text-5xl font-semibold mb-6 text-[#9a1b40] group-hover:text-white transition-colors duration-700">
                   Build a Website
                 </h2>
 
-                <p className="text-gray-700 group-hover:text-gray-200 leading-relaxed max-w-md transition-colors duration-700">
+                <p className="text-black group-hover:text-white leading-relaxed max-w-md transition-colors duration-700">
                   Plan-driven, fixed timelines, deliverable-centric. Focus your
                   effort and investment toward singular business needs with precision.
                 </p>
               </div>
 
               <div className="mt-10">
-                <button
-                  className="relative flex items-center justify-center bg-white text-black rounded-full border border-gray-300 
-                  transition-all duration-500 ease-out w-14 h-14 group-hover:w-44 overflow-hidden"
-                >
-                  <ArrowRight
-                    className="w-5 h-5 absolute left-1/2 -translate-x-1/2 transition-all duration-500 group-hover:left-6 group-hover:rotate-[-45deg]"
-                  />
-                  <span
-                    className="opacity-0 group-hover:opacity-100 text-sm font-medium ml-10 transition-all duration-500 whitespace-nowrap"
-                  >
+                <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-14 h-14 group-hover:w-44 group-hover:bg-[#9a1b40] group-hover:text-white group-hover:border-white overflow-hidden">
+                  <ArrowRight className="w-5 h-5 absolute left-1/2 -translate-x-1/2 text-black group-hover:text-white transition-all duration-500 group-hover:left-6 group-hover:rotate-[-45deg]" />
+                  <span className="opacity-0 group-hover:opacity-100 text-sm font-medium ml-10 transition-all duration-500 whitespace-nowrap text-black group-hover:text-white">
                     Work With Us
                   </span>
                 </button>
@@ -65,7 +54,7 @@ export default function CardsSection() {
           </div>
 
           {/* === CARD 2 === */}
-          <div className="relative rounded-3xl overflow-hidden group border border-gray-300 bg-[#f5f1eb] transition-all duration-700">
+          <div className="relative rounded-3xl overflow-hidden group border border-gray-300 bg-[#f7f4ec] transition-all duration-700">
             <img
               src="/s2.jpg"
               alt="Digital Product"
@@ -79,27 +68,20 @@ export default function CardsSection() {
                   Flexible Subscription
                 </span>
 
-                <h2 className="text-4xl md:text-5xl font-semibold mb-6 text-black group-hover:text-white transition-colors duration-700">
+                <h2 className="text-4xl md:text-5xl font-semibold mb-6 text-[#9a1b40] group-hover:text-white transition-colors duration-700">
                   Build a Digital Product
                 </h2>
 
-                <p className="text-gray-700 group-hover:text-gray-200 leading-relaxed max-w-md transition-colors duration-700">
+                <p className="text-black group-hover:text-white leading-relaxed max-w-md transition-colors duration-700">
                   Change-driven, flexible roadmaps, people-centric. Add seasoned
                   creatives to your team to launch or iterate on a digital product.
                 </p>
               </div>
 
               <div className="mt-10">
-                <button
-                  className="relative flex items-center justify-center bg-white text-black rounded-full border border-gray-300 
-                  transition-all duration-500 ease-out w-14 h-14 group-hover:w-44 overflow-hidden"
-                >
-                  <ArrowRight
-                    className="w-5 h-5 absolute left-1/2 -translate-x-1/2 transition-all duration-500 group-hover:left-6 group-hover:rotate-[-45deg]"
-                  />
-                  <span
-                    className="opacity-0 group-hover:opacity-100 text-sm font-medium ml-10 transition-all duration-500 whitespace-nowrap"
-                  >
+                <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-14 h-14 group-hover:w-44 group-hover:bg-[#9a1b40] group-hover:text-white group-hover:border-white overflow-hidden">
+                  <ArrowRight className="w-5 h-5 absolute left-1/2 -translate-x-1/2 text-black group-hover:text-white transition-all duration-500 group-hover:left-6 group-hover:rotate-[-45deg]" />
+                  <span className="opacity-0 group-hover:opacity-100 text-sm font-medium ml-10 transition-all duration-500 whitespace-nowrap text-black group-hover:text-white">
                     Work With Us
                   </span>
                 </button>
@@ -108,7 +90,7 @@ export default function CardsSection() {
           </div>
 
           {/* === CARD 3 === */}
-          <div className="relative rounded-3xl overflow-hidden group border border-gray-300 bg-[#f5f1eb] transition-all duration-700">
+          <div className="relative rounded-3xl overflow-hidden group border border-gray-300 bg-[#f7f4ec] transition-all duration-700">
             <img
               src="/s2.jpg"
               alt="Brand Identity"
@@ -122,27 +104,20 @@ export default function CardsSection() {
                   Strategic Development
                 </span>
 
-                <h2 className="text-4xl md:text-5xl font-semibold mb-6 text-black group-hover:text-white transition-colors duration-700">
+                <h2 className="text-4xl md:text-5xl font-semibold mb-6 text-[#9a1b40] group-hover:text-white transition-colors duration-700">
                   Craft a Brand Identity
                 </h2>
 
-                <p className="text-gray-700 group-hover:text-gray-200 leading-relaxed max-w-md transition-colors duration-700">
+                <p className="text-black group-hover:text-white leading-relaxed max-w-md transition-colors duration-700">
                   Strategic, identity-focused design. Establish a compelling brand presence 
                   tailored to your audience with expert guidance.
                 </p>
               </div>
 
               <div className="mt-10">
-                <button
-                  className="relative flex items-center justify-center bg-white text-black rounded-full border border-gray-300 
-                  transition-all duration-500 ease-out w-14 h-14 group-hover:w-44 overflow-hidden"
-                >
-                  <ArrowRight
-                    className="w-5 h-5 absolute left-1/2 -translate-x-1/2 transition-all duration-500 group-hover:left-6 group-hover:rotate-[-45deg]"
-                  />
-                  <span
-                    className="opacity-0 group-hover:opacity-100 text-sm font-medium ml-10 transition-all duration-500 whitespace-nowrap"
-                  >
+                <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-14 h-14 group-hover:w-44 group-hover:bg-[#9a1b40] group-hover:text-white group-hover:border-white overflow-hidden">
+                  <ArrowRight className="w-5 h-5 absolute left-1/2 -translate-x-1/2 text-black group-hover:text-white transition-all duration-500 group-hover:left-6 group-hover:rotate-[-45deg]" />
+                  <span className="opacity-0 group-hover:opacity-100 text-sm font-medium ml-10 transition-all duration-500 whitespace-nowrap text-black group-hover:text-white">
                     Work With Us
                   </span>
                 </button>
@@ -151,7 +126,7 @@ export default function CardsSection() {
           </div>
 
           {/* === CARD 4 === */}
-          <div className="relative rounded-3xl overflow-hidden group border border-gray-300 bg-[#f5f1eb] transition-all duration-700">
+          <div className="relative rounded-3xl overflow-hidden group border border-gray-300 bg-[#f7f4ec] transition-all duration-700">
             <img
               src="/s1.jpg"
               alt="Marketing Campaign"
@@ -165,27 +140,20 @@ export default function CardsSection() {
                   Campaign-Driven
                 </span>
 
-                <h2 className="text-4xl md:text-5xl font-semibold mb-6 text-black group-hover:text-white transition-colors duration-700">
+                <h2 className="text-4xl md:text-5xl font-semibold mb-6 text-[#9a1b40] group-hover:text-white transition-colors duration-700">
                   Launch a Marketing Campaign
                 </h2>
 
-                <p className="text-gray-700 group-hover:text-gray-200 leading-relaxed max-w-md transition-colors duration-700">
+                <p className="text-black group-hover:text-white leading-relaxed max-w-md transition-colors duration-700">
                   Results-oriented, campaign-focused creation. Amplify your message with 
                   targeted, impactful marketing solutions.
                 </p>
               </div>
 
               <div className="mt-10">
-                <button
-                  className="relative flex items-center justify-center bg-white text-black rounded-full border border-gray-300 
-                  transition-all duration-500 ease-out w-14 h-14 group-hover:w-44 overflow-hidden"
-                >
-                  <ArrowRight
-                    className="w-5 h-5 absolute left-1/2 -translate-x-1/2 transition-all duration-500 group-hover:left-6 group-hover:rotate-[-45deg]"
-                  />
-                  <span
-                    className="opacity-0 group-hover:opacity-100 text-sm font-medium ml-10 transition-all duration-500 whitespace-nowrap"
-                  >
+                <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-14 h-14 group-hover:w-44 group-hover:bg-[#9a1b40] group-hover:text-white group-hover:border-white overflow-hidden">
+                  <ArrowRight className="w-5 h-5 absolute left-1/2 -translate-x-1/2 text-black group-hover:text-white transition-all duration-500 group-hover:left-6 group-hover:rotate-[-45deg]" />
+                  <span className="opacity-0 group-hover:opacity-100 text-sm font-medium ml-10 transition-all duration-500 whitespace-nowrap text-black group-hover:text-white">
                     Work With Us
                   </span>
                 </button>
@@ -197,4 +165,4 @@ export default function CardsSection() {
       </div>
     </section>
   );
-}
+} 

@@ -13,26 +13,26 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#f5f1eb] text-[#333] border-t border-[#d6d3cd]">
+    <footer className="bg-[#f7f4ec] text-black border-t border-[#d6d3cd]">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 pt-24 pb-16">
 
         {/* === Top CTA === */}
         <div className="mb-24">
-          <h2 className="text-4xl md:text-6xl font-semibold leading-tight tracking-tight text-[#333] mb-6">
+          <h2 className="text-4xl md:text-6xl font-serif leading-tight tracking-tight text-[#1e4389] mb-6">
             Ready to create <br />
-            <span className="text-orange-600 italic font-serif font-normal">
+            <span className="text-[#9a1b40] italic font-serif font-normal">
               something extraordinary?
             </span>
           </h2>
 
           <a
             href="/contact"
-            className="group inline-flex items-center gap-2 text-base font-light border-b border-[#d6d3cd] hover:border-orange-600 transition-all"
+            className="group inline-flex items-center gap-2 text-base font-light border-b border-[#d6d3cd] hover:border-[#9a1b40] transition-all"
           >
             <span>Get in touch</span>
             <ArrowRight
               size={18}
-              className="group-hover:translate-x-1 transition-transform"
+              className="group-hover:translate-x-1 transition-transform text-[#9a1b40]"
             />
           </a>
         </div>
@@ -42,11 +42,11 @@ export default function Footer() {
 
           {/* Brand + Newsletter */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="text-4xl font-light tracking-wide text-[#333]">
+            <div className="text-4xl font-serif tracking-wide text-[#1e4389]">
               INKCHO
             </div>
 
-            <p className="text-[#666] max-w-sm font-light">
+            <p className="text-black max-w-sm font-light">
               Subscribe to receive the latest insights on design, branding, and digital strategy.
             </p>
 
@@ -58,22 +58,22 @@ export default function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your email address"
-                  className="w-full bg-transparent border-b border-[#d6d3cd] focus:border-orange-600 transition-colors py-3 outline-none placeholder-[#999] font-light text-sm"
+                  className="w-full bg-transparent border-b border-[#d6d3cd] focus:border-[#9a1b40] transition-colors py-3 outline-none placeholder-[#999] font-light text-sm text-black"
                 />
 
                 <button
                   type="submit"
                   className="absolute right-0 top-1/2 -translate-y-1/2
-                             flex items-center justify-center border border-gray-300 bg-white text-black
-                             rounded-full w-10 h-10 transition-all duration-500 hover:border-orange-600 hover:text-orange-600"
+                             flex items-center justify-center border border-[#d6d3cd] bg-white text-black
+                             rounded-full w-10 h-10 transition-all duration-500 hover:border-[#9a1b40] hover:text-[#9a1b40] hover:bg-[#9a1b40]/10"
                 >
                   <ArrowRight size={16} />
                 </button>
               </div>
 
-              <p className="text-xs text-[#777] font-light">
+              <p className="text-xs text-[#666] font-light">
                 By subscribing, you agree to our{" "}
-                <a href="#" className="underline hover:text-orange-600">Privacy Policy</a>.
+                <a href="#" className="underline hover:text-[#9a1b40]">Privacy Policy</a>.
               </p>
             </form>
           </div>
@@ -83,7 +83,7 @@ export default function Footer() {
 
             {/* Navigation */}
             <div>
-              <h3 className="text-xs tracking-wider text-[#777] uppercase mb-6 font-light">
+              <h3 className="text-xs tracking-wider text-[#666] uppercase mb-6 font-light">
                 Navigation
               </h3>
               <ul className="space-y-3">
@@ -97,7 +97,7 @@ export default function Footer() {
                   <li key={i}>
                     <a
                       href={item.href}
-                      className="text-[#555] hover:text-orange-600 transition-colors font-light"
+                      className="text-black hover:text-[#9a1b40] transition-colors font-light"
                     >
                       {item.label}
                     </a>
@@ -108,7 +108,7 @@ export default function Footer() {
 
             {/* Services */}
             <div>
-              <h3 className="text-xs tracking-wider text-[#777] uppercase mb-6 font-light">
+              <h3 className="text-xs tracking-wider text-[#666] uppercase mb-6 font-light">
                 Services
               </h3>
               <ul className="space-y-3">
@@ -122,7 +122,7 @@ export default function Footer() {
                   <li key={i}>
                     <a
                       href={item.href}
-                      className="text-[#555] hover:text-orange-600 transition-colors font-light"
+                      className="text-black hover:text-[#9a1b40] transition-colors font-light"
                     >
                       {item.label}
                     </a>
@@ -133,7 +133,7 @@ export default function Footer() {
 
             {/* Social */}
             <div>
-              <h3 className="text-xs tracking-wider text-[#777] uppercase mb-6 font-light">
+              <h3 className="text-xs tracking-wider text-[#666] uppercase mb-6 font-light">
                 Connect
               </h3>
               <ul className="space-y-3">
@@ -147,7 +147,7 @@ export default function Footer() {
                   <li key={i}>
                     <a
                       href={item.href}
-                      className="flex items-center gap-1 text-[#555] hover:text-orange-600 transition-colors font-light"
+                      className="flex items-center gap-1 text-black hover:text-[#9a1b40] transition-colors font-light"
                     >
                       {item.label}
                       <ArrowUpRight size={12} />
@@ -168,9 +168,9 @@ export default function Footer() {
           </div>
 
           <div className="flex gap-8 text-[#666]">
-            <a href="/privacy" className="hover:text-orange-600">Privacy</a>
-            <a href="/terms" className="hover:text-orange-600">Terms</a>
-            <a href="/cookies" className="hover:text-orange-600">Cookies</a>
+            <a href="/privacy" className="hover:text-[#9a1b40]">Privacy</a>
+            <a href="/terms" className="hover:text-[#9a1b40]">Terms</a>
+            <a href="/cookies" className="hover:text-[#9a1b40]">Cookies</a>
           </div>
 
         </div>

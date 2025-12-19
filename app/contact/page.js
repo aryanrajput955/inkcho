@@ -1,4 +1,5 @@
 'use client';
+
 import { useState, useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
@@ -25,11 +26,10 @@ export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   useLayoutEffect(() => {
-    if (animatedOnceRef.current) return; // Prevent re-running on state changes
+    if (animatedOnceRef.current) return;
     animatedOnceRef.current = true;
 
     const ctx = gsap.context(() => {
-      // Set initial states
       gsap.set(headingRef.current?.querySelectorAll('*'), { opacity: 0, y: 50 });
       gsap.set(subheadingRef.current, { opacity: 0, x: -50 });
       gsap.set(inputsRef.current, { opacity: 0, x: 30 });
@@ -56,12 +56,12 @@ export default function ContactPage() {
         )
         .to(
           inputsRef.current,
-            {
-              opacity: 1,
-              x: 0,
-              duration: 0.45,
-              stagger: 0.08,
-            },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.45,
+            stagger: 0.08,
+          },
           '-=0.25'
         )
         .to(
@@ -95,10 +95,7 @@ export default function ContactPage() {
         );
     }, componentRef);
 
-    return () => {
-      // DO NOT ctx.revert(); keeps final visible state after unmount to avoid flash on remount
-      ctx.kill();
-    };
+    return () => ctx.kill();
   }, []);
 
   const handleChange = (e) => {
@@ -137,30 +134,30 @@ export default function ContactPage() {
   };
 
   return (
-    <div ref={componentRef} className="bg-[#f5f1eb] min-h-screen flex items-center justify-center px-6 py-12">
+    <div ref={componentRef} className="bg-[#f7f4ec] min-h-screen flex items-center justify-center px-6 py-12">
       <style jsx>{`
-        @keyframes smoothScale {0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
-        .smooth-hover:hover {animation: smoothScale .5s ease-in-out forwards;}
-        .button-hover:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 16px rgba(234,88,12,.2);}
+        @keyframes smoothScale {0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+        .smooth-hover:hover {animation: smoothScale .4s ease-in-out forwards;}
+        .button-hover:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 20px rgba(154,27,64,0.25);}
       `}</style>
 
       <div className="max-w-2xl w-full text-center">
-        <h1 ref={headingRef} className="heading text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 leading-tight tracking-tight text-left sm:text-center">
-          <span className="text-orange-400">Say Hi!</span>
-          <span className="text-black"> and tell me</span>
+        <h1 ref={headingRef} className="heading text-4xl sm:text-5xl lg:text-7xl font-serif font-bold mb-8 leading-tight tracking-tight text-left sm:text-center">
+          <span className="text-[#9a1b40]">Say Hi!</span>
+          <span className="text-[#1e4389]"> and tell me</span>
           <br />
-          <span className="text-black">about your idea</span>
+          <span className="text-[#1e4389]">about your idea</span>
         </h1>
 
-        <p ref={subheadingRef} className="subheading text-gray-600 text-base sm:text-lg mb-12 text-left sm:text-center">
-          Have a nice works? Reach out and let's chat.
+        <p ref={subheadingRef} className="subheading text-black/70 text-base sm:text-lg mb-12 text-left sm:text-center">
+          Have a project in mind? Reach out and let’s discuss.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-8">
           <div className="grid md:grid-cols-2 gap-8">
             <div className="text-left">
-              <label className="block text-gray-900 font-medium mb-3">
-                Name<span className="text-orange-600">*</span>
+              <label className="block text-[#1e4389] font-medium mb-3">
+                Name<span className="text-[#9a1b40]">*</span>
               </label>
               <input
                 ref={el => (inputsRef.current[0] = el)}
@@ -169,12 +166,12 @@ export default function ContactPage() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Hello..."
-                className="form-input w-full bg-transparent border-b border-gray-300 px-0 pt-3 pb-[6px] text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-600 transition-colors"
+                className="form-input w-full bg-transparent border-b border-[#d6d3cd] px-0 pt-3 pb-[6px] text-[#1e1e1e] placeholder-[#999] focus:outline-none focus:border-[#9a1b40] transition-colors"
               />
             </div>
             <div className="text-left">
-              <label className="block text-gray-900 font-medium mb-3">
-                Email<span className="text-orange-600">*</span>
+              <label className="block text-[#1e4389] font-medium mb-3">
+                Email<span className="text-[#9a1b40]">*</span>
               </label>
               <input
                 ref={el => (inputsRef.current[1] = el)}
@@ -183,13 +180,13 @@ export default function ContactPage() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Where can I reply?"
-                className="form-input w-full bg-transparent border-b border-gray-300 px-0 pt-3 pb-[6px] text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-600 transition-colors"
+                className="form-input w-full bg-transparent border-b border-[#d6d3cd] px-0 pt-3 pb-[6px] text-[#1e1e1e] placeholder-[#999] focus:outline-none focus:border-[#9a1b40] transition-colors"
               />
             </div>
           </div>
 
           <div className="text-left">
-            <label className="block text-gray-900 font-medium mb-3">Company Name</label>
+            <label className="block text-[#1e4389] font-medium mb-3">Company Name</label>
             <input
               ref={el => (inputsRef.current[2] = el)}
               type="text"
@@ -197,13 +194,13 @@ export default function ContactPage() {
               value={formData.company}
               onChange={handleChange}
               placeholder="Your company or website?"
-              className="form-input w-full bg-transparent border-b border-gray-300 px-0 pt-3 pb-[6px] text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-600 transition-colors"
+              className="form-input w-full bg-transparent border-b border-[#d6d3cd] px-0 pt-3 pb-[6px] text-[#1e1e1e] placeholder-[#999] focus:outline-none focus:border-[#9a1b40] transition-colors"
             />
           </div>
 
           <div className="text-left">
-            <label className="block text-gray-900 font-medium mb-6">
-              What's in your mind?<span className="text-orange-600">*</span>
+            <label className="block text-[#1e4389] font-medium mb-6">
+              What's on your mind?<span className="text-[#9a1b40]">*</span>
             </label>
             <div ref={el => (inputsRef.current[3] = el)} className="flex flex-wrap gap-4">
               {services.map((service, i) => (
@@ -215,8 +212,8 @@ export default function ContactPage() {
                   aria-selected={formData.selectedService === service}
                   className={`service-button smooth-hover px-5 py-2.5 rounded-full border-2 font-medium transition-all duration-300 ${
                     formData.selectedService === service
-                      ? 'bg-orange-600 text-white border-orange-600'
-                      : 'bg-transparent text-gray-900 border-gray-300 hover:bg-orange-600 hover:text-white hover:border-orange-600'
+                      ? 'bg-[#9a1b40] text-white border-[#9a1b40]'
+                      : 'bg-transparent text-[#1e1e1e] border-[#d6d3cd] hover:bg-[#9a1b40] hover:text-white hover:border-[#9a1b40]'
                   }`}
                 >
                   {service}
@@ -226,8 +223,8 @@ export default function ContactPage() {
           </div>
 
           <div className="text-left">
-            <label className="block text-gray-900 font-medium mb-3">
-              Message<span className="text-orange-600">*</span>
+            <label className="block text-[#1e4389] font-medium mb-3">
+              Message<span className="text-[#9a1b40]">*</span>
             </label>
             <textarea
               ref={messageRef}
@@ -236,7 +233,7 @@ export default function ContactPage() {
               onChange={handleChange}
               placeholder="What's in your mind?"
               rows="6"
-              className="message-textarea w-full bg-white/80 border border-gray-300 rounded-xl px-4 py-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition resize-none shadow-sm"
+              className="message-textarea w-full bg-white/80 border border-[#d6d3cd] rounded-xl px-4 py-4 text-[#1e1e1e] placeholder-[#999] focus:outline-none focus:border-[#9a1b40] focus:ring-2 focus:ring-[#9a1b40]/20 transition resize-none shadow-sm"
             />
           </div>
 
@@ -244,11 +241,11 @@ export default function ContactPage() {
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center gap-6">
                 <svg width="120" height="120" viewBox="0 0 120 120" className="relative">
-                  <circle cx="60" cy="60" r="55" fill="none" stroke="rgb(234,88,12)" strokeWidth="2" />
+                  <circle cx="60" cy="60" r="55" fill="none" stroke="#9a1b40" strokeWidth="2" />
                   <polyline
                     points="38,62 52,76 82,46"
                     fill="none"
-                    stroke="rgb(234,88,12)"
+                    stroke="#1e4389"
                     strokeWidth="6"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -257,10 +254,10 @@ export default function ContactPage() {
                   />
                 </svg>
                 <div className="text-center">
-                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-[#9a1b40]">
                     Message Sent Successfully!
                   </h3>
-                  <p className="text-gray-600 mt-2">
+                  <p className="text-black/70 mt-2">
                     Thank you for reaching out. We'll get back to you soon.
                   </p>
                 </div>
@@ -272,7 +269,7 @@ export default function ContactPage() {
                 disabled={isSubmitting}
                 type="submit"
                 className={`submit-button button-hover px-10 py-3 rounded-full font-semibold text-white transition-all duration-300 ${
-                  isSubmitting ? 'bg-gray-400 cursor-not-allowed' : 'bg-orange-600 hover:bg-orange-700'
+                  isSubmitting ? 'bg-[#d6d3cd] cursor-not-allowed' : 'bg-[#9a1b40] hover:bg-[#7e1534]'
                 }`}
               >
                 {isSubmitting ? (

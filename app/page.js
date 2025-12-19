@@ -11,6 +11,7 @@ import CardsSection from './components/service2';
 
 import LightRaysContainer from './components/cta';
 import TestimonialCarousel from './components/testimonials';
+import ScrollGalleryMobile from './components/projects-mobile';
 
 export default function HomePage() {
 
@@ -20,14 +21,15 @@ export default function HomePage() {
     <div className="relative">
  
       <HeroSection/>
-      {/* <EnhancedContentSection /> */}
-      {/* <InfiniteScrollSection /> */}
-      <ScrollHijackGallery />
+      <div className="hidden md:block">
+        <ScrollHijackGallery />
+      </div>
+      <div className="block md:hidden">
+        <ScrollGalleryMobile />
+      </div>
       <CardsSection />
-      <ServicesSection />
+  
       <TestimonialCarousel />
-      {/* <WhyChooseUs /> */}
-      {/* <ProjectsSection /> */}
       <LightRaysContainer />
 
     </div>

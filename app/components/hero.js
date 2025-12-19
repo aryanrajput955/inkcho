@@ -12,159 +12,144 @@ const PORTFOLIO_IMAGES = [
 ];
 
 export default function Hero() {
-  const duplicatedImages = [...PORTFOLIO_IMAGES, ...PORTFOLIO_IMAGES];
+  const duplicatedImages = [...PORTFOLIO_IMAGES, ...PORTFOLIO_IMAGES, ...PORTFOLIO_IMAGES];
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-[#FAF9F6]">
-
-      {/* Soft gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.05] via-transparent to-black/[0.03]" />
-
-      {/* Noise texture */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.06]"
-        style={{
-          backgroundImage:
-            "url('https://transparenttextures.com/patterns/white-diamond.png')",
-        }}
-      />
-
-      {/* ---------------- CENTER CONTENT ---------------- */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
-
-        {/* Badge */}
+    <section className="relative h-screen w-full overflow-hidden bg-[#f7f4ec]">
+      {/* Center Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="mb-6 px-4 py-1 bg-black/5 rounded-full border border-black/10 text-[11px] font-medium tracking-[0.2em] uppercase text-black/60"
+          transition={{ duration: 0.6 }}
+          className="mb-6 text-[10px] tracking-[0.3em] uppercase text-black/40 font-medium"
         >
           Creative Studio
         </motion.div>
 
-        {/* INKCHO Brand Name */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-5xl md:text-7xl font-serif tracking-tight text-black mb-4"
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-7xl md:text-9xl font-bold tracking-tighter text-[#1e4389] mb-8"
         >
           INKCHO
         </motion.h1>
 
-        {/* ---------------- HEADLINE BLOCK ---------------- */}
-        <div className="relative flex flex-col items-center text-center mb-10">
-
- 
-          {/* First Line With Animated Doodle */}
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="flex items-center justify-center gap-3 flex-wrap mb-3"
-          >
-            <h2 className="text-3xl md:text-6xl font-light uppercase tracking-tight text-black/80">
-              Where Ideas
-            </h2>
-
-            {/* Animated Doodle SVG */}
-            <motion.svg
-              width="55"
-              height="55"
-              viewBox="0 0 100 100"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex items-center gap-4 mb-12"
+        >
+          <span className="text-2xl md:text-4xl font-light text-black/70">Where Ideas</span>
+          <svg width="40" height="40" viewBox="0 0 100 100" fill="none" className="text-[#9a1b40] opacity-60">
+            <motion.path
+              d="M20 50 Q50 20, 80 50"
+              stroke="currentColor"
+              strokeWidth="4"
+              strokeLinecap="round"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
-              transition={{ duration: 1.2, ease: "easeInOut", delay: 0.3 }}
-              className="opacity-70"
-            >
-              <path
-                d="M20 50 C40 20, 60 80, 80 50"
-                stroke="#EB5B00"
-                strokeWidth="6"
-                strokeLinecap="round"
-              />
-            </motion.svg>
-          </motion.div>
-
-          {/* Second Line With Animated Underline */}
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="relative text-3xl md:text-6xl font-serif italic text-[#EB5B00]"
-          >
-            Become Art
-
-            {/* Animated underline */}
-            <motion.span
-              className="absolute left-1/2 -bottom-2 w-[60%] h-[2px] bg-[#EB5B00]"
-              initial={{ scaleX: 0, x: "-50%" }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 1, ease: "easeInOut", delay: 1.1 }}
-              style={{ transformOrigin: "center" }}
+              transition={{ duration: 1, delay: 0.4 }}
             />
-          </motion.h2>
-        </div>
+          </svg>
+          <span className="text-2xl md:text-4xl font-light italic text-[#9a1b40]">Become Art</span>
+        </motion.div>
 
-        {/* ---------------- SUBLINE ---------------- */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 1 }}
-          className="text-black/60 text-lg md:text-xl max-w-2xl mt-3 leading-relaxed"
-        >
-          INKCHO is a multidisciplinary creative studio specializing in 
-          illustration, product photography, posters, and 3D design.
-        </motion.p>
-
-        {/* CTA Buttons */}
+        {/* CTA Buttons with Consistent Hover Effect */}
         <motion.div
-          initial={{ opacity: 0, y: 35 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 1 }}
-          className="flex gap-4 mt-10"
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="flex flex-col sm:flex-row gap-6"
         >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-black text-white font-medium rounded-full hover:bg-black/90 transition-all"
+          {/* Primary Button: View Work */}
+          <button
+            className="
+              group relative overflow-hidden cursor-pointer
+              px-10 py-4 rounded-full
+              bg-[#1e4389] text-white text-sm
+              tracking-[0.25em] uppercase font-medium
+              transition-[transform,box-shadow] duration-200
+              ease-[cubic-bezier(0.25,0.1,0.25,1)]
+              hover:-translate-y-[1px]
+              hover:shadow-[0_8px_20px_rgba(0,0,0,0.15)]
+              active:translate-y-0
+            "
           >
-            View Portfolio
-          </motion.button>
+            <span
+              className="
+                pointer-events-none
+                absolute bottom-1/2 left-1/2
+                w-[140%] h-[140%]
+                -translate-x-1/2 translate-y-1/2
+                rounded-full
+                bg-[#162f66]
+                scale-[0.02]
+                transition-transform ease-in-out duration-700
+                ease-[cubic-bezier(0.16,1,0.3,1)]
+                group-hover:scale-100
+              "
+            />
+            <span className="relative z-10">View Work</span>
+          </button>
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 border border-black/20 text-black rounded-full hover:bg-black/5 transition-all"
+          {/* Secondary Button: Contact */}
+          <button
+            className="
+              group relative overflow-hidden cursor-pointer
+              px-10 py-4 rounded-full
+              bg-transparent text-[#9a1b40] border-2 border-[#9a1b40]
+              text-sm tracking-[0.25em] uppercase font-medium
+              transition-[transform,box-shadow] duration-200
+              ease-[cubic-bezier(0.25,0.1,0.25,1)]
+              hover:-translate-y-[1px]
+              hover:shadow-[0_8px_20px_rgba(154,27,64,0.15)]
+              active:translate-y-0
+            "
           >
-            Contact Us
-          </motion.button>
+            <span
+              className="
+                pointer-events-none
+                absolute bottom-1/2 left-1/2
+                w-[140%] h-[140%]
+                -translate-x-1/2 translate-y-1/2
+                rounded-full
+                bg-[#9a1b40]
+                scale-[0.02]
+                transition-transform ease-in-out duration-700
+                ease-[cubic-bezier(0.16,1,0.3,1)]
+                group-hover:scale-100
+              "
+            />
+            <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+              Contact
+            </span>
+          </button>
         </motion.div>
       </div>
 
-      {/* ---------------- FLOATING MARQUEE ---------------- */}
-      <div className="absolute bottom-0 left-0 w-full h-1/3 md:h-2/5 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]">
+      {/* Minimal Marquee */}
+      <div className="absolute bottom-0 left-0 w-full h-1/4 [mask-image:linear-gradient(to_bottom,transparent,black_30%,black)]">
         <motion.div
-          className="flex gap-6"
-          animate={{ x: ["0%", "-100%"] }}
+          className="flex gap-4 opacity-40"
+          animate={{ x: ["0%", "-50%"] }}
           transition={{
             ease: "linear",
-            duration: 40,
+            duration: 60,
             repeat: Infinity,
           }}
         >
           {duplicatedImages.map((src, index) => (
             <div
               key={index}
-              className="relative aspect-[3/4] h-40 md:h-56 lg:h-64 flex-shrink-0"
-              style={{ rotate: `${index % 2 === 0 ? -2 : 4}deg` }}
+              className="relative aspect-[3/4] h-32 md:h-40 flex-shrink-0"
             >
               <img
                 src={src}
                 alt=""
-                className="w-full h-full object-cover rounded-2xl shadow-sm border border-black/5"
+                className="w-full h-full object-cover rounded-lg"
               />
             </div>
           ))}

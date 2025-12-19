@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const testimonials = [
-	 {
+  {
     id: 1,
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop",
     text: "Working with Paisana(House) has been discovering a new way to build a brand. From Araex to Villaconchi and the Maridae universe, they managed to connect the essence of wine with an emotional and digitally impeccable narrative. More than an agency, a strategic partner that understands our pace and ambition.",
@@ -36,192 +36,208 @@ const testimonials = [
 ];
 
 export default function TestimonialCarousel() {
-	const [currentIndex, setCurrentIndex] = useState(0);
-	const [direction, setDirection] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
 
-	const hasData = testimonials.length > 0;
-	const stackDepth = Math.min(4, testimonials.length);
+  const hasData = testimonials.length > 0;
+  const stackDepth = Math.min(4, testimonials.length);
 
-	const paginate = (dir) => {
-		if (!hasData) return;
-		setDirection(dir);
-		setCurrentIndex((prev) =>
-			dir > 0
-				? (prev + 1) % testimonials.length
-				: prev === 0
-				? testimonials.length - 1
-				: prev - 1
-		);
-	};
+  const paginate = (dir) => {
+    if (!hasData) return;
+    setDirection(dir);
+    setCurrentIndex((prev) =>
+      dir > 0
+        ? (prev + 1) % testimonials.length
+        : prev === 0
+        ? testimonials.length - 1
+        : prev - 1
+    );
+  };
 
-	const visible = [];
-	if (hasData) {
-		for (let i = 0; i < stackDepth; i++) {
-			const idx = (currentIndex + i) % testimonials.length;
-			visible.push({ ...testimonials[idx], offset: i });
-		}
-	}
+  const visible = [];
+  if (hasData) {
+    for (let i = 0; i < stackDepth; i++) {
+      const idx = (currentIndex + i) % testimonials.length;
+      visible.push({ ...testimonials[idx], offset: i });
+    }
+  }
 
-	const backCardStyle = (offset) => ({
-		y: offset * 18,
-		scale: 1 - offset * 0.035,
-		opacity: 1 - offset * 0.09,
-		rotate: -4 * offset,
-		x: -5 * offset
-	});
+  const backCardStyle = (offset) => ({
+    y: offset * 12,
+    scale: 1 - offset * 0.05,
+    opacity: 1 - offset * 0.1,
+    rotate: -2 * offset,
+    x: -4 * offset,
+    transition: {
+      type: 'spring',
+      stiffness: 400,
+      damping: 35
+    }
+  });
 
-	const activeVariants = {
-		enter: (d) => ({
-			x: d > 0 ? 180 : -180,
-			rotateY: d > 0 ? -16 : 16,
-			rotateZ: d > 0 ? 2.5 : -2.5,
-			scale: 0.93,
-			opacity: 0
-		}),
-		center: {
-			x: 0,
-			rotateY: 0,
-			rotateZ: 0,
-			scale: 1,
-			opacity: 1,
-			transition: { type: 'spring', stiffness: 250, damping: 24 }
-		},
-		exit: (d) => ({
-			x: d > 0 ? -160 : 160,
-			rotateY: d > 0 ? 12 : -12,
-			rotateZ: d > 0 ? -2 : 2,
-			scale: 0.93,
-			opacity: 0,
-			transition: { type: 'spring', stiffness: 230, damping: 26 }
-		})
-	};
+  const activeVariants = {
+    enter: (d) => ({
+      x: d > 0 ? 220 : -220,
+      rotateY: d > 0 ? -15 : 15,
+      rotateZ: d > 0 ? 3 : -3,
+      scale: 0.94,
+      opacity: 0
+    }),
+    center: {
+      x: 0,
+      rotateY: 0,
+      rotateZ: 0,
+      scale: 1,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 400,
+        damping: 35,
+        duration: 0.45
+      }
+    },
+    exit: (d) => ({
+      x: d > 0 ? -220 : 220,
+      rotateY: d > 0 ? 15 : -15,
+      rotateZ: d > 0 ? -3 : 3,
+      scale: 0.94,
+      opacity: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 380,
+        damping: 32,
+        duration: 0.45
+      }
+    })
+  };
 
-	return (
-		<section className="bg[#F5F1EB] py-24">
-			<div className="mx-auto w-full max-w-5xl px-6 md:px-10">
-				<h2 className="text-center font-light tracking-tight text-gray-900 text-4xl md:text-6xl mb-14">
-					What our clients say
-				</h2>
+  return (
+    <section className="bg-[#f7f4ec] py-20">
+      <div className="mx-auto w-full max-w-4xl px-6 md:px-10">
+        <h2 className="text-center font-serif font-medium tracking-tight text-[#1e4389] text-4xl md:text-5xl mb-12">
+          What Our Clients Say
+        </h2>
 
-				{!hasData && (
-					<p className="text-center text-gray-600 py-20">No testimonials available.</p>
-				)}
+        {hasData && (
+          <>
+            <div className="relative flex justify-center">
+              {/* Navigation Arrows */}
+              <button
+                onClick={() => paginate(-1)}
+                className="absolute -left-4 md:-left-20 top-1/2 -translate-y-1/2 z-40 p-3 bg-white/90 backdrop-blur-md rounded-full shadow-md border border-[#d6d3cd] hover:bg-white transition-all duration-300"
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft className="w-5 h-5 text-[#1e4389]" />
+              </button>
 
-				{hasData && (
-					<>
-						<div className="relative flex justify-center">
-							{/* Arrows (closer + subtle style) */}
-							<button
-								onClick={() => paginate(-1)}
-								className="absolute -left-4 md:-left-20 top-1/2 -translate-y-1/2 z-40 p-3 bg-white/90 backdrop-blur rounded-full shadow hover:shadow-md border border-gray-200 transition"
-								aria-label="Previous testimonial"
-							>
-								<ChevronLeft className="w-5 h-5" />
-							</button>
-							<button
-								onClick={() => paginate(1)}
-								className="absolute -right-4 md:-right-20 top-1/2 -translate-y-1/2 z-40 p-3 bg-white/90 backdrop-blur rounded-full shadow hover:shadow-md border border-gray-200 transition"
-								aria-label="Next testimonial"
-							>
-								<ChevronRight className="w-5 h-5" />
-							</button>
+              <button
+                onClick={() => paginate(1)}
+                className="absolute -right-4 md:-right-20 top-1/2 -translate-y-1/2 z-40 p-3 bg-white/90 backdrop-blur-md rounded-full shadow-md border border-[#d6d3cd] hover:bg-white transition-all duration-300"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight className="w-5 h-5 text-[#1e4389]" />
+              </button>
 
-							<div
-								className="relative w-full max-w-sm h-[460px]"
-								style={{ perspective: '1100px' }}
-							>
-								{/* Back stack */}
-								{visible.slice(1).map(card => (
-									<motion.div
-										key={`bg-${card.id}-${card.offset}`}
-										className="absolute inset-x-3 top-6 pointer-events-none"
-										animate={backCardStyle(card.offset)}
-										initial={false}
-										transition={{ type: 'spring', stiffness: 230, damping: 28 }}
-										style={{ zIndex: 40 - card.offset }}
-									>
-										<div
-											className="bg-[#f7f6f2] border border-gray-300 shadow-md"
-											style={{ borderRadius: '12px', aspectRatio: '2.4 / 3.4' }}
-										/>
-									</motion.div>
-								))}
+              <div
+                className="relative w-full max-w-[360px] h-[420px]"
+                style={{ perspective: '1100px' }}
+              >
+                {/* Background Stack Cards */}
+                {visible.slice(1).map((card) => (
+                  <motion.div
+                    key={`bg-${card.id}-${card.offset}`}
+                    className="absolute inset-x-0 top-0 pointer-events-none"
+                    animate={backCardStyle(card.offset)}
+                    transition={{ type: 'spring', stiffness: 400, damping: 35 }}
+                    style={{ zIndex: 40 - card.offset }}
+                  >
+                    <div
+                      className="bg-white border border-[#d6d3cd] shadow-md"
+                      style={{
+                        borderRadius: '14px',
+                        aspectRatio: '2.4 / 3.4',
+                      }}
+                    />
+                  </motion.div>
+                ))}
 
-								<AnimatePresence initial={false} custom={direction} mode="wait">
-									<motion.div
-										key={testimonials[currentIndex].id}
-										custom={direction}
-										variants={activeVariants}
-										initial="enter"
-										animate="center"
-										exit="exit"
-										className="absolute inset-x-3 top-6"
-										style={{ zIndex: 60, transformStyle: 'preserve-3d' }}
-									>
-										<motion.div
-											whileHover={{ y: -3 }}
-											whileTap={{ scale: 0.985 }}
-											className="bg-[#faf9f5] border-2 border-gray-900 shadow-xl p-8 flex flex-col justify-between"
-											style={{
-												aspectRatio: '2.4 / 3.4',
-												borderRadius: '14px',
-												willChange: 'transform'
-											}}
-										>
-											<div className="text-center">
-												<motion.img
-													key={`img-${testimonials[currentIndex].id}`}
-													src={testimonials[currentIndex].image}
-													alt={testimonials[currentIndex].name}
-													className="w-14 h-14 mx-auto mb-5 object-cover grayscale rounded"
-													initial={{ opacity: 0, scale: 0.85 }}
-													animate={{ opacity: 1, scale: 1 }}
-													transition={{ delay: 0.12 }}
-												/>
-												<motion.p
-													key={`text-${testimonials[currentIndex].id}`}
-													initial={{ opacity: 0, y: 10 }}
-													animate={{ opacity: 1, y: 0 }}
-													transition={{ delay: 0.18 }}
-													className="text-gray-800 text-sm leading-relaxed mb-6"
-												>
-													"{testimonials[currentIndex].text}"
-												</motion.p>
-											</div>
-											<div className="border-t border-gray-300 pt-3">
-												<h3 className="text-gray-900 font-medium text-sm">
-													{testimonials[currentIndex].name}
-												</h3>
-												<p className="text-[10px] tracking-wide uppercase text-gray-600">
-													{testimonials[currentIndex].position}
-												</p>
-											</div>
-										</motion.div>
-									</motion.div>
-								</AnimatePresence>
-							</div>
-						</div>
+                {/* Active Card */}
+                <AnimatePresence initial={false} custom={direction} mode="wait">
+                  <motion.div
+                    key={testimonials[currentIndex].id}
+                    custom={direction}
+                    variants={activeVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    className="absolute inset-x-0 top-0"
+                    style={{ zIndex: 60, transformStyle: 'preserve-3d' }}
+                  >
+                    <motion.div
+                      whileHover={{ y: -3, scale: 1.015 }}
+                      whileTap={{ scale: 0.985 }}
+                      className="bg-white border-2 border-[#1e4389] shadow-xl p-6 flex flex-col justify-between rounded-2xl"
+                      style={{
+                        aspectRatio: '2.4 / 3.4',
+                        willChange: 'transform'
+                      }}
+                    >
+                      <div className="text-center">
+                        <motion.img
+                          key={`img-${testimonials[currentIndex].id}`}
+                          src={testimonials[currentIndex].image}
+                          alt={testimonials[currentIndex].name}
+                          className="w-14 h-14 mx-auto mb-5 object-cover rounded-full border-2 border-[#9a1b40]/30"
+                          initial={{ opacity: 0, scale: 0.92 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.12 }}
+                        />
+                        <motion.p
+                          key={`text-${testimonials[currentIndex].id}`}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.15 }}
+                          className="text-[#1e1e1e] text-sm leading-relaxed mb-6 font-light"
+                        >
+                          "{testimonials[currentIndex].text}"
+                        </motion.p>
+                      </div>
+                      <div className="border-t border-[#d6d3cd] pt-3">
+                        <h3 className="text-[#1e4389] font-medium text-sm">
+                          {testimonials[currentIndex].name}
+                        </h3>
+                        <p className="text-xs text-[#666666] mt-1">
+                          {testimonials[currentIndex].position}
+                        </p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
 
-						{/* Dots */}
-						<div className="flex justify-center gap-2 mt-12">
-							{testimonials.map((t, i) => (
-								<button
-									key={t.id}
-									onClick={() => {
-										if (i === currentIndex) return;
-										setDirection(i > currentIndex ? 1 : -1);
-										setCurrentIndex(i);
-									}}
-									className={`h-1.5 rounded-full transition-all ${
-										i === currentIndex ? 'w-10 bg-gray-900' : 'w-6 bg-gray-400'
-									}`}
-									aria-label={`Go to testimonial ${i + 1}`}
-								/>
-							))}
-						</div>
-					</>
-				)}
-			</div>
-		</section>
-	);
+            {/* Navigation Dots */}
+            <div className="flex justify-center gap-3 mt-10">
+              {testimonials.map((t, i) => (
+                <button
+                  key={t.id}
+                  onClick={() => {
+                    if (i === currentIndex) return;
+                    setDirection(i > currentIndex ? 1 : -1);
+                    setCurrentIndex(i);
+                  }}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    i === currentIndex
+                      ? 'w-8 bg-[#1e4389]'
+                      : 'w-5 bg-[#d6d3cd] hover:bg-[#9a1b40]/50'
+                  }`}
+                  aria-label={`Go to testimonial ${i + 1}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+    </section>
+  );
 }
