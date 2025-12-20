@@ -120,27 +120,11 @@ export default function ContactPage() {
               </div>
             ) : (
 <button
-  className="
-    group relative overflow-hidden cursor-pointer
-    px-14 py-5 rounded-full
-    bg-[#9a1b40] text-white text-sm
-    tracking-[0.25em] uppercase font-medium
-
-    transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)]
-
-    hover:-translate-y-1
-    hover:shadow-[0_8px_20px_rgba(0,0,0,0.2)]
-    active:translate-y-0
-  "
+  className="group relative overflow-hidden cursor-pointer px-14 py-5 rounded-full bg-[#9a1b40] text-white text-sm tracking-[0.25em] uppercase font-medium transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.2)] active:translate-y-0"
 >
   {/* Expanding circular fill */}
   <span
-    className="
-      pointer-events-none absolute inset-0 flex items-center justify-center
-      bg-[#7e1534] scale-0 rounded-full
-      transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
-      group-hover:scale-100
-    "
+    className="pointer-events-none absolute inset-0 flex items-center justify-center bg-[#7e1534] scale-0 rounded-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-100"
   />
 
   {/* Label */}
