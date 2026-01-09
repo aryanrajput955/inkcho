@@ -98,12 +98,14 @@ p {
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border-color: var(--color-border);
+    outline-color: color-mix(in srgb, var(--color-ring) 50%, transparent);
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
     box-sizing: border-box;
-  };
+  }
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -111,4 +113,58 @@ p {
 .no-scrollbar {
   -ms-overflow-style: none; /* IE */
   scrollbar-width: none; /* Firefox */
+}
+
+/* ========================================
+   CUSTOM BUTTON STYLES
+   ======================================== */
+
+/* Primary Button - Blue with Red Hover Fill */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  background-color: #1e4389;
+  color: white;
+  font-size: 0.875rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (min-width: 768px) {
+  .btn-primary {
+    padding: 1.25rem 3.5rem;
+  }
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Expanding Fill Animation */
+.btn-fill-animation {
+  pointer-events: none;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  width: 140%;
+  height: 140%;
+  transform: translateX(-50%) translateY(50%) scale(0);
+  border-radius: 9999px;
+  background-color: #9a1b40;
+  transition: transform 900ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-primary:hover .btn-fill-animation {
+  transform: translateX(-50%) translateY(50%) scale(1);
 }

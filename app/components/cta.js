@@ -41,34 +41,9 @@ export default function CTASection() {
         </p>
 
         {/* Button (updated to match the modern hover style from previous sections) */}
-        <button
-          className="
-            group relative mt-6 overflow-hidden cursor-pointer
-            px-14 py-5 rounded-full
-            bg-[#1e4389] text-white text-sm
-            tracking-[0.25em] uppercase
-            transition-[transform,box-shadow] duration-200
-            ease-[cubic-bezier(0.25,0.1,0.25,1)]
-            hover:-translate-y-[1px]
-            hover:shadow-[0_8px_20px_rgba(0,0,0,0.15)]
-            active:translate-y-0
-          "
-        >
+        <button className="btn-primary">
           {/* Expanding circular fill on hover */}
-          <span
-            className="
-              pointer-events-none
-              absolute bottom-1/2 left-1/2
-              w-[140%] h-[140%]
-              -translate-x-1/2 translate-y-1/2
-              rounded-full
-              bg-[#7e1534]
-              scale-[0.02]
-              transition-transform ease-in-out duration-700
-              ease-[cubic-bezier(0.16,1,0.3,1)]
-              group-hover:scale-100
-            "
-          />
+          <span className="btn-fill-animation" />
 
           {/* Label */}
           <span className="relative z-10">

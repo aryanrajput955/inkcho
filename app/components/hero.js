@@ -65,67 +65,15 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-6"
         >
           {/* Primary Button: View Work */}
-          <button
-            className="
-              group relative overflow-hidden cursor-pointer
-              px-10 py-4 rounded-full
-              bg-[#1e4389] text-white text-sm
-              tracking-[0.25em] uppercase font-medium
-              transition-[transform,box-shadow] duration-200
-              ease-[cubic-bezier(0.25,0.1,0.25,1)]
-              hover:-translate-y-[1px]
-              hover:shadow-[0_8px_20px_rgba(0,0,0,0.15)]
-              active:translate-y-0
-            "
-          >
-            <span
-              className="
-                pointer-events-none
-                absolute bottom-1/2 left-1/2
-                w-[140%] h-[140%]
-                -translate-x-1/2 translate-y-1/2
-                rounded-full
-                bg-[#162f66]
-                scale-[0.02]
-                transition-transform ease-in-out duration-700
-                ease-[cubic-bezier(0.16,1,0.3,1)]
-                group-hover:scale-100
-              "
-            />
+          <button className="btn-primary">
+            <span className="btn-fill-animation" />
             <span className="relative z-10">View Work</span>
           </button>
 
           {/* Secondary Button: Contact */}
-          <button
-            className="
-              group relative overflow-hidden cursor-pointer
-              px-10 py-4 rounded-full
-              bg-transparent text-[#9a1b40] border-2 border-[#9a1b40]
-              text-sm tracking-[0.25em] uppercase font-medium
-              transition-[transform,box-shadow] duration-200
-              ease-[cubic-bezier(0.25,0.1,0.25,1)]
-              hover:-translate-y-[1px]
-              hover:shadow-[0_8px_20px_rgba(154,27,64,0.15)]
-              active:translate-y-0
-            "
-          >
-            <span
-              className="
-                pointer-events-none
-                absolute bottom-1/2 left-1/2
-                w-[140%] h-[140%]
-                -translate-x-1/2 translate-y-1/2
-                rounded-full
-                bg-[#9a1b40]
-                scale-[0.02]
-                transition-transform ease-in-out duration-700
-                ease-[cubic-bezier(0.16,1,0.3,1)]
-                group-hover:scale-100
-              "
-            />
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
-              Contact
-            </span>
+          <button className="btn-primary">
+            <span className="btn-fill-animation" />
+            <span className="relative z-10">Contact</span>
           </button>
         </motion.div>
       </div>

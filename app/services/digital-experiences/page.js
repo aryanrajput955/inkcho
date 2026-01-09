@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -10,6 +10,7 @@ const fadeUp = {
 
 export default function DigitalExperiencesPage() {
   const scrollRefs = useRef([]);
+  const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => {
     const containers = scrollRefs.current;
@@ -71,7 +72,7 @@ export default function DigitalExperiencesPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#f7f4ec] text-[#1e4389] overflow-x-hidden">
+    <main className="min-h-screen bg-[#f7f4ec] text-black overflow-x-hidden">
 
       {/* ------------------ HERO ------------------ */}
       <section className="pt-36 pb-32 px-6 md:px-12 lg:px-28">
@@ -93,19 +94,19 @@ export default function DigitalExperiencesPage() {
               <span className="block">Experiences</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-[#1e4389] font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-black font-light leading-relaxed">
               Designing immersive online spaces that connect and convert.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">
               <div className="px-6 py-3 rounded-full border border-black/10 bg-white/60 backdrop-blur">
-                <p className="text-sm text-[#1e4389] font-medium">UX Design</p>
+                <p className="text-sm text-black font-medium">UX Design</p>
               </div>
               <div className="px-6 py-3 rounded-full border border-black/10 bg-white/60 backdrop-blur">
-                <p className="text-sm text-[#1e4389] font-medium">Web Development</p>
+                <p className="text-sm text-black font-medium">Web Development</p>
               </div>
               <div className="px-6 py-3 rounded-full border border-black/10 bg-white/60 backdrop-blur">
-                <p className="text-sm text-[#1e4389] font-medium">Performance Optimization</p>
+                <p className="text-sm text-black font-medium">Performance Optimization</p>
               </div>
             </div>
           </motion.div>
@@ -130,7 +131,7 @@ export default function DigitalExperiencesPage() {
               <p className="text-xs tracking-[0.25em] uppercase text-[#9d909a] font-medium mb-3">
                 Our Approach
               </p>
-              <p className="text-sm text-[#1e4389]/80 leading-relaxed">
+              <p className="text-sm text-black/80 leading-relaxed">
                 User-centered digital solutions that prioritize engagement, accessibility, and measurable results.
               </p>
             </div>
@@ -155,10 +156,10 @@ export default function DigitalExperiencesPage() {
               <h2 className="text-4xl md:text-6xl font-serif text-[#9a1b40] mb-8 leading-tight">
                 In a digital-first world, experiences define loyalty.
               </h2>
-              <p className="text-lg text-[#1e4389]/85 leading-relaxed mb-6">
+              <p className="text-lg text-black/85 leading-relaxed mb-6">
                 Your online presence is where connections are forged and conversions happen. Poor experiences lead to abandonment; exceptional ones drive growth.
               </p>
-              <p className="text-lg text-[#1e4389]/85 leading-relaxed">
+              <p className="text-lg text-black/85 leading-relaxed">
                 We engineer digital ecosystems that captivate users, streamline journeys, and deliver lasting impact.
               </p>
             </motion.div>
@@ -178,7 +179,7 @@ export default function DigitalExperiencesPage() {
               ].map((stat, i) => (
                 <div key={i} className="p-8 rounded-2xl border border-black/10 bg-white/60 backdrop-blur text-center">
                   <p className="text-4xl md:text-5xl font-serif text-[#9a1b40] mb-3">{stat.number}</p>
-                  <p className="text-sm text-[#1e4389]/80 leading-snug">{stat.label}</p>
+                  <p className="text-sm text-black/80 leading-snug">{stat.label}</p>
                 </div>
               ))}
             </motion.div>
@@ -187,13 +188,38 @@ export default function DigitalExperiencesPage() {
       </section>
 
       {/* ------------------ CATEGORIES ------------------ */}
-      <section className="px-6 md:px-12 lg:px-28 space-y-44 pb-40">
-        {categories.map((cat, index) => (
-          <section key={index} className="max-w-7xl mx-auto space-y-16">
+      <section className="px-6 md:px-12 lg:px-28 pb-40">
+        <div className="max-w-7xl mx-auto space-y-16">
+          
+          {/* Tab Buttons */}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
+            {categories.map((cat, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveTab(index)}
+                className={`px-8 py-4 rounded-full text-sm tracking-[0.15em] uppercase font-medium transition-all duration-300 ${
+                  activeTab === index
+                    ? "bg-[#9a1b40] text-white shadow-lg scale-105"
+                    : "bg-white/60 text-black border border-black/10 hover:bg-white/80 hover:shadow-md"
+                }`}
+              >
+                {cat.title}
+              </button>
+            ))}
+          </div>
 
+          {/* Active Category Content */}
+          <motion.section
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="space-y-16"
+          >
             <div className="flex items-center gap-6">
               <span className="text-xs tracking-[0.3em] uppercase text-[#9d909a] font-medium">
-                0{index + 1}
+                0{activeTab + 1}
               </span>
               <span className="flex-1 h-px bg-black/10" />
             </div>
@@ -201,20 +227,20 @@ export default function DigitalExperiencesPage() {
             <div className="grid md:grid-cols-12 gap-14 items-start">
               <div className="md:col-span-5 space-y-8">
                 <h2 className="text-3xl md:text-5xl font-serif text-[#9a1b40] leading-tight">
-                  {cat.title}
+                  {categories[activeTab].title}
                 </h2>
 
-                <p className="text-lg text-[#1e4389]/85 leading-relaxed">
-                  {cat.outcome}
+                <p className="text-lg text-black/85 leading-relaxed">
+                  {categories[activeTab].outcome}
                 </p>
 
                 <div className="space-y-4 pt-4">
                   <p className="text-xs tracking-[0.25em] uppercase text-[#9d909a] font-medium">What's Included</p>
                   <ul className="space-y-3">
-                    {cat.points.map((point, i) => (
+                    {categories[activeTab].points.map((point, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#9a1b40] mt-2 flex-shrink-0" />
-                        <span className="text-[#1e4389]/80 leading-relaxed">{point}</span>
+                        <span className="text-black/80 leading-relaxed">{point}</span>
                       </li>
                     ))}
                   </ul>
@@ -223,29 +249,28 @@ export default function DigitalExperiencesPage() {
 
               <div className="md:col-span-7 space-y-8">
                 <div className="grid gap-6">
-                  {cat.points.map((point, i) => (
+                  {categories[activeTab].points.map((point, i) => (
                     <motion.div
                       key={i}
                       initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
+                      animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: i * 0.1 }}
                       className="p-8 rounded-2xl border border-black/10 bg-white/60 backdrop-blur hover:shadow-lg transition-shadow duration-300"
                     >
                       <div className="flex items-start justify-between mb-4">
-                        <p className="text-lg text-[#1e4389] font-medium">{point}</p>
+                        <p className="text-lg text-black font-medium">{point}</p>
                         <span className="text-xs tracking-[0.3em] uppercase text-[#9d909a] font-medium">0{i + 1}</span>
                       </div>
-                      <p className="text-sm text-[#1e4389]/70 leading-relaxed">
-                        {index === 0 && i === 0 && "In-depth user interviews, personas, and journey maps to uncover pain points and opportunities."}
-                        {index === 0 && i === 1 && "High-fidelity wireframes and interactive prototypes to visualize and test design concepts."}
-                        {index === 0 && i === 2 && "Rigorous testing sessions with real users to refine interfaces for optimal usability."}
-                        {index === 1 && i === 0 && "Seamless integration of modern frontend frameworks with secure backend architectures."}
-                        {index === 1 && i === 1 && "Fully responsive designs ensuring flawless performance across devices and browsers."}
-                        {index === 1 && i === 2 && "Custom APIs and robust security protocols to handle data efficiently and safely."}
-                        {index === 2 && i === 0 && "Engaging motion graphics and subtle interactions that enhance user delight without distraction."}
-                        {index === 2 && i === 1 && "Tailored CMS setups with intuitive admin panels for effortless content updates."}
-                        {index === 2 && i === 2 && "Comprehensive audits and optimizations for lightning-fast load times and superior SEO."}
+                      <p className="text-sm text-black/70 leading-relaxed">
+                        {activeTab === 0 && i === 0 && "In-depth user interviews, personas, and journey maps to uncover pain points and opportunities."}
+                        {activeTab === 0 && i === 1 && "High-fidelity wireframes and interactive prototypes to visualize and test design concepts."}
+                        {activeTab === 0 && i === 2 && "Rigorous testing sessions with real users to refine interfaces for optimal usability."}
+                        {activeTab === 1 && i === 0 && "Seamless integration of modern frontend frameworks with secure backend architectures."}
+                        {activeTab === 1 && i === 1 && "Fully responsive designs ensuring flawless performance across devices and browsers."}
+                        {activeTab === 1 && i === 2 && "Custom APIs and robust security protocols to handle data efficiently and safely."}
+                        {activeTab === 2 && i === 0 && "Engaging motion graphics and subtle interactions that enhance user delight without distraction."}
+                        {activeTab === 2 && i === 1 && "Tailored CMS setups with intuitive admin panels for effortless content updates."}
+                        {activeTab === 2 && i === 2 && "Comprehensive audits and optimizations for lightning-fast load times and superior SEO."}
                       </p>
                     </motion.div>
                   ))}
@@ -260,21 +285,20 @@ export default function DigitalExperiencesPage() {
                   Digital Experiences in Action
                 </p>
                 <p className="text-xs tracking-[0.3em] uppercase text-[#9d909a] font-medium">
-                  {cat.projects.join(" · ")}
+                  {categories[activeTab].projects.join(" · ")}
                 </p>
               </div>
 
               <div
-                ref={(el) => (scrollRefs.current[index] = el)}
+                ref={(el) => (scrollRefs.current[activeTab] = el)}
                 className="relative overflow-x-auto no-scrollbar"
               >
                 <div className="flex gap-8 pb-4">
-                  {cat.images.map((src, i) => (
+                  {categories[activeTab].images.map((src, i) => (
                     <motion.div
                       key={i}
                       initial={{ opacity: 0, y: 24 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
+                      animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: i * 0.08 }}
                       className="flex-shrink-0 w-[280px] md:w-[380px] lg:w-[440px] h-[220px] md:h-[280px] lg:h-[320px] rounded-xl overflow-hidden bg-gray-200 shadow-lg"
                     >
@@ -288,8 +312,8 @@ export default function DigitalExperiencesPage() {
                 </div>
               </div>
             </div>
-          </section>
-        ))}
+          </motion.section>
+        </div>
       </section>
 
       {/* ------------------ PROCESS SECTION ------------------ */}
@@ -304,7 +328,7 @@ export default function DigitalExperiencesPage() {
             <h2 className="text-4xl md:text-6xl font-serif text-[#9a1b40] mb-6">
               How We Build Your Digital Experiences
             </h2>
-            <p className="text-lg text-[#1e4389]/85 max-w-3xl mx-auto">
+            <p className="text-lg text-black/85 max-w-3xl mx-auto">
               A collaborative development process that aligns user needs with technical excellence for transformative results.
             </p>
           </div>
@@ -328,7 +352,7 @@ export default function DigitalExperiencesPage() {
                   <div className="text-6xl font-serif text-[#9a1b40]/20 mb-4">0{i + 1}</div>
                   <h3 className="text-2xl font-serif text-[#9a1b40] mb-2">{step.phase}</h3>
                   <p className="text-xs tracking-[0.25em] uppercase text-[#9d909a] font-medium mb-4">{step.weeks}</p>
-                  <p className="text-sm text-[#1e4389]/80 leading-relaxed">{step.desc}</p>
+                  <p className="text-sm text-black/80 leading-relaxed">{step.desc}</p>
                 </div>
                 {i < 3 && (
                   <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-px bg-[#9d909a]/40" />
@@ -351,22 +375,28 @@ export default function DigitalExperiencesPage() {
             <h3 className="text-4xl md:text-6xl font-serif text-[#9a1b40] mb-8">
               Elevate Your Digital Presence.
             </h3>
-            <p className="text-lg text-[#1e4389]/85 mb-8 leading-relaxed">
+            <p className="text-lg text-black/85 mb-8 leading-relaxed">
               In today's connected world, exceptional digital experiences turn visitors into advocates. Let's design yours.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-              <div className="flex items-center gap-2 text-sm text-[#1e4389]/70">
+              <div className="flex items-center gap-2 text-sm text-black/70">
                 <span className="w-2 h-2 rounded-full bg-[#9a1b40]" />
                 <span>Discovery session · Complimentary</span>
               </div>
-              <div className="flex items-center gap-2 text-sm text-[#1e4389]/70">
+              <div className="flex items-center gap-2 text-sm text-black/70">
                 <span className="w-2 h-2 rounded-full bg-[#9a1b40]" />
                 <span>Custom proposals</span>
               </div>
             </div>
 
-            <button className="mt-6 px-14 py-5 bg-[#9a1b40] text-white rounded-full text-sm tracking-[0.25em] uppercase hover:bg-[#7e1534] transition-all duration-300 hover:shadow-xl">
-              Start Your Digital Experience
+            <button className="btn-primary mt-6">
+              {/* Expanding circular fill on hover */}
+              <span className="btn-fill-animation" />
+
+              {/* Label */}
+              <span className="relative z-10">
+                Start Your Digital Experience
+              </span>
             </button>
           </motion.div>
         </div>

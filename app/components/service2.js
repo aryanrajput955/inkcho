@@ -1,5 +1,6 @@
 'use client';
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default function CardsSection() {
   return (
@@ -18,10 +19,13 @@ export default function CardsSection() {
         <div className="grid md:grid-cols-2 gap-10">
 
           {/* === CARD 1 === */}
-          <div className="relative rounded-3xl overflow-hidden group border border-gray-300 bg-[#f7f4ec] transition-all duration-700">
+          <Link 
+            href="/services/brand-foundation" 
+            className="relative rounded-3xl overflow-hidden group border border-gray-300 bg-[#f7f4ec] transition-all duration-700 cursor-pointer block"
+          >
             <img
               src="/s5.webp"
-              alt="Website"
+              alt="Brand Foundations"
               className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-700"></div>
@@ -32,14 +36,9 @@ export default function CardsSection() {
                   Fixed Scope
                 </span>
 
-                <h2 className="text-4xl md:text-5xl font-semibold mb-6 text-[#9a1b40] group-hover:text-white transition-colors duration-700">
-                  Build a Website
+                <h2 className="text-5xl md:text-6xl font-semibold mb-6 text-[#9a1b40] group-hover:text-white transition-colors duration-700">
+                  Brand Foundations
                 </h2>
-
-                <p className="text-black group-hover:text-white leading-relaxed max-w-md transition-colors duration-700">
-                  Plan-driven, fixed timelines, deliverable-centric. Focus your
-                  effort and investment toward singular business needs with precision.
-                </p>
               </div>
 
               <div className="mt-10">
@@ -51,13 +50,16 @@ export default function CardsSection() {
                 </button>
               </div>
             </div>
-          </div>
+          </Link>
 
           {/* === CARD 2 === */}
-          <div className="relative rounded-3xl overflow-hidden group border border-gray-300 bg-[#f7f4ec] transition-all duration-700">
+          <Link 
+            href="/services/visual-identity" 
+            className="relative rounded-3xl overflow-hidden group border border-gray-300 bg-[#f7f4ec] transition-all duration-700 cursor-pointer block"
+          >
             <img
               src="/s2.jpg"
-              alt="Digital Product"
+              alt="Visual Identity"
               className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-700"></div>
@@ -68,14 +70,9 @@ export default function CardsSection() {
                   Flexible Subscription
                 </span>
 
-                <h2 className="text-4xl md:text-5xl font-semibold mb-6 text-[#9a1b40] group-hover:text-white transition-colors duration-700">
-                  Build a Digital Product
+                <h2 className="text-5xl md:text-6xl font-semibold mb-6 text-[#9a1b40] group-hover:text-white transition-colors duration-700">
+                  Visual Identity
                 </h2>
-
-                <p className="text-black group-hover:text-white leading-relaxed max-w-md transition-colors duration-700">
-                  Change-driven, flexible roadmaps, people-centric. Add seasoned
-                  creatives to your team to launch or iterate on a digital product.
-                </p>
               </div>
 
               <div className="mt-10">
@@ -87,13 +84,16 @@ export default function CardsSection() {
                 </button>
               </div>
             </div>
-          </div>
+          </Link>
 
           {/* === CARD 3 === */}
-          <div className="relative rounded-3xl overflow-hidden group border border-gray-300 bg-[#f7f4ec] transition-all duration-700">
+          <Link 
+            href="/services/digital-experiences" 
+            className="relative rounded-3xl overflow-hidden group border border-gray-300 bg-[#f7f4ec] transition-all duration-700 cursor-pointer block"
+          >
             <img
               src="/s2.jpg"
-              alt="Brand Identity"
+              alt="Digital Experiences"
               className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-700"></div>
@@ -104,14 +104,9 @@ export default function CardsSection() {
                   Strategic Development
                 </span>
 
-                <h2 className="text-4xl md:text-5xl font-semibold mb-6 text-[#9a1b40] group-hover:text-white transition-colors duration-700">
-                  Craft a Brand Identity
+                <h2 className="text-5xl md:text-6xl font-semibold mb-6 text-[#9a1b40] group-hover:text-white transition-colors duration-700">
+                  Digital Experiences
                 </h2>
-
-                <p className="text-black group-hover:text-white leading-relaxed max-w-md transition-colors duration-700">
-                  Strategic, identity-focused design. Establish a compelling brand presence 
-                  tailored to your audience with expert guidance.
-                </p>
               </div>
 
               <div className="mt-10">
@@ -123,13 +118,16 @@ export default function CardsSection() {
                 </button>
               </div>
             </div>
-          </div>
+          </Link>
 
           {/* === CARD 4 === */}
-          <div className="relative rounded-3xl overflow-hidden group border border-gray-300 bg-[#f7f4ec] transition-all duration-700">
+          <Link 
+            href="/creative-technology" 
+            className="relative rounded-3xl overflow-hidden group border border-gray-300 bg-[#f7f4ec] transition-all duration-700 cursor-pointer block"
+          >
             <img
               src="/s1.jpg"
-              alt="Marketing Campaign"
+              alt="Creative Technology"
               className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-700"></div>
@@ -140,14 +138,9 @@ export default function CardsSection() {
                   Campaign-Driven
                 </span>
 
-                <h2 className="text-4xl md:text-5xl font-semibold mb-6 text-[#9a1b40] group-hover:text-white transition-colors duration-700">
-                  Launch a Marketing Campaign
+                <h2 className="text-5xl md:text-6xl font-semibold mb-6 text-[#9a1b40] group-hover:text-white transition-colors duration-700">
+                  Creative Technology
                 </h2>
-
-                <p className="text-black group-hover:text-white leading-relaxed max-w-md transition-colors duration-700">
-                  Results-oriented, campaign-focused creation. Amplify your message with 
-                  targeted, impactful marketing solutions.
-                </p>
               </div>
 
               <div className="mt-10">
@@ -159,10 +152,10 @@ export default function CardsSection() {
                 </button>
               </div>
             </div>
-          </div>
+          </Link>
 
         </div>
       </div>
     </section>
   );
-} 
+}
