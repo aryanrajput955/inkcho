@@ -28,7 +28,7 @@ export default function HomePage() {
         <ScrollGalleryMobile />
       </div>
       <CardsSection />
-      <ServicesSection />
+      {/* <ServicesSection /> */}
       <TestimonialCarousel />
       <LightRaysContainer />
 

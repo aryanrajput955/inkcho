@@ -100,9 +100,9 @@ export default function ScrollHijackGallery() {
               <div
                 key={item.id}
                 ref={el => (cardsRef.current[i] = el)}
-                className="relative rounded-xl overflow-hidden bg-white shadow-2xl border border-gray-200 will-change-transform"
+                className="relative rounded-2xl overflow-hidden bg-white shadow-2xl border border-gray-200 will-change-transform"
               >
-                <div className="relative w-full h-64 sm:h-80 lg:h-96 overflow-hidden">
+                <div className="relative w-full h-64 sm:h-80 rounded-2xl lg:h-96 overflow-hidden">
                   {item.type === 'video' ? (
                     <video
                       className="w-full h-full object-cover"
@@ -119,7 +119,7 @@ export default function ScrollHijackGallery() {
                       src={item.src}
                       alt={item.title}
                       loading="lazy"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full  object-cover"
                     />
                   )}
 

@@ -156,12 +156,7 @@ export default function DigitalExperiencesPage() {
               <h2 className="text-4xl md:text-6xl font-serif text-[#9a1b40] mb-8 leading-tight">
                 In a digital-first world, experiences define loyalty.
               </h2>
-              <p className="text-lg text-black/85 leading-relaxed mb-6">
-                Your online presence is where connections are forged and conversions happen. Poor experiences lead to abandonment; exceptional ones drive growth.
-              </p>
-              <p className="text-lg text-black/85 leading-relaxed">
-                We engineer digital ecosystems that captivate users, streamline journeys, and deliver lasting impact.
-              </p>
+          
             </motion.div>
 
             <motion.div
@@ -233,18 +228,6 @@ export default function DigitalExperiencesPage() {
                 <p className="text-lg text-black/85 leading-relaxed">
                   {categories[activeTab].outcome}
                 </p>
-
-                <div className="space-y-4 pt-4">
-                  <p className="text-xs tracking-[0.25em] uppercase text-[#9d909a] font-medium">What's Included</p>
-                  <ul className="space-y-3">
-                    {categories[activeTab].points.map((point, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#9a1b40] mt-2 flex-shrink-0" />
-                        <span className="text-black/80 leading-relaxed">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
 
               <div className="md:col-span-7 space-y-8">
@@ -255,23 +238,33 @@ export default function DigitalExperiencesPage() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: i * 0.1 }}
-                      className="p-8 rounded-2xl border border-black/10 bg-white/60 backdrop-blur hover:shadow-lg transition-shadow duration-300"
+                      className="group relative p-8 rounded-2xl border border-black/10 bg-white/60 backdrop-blur hover:shadow-lg transition-all duration-700 ease-out overflow-hidden"
                     >
-                      <div className="flex items-start justify-between mb-4">
-                        <p className="text-lg text-black font-medium">{point}</p>
-                        <span className="text-xs tracking-[0.3em] uppercase text-[#9d909a] font-medium">0{i + 1}</span>
+                      {/* Background Image with Overlay */}
+                      <div 
+                        className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out"
+                        style={{ backgroundImage: `url(${categories[activeTab].images[i]})` }}
+                      />
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out" />
+
+                      {/* Content */}
+                      <div className="relative z-10">
+                        <div className="flex items-start justify-between mb-4">
+                          <p className="text-lg font-medium transition-colors duration-700 ease-out text-black group-hover:text-white">{point}</p>
+                          <span className="text-xs tracking-[0.3em] uppercase font-medium transition-colors duration-700 ease-out text-[#9d909a] group-hover:text-white/80">0{i + 1}</span>
+                        </div>
+                        <p className="text-sm leading-relaxed transition-colors duration-700 ease-out text-black/70 group-hover:text-white/90">
+                          {activeTab === 0 && i === 0 && "In-depth user interviews, personas, and journey maps to uncover pain points and opportunities."}
+                          {activeTab === 0 && i === 1 && "High-fidelity wireframes and interactive prototypes to visualize and test design concepts."}
+                          {activeTab === 0 && i === 2 && "Rigorous testing sessions with real users to refine interfaces for optimal usability."}
+                          {activeTab === 1 && i === 0 && "Seamless integration of modern frontend frameworks with secure backend architectures."}
+                          {activeTab === 1 && i === 1 && "Fully responsive designs ensuring flawless performance across devices and browsers."}
+                          {activeTab === 1 && i === 2 && "Custom APIs and robust security protocols to handle data efficiently and safely."}
+                          {activeTab === 2 && i === 0 && "Engaging motion graphics and subtle interactions that enhance user delight without distraction."}
+                          {activeTab === 2 && i === 1 && "Tailored CMS setups with intuitive admin panels for effortless content updates."}
+                          {activeTab === 2 && i === 2 && "Comprehensive audits and optimizations for lightning-fast load times and superior SEO."}
+                        </p>
                       </div>
-                      <p className="text-sm text-black/70 leading-relaxed">
-                        {activeTab === 0 && i === 0 && "In-depth user interviews, personas, and journey maps to uncover pain points and opportunities."}
-                        {activeTab === 0 && i === 1 && "High-fidelity wireframes and interactive prototypes to visualize and test design concepts."}
-                        {activeTab === 0 && i === 2 && "Rigorous testing sessions with real users to refine interfaces for optimal usability."}
-                        {activeTab === 1 && i === 0 && "Seamless integration of modern frontend frameworks with secure backend architectures."}
-                        {activeTab === 1 && i === 1 && "Fully responsive designs ensuring flawless performance across devices and browsers."}
-                        {activeTab === 1 && i === 2 && "Custom APIs and robust security protocols to handle data efficiently and safely."}
-                        {activeTab === 2 && i === 0 && "Engaging motion graphics and subtle interactions that enhance user delight without distraction."}
-                        {activeTab === 2 && i === 1 && "Tailored CMS setups with intuitive admin panels for effortless content updates."}
-                        {activeTab === 2 && i === 2 && "Comprehensive audits and optimizations for lightning-fast load times and superior SEO."}
-                      </p>
                     </motion.div>
                   ))}
                 </div>

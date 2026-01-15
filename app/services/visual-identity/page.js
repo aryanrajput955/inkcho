@@ -221,18 +221,6 @@ export default function VisualIdentityPage() {
                 <p className="text-lg text-[#1e4389]/85 leading-relaxed">
                   {cat.outcome}
                 </p>
-
-                <div className="space-y-4 pt-4">
-                  <p className="text-xs tracking-[0.25em] uppercase text-[#9d909a] font-medium">What's Included</p>
-                  <ul className="space-y-3">
-                    {cat.points.map((point, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#9a1b40] mt-2 flex-shrink-0" />
-                        <span className="text-[#1e4389]/80 leading-relaxed">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
 
               <div className="md:col-span-7 space-y-8">
