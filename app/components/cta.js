@@ -19,7 +19,7 @@ export default function CTASection() {
       <div className="relative z-10 max-w-3xl mx-auto">
         
         {/* Title */}
-        <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-[#1e4389] leading-tight mb-6">
+        <h2 className="text-3xl md:text-5xl lg:text-5xl font-serif font-medium text-[#1e4389] leading-tight mb-6">
           Let’s Create Something  
           <span className="relative inline-block ml-2 text-[#9a1b40] italic">
             <span className="relative z-10">extraordinary?</span>

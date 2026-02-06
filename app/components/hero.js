@@ -22,16 +22,20 @@ export default function Hero() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Use more repetitions for a super long loop
-  const duplicatedImages = useMemo(() => [
-    ...PORTFOLIO_IMAGES, ...PORTFOLIO_IMAGES, ...PORTFOLIO_IMAGES, ...PORTFOLIO_IMAGES
-  ], []);
+  // Use many more repetitions for truly infinite seamless loop
+  const duplicatedImages = useMemo(() => {
+    const repeats = [];
+    for (let i = 0; i < 20; i++) {
+      repeats.push(...PORTFOLIO_IMAGES);
+    }
+    return repeats;
+  }, []);
 
   // Responsive Width Calculation
   const isMobile = windowWidth > 0 && windowWidth < 640;
   const isTablet = windowWidth > 0 && windowWidth < 1024;
-  const CARD_WIDTH = isMobile ? 300 : isTablet ? 350 : 420;
-  const GAP = isMobile ? 16 : 32;
+  const CARD_WIDTH = isMobile ? 120 : isTablet ? 160 : 200;
+  const GAP = 0; // No gap for continuous roll
   const TOTAL_ITEM_WIDTH = CARD_WIDTH + GAP;
   const FULL_MARQUEE_WIDTH = PORTFOLIO_IMAGES.length * TOTAL_ITEM_WIDTH;
 
@@ -39,23 +43,24 @@ export default function Hero() {
 
   useAnimationFrame((time, delta) => {
     let currentX = x.get();
-    // Scroll left - increased speed
-    currentX -= 0.12 * delta; 
+    // Smooth consistent speed
+    currentX -= 0.08 * delta; 
     
-    // Smooth looping
+    // Seamless infinite looping - reset when one full cycle completes
     if (currentX <= -FULL_MARQUEE_WIDTH) {
       currentX += FULL_MARQUEE_WIDTH;
     }
+    
     x.set(currentX);
   });
 
   return (
-    <section className="relative min-h-[100dvh] w-full bg-[#e5e1d8] overflow-hidden flex flex-col items-center pt-28 pb-10 md:pb-20">
+    <section className="relative min-h-[100dvh] w-full bg-[#e5e1d8] overflow-hidden flex flex-col items-center pt-16 pb-6 md:pb-12">
       {/* Texture/Grain Overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.22] mix-blend-multiply z-[50] bg-[url('https://res.cloudinary.com/dzv9rqv01/image/upload/v1707212457/noise_q9u9ue.png')]" />
 
       {/* Main content Layer - Top */}
-      <div className="relative z-30 flex flex-col items-center justify-center px-6 text-center max-w-7xl mx-auto mb-8 md:mb-16 flex-grow">
+      <div className="relative z-30 flex flex-col items-center justify-center px-6 text-center max-w-7xl mx-auto mb-8 md:mb-12 flex-grow">
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -65,16 +70,16 @@ export default function Hero() {
           <img
             src="/text-hero-png.png"
             alt="Hero Text"
-            className="w-full max-w-[850px] h-auto object-contain mb-8 md:mb-12 select-none"
+            className="w-full max-w-[250px] sm:max-w-[350px] md:max-w-[450px] h-auto object-contain mb-8 md:mb-10 select-none"
           />
 
           {/* Buttons with refined interactions */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-8 w-full sm:w-auto">
-            <button className="btn-primary w-full sm:w-auto !bg-[#1e4389] !text-white shadow-xl shadow-[#1e4389]/20 hover:shadow-[#9a1b40]/20 active:scale-95">
+            <button className="btn-primary w-full sm:w-auto !px-8 !py-3 !text-xs sm:!text-sm !bg-[#1e4389] !text-white shadow-xl shadow-[#1e4389]/20 hover:shadow-[#9a1b40]/20 active:scale-95">
               <span className="relative z-10">View Work</span>
               <div className="btn-fill-animation !bg-[#9a1b40]" />
             </button>
-            <button className="btn-primary w-full sm:w-auto !bg-[#9a1b40] !text-white shadow-xl shadow-[#9a1b40]/20 hover:shadow-[#1e4389]/20 active:scale-95">
+            <button className="btn-primary w-full sm:w-auto !px-8 !py-3 !text-xs sm:!text-sm !bg-[#9a1b40] !text-white shadow-xl shadow-[#9a1b40]/20 hover:shadow-[#1e4389]/20 active:scale-95">
               <span className="relative z-10">Contact</span>
               <div className="btn-fill-animation !bg-[#1e4389]" />
             </button>
@@ -83,11 +88,21 @@ export default function Hero() {
       </div>
 
       {/* Professional 3D Marquee - Below Buttons */}
-      <div className="relative w-full h-[380px] sm:h-[450px] lg:h-[550px] flex items-center justify-center perspective-[2500px] overflow-visible select-none">
+      <div className="relative w-full h-[200px] sm:h-[250px] lg:h-[320px] flex items-center justify-center perspective-[2500px] overflow-hidden select-none">
+        
+        {/* Background strip to cover gaps */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-transparent pointer-events-none" />
+        
+        {/* Edge fade masks for infinite effect */}
+        <div className="absolute left-0 top-0 bottom-0 w-32 sm:w-48 bg-gradient-to-r from-[#e5e1d8] to-transparent pointer-events-none z-40" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 sm:w-48 bg-gradient-to-l from-[#e5e1d8] to-transparent pointer-events-none z-40" />
         
         <motion.div 
-          className="flex absolute left-0 gap-8"
-          style={{ x, transformStyle: "preserve-3d" }}
+          className="flex absolute left-0"
+          style={{ 
+            x, 
+            transformStyle: "preserve-3d"
+          }}
         >
           {duplicatedImages.map((src, index) => (
             <ProjectCard 
@@ -118,23 +133,47 @@ function ProjectCard({ src, index, x, windowWidth, itemWidth }) {
     return currentPos + (itemWidth / 2) - (windowWidth / 2);
   });
 
-  // Inward Curve (Concave) Transforms
-  // PROFESSIONAL PHYSICS CONFIG
+  // SHALLOW CENTER, BROAD ENDS - Enhanced curve effect
   const springConfig = { stiffness: 120, damping: 25, mass: 0.8 };
 
-  // Raw Transforms (Target Values)
-  const targetScale = useTransform(relativeX, [-1000, 0, 1000], [1.1, 0.92, 1.1]); 
-  const targetZ = useTransform(relativeX, [-1000, 0, 1000], [80, -220, 80]);
-  const targetRotateY = useTransform(relativeX, [-1000, 0, 1000], ["-20deg", "0deg", "20deg"]);
+  // SHALLOW at center (smaller scale), BROAD at ends (larger scale)
+  const targetScale = useTransform(
+    relativeX, 
+    [-1200, -600, 0, 600, 1200], 
+    [1.3, 1.1, 0.85, 1.1, 1.3]  // Small at center, large at edges
+  ); 
+  
+  // Z-depth: Pushed BACK at center, FORWARD at ends
+  const targetZ = useTransform(
+    relativeX, 
+    [-1200, -600, 0, 600, 1200], 
+    [150, 50, -280, 50, 150]  // Far back at center, closer at edges
+  );
+  
+  // Rotation follows the curve - reduced angle to minimize gaps
+  const targetRotateY = useTransform(
+    relativeX, 
+    [-1200, -600, 0, 600, 1200], 
+    ["-12deg", "-6deg", "0deg", "6deg", "12deg"]
+  );
   
   // Smoothed Transforms (Spring Physics)
   const scale = useSpring(targetScale, springConfig);
   const translateZ = useSpring(targetZ, springConfig);
   const rotateY = useSpring(targetRotateY, springConfig);
 
-  // Focus Effects
-  const opacity = useTransform(relativeX, [-1200, -600, 0, 600, 1200], [0, 0.8, 1, 0.8, 0]);
-  const blur = useTransform(relativeX, [-900, -300, 0, 300, 900], ["4px", "0px", "0px", "0px", "4px"]);
+  // Focus Effects - center is most visible
+  const opacity = useTransform(
+    relativeX, 
+    [-1400, -800, 0, 800, 1400], 
+    [0.3, 0.9, 1, 0.9, 0.3]
+  );
+  
+  const blur = useTransform(
+    relativeX, 
+    [-1000, -400, 0, 400, 1000], 
+    ["6px", "2px", "0px", "2px", "6px"]
+  );
 
   // Subtle highlight moves with the card
   const highlightX = useTransform(relativeX, [-400, 0, 400], ["-120%", "0%", "120%"]);
@@ -148,10 +187,11 @@ function ProjectCard({ src, index, x, windowWidth, itemWidth }) {
         opacity,
         filter: useTransform(blur, (v) => `blur(${v})`),
         transformStyle: "preserve-3d",
-        zIndex: useTransform(translateZ, (z) => Math.round(z + 1000))
+        zIndex: useTransform(translateZ, (z) => Math.round(z + 1000)),
+        marginRight: "-3px" // Overlap to prevent gaps during 3D rotation
       }}
-      className="relative aspect-[4/5] w-[300px] sm:w-[350px] lg:w-[420px] flex-shrink-0 overflow-hidden 
-                 rounded-xl shadow-2xl bg-black/5 group cursor-pointer border border-white/5"
+      className="relative aspect-[4/5] w-[120px] sm:w-[160px] lg:w-[200px] flex-shrink-0 overflow-hidden 
+                 shadow-2xl bg-black/5 group cursor-pointer"
     >
       <img
         src={src}
@@ -170,4 +210,3 @@ function ProjectCard({ src, index, x, windowWidth, itemWidth }) {
     </motion.div>
   );
 }
-

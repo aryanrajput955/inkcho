@@ -73,7 +73,7 @@ export default function ScrollHijackGallery() {
           {/* Header */}
           <div className="text-center mb-10 md:mb-16">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mb-4">
-              <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold uppercase text-[#1e4389]">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-serif font-medium uppercase text-[#1e4389]">
                 A glimpse into
               </h2>
               <video
@@ -86,9 +86,9 @@ export default function ScrollHijackGallery() {
               />
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold uppercase text-[#1e4389]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-serif font-medium uppercase text-[#1e4389]">
               our <span className="relative inline-block">
-                <span className="relative z-10 text-[#9a1b40]  font-light">creations</span>
+                <span className="relative z-10 text-[#9a1b40] font-light">creations</span>
                 <img 
                   src="/red-circle.png" 
                   alt="" 

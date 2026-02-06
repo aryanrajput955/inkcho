@@ -14,7 +14,7 @@ export default function ScrollGalleryMobile() {
 
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-serif font-bold tracking-tight text-[#1e4389]">
+          <h2 className="text-3xl font-serif font-medium tracking-tight text-[#1e4389]">
             Our <span className="text-[#9a1b40] italic">Creations</span>
           </h2>
           <p className="mt-4 text-black/80 text-base md:text-lg">

@@ -114,7 +114,7 @@ export default function TestimonialCarousel() {
   return (
     <section className="bg-[#f7f4ec] py-20">
       <div className="mx-auto w-full max-w-4xl px-6 md:px-10">
-        <h2 className="text-center font-serif font-medium tracking-tight text-[#1e4389] text-4xl md:text-5xl mb-12">
+        <h2 className="text-center font-serif font-medium tracking-tight text-[#1e4389] text-3xl md:text-5xl mb-12">
           What Our Clients <br />
           <span className="relative inline-block mt-2">
             <span className="relative z-10 text-[#9a1b40]">Say</span>
