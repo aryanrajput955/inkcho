@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -70,6 +71,12 @@ export default function DigitalExperiencesPage() {
       images: ["/s2.jpg", "/s2.jpg", "/s2.jpg", "/s2.jpg"],
     },
   ];
+  const scroll = (direction) => {
+    const container = scrollRefs.current[activeTab];
+    if (container) {
+      container.scrollBy({ left: direction * 400, behavior: "smooth" });
+    }
+  };
 
   return (
     <main className="min-h-screen bg-[#f7f4ec] text-black overflow-x-hidden">
@@ -221,11 +228,11 @@ export default function DigitalExperiencesPage() {
 
             <div className="grid md:grid-cols-12 gap-14 items-start">
               <div className="md:col-span-5 space-y-8">
-                <h2 className="text-3xl md:text-5xl font-serif text-[#9a1b40] leading-tight">
+                <h2 className="text-3xl md:text-5xl font-serif text-black leading-tight">
                   {categories[activeTab].title}
                 </h2>
 
-                <p className="text-lg text-black/85 leading-relaxed">
+                <p className="text-lg text-[#9a1b40] leading-relaxed">
                   {categories[activeTab].outcome}
                 </p>
               </div>
@@ -238,7 +245,7 @@ export default function DigitalExperiencesPage() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: i * 0.1 }}
-                      className="group relative p-8 rounded-2xl border border-black/10 bg-white/60 backdrop-blur hover:shadow-lg transition-all duration-700 ease-out overflow-hidden"
+                      className="group relative p-8 rounded-2xl border border-black/10 bg-[#EED0D7] backdrop-blur hover:shadow-lg transition-all duration-700 ease-out overflow-hidden"
                     >
                       {/* Background Image with Overlay */}
                       <div 
@@ -250,10 +257,10 @@ export default function DigitalExperiencesPage() {
                       {/* Content */}
                       <div className="relative z-10">
                         <div className="flex items-start justify-between mb-4">
-                          <p className="text-lg font-medium transition-colors duration-700 ease-out text-black group-hover:text-white">{point}</p>
-                          <span className="text-xs tracking-[0.3em] uppercase font-medium transition-colors duration-700 ease-out text-[#9d909a] group-hover:text-white/80">0{i + 1}</span>
+                          <p className="text-lg font-medium transition-colors duration-700 ease-out text-[#9a1b40] group-hover:text-white">{point}</p>
+                          <span className="text-xs tracking-[0.3em] uppercase font-medium transition-colors duration-700 ease-out text-[#9a1b40] group-hover:text-white/80">0{i + 1}</span>
                         </div>
-                        <p className="text-sm leading-relaxed transition-colors duration-700 ease-out text-black/70 group-hover:text-white/90">
+                        <p className="text-sm leading-relaxed transition-colors duration-700 ease-out text-[#9a1b40] group-hover:text-white/90">
                           {activeTab === 0 && i === 0 && "In-depth user interviews, personas, and journey maps to uncover pain points and opportunities."}
                           {activeTab === 0 && i === 1 && "High-fidelity wireframes and interactive prototypes to visualize and test design concepts."}
                           {activeTab === 0 && i === 2 && "Rigorous testing sessions with real users to refine interfaces for optimal usability."}
@@ -277,9 +284,25 @@ export default function DigitalExperiencesPage() {
                 <p className="text-sm uppercase tracking-wide text-[#9d909a] font-medium">
                   Digital Experiences in Action
                 </p>
-                <p className="text-xs tracking-[0.3em] uppercase text-[#9d909a] font-medium">
-                  {categories[activeTab].projects.join(" · ")}
-                </p>
+                <div className="flex items-center gap-6">
+                  <p className="hidden md:block text-xs tracking-[0.3em] uppercase text-[#9d909a] font-medium">
+                    {categories[activeTab].projects.join(" · ")}
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <button 
+                      onClick={() => scroll(-1)}
+                      className="w-10 h-10 rounded-full bg-white border border-[#9a1b40] flex items-center justify-center text-[#9a1b40] hover:bg-[#9a1b40] hover:text-white transition-all duration-300"
+                    >
+                      <ChevronLeft size={20} />
+                    </button>
+                    <button 
+                      onClick={() => scroll(1)}
+                      className="w-10 h-10 rounded-full bg-white border border-[#9a1b40] flex items-center justify-center text-[#9a1b40] hover:bg-[#9a1b40] hover:text-white transition-all duration-300"
+                    >
+                      <ChevronRight size={20} />
+                    </button>
+                  </div>
+                </div>
               </div>
 
               <div

@@ -1,18 +1,12 @@
-import { DM_Serif_Display, Source_Sans_3 } from "next/font/google";
+import { Dancing_Script } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/footer";
 import Navigation from "./components/navbar";
 
-const headingFont = DM_Serif_Display({
+const scriptFont = Dancing_Script({
   subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-heading",
-});
-
-const bodyFont = Source_Sans_3({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-body",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-script",
 });
 
 export const metadata = {
@@ -23,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   
   return (
-    <html lang="en" className={`${headingFont.variable} ${bodyFont.variable}`}>
+    <html lang="en" className={`${scriptFont.variable}`}>
       <body className="antialiased font-[var(--font-body)]">
         <Navigation />
         {children}

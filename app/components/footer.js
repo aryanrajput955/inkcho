@@ -16,34 +16,15 @@ export default function Footer() {
     <footer className="bg-[#f7f4ec] text-black border-t border-[#d6d3cd]">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 pt-24 pb-16">
 
-        {/* === Top CTA === */}
-        <div className="mb-24">
-          <h2 className="text-4xl md:text-6xl font-serif leading-tight tracking-tight text-[#1e4389] mb-6">
-            Ready to create <br />
-            <span className="text-[#9a1b40] italic font-serif font-normal">
-              something extraordinary?
-            </span>
-          </h2>
 
-          <a
-            href="/contact"
-            className="group inline-flex items-center gap-2 text-base font-light border-b border-[#d6d3cd] hover:border-[#9a1b40] transition-all"
-          >
-            <span>Get in touch</span>
-            <ArrowRight
-              size={18}
-              className="group-hover:translate-x-1 transition-transform text-[#9a1b40]"
-            />
-          </a>
-        </div>
 
         {/* === Main Grid === */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 mb-24">
 
           {/* Brand + Newsletter */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="text-4xl font-serif tracking-wide text-[#1e4389]">
-              INKCHO
+            <div>
+              <img src="/logo.png" alt="INKCHO" className="h-24 w-auto mb-4" />
             </div>
 
             <p className="text-black max-w-sm font-light">

@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -46,17 +47,12 @@ export default function VisualIdentityPage() {
     return () => cleanupFns.forEach((fn) => fn && fn());
   }, []);
 
-  const scrollLeft = (index) => {
-    const container = scrollRefs.current[index];
-    if (container) {
-      container.scrollBy({ left: -400, behavior: 'smooth' });
-    }
-  };
+  const [activeTab, setActiveTab] = useState(0);
 
-  const scrollRight = (index) => {
-    const container = scrollRefs.current[index];
+  const scroll = (direction) => {
+    const container = scrollRefs.current[activeTab];
     if (container) {
-      container.scrollBy({ left: 400, behavior: 'smooth' });
+      container.scrollBy({ left: direction * 400, behavior: "smooth" });
     }
   };
 
@@ -201,54 +197,89 @@ export default function VisualIdentityPage() {
       </section>
 
       {/* ------------------ CATEGORIES ------------------ */}
-      <section className="px-6 md:px-12 lg:px-28 space-y-44 pb-40">
-        {categories.map((cat, index) => (
-          <section key={index} className="max-w-7xl mx-auto space-y-16">
+      {/* ------------------ CATEGORIES ------------------ */}
+      <section className="px-6 md:px-12 lg:px-28 pb-40">
+        <div className="max-w-7xl mx-auto space-y-16">
+          
+          {/* Tab Buttons */}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
+            {categories.map((cat, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveTab(index)}
+                className={`px-8 py-4 rounded-full text-sm tracking-[0.15em] uppercase font-medium transition-all duration-300 ${
+                  activeTab === index
+                    ? "bg-[#9a1b40] text-white shadow-lg scale-105"
+                    : "bg-white/60 text-black border border-black/10 hover:bg-white/80 hover:shadow-md"
+                }`}
+              >
+                {cat.title}
+              </button>
+            ))}
+          </div>
 
+          {/* Active Category Content */}
+          <motion.section
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="space-y-16"
+          >
             <div className="flex items-center gap-6">
               <span className="text-xs tracking-[0.3em] uppercase text-[#9d909a] font-medium">
-                0{index + 1}
+                0{activeTab + 1}
               </span>
               <span className="flex-1 h-px bg-black/10" />
             </div>
 
             <div className="grid md:grid-cols-12 gap-14 items-start">
               <div className="md:col-span-5 space-y-8">
-                <h2 className="text-3xl md:text-5xl font-serif text-[#9a1b40] leading-tight">
-                  {cat.title}
+                <h2 className="text-3xl md:text-5xl font-serif text-black leading-tight">
+                  {categories[activeTab].title}
                 </h2>
 
-                <p className="text-lg text-[#1e4389]/85 leading-relaxed">
-                  {cat.outcome}
+                <p className="text-lg text-[#9a1b40] leading-relaxed">
+                  {categories[activeTab].outcome}
                 </p>
               </div>
 
               <div className="md:col-span-7 space-y-8">
                 <div className="grid gap-6">
-                  {cat.points.map((point, i) => (
+                  {categories[activeTab].points.map((point, i) => (
                     <motion.div
                       key={i}
                       initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
+                      animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: i * 0.1 }}
-                      className="p-8 rounded-2xl border border-black/10 bg-white/60 backdrop-blur hover:shadow-lg transition-shadow duration-300"
+                      className="group relative p-8 rounded-2xl border border-black/10 bg-[#EED0D7] backdrop-blur hover:shadow-lg transition-all duration-700 ease-out overflow-hidden"
                     >
-                      <div className="flex items-start justify-between mb-4">
-                        <p className="text-lg text-[#1e4389] font-medium">{point}</p>
-                        <span className="text-xs tracking-[0.3em] uppercase text-[#9d909a] font-medium">0{i + 1}</span>
+                      {/* Background Image with Overlay */}
+                      <div 
+                        className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out"
+                        style={{ backgroundImage: `url(${categories[activeTab].images[i]})` }}
+                      />
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out" />
+
+                      {/* Content */}
+                      <div className="relative z-10">
+                        <div className="flex items-start justify-between mb-4">
+                          <p className="text-lg font-medium transition-colors duration-700 ease-out text-[#9a1b40] group-hover:text-white">{point}</p>
+                          <span className="text-xs tracking-[0.3em] uppercase font-medium transition-colors duration-700 ease-out text-[#9a1b40] group-hover:text-white/80">0{i + 1}</span>
+                        </div>
+                        <p className="text-sm leading-relaxed transition-colors duration-700 ease-out text-[#9a1b40] group-hover:text-white/90">
+                           {activeTab === 0 && i === 0 && "Unique logomarks crafted to embody your brand's essence with precision and purpose."}
+                           {activeTab === 0 && i === 1 && "Flexible logo variations optimized for every application — from favicon to billboard."}
+                           {activeTab === 0 && i === 2 && "Comprehensive usage rules ensuring your identity remains consistent across all touchpoints."}
+                           {activeTab === 1 && i === 0 && "Curated typeface pairings that reinforce hierarchy, readability, and brand personality."}
+                           {activeTab === 1 && i === 1 && "Strategic colour systems that evoke emotion and enhance brand recognition."}
+                           {activeTab === 1 && i === 2 && "Ready-to-use graphic elements, patterns, and icons that extend your visual language."}
+                           {activeTab === 2 && i === 0 && "Distinctive illustration approaches that add character and depth to your brand story."}
+                           {activeTab === 2 && i === 1 && "Animation principles and transitions that bring static elements to dynamic life."}
+                           {activeTab === 2 && i === 2 && "Creative direction frameworks that guide photography, video, and all visual content."}
+                        </p>
                       </div>
-                      <p className="text-sm text-[#1e4389]/70 leading-relaxed">
-                        {index === 0 && i === 0 && "Unique logomarks crafted to embody your brand's essence with precision and purpose."}
-                        {index === 0 && i === 1 && "Flexible logo variations optimized for every application — from favicon to billboard."}
-                        {index === 0 && i === 2 && "Comprehensive usage rules ensuring your identity remains consistent across all touchpoints."}
-                        {index === 1 && i === 0 && "Curated typeface pairings that reinforce hierarchy, readability, and brand personality."}
-                        {index === 1 && i === 1 && "Strategic colour systems that evoke emotion and enhance brand recognition."}
-                        {index === 1 && i === 2 && "Ready-to-use graphic elements, patterns, and icons that extend your visual language."}
-                        {index === 2 && i === 0 && "Distinctive illustration approaches that add character and depth to your brand story."}
-                        {index === 2 && i === 1 && "Animation principles and transitions that bring static elements to dynamic life."}
-                        {index === 2 && i === 2 && "Creative direction frameworks that guide photography, video, and all visual content."}
-                      </p>
                     </motion.div>
                   ))}
                 </div>
@@ -261,44 +292,37 @@ export default function VisualIdentityPage() {
                 <p className="text-sm uppercase tracking-wide text-[#9d909a] font-medium">
                   Visual Identity in Action
                 </p>
-                <div className="flex items-center gap-4">
-                  <p className="text-xs tracking-[0.3em] uppercase text-[#9d909a] font-medium">
-                    {cat.projects.join(" · ")}
+                <div className="flex items-center gap-6">
+                  <p className="hidden md:block text-xs tracking-[0.3em] uppercase text-[#9d909a] font-medium">
+                    {categories[activeTab].projects.join(" · ")}
                   </p>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => scrollLeft(index)}
-                      className="w-10 h-10 rounded-full border border-[#9a1b40]/30 bg-white/80 backdrop-blur flex items-center justify-center hover:bg-[#9a1b40] hover:border-[#9a1b40] transition-all duration-300 group"
-                      aria-label="Scroll left"
+                  <div className="flex items-center gap-3">
+                    <button 
+                      onClick={() => scroll(-1)}
+                      className="w-10 h-10 rounded-full bg-white border border-[#9a1b40] flex items-center justify-center text-[#9a1b40] hover:bg-[#9a1b40] hover:text-white transition-all duration-300"
                     >
-                      <svg className="w-5 h-5 text-[#9a1b40] group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                      </svg>
+                      <ChevronLeft size={20} />
                     </button>
-                    <button
-                      onClick={() => scrollRight(index)}
-                      className="w-10 h-10 rounded-full border border-[#9a1b40]/30 bg-white/80 backdrop-blur flex items-center justify-center hover:bg-[#9a1b40] hover:border-[#9a1b40] transition-all duration-300 group"
-                      aria-label="Scroll right"
+                    <button 
+                      onClick={() => scroll(1)}
+                      className="w-10 h-10 rounded-full bg-white border border-[#9a1b40] flex items-center justify-center text-[#9a1b40] hover:bg-[#9a1b40] hover:text-white transition-all duration-300"
                     >
-                      <svg className="w-5 h-5 text-[#9a1b40] group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
+                      <ChevronRight size={20} />
                     </button>
                   </div>
                 </div>
               </div>
 
               <div
-                ref={(el) => (scrollRefs.current[index] = el)}
+                ref={(el) => (scrollRefs.current[activeTab] = el)}
                 className="relative overflow-x-auto no-scrollbar"
               >
                 <div className="flex gap-8 pb-4">
-                  {cat.images.map((src, i) => (
+                  {categories[activeTab].images.map((src, i) => (
                     <motion.div
                       key={i}
                       initial={{ opacity: 0, y: 24 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
+                      animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: i * 0.08 }}
                       className="flex-shrink-0 w-[280px] md:w-[380px] lg:w-[440px] h-[220px] md:h-[280px] lg:h-[320px] rounded-xl overflow-hidden bg-gray-200 shadow-lg"
                     >
@@ -312,8 +336,8 @@ export default function VisualIdentityPage() {
                 </div>
               </div>
             </div>
-          </section>
-        ))}
+          </motion.section>
+        </div>
       </section>
 
       {/* ------------------ PROCESS SECTION ------------------ */}

@@ -11,7 +11,7 @@ export default function CardsSection() {
         <div className="mb-16">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1e4389] leading-tight tracking-tight">
             Pick Your <br />
-            <span className="text-[#9a1b40] italic font-serif">Creative Direction</span>
+            <span className="text-[#9a1b40] font-light">Creative Direction</span>
           </h2>
         </div>
 
@@ -36,13 +36,13 @@ export default function CardsSection() {
                   Fixed Scope
                 </span>
 
-                <h2 className="text-5xl md:text-6xl font-semibold mb-6 text-[#9a1b40] group-hover:text-white transition-colors duration-700">
-                  Brand Foundations
+                <h2 className="text-5xl md:text-6xl font-light mb-6 text-[#9a1b40] group-hover:text-white transition-all duration-700 group-hover:[text-shadow:0_0_1px_currentColor]">
+                  Brand<br/> Foundations
                 </h2>
               </div>
 
               <div className="mt-10">
-                <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-14 h-14 group-hover:w-44 group-hover:bg-[#9a1b40] group-hover:text-white group-hover:border-white overflow-hidden">
+                <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-14 h-14 group-hover:w-44 group-hover:bg-[#1e4389] group-hover:text-white group-hover:border-white overflow-hidden">
                   <ArrowRight className="w-5 h-5 absolute left-1/2 -translate-x-1/2 text-black group-hover:text-white transition-all duration-500 group-hover:left-6 group-hover:rotate-[-45deg]" />
                   <span className="opacity-0 group-hover:opacity-100 text-sm font-medium ml-10 transition-all duration-500 whitespace-nowrap text-black group-hover:text-white">
                     Work With Us
@@ -70,13 +70,13 @@ export default function CardsSection() {
                   Flexible Subscription
                 </span>
 
-                <h2 className="text-5xl md:text-6xl font-semibold mb-6 text-[#9a1b40] group-hover:text-white transition-colors duration-700">
-                  Visual Identity
+                <h2 className="text-5xl md:text-6xl font-light mb-6 text-[#9a1b40] group-hover:text-white transition-all duration-700 group-hover:[text-shadow:0_0_1px_currentColor]">
+                  Visual<br/> Identity
                 </h2>
               </div>
 
               <div className="mt-10">
-                <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-14 h-14 group-hover:w-44 group-hover:bg-[#9a1b40] group-hover:text-white group-hover:border-white overflow-hidden">
+                <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-14 h-14 group-hover:w-44 group-hover:bg-[#1e4389] group-hover:text-white group-hover:border-white overflow-hidden">
                   <ArrowRight className="w-5 h-5 absolute left-1/2 -translate-x-1/2 text-black group-hover:text-white transition-all duration-500 group-hover:left-6 group-hover:rotate-[-45deg]" />
                   <span className="opacity-0 group-hover:opacity-100 text-sm font-medium ml-10 transition-all duration-500 whitespace-nowrap text-black group-hover:text-white">
                     Work With Us
@@ -104,13 +104,13 @@ export default function CardsSection() {
                   Strategic Development
                 </span>
 
-                <h2 className="text-5xl md:text-6xl font-semibold mb-6 text-[#9a1b40] group-hover:text-white transition-colors duration-700">
-                  Digital Experiences
+                <h2 className="text-5xl md:text-6xl font-light mb-6 text-[#9a1b40] group-hover:text-white transition-all duration-700 group-hover:[text-shadow:0_0_1px_currentColor]">
+                  Digital<br/>Experiences
                 </h2>
               </div>
 
               <div className="mt-10">
-                <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-14 h-14 group-hover:w-44 group-hover:bg-[#9a1b40] group-hover:text-white group-hover:border-white overflow-hidden">
+                <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-14 h-14 group-hover:w-44 group-hover:bg-[#1e4389] group-hover:text-white group-hover:border-white overflow-hidden">
                   <ArrowRight className="w-5 h-5 absolute left-1/2 -translate-x-1/2 text-black group-hover:text-white transition-all duration-500 group-hover:left-6 group-hover:rotate-[-45deg]" />
                   <span className="opacity-0 group-hover:opacity-100 text-sm font-medium ml-10 transition-all duration-500 whitespace-nowrap text-black group-hover:text-white">
                     Work With Us
@@ -138,13 +138,13 @@ export default function CardsSection() {
                   Campaign-Driven
                 </span>
 
-                <h2 className="text-5xl md:text-6xl font-semibold mb-6 text-[#9a1b40] group-hover:text-white transition-colors duration-700">
-                  Creative Technology
+                <h2 className="text-5xl md:text-6xl font-light mb-6 text-[#9a1b40] group-hover:text-white transition-all duration-700 group-hover:[text-shadow:0_0_1px_currentColor]">
+                  Creative<br/> Technology
                 </h2>
               </div>
 
               <div className="mt-10">
-                <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-14 h-14 group-hover:w-44 group-hover:bg-[#9a1b40] group-hover:text-white group-hover:border-white overflow-hidden">
+                <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-14 h-14 group-hover:w-44 group-hover:bg-[#1e4389] group-hover:text-white group-hover:border-white overflow-hidden">
                   <ArrowRight className="w-5 h-5 absolute left-1/2 -translate-x-1/2 text-black group-hover:text-white transition-all duration-500 group-hover:left-6 group-hover:rotate-[-45deg]" />
                   <span className="opacity-0 group-hover:opacity-100 text-sm font-medium ml-10 transition-all duration-500 whitespace-nowrap text-black group-hover:text-white">
                     Work With Us

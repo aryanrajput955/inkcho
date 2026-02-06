@@ -50,7 +50,7 @@ export default function AnimatedMenu() {
       {/* CUSTOM CURSOR */}
       <div
         ref={cursorRef}
-        className={`fixed w-4 h-4 bg-[#e8e2d9] rounded-full pointer-events-none z-[100] transition-transform duration-200 ${isOpen ? 'scale-150' : 'scale-100'}`}
+        className={`hidden md:block fixed w-4 h-4 bg-[#e8e2d9] rounded-full pointer-events-none z-[100] transition-transform duration-200 ${isOpen ? 'scale-150' : 'scale-100'}`}
         style={{
           left: `${cursorPos.x}px`,
           top: `${cursorPos.y}px`,
@@ -61,15 +61,15 @@ export default function AnimatedMenu() {
 
       {/* CLOSED TOP NAV */}
       {!isOpen && (
-        <nav className="fixed top-0 left-0 right-0 z-50 mix-blend-difference">
-          <div className="flex items-center justify-between px-12 py-8">
+        <nav className="fixed top-0 left-0 right-0 z-50">
+          <div className="flex items-center justify-between px-6 py-6 md:px-12 md:py-8">
             <Link href="/">
-              <div className="text-sm font-light tracking-[0.3em] text-white">INKCHO</div>
+              <img src="/logo.png" alt="INKCHO" className="h-10 md:h-20 w-auto" />
             </Link>
 
             <button
               onClick={toggleMenu}
-              className="text-sm font-light tracking-[0.2em] text-white hover:opacity-60 transition-opacity"
+              className="text-sm font-light tracking-[0.2em] text-black hover:opacity-60 transition-opacity"
             >
               MENU
             </button>

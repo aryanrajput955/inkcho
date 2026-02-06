@@ -29,10 +29,11 @@ export default function ScrollHijackGallery() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top top',
-          end: '+=500%',
+          end: () => window.innerWidth > 1600 ? '+=200%' : '+=500%',
           scrub: true,
           pin: true,
-          anticipatePin: 1
+          anticipatePin: 1,
+          invalidateOnRefresh: true
         }
       })
 
@@ -81,12 +82,19 @@ export default function ScrollHijackGallery() {
                 loop
                 muted
                 playsInline
-                className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 sm:mx-3 rounded-xl"
+                className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 sm:mx-3 rounded-2xl"
               />
             </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold uppercase text-[#1e4389]">
-              our <span className="text-[#9a1b40] italic font-serif">creations</span>
+              our <span className="relative inline-block">
+                <span className="relative z-10 text-[#9a1b40]  font-light">creations</span>
+                <img 
+                  src="/red-circle.png" 
+                  alt="" 
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] max-w-none object-contain pointer-events-none" 
+                />
+              </span>
             </h2>
 
             <p className="mt-4 text-base sm:text-lg md:text-xl text-black max-w-2xl mx-auto">

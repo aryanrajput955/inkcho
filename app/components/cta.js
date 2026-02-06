@@ -22,7 +22,12 @@ export default function CTASection() {
         <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-[#1e4389] leading-tight mb-6">
           Let’s Create Something  
           <span className="relative inline-block ml-2 text-[#9a1b40] italic">
-            Timeless
+            <span className="relative z-10">extraordinary?</span>
+            <img 
+              src="/red-circle.png" 
+              alt="" 
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[150%] max-w-none pointer-events-none" 
+            />
             <motion.span
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
