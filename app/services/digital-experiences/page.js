@@ -9,9 +9,8 @@ const fadeUp = {
   show: { opacity: 1, y: 0 },
 };
 
-export default function DigitalExperiencesPage() {
+export default function VisualIdentityPage() {
   const scrollRefs = useRef([]);
-  const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => {
     const containers = scrollRefs.current;
@@ -48,29 +47,8 @@ export default function DigitalExperiencesPage() {
     return () => cleanupFns.forEach((fn) => fn && fn());
   }, []);
 
-  const categories = [
-    {
-      title: "UX & Interface Design",
-      outcome: "We design intuitive interfaces that guide users seamlessly toward meaningful interactions.",
-      points: ["User Research & Journey Mapping", "Wireframing & Prototyping", "Usability Testing & Iteration"],
-      projects: ["Solara App", "INKCHO Dashboard"],
-      images: ["/s2.jpg", "/s2.jpg", "/s2.jpg", "/s2.jpg"],
-    },
-    {
-      title: "Custom Web Development",
-      outcome: "We build robust, scalable websites tailored to your business goals and user needs.",
-      points: ["Frontend & Backend Integration", "Responsive & Cross-Platform Compatibility", "API Development & Security"],
-      projects: ["Oak & Clay Site", "Solara Platform"],
-      images: ["/s2.jpg", "/s2.jpg", "/s2.jpg", "/s2.jpg"],
-    },
-    {
-      title: "Animation, CMS & Performance",
-      outcome: "We enhance experiences with dynamic animations, efficient content management, and optimized performance.",
-      points: ["Motion Design & Micro-Interactions", "CMS Implementation & Customization", "Performance Auditing & Optimization"],
-      projects: ["INKCHO Portal", "Oak & Clay E-commerce"],
-      images: ["/s2.jpg", "/s2.jpg", "/s2.jpg", "/s2.jpg"],
-    },
-  ];
+  const [activeTab, setActiveTab] = useState(0);
+
   const scroll = (direction) => {
     const container = scrollRefs.current[activeTab];
     if (container) {
@@ -78,8 +56,32 @@ export default function DigitalExperiencesPage() {
     }
   };
 
+  const categories = [
+    {
+      title: "Logo & Identity Systems",
+      outcome: "We create marks that become unmistakable symbols of your brand.",
+      points: ["Primary Logo Design", "System Variations", "Brand Guidelines"],
+      projects: ["INKCHO", "Solara"],
+      images: ["/s2.jpg", "/s2.jpg", "/s2.jpg", "/s2.jpg"],
+    },
+    {
+      title: "Typography, Colour & Brand Assets",
+      outcome: "We build visual languages that communicate before words do.",
+      points: ["Type Systems", "Colour Palettes", "Asset Libraries"],
+      projects: ["Oak & Clay", "INKCHO"],
+      images: ["/s2.jpg", "/s2.jpg", "/s2.jpg", "/s2.jpg"],
+    },
+    {
+      title: "Illustration, Motion & Art Direction",
+      outcome: "We craft visual narratives that bring brands to life.",
+      points: ["Illustration Style", "Motion Guidelines", "Art Direction"],
+      projects: ["Solara", "Oak & Clay"],
+      images: ["/s2.jpg", "/s2.jpg", "/s2.jpg", "/s2.jpg"],
+    },
+  ];
+
   return (
-    <main className="min-h-screen bg-[#f7f4ec] text-black overflow-x-hidden">
+    <main className="min-h-screen bg-[#f7f4ec] text-[#1e4389] overflow-x-hidden">
 
       {/* ------------------ HERO ------------------ */}
       <section className="pt-36 pb-32 px-6 md:px-12 lg:px-28">
@@ -93,27 +95,27 @@ export default function DigitalExperiencesPage() {
           >
             <div className="flex items-center gap-4 text-xs tracking-[0.22em] uppercase text-[#9d909a] font-medium">
               <span className="h-px w-8 bg-[#9d909a]/60" />
-              <span>Service · Digital Experiences</span>
+              <span>Service · Visual Identity</span>
             </div>
 
             <h1 className="text-6xl md:text-8xl font-serif leading-[0.95] text-[#9a1b40]">
-              Digital
-              <span className="block">Experiences</span>
+              Visual
+              <span className="block">Identity</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-black font-light leading-relaxed">
-              Designing immersive online spaces that connect and convert.
+            <p className="text-xl md:text-2xl text-[#1e4389] font-light leading-relaxed">
+              Crafting a distinctive look that speaks, resonates, and stays.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">
               <div className="px-6 py-3 rounded-full border border-black/10 bg-white/60 backdrop-blur">
-                <p className="text-sm text-black font-medium">UX Design</p>
+                <p className="text-sm text-[#1e4389] font-medium">Logo Systems</p>
               </div>
               <div className="px-6 py-3 rounded-full border border-black/10 bg-white/60 backdrop-blur">
-                <p className="text-sm text-black font-medium">Web Development</p>
+                <p className="text-sm text-[#1e4389] font-medium">Brand Assets</p>
               </div>
               <div className="px-6 py-3 rounded-full border border-black/10 bg-white/60 backdrop-blur">
-                <p className="text-sm text-black font-medium">Performance Optimization</p>
+                <p className="text-sm text-[#1e4389] font-medium">Art Direction</p>
               </div>
             </div>
           </motion.div>
@@ -128,7 +130,7 @@ export default function DigitalExperiencesPage() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img
                 src="/s2.jpg"
-                alt="Digital Experiences"
+                alt="Visual Identity"
                 className="w-full h-[500px] md:h-[600px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1e4389]/30 to-transparent" />
@@ -138,8 +140,8 @@ export default function DigitalExperiencesPage() {
               <p className="text-xs tracking-[0.25em] uppercase text-[#9d909a] font-medium mb-3">
                 Our Approach
               </p>
-              <p className="text-sm text-black/80 leading-relaxed">
-                User-centered digital solutions that prioritize engagement, accessibility, and measurable results.
+              <p className="text-sm text-[#1e4389]/80 leading-relaxed">
+                Design systems that are timeless, scalable, and impossible to ignore.
               </p>
             </div>
           </motion.div>
@@ -158,12 +160,17 @@ export default function DigitalExperiencesPage() {
             >
               <div className="flex items-center gap-4 text-xs tracking-[0.22em] uppercase text-[#9d909a] font-medium mb-8">
                 <span className="h-px w-8 bg-[#9d909a]/60" />
-                <span>Why Digital Experiences Matter</span>
+                <span>Why Visual Identity Matters</span>
               </div>
               <h2 className="text-4xl md:text-6xl font-serif text-[#9a1b40] mb-8 leading-tight">
-                In a digital-first world, experiences define loyalty.
+                First impressions are visual, and lasting ones are intentional.
               </h2>
-          
+              <p className="text-lg text-[#1e4389]/85 leading-relaxed mb-6">
+                Your visual identity is the face of your brand — the first thing people see, remember, and recognize. It's the difference between being noticed and being ignored.
+              </p>
+              <p className="text-lg text-[#1e4389]/85 leading-relaxed">
+                We create identities that don't just look good — they work hard, scale seamlessly, and stand the test of time.
+              </p>
             </motion.div>
 
             <motion.div
@@ -174,14 +181,14 @@ export default function DigitalExperiencesPage() {
               className="grid grid-cols-2 gap-6"
             >
               {[
-                { number: "88%", label: "User retention from intuitive UX" },
-                { number: "3.2x", label: "Conversion lift from optimized sites" },
-                { number: "92%", label: "Engagement via animations" },
-                { number: "76%", label: "Revenue growth from performance" }
+                { number: "94%", label: "Recognition through visuals" },
+                { number: "4.5x", label: "Higher brand recall" },
+                { number: "89%", label: "Trust from consistency" },
+                { number: "73%", label: "Purchase influence" }
               ].map((stat, i) => (
                 <div key={i} className="p-8 rounded-2xl border border-black/10 bg-white/60 backdrop-blur text-center">
                   <p className="text-4xl md:text-5xl font-serif text-[#9a1b40] mb-3">{stat.number}</p>
-                  <p className="text-sm text-black/80 leading-snug">{stat.label}</p>
+                  <p className="text-sm text-[#1e4389]/80 leading-snug">{stat.label}</p>
                 </div>
               ))}
             </motion.div>
@@ -189,6 +196,7 @@ export default function DigitalExperiencesPage() {
         </div>
       </section>
 
+      {/* ------------------ CATEGORIES ------------------ */}
       {/* ------------------ CATEGORIES ------------------ */}
       <section className="px-6 md:px-12 lg:px-28 pb-40">
         <div className="max-w-7xl mx-auto space-y-16">
@@ -261,15 +269,15 @@ export default function DigitalExperiencesPage() {
                           <span className="text-xs tracking-[0.3em] uppercase font-medium transition-colors duration-700 ease-out text-[#9a1b40] group-hover:text-white/80">0{i + 1}</span>
                         </div>
                         <p className="text-sm leading-relaxed transition-colors duration-700 ease-out text-[#9a1b40] group-hover:text-white/90">
-                          {activeTab === 0 && i === 0 && "In-depth user interviews, personas, and journey maps to uncover pain points and opportunities."}
-                          {activeTab === 0 && i === 1 && "High-fidelity wireframes and interactive prototypes to visualize and test design concepts."}
-                          {activeTab === 0 && i === 2 && "Rigorous testing sessions with real users to refine interfaces for optimal usability."}
-                          {activeTab === 1 && i === 0 && "Seamless integration of modern frontend frameworks with secure backend architectures."}
-                          {activeTab === 1 && i === 1 && "Fully responsive designs ensuring flawless performance across devices and browsers."}
-                          {activeTab === 1 && i === 2 && "Custom APIs and robust security protocols to handle data efficiently and safely."}
-                          {activeTab === 2 && i === 0 && "Engaging motion graphics and subtle interactions that enhance user delight without distraction."}
-                          {activeTab === 2 && i === 1 && "Tailored CMS setups with intuitive admin panels for effortless content updates."}
-                          {activeTab === 2 && i === 2 && "Comprehensive audits and optimizations for lightning-fast load times and superior SEO."}
+                           {activeTab === 0 && i === 0 && "Unique logomarks crafted to embody your brand's essence with precision and purpose."}
+                           {activeTab === 0 && i === 1 && "Flexible logo variations optimized for every application — from favicon to billboard."}
+                           {activeTab === 0 && i === 2 && "Comprehensive usage rules ensuring your identity remains consistent across all touchpoints."}
+                           {activeTab === 1 && i === 0 && "Curated typeface pairings that reinforce hierarchy, readability, and brand personality."}
+                           {activeTab === 1 && i === 1 && "Strategic colour systems that evoke emotion and enhance brand recognition."}
+                           {activeTab === 1 && i === 2 && "Ready-to-use graphic elements, patterns, and icons that extend your visual language."}
+                           {activeTab === 2 && i === 0 && "Distinctive illustration approaches that add character and depth to your brand story."}
+                           {activeTab === 2 && i === 1 && "Animation principles and transitions that bring static elements to dynamic life."}
+                           {activeTab === 2 && i === 2 && "Creative direction frameworks that guide photography, video, and all visual content."}
                         </p>
                       </div>
                     </motion.div>
@@ -282,7 +290,7 @@ export default function DigitalExperiencesPage() {
             <div className="space-y-6">
               <div className="flex items-center justify-between">
                 <p className="text-sm uppercase tracking-wide text-[#9d909a] font-medium">
-                  Digital Experiences in Action
+                  Visual Identity in Action
                 </p>
                 <div className="flex items-center gap-6">
                   <p className="hidden md:block text-xs tracking-[0.3em] uppercase text-[#9d909a] font-medium">
@@ -342,19 +350,19 @@ export default function DigitalExperiencesPage() {
               <span className="h-px w-8 bg-[#9d909a]/60" />
             </div>
             <h2 className="text-4xl md:text-6xl font-serif text-[#9a1b40] mb-6">
-              How We Build Your Digital Experiences
+              How We Craft Your Identity
             </h2>
-            <p className="text-lg text-black/85 max-w-3xl mx-auto">
-              A collaborative development process that aligns user needs with technical excellence for transformative results.
+            <p className="text-lg text-[#1e4389]/85 max-w-3xl mx-auto">
+              A meticulous design journey that transforms strategic insights into iconic visual expressions.
             </p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { phase: "Discovery", weeks: "1-2 weeks", desc: "User research, technical audits, goal alignment, and project scoping with wireframe sketches." },
-              { phase: "Design", weeks: "2-4 weeks", desc: "Interface prototyping, visual design refinement, user testing, and iterative feedback loops." },
-              { phase: "Development", weeks: "4-6 weeks", desc: "Code implementation, integration testing, CMS setup, and performance benchmarking." },
-              { phase: "Launch", weeks: "1 week", desc: "Deployment, final optimizations, training handover, and post-launch monitoring support." }
+              { phase: "Research", weeks: "1 week", desc: "Brand audit, competitive visual analysis, moodboarding, and strategic creative briefing." },
+              { phase: "Explore", weeks: "2-3 weeks", desc: "Concept development, logo explorations, type and colour studies, and iterative refinement." },
+              { phase: "Refine", weeks: "1-2 weeks", desc: "System building, asset creation, application testing, and comprehensive guideline development." },
+              { phase: "Deliver", weeks: "1 week", desc: "Final file packages, brand guidelines, asset libraries, and implementation support." }
             ].map((step, i) => (
               <motion.div
                 key={i}
@@ -368,7 +376,7 @@ export default function DigitalExperiencesPage() {
                   <div className="text-6xl font-serif text-[#9a1b40]/20 mb-4">0{i + 1}</div>
                   <h3 className="text-2xl font-serif text-[#9a1b40] mb-2">{step.phase}</h3>
                   <p className="text-xs tracking-[0.25em] uppercase text-[#9d909a] font-medium mb-4">{step.weeks}</p>
-                  <p className="text-sm text-black/80 leading-relaxed">{step.desc}</p>
+                  <p className="text-sm text-[#1e4389]/80 leading-relaxed">{step.desc}</p>
                 </div>
                 {i < 3 && (
                   <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-px bg-[#9d909a]/40" />
@@ -389,30 +397,24 @@ export default function DigitalExperiencesPage() {
             transition={{ duration: 0.8 }}
           >
             <h3 className="text-4xl md:text-6xl font-serif text-[#9a1b40] mb-8">
-              Elevate Your Digital Presence.
+              Create An Identity That Endures.
             </h3>
-            <p className="text-lg text-black/85 mb-8 leading-relaxed">
-              In today's connected world, exceptional digital experiences turn visitors into advocates. Let's design yours.
+            <p className="text-lg text-[#1e4389]/85 mb-8 leading-relaxed">
+              Every memorable brand has a visual identity that's unmistakably theirs. Let's craft yours.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-              <div className="flex items-center gap-2 text-sm text-black/70">
+              <div className="flex items-center gap-2 text-sm text-[#1e4389]/70">
                 <span className="w-2 h-2 rounded-full bg-[#9a1b40]" />
-                <span>Discovery session · Complimentary</span>
+                <span>Portfolio review · Complimentary</span>
               </div>
-              <div className="flex items-center gap-2 text-sm text-black/70">
+              <div className="flex items-center gap-2 text-sm text-[#1e4389]/70">
                 <span className="w-2 h-2 rounded-full bg-[#9a1b40]" />
-                <span>Custom proposals</span>
+                <span>Selected projects only</span>
               </div>
             </div>
 
-            <button className="btn-primary mt-6">
-              {/* Expanding circular fill on hover */}
-              <span className="btn-fill-animation" />
-
-              {/* Label */}
-              <span className="relative z-10">
-                Start Your Digital Experience
-              </span>
+            <button className="mt-6 px-14 py-5 bg-[#9a1b40] text-white rounded-full text-sm tracking-[0.25em] uppercase hover:bg-[#7e1534] transition-all duration-300 hover:shadow-xl">
+              Start Your Visual Identity
             </button>
           </motion.div>
         </div>

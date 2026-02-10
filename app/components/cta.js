@@ -3,8 +3,21 @@
 import { motion } from "framer-motion";
 
 export default function CTASection() {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 60, filter: 'blur(10px)' },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      filter: 'blur(0px)',
+      transition: { 
+        duration: 1.0, 
+        ease: [0.22, 1, 0.36, 1] 
+      } 
+    }
+  };
+
   return (
-    <section className="relative py-24 md:py-32 px-6 md:px-12 lg:px-28 bg-[#f7f4ec] text-center overflow-hidden">
+    <section className="relative h-screen py-24 md:py-32 px-6 md:px-12 lg:px-28 bg-[#f7f4ec] text-center overflow-hidden">
 
       {/* Noise texture (kept for subtle elegance) */}
       <div
@@ -17,44 +30,38 @@ export default function CTASection() {
 
       {/* Content */}
       <div className="relative z-10 max-w-3xl mx-auto">
-        
+        <motion.div
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true, margin: "-10%" }}
+           variants={fadeInUp}
+        >
         {/* Title */}
-        <h2 className="text-3xl md:text-5xl lg:text-5xl font-serif font-medium text-[#1e4389] leading-tight mb-6">
-          Let’s Create Something  
-          <span className="relative inline-block ml-2 text-[#9a1b40] italic">
-            <span className="relative z-10">extraordinary?</span>
-            <img 
-              src="/red-circle.png" 
-              alt="" 
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[150%] max-w-none pointer-events-none" 
-            />
-            <motion.span
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="absolute bottom-0 left-0 h-[2px] w-full bg-[#9a1b40]"
-              style={{ transformOrigin: "left" }}
-            />
-          </span>
-        </h2>
+        {/* Title Image */}
+        <div className="flex justify-center -mb-4 md:-mb-20">
+          <img 
+            src="/Ready-to-Create.png" 
+            alt="Ready to Create Something Extraordinary?" 
+            className="w-full max-w-2xl object-contain"
+          />
+        </div>
 
         {/* Description */}
-        <p className="text-base md:text-lg text-black max-w-xl mx-auto leading-relaxed mb-10 md:mb-12">
-          Whether you're building a brand from scratch or refining an existing one,
-          INKCHO helps craft visual stories that stay with your audience long after the moment passes.
+        <p className="text-base md:text-lg text-black max-w-xl mx-auto leading-relaxed mb-2 md:mb-4">
+        "If that sounds like you"
         </p>
 
         {/* Button (updated to match the modern hover style from previous sections) */}
-        <button className="btn-primary">
-          {/* Expanding circular fill on hover */}
-          <span className="btn-fill-animation" />
+        <button className="btn-primary !bg-[#9a1b40] !text-white hover:shadow-xl hover:shadow-[#9a1b40]/20">
+          {/* Expanding circular fill on hover - set to blue for contrast against the red button */}
+          <span className="btn-fill-animation !bg-[#1e4389]" />
 
           {/* Label */}
           <span className="relative z-10">
-            Start a Project
+            Let's Talk
           </span>
         </button>
+        </motion.div>
       </div>
     </section>
   );

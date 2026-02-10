@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { motion } from 'framer-motion'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -62,6 +63,19 @@ export default function ScrollHijackGallery() {
     return () => ctx.revert()
   }, [])
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 60, filter: 'blur(10px)' },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      filter: 'blur(0px)',
+      transition: { 
+        duration: 1.0, 
+        ease: [0.22, 1, 0.36, 1] 
+      } 
+    }
+  };
+
   return (
     <section
       ref={sectionRef}
@@ -71,9 +85,15 @@ export default function ScrollHijackGallery() {
         <div className="container mx-auto px-4 sm:px-6">
 
           {/* Header */}
-          <div className="text-center mb-10 md:mb-16">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-10%" }}
+            variants={fadeInUp}
+            className="text-center mb-10 md:mb-16"
+          >
             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mb-4">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-serif font-medium uppercase text-[#1e4389]">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold uppercase text-[#1e4389]">
                 A glimpse into
               </h2>
               <video
@@ -86,21 +106,17 @@ export default function ScrollHijackGallery() {
               />
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-serif font-medium uppercase text-[#1e4389]">
-              our <span className="relative inline-block">
-                <span className="relative z-10 text-[#9a1b40] font-light">creations</span>
-                <img 
-                  src="/red-circle.png" 
-                  alt="" 
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] max-w-none object-contain pointer-events-none" 
-                />
-              </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold uppercase text-[#1e4389] flex items-center justify-center gap-3">
+              our 
+              <img 
+                src="/creations.png" 
+                alt="creations" 
+                className="h-24 sm:h-32 md:h-20 -ml-3 -mt-4 object-contain inline-block transform translate-y-2" 
+              />
             </h2>
 
-            <p className="mt-4 text-base sm:text-lg md:text-xl text-black max-w-2xl mx-auto">
-              Scroll to watch our work fly in and bounce
-            </p>
-          </div>
+          
+          </motion.div>
 
           {/* Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
