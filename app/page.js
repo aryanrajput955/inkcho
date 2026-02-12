@@ -1,8 +1,9 @@
 'use client';
 // import EnhancedContentSection from './components/para';
 import HeroSection from './components/hero';
-import React, { use, useRef } from 'react';
+import React, { useState } from 'react';
 import ServicesSection from './components/servies';
+import LoadingScreen from './components/LoadingScreen';
 
 import { useLenis } from './hooks/Lenis';
 
@@ -14,13 +15,16 @@ import TestimonialCarousel from './components/testimonials';
 import ScrollGalleryMobile from './components/projects-mobile';
 
 export default function HomePage() {
+  const [isLoading, setIsLoading] = useState(true);
 
   useLenis();
   return (
 
     <div className="relative">
+      
+      {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
  
-      <HeroSection/>
+      <HeroSection startAnimation={!isLoading} />
       <div className="hidden md:block">
         <ScrollHijackGallery />
       </div>

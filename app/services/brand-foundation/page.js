@@ -143,12 +143,12 @@ export default function BrandFoundationPage() {
                 className={`relative flex-shrink-0 w-[60vw] md:w-[350px] flex flex-col z-20 ${slide.offset === 'down' ? 'translate-y-12 md:translate-y-24' : '-translate-y-12 md:-translate-y-24'}`}
              >
                 {/* Number */}
-                <span className="text-4xl md:text-6xl font-serif mb-4 block text-black">
+                <span className="text-5xl md:text-7xl font-serif mb-4 block text-black">
                     {slide.id}
                 </span>
 
                 {/* Image Card */}
-                <div className="relative w-full aspect-square bg-gray-100 overflow-hidden shadow-2xl mb-6 group grayscale hover:grayscale-0 transition-all duration-700 rounded-sm">
+                <div className="relative w-full aspect-[3/4] bg-gray-100 overflow-hidden shadow-2xl mb-6 group grayscale hover:grayscale-0 transition-all duration-700 rounded-sm">
                    <img 
                      src={slide.image} 
                      alt={slide.title}

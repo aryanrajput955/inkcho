@@ -12,18 +12,17 @@ const breakpointColumnsObj = {
   500: 1
 };
 
-// Custom Grid Data with varied sizes
-const projects = [
-  { src: "/img1.jpeg", hoverSrc: "/s1.jpg", title: "Ariso Skincare", size: "h-[400px]" },
-  { src: "/img2.jpeg", hoverSrc: "/s2.jpg", title: "Eterna Aesthetics", size: "h-[550px]" },
-  { src: "/s3.webp", hoverSrc: "/s5.webp", title: "Oblivra", size: "h-[300px]" },
-  { src: "/s4.webp", title: "Sivco Burco", size: "h-[300px]" },
-  { src: "/img1.jpeg", title: "Maison Sauve", size: "h-[320px]" },
-  { src: "/s2.jpg", title: "Miretta Interiors", size: "h-[250px]" },
-  { src: "/img2.jpeg", title: "Botanique", size: "h-[300px]" },
-  { src: "/s5.webp", title: "Olfee", size: "h-[320px]" },
-  { src: "/s6.webp", title: "West End", size: "h-[300px]" },
-  { src: "/s4.webp", title: "Lumina", size: "h-[450px]" }
+// Content Data
+const items = [
+  { src: "/s1.jpg", title: "Primary Font", subtitle: "Typography System", size: "h-[400px]" },
+  { src: "/s2.jpg", title: "Brand Palette", subtitle: "Color Psychology", size: "h-[550px]" },
+  { src: "/s3.webp", title: "Iconography", subtitle: "Visual Assets", size: "h-[300px]" },
+  { src: "/s4.webp", title: "Secondary Font", subtitle: "Display Type", size: "h-[300px]" },
+  { src: "/s5.webp", title: "Patterns & Textures", subtitle: "Background Elements", size: "h-[320px]" },
+  { src: "/s6.webp", title: "Social Media Kit", subtitle: "Digital Assets", size: "h-[250px]" },
+  { src: "/img1.jpeg", title: "Usage Guidelines", subtitle: "Brand Book", size: "h-[300px]" },
+  { src: "/img2.jpeg", title: "Color Hierarchy", subtitle: "Primary & Secondary", size: "h-[320px]" },
+  { src: "/s3.webp", title: "Type Pairing", subtitle: "Inter & Playfair", size: "h-[300px]" },
 ];
 
 // Animation for grid items
@@ -40,9 +39,8 @@ const itemVariants = {
   })
 };
 
-export default function LogoIdentitySystemsPage() {
+export default function TypographyColorPage() {
   
-  // Force scroll to top on mount to fix navigation issues
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -94,15 +92,15 @@ export default function LogoIdentitySystemsPage() {
             >
                 {/* Labels on border */}
                 <span className="absolute -top-3 left-8 bg-[#FFFBF5] px-4 text-xs font-bold tracking-widest uppercase border border-gray-300 rounded-full py-1">
-                    Design
+                    System
                 </span>
                 <span className="absolute -bottom-3 right-8 bg-[#FFFBF5] px-4 text-xs font-bold tracking-widest uppercase border border-gray-300 rounded-full py-1">
-                    Built
+                    Style
                 </span>
 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-black leading-[1.1]">
-                    More than a logo <br/>
-                    <span className="italic text-gray-600">A visual language.</span>
+                    Typography & Colour <br/>
+                    <span className="italic text-gray-600">Building blocks of brand.</span>
                 </h1>
             </motion.div>
 
@@ -114,7 +112,7 @@ export default function LogoIdentitySystemsPage() {
           className="my-masonry-grid flex gap-8 md:gap-12"
           columnClassName="my-masonry-grid_column bg-clip-padding space-y-8 md:space-y-12"
         >
-            {projects.map((project, index) => (
+            {items.map((item, index) => (
                 <motion.div
                     key={index}
                     custom={index}
@@ -123,27 +121,17 @@ export default function LogoIdentitySystemsPage() {
                     viewport={{ once: true, margin: "-10%" }}
                     variants={itemVariants}
                 >
-                    <div className={`group relative rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 ease-out cursor-pointer ${project.size}`}>
-                        {/* Base Image */}
+                    <div className={`group relative rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 ease-out cursor-pointer ${item.size}`}>
                         <img 
-                            src={project.src} 
-                            alt={project.title} 
+                            src={item.src} 
+                            alt={item.title} 
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         
-                        {/* Hover Image (First 3 items) */}
-                        {project.hoverSrc && (
-                             <img 
-                                src={project.hoverSrc} 
-                                alt={`${project.title} Hover`} 
-                                className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out group-hover:scale-105 transition-transform"
-                             />
-                        )}
-
                         {/* Overlay with Text */}
                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center p-4 text-center z-10">
-                            <h3 className="text-white font-serif text-2xl italic mb-2">{project.title}</h3>
-                            <span className="text-white/80 text-xs tracking-widest uppercase">View Case Study</span>
+                            <h3 className="text-white font-serif text-2xl italic mb-2">{item.title}</h3>
+                            <span className="text-white/80 text-xs tracking-widest uppercase">{item.subtitle}</span>
                         </div>
                     </div>
                 </motion.div>

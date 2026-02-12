@@ -17,7 +17,7 @@ export default function CTASection() {
   };
 
   return (
-    <section className="relative h-screen py-24 md:py-32 px-6 md:px-12 lg:px-28 bg-[#f7f4ec] text-center overflow-hidden">
+    <section className="relative  md:py-32 px-6 md:px-12 lg:px-28 bg-[#f7f4ec] text-center overflow-hidden">
 
       {/* Noise texture (kept for subtle elegance) */}
       <div

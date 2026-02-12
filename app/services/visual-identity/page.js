@@ -181,23 +181,20 @@ export default function VisualIdentityPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  {cat.id === "01" ? (
-                    <Link href="/services/visual-identity/logo-identity-systems">
+                  <Link 
+                    href={
+                      cat.id === "01" ? "/services/visual-identity/logo-identity-systems" :
+                      cat.id === "02" ? "/services/visual-identity/typography-color-brand-assets" :
+                      "/services/visual-identity/visual-motion-art-direction"
+                    }
+                  >
                       <button className="group relative inline-flex items-center justify-center px-6 py-3 bg-[#9a1b40] text-white rounded-full overflow-hidden transition-all hover:shadow-xl hover:shadow-[#9a1b40]/30 hover:scale-105">
                          <span className="relative z-10 font-medium tracking-wide text-xs uppercase">
                             Explore More Here
                          </span>
                          <div className="absolute inset-0 bg-[#7a1532] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
                       </button>
-                    </Link>
-                  ) : (
-                      <button className="group relative inline-flex items-center justify-center px-6 py-3 bg-[#9a1b40] text-white rounded-full overflow-hidden transition-all hover:shadow-xl hover:shadow-[#9a1b40]/30 hover:scale-105">
-                         <span className="relative z-10 font-medium tracking-wide text-xs uppercase">
-                            Explore More Here
-                         </span>
-                         <div className="absolute inset-0 bg-[#7a1532] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
-                      </button>
-                  )}
+                  </Link>
                 </motion.div>
               </div>
 
