@@ -14,15 +14,23 @@ import LightRaysContainer from './components/cta';
 import TestimonialCarousel from './components/testimonials';
 import ScrollGalleryMobile from './components/projects-mobile';
 
+// Track loading state across client-side navigations
+let hasLoadedOnce = false;
+
 export default function HomePage() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(!hasLoadedOnce);
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+    hasLoadedOnce = true;
+  };
 
   useLenis();
   return (
 
     <div className="relative">
       
-      {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
+      {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
  
       <HeroSection startAnimation={!isLoading} />
       <div className="hidden md:block">

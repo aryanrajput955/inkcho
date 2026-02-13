@@ -17,7 +17,7 @@ export default function CTASection() {
   };
 
   return (
-    <section className="relative  md:py-32 px-6 md:px-12 lg:px-28 bg-[#f7f4ec] text-center overflow-hidden">
+    <section className="relative flex flex-col items-center justify-center py-20 md:py-32  px-6 md:px-12 lg:px-28 bg-[#f7f4ec] text-center overflow-hidden">
 
       {/* Noise texture (kept for subtle elegance) */}
       <div
@@ -29,35 +29,36 @@ export default function CTASection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-3xl mx-auto">
+      <div className="relative z-10 max-w-3xl mx-auto w-full">
         <motion.div
            initial="hidden"
            whileInView="visible"
            viewport={{ once: true, margin: "-10%" }}
            variants={fadeInUp}
+           className="flex flex-col items-center"
         >
         {/* Title */}
         {/* Title Image */}
-        <div className="flex justify-center -mb-4 md:-mb-20">
+        <div className="flex justify-center w-full mb-2">
           <img 
-            src="/Ready-to-Create.png" 
+            src="/image.webp" 
             alt="Ready to Create Something Extraordinary?" 
-            className="w-full max-w-2xl object-contain"
+            className="w-full max-w-sm object-contain"
           />
         </div>
 
         {/* Description */}
-        <p className="text-base md:text-lg text-black max-w-xl mx-auto leading-relaxed mb-2 md:mb-4">
+        <p className="text-base md:text-lg text-black max-w-xl mx-auto leading-relaxed mb-5">
         "If that sounds like you"
         </p>
 
-        {/* Button (updated to match the modern hover style from previous sections) */}
-        <button className="btn-primary !bg-[#9a1b40] !text-white hover:shadow-xl hover:shadow-[#9a1b40]/20">
+        {/* Button */}
+        <button className="btn-primary !bg-[#9a1b40] !text-white hover:shadow-xl hover:shadow-[#9a1b40]/20 !px-8 !py-3 !text-sm">
           {/* Expanding circular fill on hover - set to blue for contrast against the red button */}
           <span className="btn-fill-animation !bg-[#1e4389]" />
 
           {/* Label */}
-          <span className="relative z-10">
+          <span className="relative z-10 font-medium tracking-wide">
             Let's Talk
           </span>
         </button>

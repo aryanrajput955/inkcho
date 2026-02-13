@@ -61,23 +61,23 @@ export default function CardsSection() {
                 <img
                   src="/s5.webp"
                   alt="Brand Foundations"
-                  className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                  className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-700"></div>
+                <div className="absolute inset-0 bg-black/40 transition-all duration-700"></div>
 
                 <div className="relative z-10 p-8 flex flex-col justify-between h-full">
                   <div>
-                    <span className="inline-block border border-gray-500 group-hover:border-white text-gray-700 group-hover:text-white text-xs font-medium px-3 py-1 rounded-full mb-6 transition-colors duration-700">
+                    <span className="inline-block border border-white text-white text-xs font-medium px-3 py-1 rounded-full mb-6 transition-colors duration-700">
                       Fixed Scope
                     </span>
 
-                    <h2 className="text-3xl md:text-4xl font-light mb-6 text-[#9a1b40] group-hover:text-white transition-all duration-700 group-hover:[text-shadow:0_0_1px_currentColor]">
+                    <h2 className="text-3xl md:text-4xl font-light mb-6 text-white transition-all duration-700">
                       Brand<br/> Foundations
                     </h2>
                   </div>
 
                   <div className="mt-10">
-                    <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-12 h-12 group-hover:w-40 group-hover:bg-[#1e4389] group-hover:text-white group-hover:border-white overflow-hidden">
+                    <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-12 h-12 group-hover:w-40 group-hover:bg-[#9a1b40] group-hover:text-white group-hover:border-white overflow-hidden">
                       <ArrowRight className="w-5 h-5 absolute left-1/2 -translate-x-1/2 text-black group-hover:text-white transition-all duration-500 group-hover:left-5 group-hover:rotate-[-45deg]" />
                       <span className="opacity-0 group-hover:opacity-100 text-sm font-medium ml-8 transition-all duration-500 whitespace-nowrap text-black group-hover:text-white">
                         Work With Us
@@ -97,23 +97,23 @@ export default function CardsSection() {
                 <img
                   src="/s2.jpg"
                   alt="Visual Identity"
-                  className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                  className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-700"></div>
+                <div className="absolute inset-0 bg-black/40 transition-all duration-700"></div>
 
                 <div className="relative z-10 p-8 flex flex-col justify-between h-full">
                   <div>
-                    <span className="inline-block border border-gray-500 group-hover:border-white text-gray-700 group-hover:text-white text-xs font-medium px-3 py-1 rounded-full mb-6 transition-colors duration-700">
+                    <span className="inline-block border border-white text-white text-xs font-medium px-3 py-1 rounded-full mb-6 transition-colors duration-700">
                       Flexible Subscription
                     </span>
 
-                    <h2 className="text-3xl md:text-4xl font-light mb-6 text-[#9a1b40] group-hover:text-white transition-all duration-700 group-hover:[text-shadow:0_0_1px_currentColor]">
+                    <h2 className="text-3xl md:text-4xl font-light mb-6 text-white transition-all duration-700">
                       Visual<br/> Identity
                     </h2>
                   </div>
 
                   <div className="mt-10">
-                    <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-12 h-12 group-hover:w-40 group-hover:bg-[#1e4389] group-hover:text-white group-hover:border-white overflow-hidden">
+                    <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-12 h-12 group-hover:w-40 group-hover:bg-[#9a1b40] group-hover:text-white group-hover:border-white overflow-hidden">
                       <ArrowRight className="w-5 h-5 absolute left-1/2 -translate-x-1/2 text-black group-hover:text-white transition-all duration-500 group-hover:left-5 group-hover:rotate-[-45deg]" />
                       <span className="opacity-0 group-hover:opacity-100 text-sm font-medium ml-8 transition-all duration-500 whitespace-nowrap text-black group-hover:text-white">
                         Work With Us
@@ -135,23 +135,23 @@ export default function CardsSection() {
               <img
                 src="/s2.jpg"
                 alt="Digital Experiences"
-                className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-700"></div>
+              <div className="absolute inset-0 bg-black/40 transition-all duration-700"></div>
 
               <div className="relative z-10 p-8 flex flex-col justify-between h-full">
                 <div>
-                  <span className="inline-block border border-gray-500 group-hover:border-white text-gray-700 group-hover:text-white text-xs font-medium px-3 py-1 rounded-full mb-6 transition-colors duration-700">
+                  <span className="inline-block border border-white text-white text-xs font-medium px-3 py-1 rounded-full mb-6 transition-colors duration-700">
                     Strategic Development
                   </span>
 
-                  <h2 className="text-3xl md:text-4xl font-light mb-6 text-[#9a1b40] group-hover:text-white transition-all duration-700 group-hover:[text-shadow:0_0_1px_currentColor]">
+                  <h2 className="text-3xl md:text-4xl font-light mb-6 text-white transition-all duration-700">
                     Digital<br/>Experiences
                   </h2>
                 </div>
 
                 <div className="mt-10">
-                  <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-12 h-12 group-hover:w-40 group-hover:bg-[#1e4389] group-hover:text-white group-hover:border-white overflow-hidden">
+                  <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-12 h-12 group-hover:w-40 group-hover:bg-[#9a1b40] group-hover:text-white group-hover:border-white overflow-hidden">
                     <ArrowRight className="w-5 h-5 absolute left-1/2 -translate-x-1/2 text-black group-hover:text-white transition-all duration-500 group-hover:left-5 group-hover:rotate-[-45deg]" />
                     <span className="opacity-0 group-hover:opacity-100 text-sm font-medium ml-8 transition-all duration-500 whitespace-nowrap text-black group-hover:text-white">
                       Work With Us

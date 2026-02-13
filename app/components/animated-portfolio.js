@@ -30,8 +30,8 @@ export default function ScrollHijackGallery() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top top',
-          end: () => window.innerWidth > 1600 ? '+=200%' : '+=500%',
-          scrub: true,
+          end: () => window.innerWidth > 1600 ? '+=250%' : '+=400%', // Reduced duration for faster scroll completion
+          scrub: 1.0, // Reduced scrubbing for more responsive feel
           pin: true,
           anticipatePin: 1,
           invalidateOnRefresh: true
@@ -48,6 +48,7 @@ export default function ScrollHijackGallery() {
           rotate: 0,
           duration: 2.6,
           ease: 'none',
+          force3D: true, // Hardware acceleration
           keyframes: [
             { y: -160, duration: 0.4 },
             { y: 0,    duration: 0.45 },
@@ -79,9 +80,40 @@ export default function ScrollHijackGallery() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen bg-[#f7f4ec] overflow-hidden"
+      className="relative h-screen bg-[#ffffff] overflow-hidden"
     >
-      <div className="h-screen flex items-center justify-center">
+      {/* Animated Grid Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div 
+          className="absolute inset-0 opacity-[0.4]"
+          style={{
+            backgroundImage: `linear-gradient(#E5E5E5 1px, transparent 1px), linear-gradient(90deg, #E5E5E5 1px, transparent 1px)`,
+            backgroundSize: '80px 80px',
+            transform: 'perspective(500px) rotateX(20deg) scale(1.5)',
+            transformOrigin: 'top center',
+          }}
+        >
+          <motion.div
+            className="absolute inset-0"
+            animate={{
+              y: [0, 80]
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+            style={{
+                backgroundImage: `linear-gradient(#ccc 1px, transparent 1px), linear-gradient(90deg, #ccc 1px, transparent 1px)`,
+                backgroundSize: '80px 80px',
+            }}
+          />
+        </div>
+        {/* Soft Radial Gradient for depth */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#f7f4ec_90%)]" />
+      </div>
+
+      <div className="relative z-10 h-screen flex items-center justify-center">
         <div className="container mx-auto px-4 sm:px-6">
 
           {/* Header */}

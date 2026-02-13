@@ -27,6 +27,7 @@ const categories = [
 ];
 
 export default function VisualIdentityPage() {
+  const [activeCategory, setActiveCategory] = React.useState(null);
   
   // Force scroll to top on mount to fix navigation issues
   React.useEffect(() => {
@@ -126,18 +127,19 @@ export default function VisualIdentityPage() {
 
         </section>
 
-        <div className="pb-24">
+        <div>
         
         {categories.map((cat, index) => (
           <motion.section 
             key={index} 
             initial={{ backgroundColor: "rgba(255, 251, 245, 0)" }}
-            whileInView={{ backgroundColor: "rgba(154, 27, 64, 0.08)" }} // Using a subtle tint of the brand red (approx /10-20 feel)
-            viewport={{ once: false, margin: "-20%" }}
+            animate={{ backgroundColor: activeCategory === index ? "rgba(154, 27, 64, 0.08)" : "rgba(255, 251, 245, 0)" }}
+            onViewportEnter={() => setActiveCategory(index)}
+            viewport={{ margin: "-48% 0px -48% 0px" }} // Strict central viewport trigger
             transition={{ duration: 0.6 }}
-            className="w-full py-16 md:py-24"
+            className={`w-full py-16 md:py-24 relative ${index !== categories.length - 1 ? 'border-b border-black/10' : ''}`}
           >
-            <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 grid lg:grid-cols-2 gap-12 lg:gap-40 items-center">
             
               {/* Left Content */}
               <div className="space-y-8">
@@ -148,7 +150,7 @@ export default function VisualIdentityPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                    className="block text-sm font-medium tracking-widest text-[#9a1b40] uppercase"
+                    className="block text-xs font-medium tracking-widest text-[#9a1b40] uppercase"
                   >
                     {cat.id}
                   </motion.span>

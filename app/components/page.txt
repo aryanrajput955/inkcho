@@ -138,13 +138,54 @@ export default function BrandShowcase({ startAnimation = true }) {
       {/* Center content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-20">
         <div className="text-center max-w-2xl">
-          <div ref={titleRef} className="flex justify-center mb-10 opacity-0">
-            <img
-              src="/hero.png"
-              alt="Designing brands that leave a mark"
-              className="w-full max-w-lg md:max-w-2xl h-auto object-contain" // Adjusted size for hero impact
-            />
-          </div>
+          <h1 ref={titleRef} className="text-3xl md:text-5xl font-light text-black mb-6 leading-tight opacity-0">
+            Designing brands that
+            <br />
+            leave a{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10 font-semibold italic text-[#9a1b40]">
+                mark
+              </span>
+              <svg
+                className="absolute -bottom-1 left-0 w-full"
+                height="8"
+                viewBox="0 0 200 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 4 Q50 2, 100 4 T198 4"
+                  stroke="#9a1b40"
+                  strokeWidth="2"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>{" "}
+            and
+            <br />
+            create an{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10 font-semibold italic text-[#9a1b40]">
+                echo
+              </span>
+              <svg
+                className="absolute -bottom-1 left-0 w-full"
+                height="8"
+                viewBox="0 0 200 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 4 Q50 2, 100 4 T198 4"
+                  stroke="#9a1b40"
+                  strokeWidth="2"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
+          </h1>
 
           <div ref={buttonRef} className="opacity-0">
             <button className="btn-primary shadow-xl hover:shadow-2xl !px-8 !py-3 !text-sm">
