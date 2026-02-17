@@ -86,25 +86,14 @@ export default function LogoIdentitySystemsPage() {
         <div className="relative flex flex-col items-center justify-center text-center mb-20 md:mb-32">
             
             {/* Dashed Border Container */}
-            <motion.div 
+            <motion.img 
+               src="/visual.png"
+               alt="Visual Identity Hero"
                initial={{ opacity: 0, scale: 0.95 }}
                animate={{ opacity: 1, scale: 1 }}
                transition={{ duration: 0.8 }}
-               className="relative border border-dashed border-gray-400 p-8 md:p-12 max-w-4xl"
-            >
-                {/* Labels on border */}
-                <span className="absolute -top-3 left-8 bg-[#FFFBF5] px-4 text-xs font-bold tracking-widest uppercase border border-gray-300 rounded-full py-1">
-                    Design
-                </span>
-                <span className="absolute -bottom-3 right-8 bg-[#FFFBF5] px-4 text-xs font-bold tracking-widest uppercase border border-gray-300 rounded-full py-1">
-                    Built
-                </span>
-
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-black leading-[1.1]">
-                    More than a logo <br/>
-                    <span className="italic text-gray-600">A visual language.</span>
-                </h1>
-            </motion.div>
+               className="w-full max-w-5xl h-auto object-contain"
+            />
 
         </div>
 
