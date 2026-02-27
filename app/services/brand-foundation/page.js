@@ -124,23 +124,22 @@ export default function BrandFoundationPage() {
         {/* Fixed Vertical Text on Left */}
 
         {/* Fixed Vertical Text on Left */}
-        <div className="hidden md:flex flex-col justify-center h-full min-w-[100px] md:min-w-[150px] z-10 bg-white/80 backdrop-blur-sm border-r border-gray-100">
+        <div className="hidden md:flex flex-col justify-center h-full min-w-[100px] md:min-w-[150px] relative z-30 bg-white border-r border-gray-100">
              <p className="[writing-mode:vertical-rl] rotate-180 text-xs md:text-sm tracking-[0.2em] font-medium text-gray-500 uppercase h-[60%] flex items-center mx-auto text-center leading-loose">
                  Without a strong foundation, brands become inconsistent, unclear, and short-lived.
              </p>
         </div>
 
         {/* Scrolling Content Container */}
-        {/* INCREASED GAP: gap-64 md:gap-[30rem] */}
         {/* Changed items-start to items-center to center content vertically */}
-        <div ref={containerRef} className="relative flex flex-row items-center h-full px-12 md:px-24 gap-64 md:gap-[30rem] bg-transparent z-10">
+        <div ref={containerRef} className="relative flex flex-row items-center h-full px-12 md:px-24 gap-16 md:gap-32 bg-transparent z-10">
            
            {slides.map((slide, index) => (
              <div 
                 key={index} 
                 ref={el => cardsRef.current[index] = el}
                 /* Stagger logic: Up cards go up from center, Down cards go down from center */
-                className={`relative flex-shrink-0 w-[60vw] md:w-[350px] flex flex-col z-20 ${slide.offset === 'down' ? 'translate-y-12 md:translate-y-24' : '-translate-y-12 md:-translate-y-24'}`}
+                className={`relative flex-shrink-0 w-[75vw] md:w-[380px] xl:w-[400px] 2xl:w-[450px] flex flex-col z-20 ${slide.offset === 'down' ? 'translate-y-12 xl:translate-y-16 2xl:translate-y-24' : '-translate-y-12 xl:-translate-y-16 2xl:-translate-y-24'}`}
              >
                 {/* Number */}
                 <span className="text-5xl md:text-7xl font-serif mb-4 block text-black">

@@ -14,16 +14,13 @@ const breakpointColumnsObj = {
 
 // Custom Grid Data with varied sizes
 const projects = [
-  { src: "/img1.jpeg", hoverSrc: "/s1.jpg", title: "Ariso Skincare", size: "h-[400px]" },
-  { src: "/img2.jpeg", hoverSrc: "/s2.jpg", title: "Eterna Aesthetics", size: "h-[550px]" },
-  { src: "/s3.webp", hoverSrc: "/s5.webp", title: "Oblivra", size: "h-[300px]" },
-  { src: "/s4.webp", title: "Sivco Burco", size: "h-[300px]" },
-  { src: "/img1.jpeg", title: "Maison Sauve", size: "h-[320px]" },
-  { src: "/s2.jpg", title: "Miretta Interiors", size: "h-[250px]" },
-  { src: "/img2.jpeg", title: "Botanique", size: "h-[300px]" },
-  { src: "/s5.webp", title: "Olfee", size: "h-[320px]" },
-  { src: "/s6.webp", title: "West End", size: "h-[300px]" },
-  { src: "/s4.webp", title: "Lumina", size: "h-[450px]" }
+  { src: "/visual-identity/Planholic/White%20and%20Grey%20Classic%20Art%20Gallery%20Logo.png", hoverSrc: "/visual-identity/Planholic/ChatGPT%20Image%20Feb%2022,%202026,%2002_41_40%20PM.png", title: "Planholic", size: "h-[400px]" },
+  { src: "/visual-identity/Raghukulam/logo1.png", hoverSrc: "/visual-identity/Raghukulam/logo2.png", title: "Raghukulam", size: "h-[550px]", objectFit: "object-contain bg-white" },
+  { src: "/visual-identity/bleed/BWP.png", hoverSrc: "/visual-identity/bleed/mockup.png", title: "Bleed", size: "h-[300px]" },
+  { src: "/visual-identity/bleed/horizontal-paper-bag-mockup-featuring-a-plain-background-3476-el1.png", hoverSrc: "/visual-identity/bleed/paper-bag-mockup-of-a-shopping-bag-sitting-on-top-of-a-table-a6863.png", title: "Bleed Packaging", size: "h-[450px]" },
+  { src: "/visual-identity/salahuddin/msk%2002.jpg", title: "Salahuddin", size: "h-[450px]" },
+  { src: "/visual-identity/bleed/mockup-of-the-back-and-front-of-a-rectangle-pin-button-3531-el1.png", title: "Bleed Pins", size: "h-[320px]" },
+  { src: "/visual-identity/Planholic/ChatGPT%20Image%20Feb%2022,%202026,%2003_06_27%20PM.png", title: "Planholic Concept", size: "h-[320px]" }
 ];
 
 // Animation for grid items
@@ -117,7 +114,7 @@ export default function LogoIdentitySystemsPage() {
                         <img 
                             src={project.src} 
                             alt={project.title} 
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            className={`w-full h-full ${project.objectFit || 'object-cover'} transition-transform duration-700 group-hover:scale-105 ${project.objectPosition || 'object-center'}`}
                         />
                         
                         {/* Hover Image (First 3 items) */}
@@ -125,7 +122,7 @@ export default function LogoIdentitySystemsPage() {
                              <img 
                                 src={project.hoverSrc} 
                                 alt={`${project.title} Hover`} 
-                                className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out group-hover:scale-105 transition-transform"
+                                className={`absolute inset-0 w-full h-full ${project.objectFit || 'object-cover'} opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out group-hover:scale-105 transition-transform ${project.objectPosition || 'object-center'}`}
                              />
                         )}
 

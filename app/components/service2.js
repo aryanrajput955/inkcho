@@ -139,7 +139,7 @@ export default function CardsSection() {
               />
               <div className="absolute inset-0 bg-black/40 transition-all duration-700"></div>
 
-              <div className="relative z-10 p-8 flex flex-col justify-between h-full">
+              <div className="relative z-10 p-8 flex flex-col justify-center items-start h-full text-left">
                 <div>
                   <span className="inline-block border border-white text-white text-xs font-medium px-3 py-1 rounded-full mb-6 transition-colors duration-700">
                     Strategic Development
@@ -150,7 +150,7 @@ export default function CardsSection() {
                   </h2>
                 </div>
 
-                <div className="mt-10">
+                <div className="mt-4">
                   <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-12 h-12 group-hover:w-40 group-hover:bg-[#9a1b40] group-hover:text-white group-hover:border-white overflow-hidden">
                     <ArrowRight className="w-5 h-5 absolute left-1/2 -translate-x-1/2 text-black group-hover:text-white transition-all duration-500 group-hover:left-5 group-hover:rotate-[-45deg]" />
                     <span className="opacity-0 group-hover:opacity-100 text-sm font-medium ml-8 transition-all duration-500 whitespace-nowrap text-black group-hover:text-white">

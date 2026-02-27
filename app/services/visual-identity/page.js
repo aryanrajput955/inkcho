@@ -72,7 +72,7 @@ export default function VisualIdentityPage() {
         
         {/* === HERO SECTION === */}
         {/* === HERO SECTION === */}
-        <section className="relative min-h-[85vh] flex flex-col justify-between pt-32 pb-12 px-4 md:px-12 lg:px-20 max-w-[1800px] mx-auto overflow-hidden">
+        <section className="relative min-h-screen flex flex-col justify-between pt-32 pb-12 px-4 md:px-12 lg:px-20 max-w-[1800px] mx-auto overflow-hidden">
           
           {/* Decorative Grid for Hero */}
           <div className="absolute inset-0 opacity-[0.15] pointer-events-none" 
