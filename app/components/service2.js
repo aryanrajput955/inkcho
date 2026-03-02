@@ -2,6 +2,7 @@
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import OptimizedImage from '@/app/components/OptimizedImage';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60, filter: 'blur(10px)' },
@@ -58,9 +59,10 @@ export default function CardsSection() {
                 href="/services/brand-foundation" 
                 className="relative h-full min-h-[320px] rounded-3xl overflow-hidden group border border-gray-300 bg-[#f7f4ec] transition-all duration-700 cursor-pointer block"
               >
-                <img
-                  src="/s5.webp"
+                <OptimizedImage
+                  src="https://res.cloudinary.com/dplv15n29/image/upload/v1772486409/front_page_portfolio_kcfd0u.png"
                   alt="Brand Foundations"
+                  fill
                   className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                 />
                 <div className="absolute inset-0 bg-black/40 transition-all duration-700"></div>
@@ -94,9 +96,10 @@ export default function CardsSection() {
                 href="/services/visual-identity" 
                 className="relative h-full min-h-[320px] rounded-3xl overflow-hidden group border border-gray-300 bg-[#f7f4ec] transition-all duration-700 cursor-pointer block"
               >
-                <img
-                  src="/s2.jpg"
+                <OptimizedImage
+                  src="https://res.cloudinary.com/dplv15n29/image/upload/v1772459199/ChatGPT_Image_Feb_22_2026_12_14_03_PM_pz8ene.png"
                   alt="Visual Identity"
+                  fill
                   className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                 />
                 <div className="absolute inset-0 bg-black/40 transition-all duration-700"></div>
@@ -132,9 +135,10 @@ export default function CardsSection() {
               href="/services/digital-experiences" 
               className="relative h-full min-h-[320px] md:min-h-full rounded-3xl overflow-hidden group border border-gray-300 bg-[#f7f4ec] transition-all duration-700 cursor-pointer block"
             >
-              <img
-                src="/s2.jpg"
+              <OptimizedImage
+                src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483326/Brand_Guidelines__page-0009_n6r0vk.jpg"
                 alt="Digital Experiences"
+                fill
                 className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-black/40 transition-all duration-700"></div>

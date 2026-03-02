@@ -10,21 +10,21 @@ const categories = [
     id: "01",
     title: "UX & INTERFACE DESIGN",
     description: "We create intuitive spaces that turn visitors into brand advocates. By mapping out optimal pathways and creating high-fidelity blueprints, we ensure every interaction is seamless, beautiful, and purpose-driven.",
-    image: "", // Cloudinary ID
+    image: "https://res.cloudinary.com/dplv15n29/image/upload/v1772483326/Brand_Guidelines__page-0009_n6r0vk.jpg", // Cloudinary ID
     link: "/services/digital-experiences/ux-interface-design"
   },
   {
     id: "02",
     title: "CUSTOM WEB DEVELOPMENT",
     description: "We build scalable, robust architectures that power modern brands. From frontend architecture to customized storefronts, we deliver solutions that streamline conversions and enhance the overall user experience.",
-    image: "", // Cloudinary ID
+    image: "https://res.cloudinary.com/dplv15n29/image/upload/v1772486409/front_page_portfolio_kcfd0u.png", // Cloudinary ID
     link: "/services/digital-experiences/custom-web-development"
   },
    {
     id: "03",
     title: "ANIMATION, CMS & PERFORMANCE",
     description: "We ensure your site is fast, fluid, and easily manageable. We integrate smooth animations without compromising speed and set up headless CMS backends so your team owns and controls their content.",
-    image: "", // Cloudinary ID
+    image: "https://res.cloudinary.com/dplv15n29/image/upload/v1772483304/Brand_Guidelines__page-0003_ohbdtm.jpg", // Cloudinary ID
     link: "/services/digital-experiences/animation-cms-performance"
   },
 ];

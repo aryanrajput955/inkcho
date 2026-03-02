@@ -1,51 +1,64 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Masonry from "react-masonry-css";
-import React from 'react';
-import OptimizedImage from "@/app/components/OptimizedImage";
+import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect } from 'react';
 import OptimizedVideo from "@/app/components/OptimizedVideo";
 
-// Masonry Breakpoints
-const breakpointColumnsObj = {
-  default: 3,
-  1100: 3,
-  700: 2,
-  500: 1
-};
-
-// Content Data
-const items = [
-  { src: "", type: "video", title: "Kinetic Typography", subtitle: "Motion Design", size: "h-[450px]" },
-  { src: "", type: "image", title: "Art Direction", subtitle: "Campaign Shoot", size: "h-[350px]" },
-  { src: "", type: "image", title: "Visual Narrative", subtitle: "Storytelling", size: "h-[500px]" },
-  { src: "", type: "video", title: "Dynamic Identity", subtitle: "Brand Motion", size: "h-[400px]" },
-  { src: "", type: "image", title: "Editorial Layout", subtitle: "Print Design", size: "h-[320px]" },
-  { src: "", type: "video", title: "3D Visualization", subtitle: "Product Render", size: "h-[450px]" },
-  { src: "", type: "image", title: "Set Design", subtitle: "Photo Production", size: "h-[300px]" },
-  { src: "", type: "image", title: "Animation", subtitle: "Character Design", size: "h-[380px]" },
-  { src: "", type: "image", title: "Compositing", subtitle: "VFX", size: "h-[320px]" },
-];
-
-// Animation for grid items
-const itemVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.1,
-      duration: 0.6,
-      ease: [0.16, 1, 0.3, 1]
-    }
-  })
+// Content Data - Single Main Project
+const mainProject = {
+  title: "Visual Motion & Art Direction",
+  subtitle: "Kinetic Stories",
+  description: "A curation of motion stories, blending art direction with dynamic visualization to create impactful brand moments.",
+  src: "https://res.cloudinary.com/dplv15n29/video/upload/v1772486158/Casio_advertisment_shoot_pvnrtz.mp4",
+  gallery: [
+    "https://res.cloudinary.com/dplv15n29/video/upload/v1772486158/Casio_advertisment_shoot_pvnrtz.mp4",
+    "https://res.cloudinary.com/dplv15n29/video/upload/v1772475167/volt_brand_lUNCH_VIDEO_l8hrmh.mp4",
+    "https://res.cloudinary.com/dplv15n29/video/upload/v1772475201/as_and_studio_launch_video_final_msyrge.mp4",
+    "https://res.cloudinary.com/dplv15n29/video/upload/v1772475195/flexkicks_promotional_video_hvw2fs.mp4",
+    "https://res.cloudinary.com/dplv15n29/video/upload/v1772475168/short_video_2_rayy3h.mp4"
+  ]
 };
 
 export default function VisualMotionPage() {
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   
-  React.useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const openGallery = () => {
+    setIsGalleryOpen(true);
+    setCurrentVideoIndex(0);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeGallery = () => {
+    setIsGalleryOpen(false);
+    document.body.style.overflow = 'unset';
+  };
+
+  const nextVideo = (e) => {
+    e?.stopPropagation();
+    setCurrentVideoIndex((prev) => (prev + 1) % mainProject.gallery.length);
+  };
+
+  const prevVideo = (e) => {
+    e?.stopPropagation();
+    setCurrentVideoIndex((prev) => (prev - 1 + mainProject.gallery.length) % mainProject.gallery.length);
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!isGalleryOpen) return;
+      if (e.key === 'ArrowRight') nextVideo(e);
+      if (e.key === 'ArrowLeft') prevVideo(e);
+      if (e.key === 'Escape') closeGallery();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isGalleryOpen]);
 
   return (
     <main className="relative min-h-screen bg-[#FFFBF5] text-black overflow-hidden pt-32 pb-24">
@@ -82,17 +95,14 @@ export default function VisualMotionPage() {
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
         
-        {/* === HEADER SECTION === */}
-        <div className="relative flex flex-col items-center justify-center text-center mb-20 md:mb-32">
-            
-            {/* Dashed Border Container */}
+        {/* === HEADER SECTION (PRESERVED) === */}
+        <div className="relative flex flex-col items-center justify-center text-center mb-16 md:mb-24">
             <motion.div 
                initial={{ opacity: 0, scale: 0.95 }}
                animate={{ opacity: 1, scale: 1 }}
                transition={{ duration: 0.8 }}
                className="relative border border-dashed border-gray-400 p-8 md:p-12 max-w-4xl"
             >
-                {/* Labels on border */}
                 <span className="absolute -top-3 left-8 bg-[#FFFBF5] px-4 text-xs font-bold tracking-widest uppercase border border-gray-300 rounded-full py-1">
                     Motion
                 </span>
@@ -105,56 +115,109 @@ export default function VisualMotionPage() {
                     <span className="italic text-gray-600">Stories that move.</span>
                 </h1>
             </motion.div>
-
         </div>
 
-        {/* === MASONRY GRID === */}
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className="my-masonry-grid flex gap-8 md:gap-12"
-          columnClassName="my-masonry-grid_column bg-clip-padding space-y-8 md:space-y-12"
+        {/* === SINGLE MAIN PROJECT CONTAINER === */}
+        <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            onClick={openGallery}
+            className="group relative max-w-6xl mx-auto rounded-[2rem] overflow-hidden shadow-2xl cursor-pointer aspect-video bg-gray-100"
         >
-            {items.map((item, index) => (
-                <motion.div
-                    key={index}
-                    custom={index}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-10%" }}
-                    variants={itemVariants}
-                >
-                    <div className={`group relative rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 ease-out cursor-pointer ${item.size}`}>
-                        
-                        {/* Media: Video or Image */}
-                        {item.type === 'video' ? (
-                             <OptimizedVideo 
-                                 src={item.src} 
-                                 autoPlay 
-                                 loop 
-                                 muted 
-                                 playsInline 
-                                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                            />
-                        ) : (
-                            <OptimizedImage 
-                                src={item.src} 
-                                alt={item.title} 
-                                fill
-                                className="object-cover grayscale group-hover:grayscale-0 transition-transform duration-700 group-hover:scale-105"
-                            />
-                        )}
-                        
-                        {/* Overlay with Text */}
-                         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center p-4 text-center z-10">
-                            <h3 className="text-white font-serif text-2xl italic mb-2">{item.title}</h3>
-                            <span className="text-white/80 text-xs tracking-widest uppercase">{item.subtitle}</span>
-                        </div>
-                    </div>
-                </motion.div>
-            ))}
-        </Masonry>
+            <OptimizedVideo 
+                src={mainProject.src}
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+            />
+            
+
+            {/* Bottom Label Overlay - Only visible on hover */}
+            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <span className="text-white/60 text-xs tracking-[0.3em] uppercase mb-2 block">{mainProject.subtitle}</span>
+                <h3 className="text-white font-serif text-3xl md:text-5xl italic">{mainProject.title}</h3>
+                <p className="text-white/40 text-sm mt-4 tracking-widest uppercase flex items-center gap-2">
+                    <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                    Click to explore gallery
+                </p>
+            </div>
+        </motion.div>
 
       </div>
+
+      {/* === GALLERY OVERLAY === */}
+      <AnimatePresence>
+        {isGalleryOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[9999] bg-black/98 flex items-center justify-center p-4 md:p-10"
+            onClick={closeGallery}
+          >
+            {/* Close Button */}
+            <button
+              className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors z-[10000] p-4 bg-white/5 rounded-full backdrop-blur-md"
+              onClick={closeGallery}
+            >
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+
+            {/* Navigation Arrows */}
+            {mainProject.gallery.length > 1 && (
+              <>
+                <button
+                  className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-colors z-[10000] bg-white/5 p-4 rounded-full backdrop-blur-sm"
+                  onClick={prevVideo}
+                >
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button
+                  className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-colors z-[10000] bg-white/5 p-4 rounded-full backdrop-blur-sm"
+                  onClick={nextVideo}
+                >
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+              </>
+            )}
+
+            {/* Video Container */}
+            <div className="relative w-full h-full max-w-7xl max-h-[85vh] flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentVideoIndex}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.05 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  className="relative w-full h-full flex items-center justify-center px-4"
+                >
+                  <OptimizedVideo
+                    src={mainProject.gallery[currentVideoIndex]}
+                    controls
+                    autoPlay
+                    className="w-full h-full object-contain rounded-2xl shadow-3xl"
+                  />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Pagination Info */}
+              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 text-white/40 font-light tracking-[0.4em] text-xs uppercase">
+                {currentVideoIndex + 1} / {mainProject.gallery.length}
+              </div>
+            </div>
+
+            {/* Overlay Info */}
+             <div className="absolute bottom-8 left-8 hidden md:block">
+                <h4 className="text-white font-serif italic text-2xl">{mainProject.title}</h4>
+                <p className="text-white/40 text-[10px] tracking-[0.2em] uppercase mt-2">Motion Showcase Gallery</p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
