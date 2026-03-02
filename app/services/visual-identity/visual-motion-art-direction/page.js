@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import Masonry from "react-masonry-css";
 import React from 'react';
+import OptimizedImage from "@/app/components/OptimizedImage";
+import OptimizedVideo from "@/app/components/OptimizedVideo";
 
 // Masonry Breakpoints
 const breakpointColumnsObj = {
@@ -14,15 +16,15 @@ const breakpointColumnsObj = {
 
 // Content Data
 const items = [
-  { src: "/bgvideo.mp4", type: "video", title: "Kinetic Typography", subtitle: "Motion Design", size: "h-[450px]" },
-  { src: "/img1.jpeg", type: "image", title: "Art Direction", subtitle: "Campaign Shoot", size: "h-[350px]" },
-  { src: "/s3.webp", type: "image", title: "Visual Narrative", subtitle: "Storytelling", size: "h-[500px]" },
-  { src: "/vid1.mp4", type: "video", title: "Dynamic Identity", subtitle: "Brand Motion", size: "h-[400px]" },
-  { src: "/s5.webp", type: "image", title: "Editorial Layout", subtitle: "Print Design", size: "h-[320px]" },
-  { src: "/vid3.mp4", type: "video", title: "3D Visualization", subtitle: "Product Render", size: "h-[450px]" },
-  { src: "/s2.jpg", type: "image", title: "Set Design", subtitle: "Photo Production", size: "h-[300px]" },
-  { src: "/s4.webp", type: "image", title: "Animation", subtitle: "Character Design", size: "h-[380px]" },
-  { src: "/s6.webp", type: "image", title: "Compositing", subtitle: "VFX", size: "h-[320px]" },
+  { src: "", type: "video", title: "Kinetic Typography", subtitle: "Motion Design", size: "h-[450px]" },
+  { src: "", type: "image", title: "Art Direction", subtitle: "Campaign Shoot", size: "h-[350px]" },
+  { src: "", type: "image", title: "Visual Narrative", subtitle: "Storytelling", size: "h-[500px]" },
+  { src: "", type: "video", title: "Dynamic Identity", subtitle: "Brand Motion", size: "h-[400px]" },
+  { src: "", type: "image", title: "Editorial Layout", subtitle: "Print Design", size: "h-[320px]" },
+  { src: "", type: "video", title: "3D Visualization", subtitle: "Product Render", size: "h-[450px]" },
+  { src: "", type: "image", title: "Set Design", subtitle: "Photo Production", size: "h-[300px]" },
+  { src: "", type: "image", title: "Animation", subtitle: "Character Design", size: "h-[380px]" },
+  { src: "", type: "image", title: "Compositing", subtitle: "VFX", size: "h-[320px]" },
 ];
 
 // Animation for grid items
@@ -125,19 +127,20 @@ export default function VisualMotionPage() {
                         
                         {/* Media: Video or Image */}
                         {item.type === 'video' ? (
-                             <video 
-                                src={item.src} 
-                                autoPlay 
-                                loop 
-                                muted 
-                                playsInline 
-                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                             <OptimizedVideo 
+                                 src={item.src} 
+                                 autoPlay 
+                                 loop 
+                                 muted 
+                                 playsInline 
+                                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                             />
                         ) : (
-                            <img 
+                            <OptimizedImage 
                                 src={item.src} 
                                 alt={item.title} 
-                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-transform duration-700 group-hover:scale-105"
+                                fill
+                                className="object-cover grayscale group-hover:grayscale-0 transition-transform duration-700 group-hover:scale-105"
                             />
                         )}
                         

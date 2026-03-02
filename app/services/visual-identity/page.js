@@ -1,5 +1,6 @@
 "use client";
 
+import OptimizedImage from "@/app/components/OptimizedImage";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -10,19 +11,19 @@ const categories = [
     id: "01",
     title: "LOGO & IDENTITY SYSTEMS",
     description: "We design identity systems, not standalone logos. Each mark is built to work across contexts, scales, and mediums—so your brand stays recognisable, consistent, and confident wherever it appears.",
-    images: ["/img1.jpeg"], // Using varied placeholders
+    image: "https://res.cloudinary.com/dplv15n29/image/upload/v1772470476/img1_jehkeg.jpg", // Cloudinary ID
   },
   {
     id: "02",
     title: "TYPOGRAPHY, COLOUR & BRAND ASSETS",
     description: "We build visual languages that communicate before words do. From type pairings to color psychology, we ensure every element reinforces your brand's story and emotional impact.",
-    images: ["/img2.jpeg"],
+    image: "https://res.cloudinary.com/dplv15n29/image/upload/v1772470474/img2_ffrxjh.jpg", // Cloudinary ID
   },
    {
     id: "03",
     title: "Visual, Motion & Art Direction",
     description: "We craft visual narratives that bring brands to life. Through illustration, motion guidelines, and art direction, we create dynamic experiences that captivate and engage your audience.",
-    images: ["/img1.jpeg"],
+    image: "https://res.cloudinary.com/dplv15n29/image/upload/v1772470476/img1_jehkeg.jpg", // Cloudinary ID
   },
 ];
 
@@ -210,9 +211,9 @@ export default function VisualIdentityPage() {
               >
                   {/* Single Image Layout */}
                   <div className="relative w-full overflow-hidden shadow-xl group">
-                      <div className="absolute inset-0 bg-gray-200 animate-pulse" /> {/* Placeholder while loading */}
-                      <img 
-                        src={cat.images[0]} 
+                      <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+                      <OptimizedImage 
+                        src={cat.image} 
                         alt={cat.title} 
                         className="relative z-10 w-full h-auto block transition-transform duration-700 group-hover:scale-105" 
                       />

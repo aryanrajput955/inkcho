@@ -3,27 +3,28 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import React from 'react';
+import OptimizedImage from "@/app/components/OptimizedImage";
 
 const categories = [
   {
     id: "01",
     title: "UX & INTERFACE DESIGN",
     description: "We create intuitive spaces that turn visitors into brand advocates. By mapping out optimal pathways and creating high-fidelity blueprints, we ensure every interaction is seamless, beautiful, and purpose-driven.",
-    images: ["/img1.jpeg"], // Using varied placeholders
+    image: "", // Cloudinary ID
     link: "/services/digital-experiences/ux-interface-design"
   },
   {
     id: "02",
     title: "CUSTOM WEB DEVELOPMENT",
     description: "We build scalable, robust architectures that power modern brands. From frontend architecture to customized storefronts, we deliver solutions that streamline conversions and enhance the overall user experience.",
-    images: ["/img2.jpeg"],
+    image: "", // Cloudinary ID
     link: "/services/digital-experiences/custom-web-development"
   },
    {
     id: "03",
     title: "ANIMATION, CMS & PERFORMANCE",
     description: "We ensure your site is fast, fluid, and easily manageable. We integrate smooth animations without compromising speed and set up headless CMS backends so your team owns and controls their content.",
-    images: ["/img1.jpeg"],
+    image: "", // Cloudinary ID
     link: "/services/digital-experiences/animation-cms-performance"
   },
 ];
@@ -203,9 +204,9 @@ export default function DigitalExperiencesPage() {
               >
                   {/* Single Image Layout */}
                   <div className="relative w-full overflow-hidden shadow-xl group">
-                      <div className="absolute inset-0 bg-gray-200 animate-pulse" /> {/* Placeholder while loading */}
-                      <img 
-                        src={cat.images[0]} 
+                      <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+                      <OptimizedImage 
+                        src={cat.image} 
                         alt={cat.title} 
                         className="relative z-10 w-full h-auto block transition-transform duration-700 group-hover:scale-105" 
                       />

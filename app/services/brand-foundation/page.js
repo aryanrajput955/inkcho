@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import OptimizedImage from '@/app/components/OptimizedImage';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,42 +12,42 @@ const slides = [
     id: "01",
     title: "Research and Discovery",
     description: "Understanding the audience, context, and opportunity before decisions are made.",
-    image: "/s1.jpg",
+    image: "", // Cloudinary ID
     offset: "up" 
   },
   {
     id: "02",
     title: "Brand Positioning",
     description: "Defining a clear, confident place for the brand to stand.",
-    image: "/s2.jpg",
+    image: "", // Cloudinary ID
     offset: "down"
   },
   {
     id: "03",
     title: "Purpose, Vision & Brand Voice",
     description: "Shaping meaning, direction, and how the brand speaks.",
-    image: "/s3.webp",
+    image: "", // Cloudinary ID
     offset: "up"
   },
   {
     id: "04",
     title: "Visual Identity System",
     description: "Creating a cohesive visual language that translates strategy into design.",
-    image: "/s4.webp",
+    image: "", // Cloudinary ID
     offset: "down"
   },
   {
     id: "05",
     title: "Brand Activation",
     description: "Launching the brand into the world with impact and consistency.",
-    image: "/s5.webp",
+    image: "", // Cloudinary ID
     offset: "up"
   },
   {
     id: "06",
     title: "Ongoing Brand Strategy",
     description: "Evolving the brand over time to stay relevant and resonant.",
-    image: "/s6.webp",
+    image: "", // Cloudinary ID
     offset: "down"
   }
 ];
@@ -148,11 +149,12 @@ export default function BrandFoundationPage() {
 
                 {/* Image Card */}
                 <div className="relative w-full aspect-[3/4] bg-gray-100 overflow-hidden shadow-2xl mb-6 group grayscale hover:grayscale-0 transition-all duration-700 rounded-sm">
-                   <img 
-                     src={slide.image} 
-                     alt={slide.title}
-                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                   />
+                    <OptimizedImage 
+                      src={slide.image} 
+                      alt={slide.title}
+                      fill
+                      className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                    />
                 </div>
 
                 {/* Text Content */}

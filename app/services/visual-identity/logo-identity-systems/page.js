@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import OptimizedImage from "@/app/components/OptimizedImage";
 import { motion, AnimatePresence } from "framer-motion";
 import Masonry from "react-masonry-css";
 import React, { useState, useEffect } from 'react';
@@ -16,78 +16,50 @@ const breakpointColumnsObj = {
 // Custom Grid Data with expanded images for gallery
 const projects = [
   { 
-    src: "/visual-identity/Planholic/White%20and%20Grey%20Classic%20Art%20Gallery%20Logo.png", 
-    hoverSrc: "/visual-identity/Planholic/ChatGPT%20Image%20Feb%2022,%202026,%2002_41_40%20PM.png", 
+    id: "https://res.cloudinary.com/dplv15n29/image/upload/v1772459087/ChatGPT_Image_Feb_22_2026_02_41_40_PM_hwx4rs.png", // Primary Cloudinary Image ID
+    hoverId: "https://res.cloudinary.com/dplv15n29/image/upload/v1772459089/ChatGPT_Image_Feb_22_2026_03_06_27_PM_r1iq8k.png", // Hover Cloudinary Image ID (optional)
     title: "Planholic", 
     size: "h-[400px]",
-    images: [
-      "/visual-identity/Planholic/White%20and%20Grey%20Classic%20Art%20Gallery%20Logo.png",
-      "/visual-identity/Planholic/ChatGPT%20Image%20Feb%2022,%202026,%2002_41_40%20PM.png",
-      "/visual-identity/Planholic/ChatGPT%20Image%20Feb%2022,%202026,%2003_06_27%20PM.png"
-    ]
+    gallery: ["https://res.cloudinary.com/dplv15n29/image/upload/v1772459088/White_and_Grey_Classic_Art_Gallery_Logo_z3e8by.png", "https://res.cloudinary.com/dplv15n29/image/upload/v1772459089/ChatGPT_Image_Feb_22_2026_03_06_27_PM_r1iq8k.png", "https://res.cloudinary.com/dplv15n29/image/upload/v1772459087/ChatGPT_Image_Feb_22_2026_02_41_40_PM_hwx4rs.png"] // List of Cloudinary IDs for the gallery
+  },
+ 
+  { 
+    id: "https://res.cloudinary.com/dplv15n29/image/upload/v1772459199/ChatGPT_Image_Feb_22_2026_12_14_03_PM_pz8ene.png", 
+    hoverId: "https://res.cloudinary.com/dplv15n29/image/upload/v1772459202/horizontal-paper-bag-mockup-featuring-a-plain-background-3476-el1_zgjhqm.png", 
+    title: "Bleed With Pride", 
+    size: "h-[300px]",
+    gallery: ["https://res.cloudinary.com/dplv15n29/image/upload/v1772459194/BWP_qwg1c7.jpg", "https://res.cloudinary.com/dplv15n29/image/upload/v1772459196/ChatGPT_Image_Feb_22_2026_11_57_53_AM_frbhmk.png", "https://res.cloudinary.com/dplv15n29/image/upload/v1772459197/business-card-mockup-lying-on-top-of-a-wooden-table-a6155_zgvvqj.png", "https://res.cloudinary.com/dplv15n29/image/upload/v1772459199/ChatGPT_Image_Feb_22_2026_12_14_03_PM_pz8ene.png","https://res.cloudinary.com/dplv15n29/image/upload/v1772459201/mockup-of-the-back-and-front-of-a-rectangle-pin-button-3531-el1_y287f1.png","https://res.cloudinary.com/dplv15n29/image/upload/v1772459202/horizontal-paper-bag-mockup-featuring-a-plain-background-3476-el1_zgjhqm.png","https://res.cloudinary.com/dplv15n29/image/upload/v1772459203/paper-bag-mockup-of-a-shopping-bag-sitting-on-top-of-a-table-a6863_z8gmlq.png"]
   },
   { 
-    src: "/visual-identity/Raghukulam/logo1.png", 
-    hoverSrc: "/visual-identity/Raghukulam/logo2.png", 
-    title: "Raghukulam", 
+    id: "https://res.cloudinary.com/dplv15n29/image/upload/v1772459167/mockup-of-a-snapback-hat-on-a-solid-surface-1489-el_zgions.png", 
+    hoverId: "https://res.cloudinary.com/dplv15n29/image/upload/v1772459166/round-sign-mockup-hanging-from-outside-a-storea14979_bgihsb.png", 
+    title: "Construction Brand Logo", 
+    size: "h-[450px]",
+    gallery: ["https://res.cloudinary.com/dplv15n29/image/upload/v1772459170/polo-shirt-mockup-featuring-a-man-looking-downwards-3190-el1_xkjffr.png", "https://res.cloudinary.com/dplv15n29/image/upload/v1772459167/mockup-of-a-snapback-hat-on-a-solid-surface-1489-el_zgions.png", "https://res.cloudinary.com/dplv15n29/image/upload/v1772459166/round-sign-mockup-hanging-from-outside-a-storea14979_bgihsb.png", "https://res.cloudinary.com/dplv15n29/image/upload/v1772459165/branding-stickers-mockup-featuring-a-colorful-background-m31370_l30ocg.png","https://res.cloudinary.com/dplv15n29/image/upload/v1772459152/mockup-of-a-folded-polo-shirt-placed-on-a-solid-surface-3091-el1_eyrfzm.png","https://res.cloudinary.com/dplv15n29/image/upload/v1772459152/mockup-of-a-pin-back-button-1167-el_lqbeoz.png","https://res.cloudinary.com/dplv15n29/image/upload/v1772459152/mockup-of-a-folded-polo-shirt-placed-on-a-solid-surface-3091-el1_eyrfzm.png","https://res.cloudinary.com/dplv15n29/image/upload/v1772459151/mockup-featuring-a-set-of-business-cards-a6223_bdyy0t.png","https://res.cloudinary.com/dplv15n29/image/upload/v1772459150/mockup-of-a-circular-sign-by-a-brick-wall-store-2220-el1_icpnav.png","https://res.cloudinary.com/dplv15n29/image/upload/v1772459146/hat-mockup-over-a-transparent-png-background-11703_1_bb2pqp.png","https://res.cloudinary.com/dplv15n29/image/upload/v1772459144/front-and-back-view-mockup-of-a-round-button-3510-el1_qczl4l.png","https://res.cloudinary.com/dplv15n29/image/upload/v1772459141/circular-sign-mockup-placed-outside-a-store-2224-el1_nl0enr.png","https://res.cloudinary.com/dplv15n29/image/upload/v1772459140/free-image-resizer-cropper_3_zrfl0x.png","https://res.cloudinary.com/dplv15n29/image/upload/v1772459140/free-image-resizer-cropper_gnqekb.png","https://res.cloudinary.com/dplv15n29/image/upload/v1772459138/ChatGPT_Image_Feb_22_2026_02_14_32_PM_p7hywz.png","https://res.cloudinary.com/dplv15n29/image/upload/v1772459137/button-mockup-featuring-a-plain-color-backdrop-1168-el_x41knw.png"]
+  },
+   { 
+    id: "https://res.cloudinary.com/dplv15n29/image/upload/v1772459042/ChatGPT_Image_Feb_22_2026_03_03_33_PM_mfzxyj.png", 
+    hoverId: "", 
+    title: "Raghukulam Logo", 
     size: "h-[550px]", 
     objectFit: "object-contain bg-white",
-    images: [
-      "/visual-identity/Raghukulam/logo1.png",
-      "/visual-identity/Raghukulam/logo2.png"
-    ]
+    gallery: ["https://res.cloudinary.com/dplv15n29/image/upload/v1772459042/ChatGPT_Image_Feb_22_2026_03_03_33_PM_mfzxyj.png", "https://res.cloudinary.com/dplv15n29/image/upload/v1772459042/Raghukulam_Stand_Packet_final_copy_ixegrp.png"]
   },
   { 
-    src: "/visual-identity/bleed/BWP.png", 
-    hoverSrc: "/visual-identity/bleed/mockup.png", 
-    title: "Bleed Branding", 
-    size: "h-[300px]",
-    images: [
-      "/visual-identity/bleed/BWP.png",
-      "/visual-identity/bleed/mockup.png",
-      "/visual-identity/bleed/BWP.jpg",
-      "/visual-identity/bleed/ChatGPT%20Image%20Feb%2022,%202026,%2012_14_03%20PM.png"
-    ]
-  },
-  { 
-    src: "/visual-identity/bleed/horizontal-paper-bag-mockup-featuring-a-plain-background-3476-el1.png", 
-    hoverSrc: "/visual-identity/bleed/paper-bag-mockup-of-a-shopping-bag-sitting-on-top-of-a-table-a6863.png", 
-    title: "Bleed Assets", 
+    id: "https://res.cloudinary.com/dplv15n29/image/upload/v1772458973/msk_02_dtqbr1.jpg", 
+    hoverId: "", 
+    title: "Salahuddin Logo", 
     size: "h-[450px]",
-    images: [
-      "/visual-identity/bleed/horizontal-paper-bag-mockup-featuring-a-plain-background-3476-el1.png",
-      "/visual-identity/bleed/paper-bag-mockup-of-a-shopping-bag-sitting-on-top-of-a-table-a6863.png",
-      "/visual-identity/bleed/business-card-mockup-lying-on-top-of-a-wooden-table-a6155.png",
-      "/visual-identity/bleed/mockup-of-the-back-and-front-of-a-rectangle-pin-button-3531-el1.png"
-    ]
+    gallery: ["https://res.cloudinary.com/dplv15n29/image/upload/v1772458973/msk_02_dtqbr1.jpg"]
   },
-  { 
-    src: "/visual-identity/Balwani/BSG%20Icon%20Lily%20Golden%20copy.png", 
-    hoverSrc: "/visual-identity/Balwani/Bhawani%20Singh%20Group%20mockup%20copy.jpg",
-    title: "Balwani Group", 
-    size: "h-[450px]",
-    images: [
-      "/visual-identity/Balwani/BSG%20Icon%20Lily%20Golden%20copy.png",
-      "/visual-identity/Balwani/Bhawani%20Singh%20Group%20mockup%20copy.jpg",
-      "/visual-identity/Balwani/Board%203.jpg",
-      "/visual-identity/Balwani/Cap%20Design.jpg",
-      "/visual-identity/Balwani/T%20Shirt%20Design.jpg",
-      "/visual-identity/Balwani/Visiting%20Card%20Front.jpg"
-    ]
-  },
-  { 
-    src: "/visual-identity/construction/ChatGPT%20Image%20Feb%2022,%202026,%2002_14_32%20PM.png", 
-    hoverSrc: "/visual-identity/construction/branding-stickers-mockup-featuring-a-colorful-background-m31370.png",
-    title: "Construction Identity", 
-    size: "h-[320px]",
-    images: [
-      "/visual-identity/construction/ChatGPT%20Image%20Feb%2022,%202026,%2002_14_32%20PM.png",
-      "/visual-identity/construction/branding-stickers-mockup-featuring-a-colorful-background-m31370.png",
-      "/visual-identity/construction/button-mockup-featuring-a-plain-color-backdrop-1168-el.png",
-      "/visual-identity/construction/circular-sign-mockup-placed-outside-a-store-2224-el1.png",
-      "/visual-identity/construction/logo-mockup-featuring-a-business-card-placed-on-a-plain-color-surface-1663-el.png"
-    ]
+  {
+    id: "https://res.cloudinary.com/dplv15n29/image/upload/v1772462868/mockup-of-circular-branding-stickers-m31371_ohschh.png", 
+    hoverId: "https://res.cloudinary.com/dplv15n29/image/upload/v1772462869/Bhawani_Singh_Group_mockup_copy_fqlrmu.jpg", 
+    title: "Bhawani Singh Logo", 
+    size: "h-[550px]",
+    gallery: ["https://res.cloudinary.com/dplv15n29/image/upload/v1772462888/T_Shirt_Design-transformed_te8egb.jpg", "https://res.cloudinary.com/dplv15n29/image/upload/v1772462868/mockup-of-circular-branding-stickers-m31371_ohschh.png", "https://res.cloudinary.com/dplv15n29/image/upload/v1772462869/Bhawani_Singh_Group_mockup_copy_fqlrmu.jpg","https://res.cloudinary.com/dplv15n29/image/upload/v1772462875/Board_3_w2obpn.jpg","https://res.cloudinary.com/dplv15n29/image/upload/v1772462865/Cap_Design_jj91rj.jpg","https://res.cloudinary.com/dplv15n29/image/upload/v1772462861/Logo_With_tag_line_ze17c2.jpg","https://res.cloudinary.com/dplv15n29/image/upload/v1772462852/ChatGPT_Image_Feb_22_2026_01_13_04_PM_ty9z1h.png","https://res.cloudinary.com/dplv15n29/image/upload/v1772462839/Visiting_Card_Front_Main_k1xgff.jpg","https://res.cloudinary.com/dplv15n29/image/upload/v1772462838/Visiting_Card_Front_y3jjm5.jpg","https://res.cloudinary.com/dplv15n29/image/upload/v1772462835/BSG_jbjqxr.jpg","https://res.cloudinary.com/dplv15n29/image/upload/v1772462834/Visiting_Card_Back_Main_q1koo3.jpg","https://res.cloudinary.com/dplv15n29/image/upload/v1772462833/ChatGPT_Image_Feb_22_2026_01_35_28_PM_ezah99.png","https://res.cloudinary.com/dplv15n29/image/upload/v1772462832/BSG_Icon_Lily_Golden_copy_frvgtg.png","https://res.cloudinary.com/dplv15n29/image/upload/v1772462832/Visiting_Card_Back_uqgqd9.jpg"]
   }
+
 ];
 
 // Animation for grid items
@@ -114,10 +86,10 @@ export default function LogoIdentitySystemsPage() {
   }, []);
 
   const openGallery = (project) => {
-    if (project.images && project.images.length > 1) {
+    if (project.gallery && project.gallery.length > 0) {
       setSelectedProject(project);
       setCurrentImageIndex(0);
-      document.body.style.overflow = 'hidden'; // Prevent scrolling
+      document.body.style.overflow = 'hidden';
     }
   };
 
@@ -128,12 +100,12 @@ export default function LogoIdentitySystemsPage() {
 
   const nextImage = (e) => {
     e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev + 1) % selectedProject.images.length);
+    setCurrentImageIndex((prev) => (prev + 1) % selectedProject.gallery.length);
   };
 
   const prevImage = (e) => {
     e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev - 1 + selectedProject.images.length) % selectedProject.images.length);
+    setCurrentImageIndex((prev) => (prev - 1 + selectedProject.gallery.length) % selectedProject.gallery.length);
   };
 
   // Keyboard navigation
@@ -149,7 +121,7 @@ export default function LogoIdentitySystemsPage() {
   }, [selectedProject]);
 
   return (
-    <main className="relative min-h-screen bg-[#FFFBF5] text-black overflow-hidden pt-32 pb-24">
+    <main className="relative min-h-screen bg-[#FFFBF5] text-black overflow-hidden pt-12 pb-24">
       
       {/* === ANIMATED GRID BACKGROUND === */}
       <div className="fixed inset-0 z-0 pointer-events-none">
@@ -177,10 +149,10 @@ export default function LogoIdentitySystemsPage() {
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
         
-        <div className="relative flex flex-col items-center justify-center text-center mb-20 md:mb-32">
+        <div className="relative flex flex-col items-center justify-center text-center ">
             <div className="relative w-full max-w-5xl aspect-[21/9]">
-              <Image 
-                 src="/visual.png"
+              <OptimizedImage 
+                 src="https://res.cloudinary.com/dplv15n29/image/upload/v1772463623/visual_tcvyh7.png" // Hero Cloudinary ID
                  alt="Visual Identity Hero"
                  fill
                  priority
@@ -205,10 +177,10 @@ export default function LogoIdentitySystemsPage() {
                     variants={itemVariants}
                     onClick={() => openGallery(project)}
                 >
-                    <div className={`group relative rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 ease-out ${project.images.length > 1 ? 'cursor-pointer' : 'cursor-default'} ${project.size}`}>
+                    <div className={`group relative rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 ease-out ${project.gallery?.length > 0 ? 'cursor-pointer' : 'cursor-default'} ${project.size}`}>
                         {/* Base Image */}
-                        <Image 
-                            src={project.src} 
+                        <OptimizedImage 
+                            src={project.id} 
                             alt={project.title} 
                             fill
                             sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
@@ -216,9 +188,9 @@ export default function LogoIdentitySystemsPage() {
                         />
                         
                         {/* Hover Image */}
-                        {project.hoverSrc && (
-                             <Image 
-                                src={project.hoverSrc} 
+                        {project.hoverId && (
+                             <OptimizedImage 
+                                src={project.hoverId} 
                                 alt={`${project.title} Hover`} 
                                 fill
                                 sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
@@ -230,7 +202,7 @@ export default function LogoIdentitySystemsPage() {
                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center p-4 text-center z-10">
                             <h3 className="text-white font-serif text-2xl italic mb-2">{project.title}</h3>
                             <span className="text-white/80 text-xs tracking-widest uppercase">
-                              {project.images.length > 1 ? "View Gallery" : "Brand Identity"}
+                              {project.gallery?.length > 0 ? "View Gallery" : "Brand Identity"}
                             </span>
                         </div>
                     </div>
@@ -242,7 +214,7 @@ export default function LogoIdentitySystemsPage() {
       {/* === GALLERY OVERLAY === */}
       <AnimatePresence>
         {selectedProject && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -250,7 +222,7 @@ export default function LogoIdentitySystemsPage() {
             onClick={closeGallery}
           >
             {/* Close Button */}
-            <button 
+            <button
               className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors z-[110]"
               onClick={closeGallery}
             >
@@ -261,15 +233,15 @@ export default function LogoIdentitySystemsPage() {
             </button>
 
             {/* Navigation Arrows */}
-            {selectedProject.images.length > 1 && (
+            {selectedProject.gallery?.length > 1 && (
               <>
-                <button 
+                <button
                   className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-colors z-[110] bg-white/5 p-4 rounded-full"
                   onClick={prevImage}
                 >
                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
                 </button>
-                <button 
+                <button
                   className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-colors z-[110] bg-white/5 p-4 rounded-full"
                   onClick={nextImage}
                 >
@@ -290,8 +262,8 @@ export default function LogoIdentitySystemsPage() {
                   className="relative w-full h-full flex items-center justify-center"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <Image
-                    src={selectedProject.images[currentImageIndex]}
+                  <OptimizedImage
+                    src={selectedProject.gallery[currentImageIndex]}
                     alt={`${selectedProject.title} - ${currentImageIndex + 1}`}
                     fill
                     priority
@@ -299,13 +271,13 @@ export default function LogoIdentitySystemsPage() {
                   />
                 </motion.div>
               </AnimatePresence>
-              
+
               {/* Pagination Info */}
               <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 text-white/50 font-light tracking-[0.2em] text-sm">
-                {currentImageIndex + 1} / {selectedProject.images.length}
+                {currentImageIndex + 1} / {selectedProject.gallery.length}
               </div>
             </div>
-            
+
             {/* Project Title In Gallery */}
             <div className="absolute top-8 left-8">
               <h4 className="text-white font-serif italic text-2xl">{selectedProject.title}</h4>
