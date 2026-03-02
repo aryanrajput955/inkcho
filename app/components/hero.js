@@ -74,32 +74,32 @@ export default function BrandShowcase({ startAnimation = true }) {
 
   const images = [
     {
-      url: "https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=400&h=400&fit=crop",
+      url: "https://res.cloudinary.com/dplv15n29/image/upload/v1772472228/WhatsApp_Image_2026-02-17_at_9.12.44_PM_2_q8iyst.jpg",
       alt: "Abstract portrait",
       position: "top-0 left-0",
     },
     {
-      url: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=400&h=500&fit=crop",
+      url: "https://res.cloudinary.com/dplv15n29/image/upload/v1772473991/im_kredo_qxkm3e.png",
       alt: "Colorful robot art",
       position: "top-[25%] left-[18%]",
     },
     {
-      url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&h=500&fit=crop",
+      url: "https://res.cloudinary.com/dplv15n29/image/upload/v1772473972/INFINITY.png_rycfrn.jpg",
       alt: "Dreamy illustration",
       position: "top-[25%] right-[18%]",
     },
     {
-      url: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=400&h=400&fit=crop",
+      url: "https://res.cloudinary.com/dplv15n29/image/upload/v1772474136/poster_1_xexgn6.jpg",
       alt: "Vintage poster",
       position: "top-0 right-0",
     },
     {
-      url: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&h=500&fit=crop",
+      url: "https://res.cloudinary.com/dplv15n29/image/upload/v1772493550/image_1.jpg_p5pkrb.jpg",
       alt: "Portrait photography",
       position: "bottom-0 left-0",
     },
     {
-      url: "https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?w=400&h=500&fit=crop",
+      url: "https://res.cloudinary.com/dplv15n29/image/upload/v1772474132/poster_2_yto9el.png",
       alt: "Cosmic mushroom",
       position: "bottom-0 right-0",
     }

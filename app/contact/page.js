@@ -20,8 +20,9 @@ export default function ContactPage() {
     email: '',
     company: '',
     message: '',
-    selectedService: null,
+    selectedServices: [], // Support multiple selection
   });
+  const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -98,39 +99,85 @@ export default function ContactPage() {
     return () => ctx.kill();
   }, []);
 
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
+  const validate = () => {
+    let tempErrors = {};
+    if (!formData.name.trim()) tempErrors.name = "Name is required";
+    if (!formData.email.trim()) {
+      tempErrors.email = "Email is required";
+    } else if (!validateEmail(formData.email)) {
+      tempErrors.email = "Valid email is required";
+    }
+    if (formData.selectedServices.length === 0) tempErrors.services = "Select at least one service";
+    if (!formData.message.trim()) tempErrors.message = "Message is required";
+    
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    if (errors[name]) setErrors(prev => ({ ...prev, [name]: null }));
   };
 
-  const handleServiceSelect = (service) => {
-    setFormData(prev => ({
-      ...prev,
-      selectedService: prev.selectedService === service ? null : service,
-    }));
+  const toggleService = (service) => {
+    setFormData(prev => {
+      const exists = prev.selectedServices.includes(service);
+      const newServices = exists 
+        ? prev.selectedServices.filter(s => s !== service)
+        : [...prev.selectedServices, service];
+      
+      if (newServices.length > 0 && errors.services) {
+        setErrors(errs => ({ ...errs, services: null }));
+      }
+      return { ...prev, selectedServices: newServices };
+    });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim() || !formData.selectedService) {
-      alert('Please fill all required fields');
-      return;
-    }
+    if (!validate()) return;
+
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setTimeout(() => {
+    
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          selectedServices: formData.selectedServices // Send array
+        }),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
         setFormData({
           name: '',
           email: '',
           company: '',
           message: '',
-          selectedService: null,
+          selectedServices: [],
         });
-        setIsSubmitted(false);
-      }, 3000);
-    }, 1500);
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        const data = await response.json();
+        alert(data.error || 'Connection error. Please try again.');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('Network error. Check your connection.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -166,8 +213,9 @@ export default function ContactPage() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Hello..."
-                className="form-input w-full bg-transparent border-b border-[#d6d3cd] px-0 pt-3 pb-[6px] text-[#1e1e1e] placeholder-[#999] focus:outline-none focus:border-[#9a1b40] transition-colors"
+                className={`form-input w-full bg-transparent border-b-2 px-0 pt-3 pb-[6px] text-[#1e1e1e] placeholder-[#999] focus:outline-none transition-colors ${errors.name ? 'border-red-500' : 'border-[#d6d3cd] focus:border-[#9a1b40]'}`}
               />
+              {errors.name && <p className="text-red-500 text-[10px] mt-1 uppercase tracking-tight">{errors.name}</p>}
             </div>
             <div className="text-left">
               <label className="block text-[#1e4389] font-medium mb-3">
@@ -180,8 +228,9 @@ export default function ContactPage() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Where can I reply?"
-                className="form-input w-full bg-transparent border-b border-[#d6d3cd] px-0 pt-3 pb-[6px] text-[#1e1e1e] placeholder-[#999] focus:outline-none focus:border-[#9a1b40] transition-colors"
+                className={`form-input w-full bg-transparent border-b-2 px-0 pt-3 pb-[6px] text-[#1e1e1e] placeholder-[#999] focus:outline-none transition-colors ${errors.email ? 'border-red-500' : 'border-[#d6d3cd] focus:border-[#9a1b40]'}`}
               />
+              {errors.email && <p className="text-red-500 text-[10px] mt-1 uppercase tracking-tight">{errors.email}</p>}
             </div>
           </div>
 
@@ -194,7 +243,7 @@ export default function ContactPage() {
               value={formData.company}
               onChange={handleChange}
               placeholder="Your company or website?"
-              className="form-input w-full bg-transparent border-b border-[#d6d3cd] px-0 pt-3 pb-[6px] text-[#1e1e1e] placeholder-[#999] focus:outline-none focus:border-[#9a1b40] transition-colors"
+              className="form-input w-full bg-transparent border-b-2 border-[#d6d3cd] px-0 pt-3 pb-[6px] text-[#1e1e1e] placeholder-[#999] focus:outline-none focus:border-[#9a1b40] transition-colors"
             />
           </div>
 
@@ -208,10 +257,9 @@ export default function ContactPage() {
                   key={service}
                   ref={btn => (serviceButtonsRef.current[i] = btn)}
                   type="button"
-                  onClick={() => handleServiceSelect(service)}
-                  aria-selected={formData.selectedService === service}
+                  onClick={() => toggleService(service)}
                   className={`service-button smooth-hover px-5 py-2.5 rounded-full border-2 font-medium transition-all duration-300 ${
-                    formData.selectedService === service
+                    formData.selectedServices.includes(service)
                       ? 'bg-[#9a1b40] text-white border-[#9a1b40]'
                       : 'bg-transparent text-[#1e1e1e] border-[#d6d3cd] hover:bg-[#9a1b40] hover:text-white hover:border-[#9a1b40]'
                   }`}
@@ -220,6 +268,7 @@ export default function ContactPage() {
                 </button>
               ))}
             </div>
+            {errors.services && <p className="text-red-500 text-[10px] mt-2 uppercase tracking-tight">{errors.services}</p>}
           </div>
 
           <div className="text-left">
@@ -233,32 +282,25 @@ export default function ContactPage() {
               onChange={handleChange}
               placeholder="What's in your mind?"
               rows="6"
-              className="message-textarea w-full bg-white/80 border border-[#d6d3cd] rounded-xl px-4 py-4 text-[#1e1e1e] placeholder-[#999] focus:outline-none focus:border-[#9a1b40] focus:ring-2 focus:ring-[#9a1b40]/20 transition resize-none shadow-sm"
+              className={`message-textarea w-full bg-white/80 border-2 rounded-xl px-4 py-4 text-[#1e1e1e] placeholder-[#999] focus:outline-none focus:ring-2 focus:ring-[#9a1b40]/20 transition resize-none shadow-sm ${errors.message ? 'border-red-500' : 'border-[#d6d3cd] focus:border-[#9a1b40]'}`}
             />
+            {errors.message && <p className="text-red-500 text-[10px] mt-1 uppercase tracking-tight">{errors.message}</p>}
           </div>
 
           <div className="pt-4">
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center gap-6">
-                <svg width="120" height="120" viewBox="0 0 120 120" className="relative">
-                  <circle cx="60" cy="60" r="55" fill="none" stroke="#9a1b40" strokeWidth="2" />
-                  <polyline
-                    points="38,62 52,76 82,46"
-                    fill="none"
-                    stroke="#1e4389"
-                    strokeWidth="6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeDasharray="60"
-                    style={{ strokeDashoffset: 0, transition: 'stroke-dashoffset .6s ease' }}
-                  />
-                </svg>
+                 <div className="w-16 h-16 bg-[#9a1b40]/10 rounded-full flex items-center justify-center">
+                    <svg className="w-8 h-8 text-[#9a1b40]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
+                 </div>
                 <div className="text-center">
-                  <h3 className="text-2xl sm:text-3xl font-bold text-[#9a1b40]">
-                    Message Sent Successfully!
+                  <h3 className="text-2xl font-bold text-[#9a1b40]">
+                    Message Sent!
                   </h3>
-                  <p className="text-black/70 mt-2">
-                    Thank you for reaching out. We'll get back to you soon.
+                  <p className="text-black/70 mt-1">
+                    I'll get back to you shortly.
                   </p>
                 </div>
               </div>
@@ -268,18 +310,21 @@ export default function ContactPage() {
                 onClick={handleSubmit}
                 disabled={isSubmitting}
                 type="submit"
-                className={`submit-button button-hover px-10 py-3 rounded-full font-semibold text-white transition-all duration-300 ${
-                  isSubmitting ? 'bg-[#d6d3cd] cursor-not-allowed' : 'bg-[#9a1b40] hover:bg-[#7e1534]'
+                className={`group relative overflow-hidden submit-button button-hover px-12 py-4 rounded-full font-bold text-white transition-all duration-300 ${
+                  isSubmitting ? 'bg-[#d6d3cd] cursor-not-allowed' : 'bg-[#9a1b40]'
                 }`}
               >
-                {isSubmitting ? (
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    <span>Sending...</span>
-                  </div>
-                ) : (
-                  'Send Message'
-                )}
+                {/* Reusing common fill animation if it exists in CSS, otherwise standard bg transition */}
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      SUBMITTING...
+                    </>
+                  ) : (
+                    'SEND MESSAGE'
+                  )}
+                </span>
               </button>
             )}
           </div>

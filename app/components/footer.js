@@ -71,7 +71,6 @@ export default function Footer() {
                   { label: 'Home', href: '/' },
                   { label: 'Services', href: '/services' },
                   { label: 'About', href: '/about' },
-                  { label: 'Work', href: '/work' },
                   { label: 'Contact', href: '/contact' },
                 ].map((item, i) => (
                   <li key={i}>
@@ -93,11 +92,9 @@ export default function Footer() {
               </h3>
               <ul className="space-y-3">
                 {[
-                  { label: 'Branding', href: '/services/branding' },
-                  { label: 'Web Design', href: '/services/web-design' },
-                  { label: 'Strategy', href: '/services/strategy' },
-                  { label: 'Marketing', href: '/services/marketing' },
-                  { label: 'Development', href: '/services/development' },
+                  { label: 'Brand Foundation', href: '/services/brand-foundation' },
+                  { label: 'Visual Identity', href: '/services/visual-identity' },
+                  { label: 'Digital Experiences', href: '/services/digital-experiences' },
                 ].map((item, i) => (
                   <li key={i}>
                     <a

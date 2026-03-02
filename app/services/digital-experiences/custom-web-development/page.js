@@ -17,39 +17,39 @@ const breakpointColumnsObj = {
 // Content Data - Custom Web Development
 const items = [
   { 
-    src: "https://res.cloudinary.com/dplv15n29/image/upload/v1772483326/Brand_Guidelines__page-0009_n6r0vk.jpg", 
+    src: "https://res.cloudinary.com/dplv15n29/image/upload/v1772491951/TheCraftSyncPortfolio_1__page-0022_eeop0i.jpg", 
     hoverId: "",
     type: "image", 
-    title: "E-Commerce Architecture", 
+    title: "Tour & Travel Website", 
     subtitle: "Scalable Storefront", 
     size: "h-[450px]",
     gallery: [
-      "https://res.cloudinary.com/dplv15n29/image/upload/v1772483326/Brand_Guidelines__page-0009_n6r0vk.jpg",
-      "https://res.cloudinary.com/dplv15n29/image/upload/v1772483754/Brand_Guidelines__page-0022-transformed_dborss.jpg"
+      "https://res.cloudinary.com/dplv15n29/image/upload/v1772489602/TheCraftSyncPortfolio_1__page-0022_yko2qd.jpg",
+      "https://res.cloudinary.com/dplv15n29/image/upload/v1772489595/TheCraftSyncPortfolio_1__page-0023_lyzvig.jpg"
     ]
   },
   { 
-    src: "https://res.cloudinary.com/dplv15n29/image/upload/v1772459199/ChatGPT_Image_Feb_22_2026_12_14_03_PM_pz8ene.png", 
+    src: "https://res.cloudinary.com/dplv15n29/image/upload/v1772492062/Screenshot_2026-03-03_042332_e2wdfp.png", 
     hoverId: "",
     type: "image", 
     title: "Web App Development", 
     subtitle: "Next.js Framework", 
     size: "h-[350px]",
     gallery: [
-      "https://res.cloudinary.com/dplv15n29/image/upload/v1772459199/ChatGPT_Image_Feb_22_2026_12_14_03_PM_pz8ene.png",
-      "https://res.cloudinary.com/dplv15n29/image/upload/v1772486409/front_page_portfolio_kcfd0u.png"
+      "https://res.cloudinary.com/dplv15n29/image/upload/v1772489985/TheCraftSyncPortfolio_1__page-0010_ffodnm.jpg",
+      "https://res.cloudinary.com/dplv15n29/image/upload/v1772489992/TheCraftSyncPortfolio_1__page-0011_p1nbqb.jpg"
     ]
   },
   { 
-    src: "https://res.cloudinary.com/dplv15n29/image/upload/v1772470474/img2_ffrxjh.jpg", 
+    src: "https://res.cloudinary.com/dplv15n29/image/upload/v1772491427/moment_jw42gp.jpg", 
     hoverId: "",
     type: "image", 
     title: "API Integrations", 
     subtitle: "System Connectivity", 
     size: "h-[500px]",
     gallery: [
-      "https://res.cloudinary.com/dplv15n29/image/upload/v1772470474/img2_ffrxjh.jpg",
-      "https://res.cloudinary.com/dplv15n29/image/upload/v1772470476/img1_jehkeg.jpg"
+      "https://res.cloudinary.com/dplv15n29/image/upload/v1772489466/TheCraftSyncPortfolio_1__page-0006_axxoe5.jpg",
+      "https://res.cloudinary.com/dplv15n29/image/upload/v1772489461/TheCraftSyncPortfolio_1__page-0007_s6posb.jpg"
     ]
   }
 ];

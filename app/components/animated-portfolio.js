@@ -2,14 +2,16 @@ import React, { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { motion } from 'framer-motion'
+import OptimizedImage from './OptimizedImage'
+import OptimizedVideo from './OptimizedVideo'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const portfolioItems = [
-  { id: 1, type: 'image', src: '/s3.webp', title: 'Brand Identity', category: 'Branding' },
-  { id: 2, type: 'image', src: '/perfume.jpg', title: 'Web Design', category: 'Digital' },
-  { id: 3, type: 'image', src: '/s4.webp', title: 'Marketing Campaign', category: 'Strategy' },
-  { id: 4, type: 'video', src: '/casio/casio.mp4', title: 'Motion Graphics', category: 'Video' }
+  { id: 1, type: 'image', src: 'https://res.cloudinary.com/dplv15n29/image/upload/v1772474132/poster_2_yto9el.png', title: 'Brand Identity', category: 'Branding' },
+  { id: 2, type: 'image', src: 'https://res.cloudinary.com/dplv15n29/image/upload/v1772494177/perfume_vaz8lz.jpg', title: 'Web Design', category: 'Digital' },
+  { id: 3, type: 'image', src: 'https://res.cloudinary.com/dplv15n29/image/upload/v1772494157/s4_fncpsj.webp', title: 'Marketing Campaign', category: 'Strategy' },
+  { id: 4, type: 'video', src: 'https://res.cloudinary.com/dplv15n29/video/upload/v1772486158/Casio_advertisment_shoot_pvnrtz.mp4', title: 'Motion Graphics', category: 'Video' }
 ]
 
 export default function ScrollHijackGallery() {
@@ -160,41 +162,18 @@ export default function ScrollHijackGallery() {
               >
                 <div className="relative w-full h-64 sm:h-80 rounded-2xl lg:h-96 overflow-hidden">
                   {item.type === 'video' ? (
-                    <video
+                    <OptimizedVideo
+                      src={item.src}
                       className="w-full h-full object-cover"
-                      muted
-                      loop
-                      autoPlay
-                      playsInline
-                      preload="metadata"
-                    >
-                      <source src={item.src} type="video/mp4" />
-                    </video>
+                    />
                   ) : (
-                    <img
+                    <OptimizedImage
                       src={item.src}
                       alt={item.title}
-                      loading="lazy"
-                      className="w-full h-full  object-cover"
+                      fill
+                      className="w-full h-full object-cover"
                     />
                   )}
-
-                  {/* Overlay on Hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-0 p-4 sm:p-6 text-white">
-                      <p className="text-xs sm:text-sm text-[#c44b64] font-semibold mb-1">
-                        {item.category}
-                      </p>
-                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold">
-                        {item.title}
-                      </h3>
-                    </div>
-                  </div>
-
-                  {/* Shine Effect on Hover */}
-                  <div className="absolute inset-0 pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-500">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 -translate-x-full hover:translate-x-full transition-transform duration-1000 ease-out" />
-                  </div>
                 </div>
               </div>
             ))}
