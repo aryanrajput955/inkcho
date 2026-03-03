@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+import Link from 'next/link';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function BrandShowcase({ startAnimation = true }) {
@@ -147,10 +147,12 @@ export default function BrandShowcase({ startAnimation = true }) {
           </div>
 
           <div ref={buttonRef} className="opacity-0">
+            <Link href="/contact">
             <button className="btn-primary shadow-xl hover:shadow-2xl !px-8 !py-3 !text-sm">
               <span className="relative z-10">Start a Project</span>
               <div className="btn-fill-animation" />
             </button>
+            </Link>
           </div>
         </div>
       </div>
