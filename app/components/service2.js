@@ -60,7 +60,7 @@ export default function CardsSection() {
                 className="relative h-full min-h-[320px] rounded-3xl overflow-hidden group border border-gray-300 bg-[#f7f4ec] transition-all duration-700 cursor-pointer block"
               >
                 <OptimizedImage
-                  src="https://res.cloudinary.com/dplv15n29/image/upload/v1772486409/front_page_portfolio_kcfd0u.png"
+                  src="https://res.cloudinary.com/dplv15n29/image/upload/v1772527853/brand_foundation_tgzkkz.png"
                   alt="Brand Foundations"
                   fill
                   className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
