@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import OptimizedImage from './OptimizedImage';
 
 const ProjectsSection = () => {
   const [activeProject, setActiveProject] = useState(0);
@@ -162,10 +163,12 @@ const ProjectsSection = () => {
             <div className="relative">
               {/* Main Image Container */}
               <div className="aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100 shadow-2xl">
-                <img
+                <OptimizedImage
                   src={projects[activeProject].image}
                   alt={projects[activeProject].title}
-                  className="w-full h-full object-cover transition-all duration-700 hover:scale-105"
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover transition-all duration-700 hover:scale-105"
                 />
                 
                 {/* Subtle Overlay */}
@@ -201,10 +204,12 @@ const ProjectsSection = () => {
                 }`}
               >
                 <div className="aspect-[4/3] rounded-lg overflow-hidden mb-3">
-                  <img
+                  <OptimizedImage
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="(min-width: 768px) 25vw, 50vw"
+                    className="object-cover"
                   />
                 </div>
                 <h4 className="font-semibold text-gray-900 text-sm mb-1">

@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
+import OptimizedImage from './OptimizedImage';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function BrandShowcase({ startAnimation = true }) {
@@ -125,11 +126,12 @@ export default function BrandShowcase({ startAnimation = true }) {
           className={`absolute ${image.position} hidden lg:block opacity-0 z-0 will-change-transform`} 
         >
           {/* Inner container handles styling and CSS hover effects independently */}
-          <div className="w-56 h-72 min-[2000px]:w-72 min-[2000px]:h-96 rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500 hover:scale-105">
-            <img
+          <div className="w-56 h-72 min-[2000px]:w-72 min-[2000px]:h-96 rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500 hover:scale-105 relative">
+            <OptimizedImage
               src={image.url}
               alt={image.alt}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
             />
           </div>
         </div>
@@ -139,9 +141,12 @@ export default function BrandShowcase({ startAnimation = true }) {
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-20">
         <div className="text-center max-w-2xl">
           <div ref={titleRef} className="flex justify-center mb-10 opacity-0">
-            <img
+            <OptimizedImage
               src="/hero.png"
               alt="Designing brands that leave a mark"
+              width={800}
+              height={400}
+              priority
               className="w-full max-w-lg md:max-w-2xl h-auto object-contain" // Adjusted size for hero impact
             />
           </div>
