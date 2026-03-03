@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-
+import Link from "next/link";
 export default function CTASection() {
   const fadeInUp = {
     hidden: { opacity: 0, y: 60, filter: 'blur(10px)' },
@@ -53,6 +53,7 @@ export default function CTASection() {
         </p>
 
         {/* Button */}
+        <Link href="/contact">
         <button className="btn-primary !bg-[#9a1b40] !text-white hover:shadow-xl hover:shadow-[#9a1b40]/20 !px-8 !py-3 !text-sm">
           {/* Expanding circular fill on hover - set to blue for contrast against the red button */}
           <span className="btn-fill-animation !bg-[#1e4389]" />
@@ -62,6 +63,7 @@ export default function CTASection() {
             Let's Talk
           </span>
         </button>
+        </Link>
         </motion.div>
       </div>
     </section>
