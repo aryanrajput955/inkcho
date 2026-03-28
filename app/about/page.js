@@ -1,6 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0 },
+};
+
 export default function AboutPage() {
 
   return (
