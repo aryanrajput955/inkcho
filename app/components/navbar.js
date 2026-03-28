@@ -78,12 +78,16 @@ export default function PremiumPillNavbar() {
         >
           <motion.div 
             layout
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className={`w-full bg-[#9a1b40]/95 backdrop-blur-3xl px-6 sm:px-10 md:px-14 py-4 flex flex-col border border-white/10 relative shadow-2xl shadow-black/20 ${isMobile && isMenuOpen ? 'overflow-hidden' : ''}`}
-            style={{ borderRadius: isMenuOpen ? '2.5rem' : '100px' }}
+            transition={{ 
+                duration: 0.8, 
+                ease: [0.22, 1, 0.36, 1] 
+            }}
+            className={`w-full bg-[#9a1b40]/95 backdrop-blur-3xl px-6 sm:px-10 md:px-14 flex flex-col border border-white/10 relative shadow-2xl shadow-black/20 ${
+                isMobile && isMenuOpen ? 'overflow-hidden rounded-[2.5rem] h-[85vh] pt-6 pb-12' : 'rounded-full h-[72px] py-4'
+            }`}
           >
             {/* TOP BAR */}
-            <div className="flex items-center justify-between w-full relative z-[130]">
+            <motion.div layout="position" className="flex items-center justify-between w-full relative z-[130] shrink-0 h-10">
               {/* LOGO */}
               <Link href="/" onClick={() => setIsMenuOpen(false)} className="shrink-0 transition-transform hover:scale-105 duration-500">
                 <img 
@@ -92,7 +96,7 @@ export default function PremiumPillNavbar() {
                   className="h-7 sm:h-9 md:h-10 w-auto brightness-0 invert" 
                 />
               </Link>
-
+ 
               {/* DESKTOP NAV LINKS */}
               <div className="hidden lg:flex items-center gap-10 md:gap-12">
                 {['Home', 'About'].map((item) => (
@@ -120,7 +124,7 @@ export default function PremiumPillNavbar() {
                     </span>
                     <ChevronDown size={14} className={`transition-transform duration-500 ${hoveredService ? 'rotate-180' : ''}`} />
                   </div>
-
+ 
                   <AnimatePresence>
                     {hoveredService && (
                       <motion.div
@@ -159,7 +163,7 @@ export default function PremiumPillNavbar() {
                   </AnimatePresence>
                 </div>
               </div>
-
+ 
               {/* DESKTOP ACTION BUTTON */}
               <div className="hidden lg:flex shrink-0 items-center">
                 <Link 
@@ -170,7 +174,7 @@ export default function PremiumPillNavbar() {
                   <ArrowUpRight size={14} />
                 </Link>
               </div>
-
+ 
               {/* MOBILE HAMBURGER BUTTON */}
               <button 
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -179,21 +183,24 @@ export default function PremiumPillNavbar() {
               >
                 <div className="w-6 flex flex-col gap-1.5">
                   <motion.span
-                    animate={{ rotate: isMenuOpen ? 45 : 0, y: isMenuOpen ? 8 : 0 }}
+                    animate={{ rotate: isMenuOpen ? 45 : 0, y: isMenuOpen ? 7 : 0 }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     className="w-full h-[1.5px] bg-white rounded-full block"
                   />
                   <motion.span
                     animate={{ opacity: isMenuOpen ? 0 : 1, x: isMenuOpen ? -5 : 0 }}
+                    transition={{ duration: 0.4 }}
                     className="w-full h-[1.5px] bg-white rounded-full block"
                   />
                   <motion.span
-                    animate={{ rotate: isMenuOpen ? -45 : 0, y: isMenuOpen ? -8 : 0 }}
+                    animate={{ rotate: isMenuOpen ? -45 : 0, y: isMenuOpen ? -7 : 0 }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     className="w-full h-[1.5px] bg-white rounded-full block"
                   />
                 </div>
               </button>
-            </div>
-
+            </motion.div>
+ 
             {/* MOBILE MENU CONTENT */}
             <AnimatePresence>
               {isMobile && isMenuOpen && (
@@ -201,83 +208,83 @@ export default function PremiumPillNavbar() {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="relative z-10 flex flex-col pt-8 pb-4"
+                  transition={{ 
+                    duration: 0.8, 
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
+                  className="relative z-10 flex flex-col mt-12 flex-1 overflow-hidden"
                 >
-                  <div className="flex flex-col gap-6">
-                    <div className="flex flex-col gap-5">
+                  <motion.div 
+                    variants={{
+                      initial: { opacity: 0 },
+                      animate: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.3 } }
+                    }}
+                    initial="initial"
+                    animate="animate"
+                    className="flex flex-col h-full justify-between pb-8"
+                  >
+                    <div className="flex flex-col gap-8 text-center pt-8">
                       {['Home', 'About'].map((item) => (
-                        <Link 
+                        <motion.div
                           key={item}
-                          href={item === 'Home' ? '/' : '/about'} 
-                          onClick={() => setIsMenuOpen(false)}
-                          className="text-[#FFFBF5] text-[16px] font-bold tracking-[0.2em] uppercase transition-colors flex items-center justify-between group"
+                          variants={{
+                            initial: { opacity: 0, y: 30 },
+                            animate: { opacity: 1, y: 0 }
+                          }}
+                          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                         >
-                          {item}
-                          <ArrowUpRight size={16} className="text-white/20 group-hover:text-white transition-colors" />
-                        </Link>
+                          <Link 
+                            href={item === 'Home' ? '/' : '/about'} 
+                            onClick={() => setIsMenuOpen(false)}
+                            className="text-[#FFFBF5] text-4xl font-black font-heading tracking-tight transition-colors hover:text-white/60"
+                          >
+                            {item}
+                          </Link>
+                        </motion.div>
                       ))}
                     </div>
                     
-                    {/* MOBILE SERVICES ACCORDION */}
-                    <div className="flex flex-col gap-2 pt-6 border-t border-white/10">
-                      <div className="text-[#FFFBF5]/40 text-[9px] font-black tracking-[0.5em] uppercase mb-4">Services</div>
-                      {servicesData.map((group, idx) => (
-                        <div key={idx} className="flex flex-col border-b border-white/5 last:border-none">
-                          <button 
-                            onClick={() => setExpandedAccordion(expandedAccordion === idx ? null : idx)}
-                            className="flex items-center justify-between w-full text-white text-[15px] font-semibold py-4"
-                          >
-                            {group.label}
-                            <motion.div
-                              animate={{ rotate: expandedAccordion === idx ? 180 : 0 }}
-                              transition={{ duration: 0.3 }}
-                            >
-                              <ChevronDown size={18} className="text-white/40" />
-                            </motion.div>
-                          </button>
-                          
-                          <AnimatePresence>
-                            {expandedAccordion === idx && (
-                              <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: 'auto' }}
-                                exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.3 }}
-                                className="flex flex-col gap-4 pl-4 pb-6 overflow-hidden"
-                              >
-                                <Link 
-                                  href={group.link} 
-                                  onClick={() => setIsMenuOpen(false)}
-                                  className="text-white text-[13px] font-bold underline underline-offset-8 decoration-[#FFFBF5]/20"
-                                >
-                                  View Category
-                                </Link>
-                                {group.items.map((sub, sIdx) => (
-                                  <Link 
-                                    key={sIdx} 
-                                    href={sub.link} 
-                                    onClick={() => setIsMenuOpen(false)}
-                                    className="text-white/60 text-[13px] hover:text-white transition-colors"
-                                  >
-                                    {sub.name}
-                                  </Link>
-                                ))}
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                      ))}
-                    </div>
-
-                    <Link 
-                      href="/contact" 
-                      onClick={() => setIsMenuOpen(false)}
-                      className="mt-6 w-full py-5 rounded-full bg-white text-[#9a1b40] text-[11px] font-black tracking-[0.4em] uppercase text-center shadow-xl shadow-black/10 transition-transform active:scale-95"
+                    {/* MOBILE SERVICES ACCORDION (Simplified for buttery menu) */}
+                    <motion.div 
+                      variants={{
+                        initial: { opacity: 0, y: 10 },
+                        animate: { opacity: 1, y: 0 }
+                      }}
+                      transition={{ duration: 0.7 }}
+                      className="flex flex-col gap-2 pt-8"
                     >
-                      Contact Us
-                    </Link>
-                  </div>
+                      <div className="text-white/30 text-[10px] font-black tracking-[0.5em] uppercase text-center mb-8">Select Service</div>
+                      <div className="flex flex-col gap-6 items-center">
+                         {servicesData.map((group, idx) => (
+                           <Link 
+                             key={idx}
+                             href={group.link}
+                             onClick={() => setIsMenuOpen(false)}
+                             className="text-white/60 hover:text-white text-lg font-medium tracking-wide transition-all"
+                           >
+                             {group.label}
+                           </Link>
+                         ))}
+                      </div>
+                    </motion.div>
+ 
+                    <motion.div
+                      variants={{
+                        initial: { opacity: 0, y: 20 },
+                        animate: { opacity: 1, y: 0 }
+                      }}
+                      transition={{ duration: 0.8 }}
+                      className="mt-auto"
+                    >
+                      <Link 
+                        href="/contact" 
+                        onClick={() => setIsMenuOpen(false)}
+                        className="w-full py-5 rounded-full bg-white text-[#9a1b40] text-sm font-black tracking-[0.4em] uppercase text-center shadow-2xl transition-transform active:scale-95 block"
+                      >
+                        Contact Us
+                      </Link>
+                    </motion.div>
+                  </motion.div>
                 </motion.div>
               )}
             </AnimatePresence>

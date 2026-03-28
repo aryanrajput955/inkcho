@@ -8,6 +8,8 @@ import Link from 'next/link';
 import OptimizedImage from './OptimizedImage';
 gsap.registerPlugin(ScrollTrigger);
 
+import HeroMobile from './HeroMobile';
+
 export default function BrandShowcase({ startAnimation = true }) {
   const containerRef = useRef(null);
   const titleRef = useRef(null);
@@ -50,23 +52,18 @@ export default function BrandShowcase({ startAnimation = true }) {
     imagesRef.current.forEach((img, i) => {
         if (!img) return;
         
-        // "Floating up" effect as we scroll down
-        // We use a larger negative Y value to make the upward movement more obvious
-        // Varying the speed based on index/random factor creates depth
-        const depth = 1 + (i % 3) * 0.5; // 1, 1.5, 2
+        const depth = 1 + (i % 3) * 0.5;
         const yOffset = -150 * depth; 
 
-        // Use fromTo to ensure clean state management if needed, or just .to
-        // Adding will-change via GSAP to ensure browser optimization
         gsap.to(img, {
             y: yOffset,
             ease: "none",
-            force3D: true, // Force hardware acceleration
+            force3D: true,
             scrollTrigger: {
                 trigger: containerRef.current,
                 start: "top top",
                 end: "bottom top",
-                scrub: 1 // Tighter scrub for more responsiveness (less "floaty" lag)
+                scrub: 1
             }
         });
     });
@@ -107,60 +104,62 @@ export default function BrandShowcase({ startAnimation = true }) {
   ];
 
   return (
-    <div ref={containerRef} className="relative min-h-screen bg-[#FFFBF5] overflow-hidden">
-       
-      {/* Background blur effects */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-[#1e4389] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#9a1b40] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
-      
-      {/* Static images */}
-      {images.map((image, index) => (
-        <div
-          key={index}
-          ref={el => imagesRef.current[index] = el}
-          // The wrapper handles:
-          // 1. Positioning (absolute)
-          // 2. Initial opacity (opacity-0)
-          // 3. GSAP transforms (scale, y, autoAlpha)
-          // CRITICAL: No CSS transitions here to avoid fighting GSAP
-          className={`absolute ${image.position} hidden lg:block opacity-0 z-0 will-change-transform`} 
-        >
-          {/* Inner container handles styling and CSS hover effects independently */}
-          <div className="w-56 h-72 min-[2000px]:w-72 min-[2000px]:h-96 rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500 hover:scale-105 relative">
-            <OptimizedImage
-              src={image.url}
-              alt={image.alt}
-              fill
-              className="object-cover"
-            />
+    <div className="w-full">
+      {/* --- DESKTOP HERO (GSAP PARALLAX) --- */}
+      <div ref={containerRef} className="hidden lg:block relative min-h-screen bg-[#FFFBF5] overflow-hidden">
+        
+        {/* Background blur effects */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#1e4389] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#9a1b40] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
+        
+        {/* Static images */}
+        {images.map((image, index) => (
+          <div
+            key={index}
+            ref={el => imagesRef.current[index] = el}
+            className={`absolute ${image.position} opacity-0 z-0 will-change-transform`} 
+          >
+            <div className="w-56 h-72 min-[2000px]:w-72 min-[2000px]:h-96 rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500 hover:scale-105 relative">
+              <OptimizedImage
+                src={image.url}
+                alt={image.alt}
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
 
-      {/* Center content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-20">
-        <div className="text-center max-w-2xl">
-          <div ref={titleRef} className="flex justify-center mb-10 opacity-0">
-            <OptimizedImage
-              src="/hero.png"
-              alt="Designing brands that leave a mark"
-              width={800}
-              height={400}
-              priority
-              className="w-full max-w-lg md:max-w-2xl h-auto object-contain" // Adjusted size for hero impact
-            />
-          </div>
+        {/* Center content */}
+        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-20">
+          <div className="text-center max-w-2xl">
+            <div ref={titleRef} className="flex justify-center mb-10 opacity-0">
+              <OptimizedImage
+                src="/hero.png"
+                alt="Designing brands that leave a mark"
+                width={800}
+                height={400}
+                priority
+                className="w-full max-w-lg md:max-w-2xl h-auto object-contain"
+              />
+            </div>
 
-          <div ref={buttonRef} className="opacity-0">
-            <Link href="/contact">
-            <button className="btn-primary shadow-xl hover:shadow-2xl !px-8 !py-3 !text-sm">
-              <span className="relative z-10">Start a Project</span>
-              <div className="btn-fill-animation" />
-            </button>
-            </Link>
+            <div ref={buttonRef} className="opacity-0">
+              <Link href="/contact">
+              <button className="btn-primary shadow-xl hover:shadow-2xl !px-8 !py-3 !text-sm">
+                <span className="relative z-10">Start a Project</span>
+                <div className="btn-fill-animation" />
+              </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* --- MOBILE HERO (INFINITE MARQUEES) --- */}
+      <div className="block lg:hidden">
+        <HeroMobile />
+      </div>
     </div>
   );
-}
+}

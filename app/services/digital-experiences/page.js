@@ -1,5 +1,6 @@
 "use client";
 
+import DigitalExperiencesHeroMobile from '@/app/components/services/mobile/DigitalExperiencesHeroMobile';
 import { motion } from "framer-motion";
 import Link from "next/link";
 import React from 'react';
@@ -74,58 +75,59 @@ export default function DigitalExperiencesPage() {
       <div className="relative z-10 space-y-0">
         
         {/* === HERO SECTION === */}
-        <section className="relative min-h-screen flex flex-col justify-between pt-32 pb-12 px-4 md:px-12 lg:px-20 max-w-[1800px] mx-auto overflow-hidden">
-          
-          {/* Decorative Grid for Hero */}
-          <div className="absolute inset-0 opacity-[0.15] pointer-events-none" 
-               style={{ backgroundImage: 'radial-gradient(#9a1b40 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
-          />
-
-          {/* Top Word: DIGITAL */}
-          <div className="relative z-10 w-full">
-            <motion.h1 
-              initial={{ x: -100, opacity: 0, filter: "blur(20px)" }}
-              animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[14vw] leading-[0.8] font-bold tracking-tighter text-black uppercase select-none"
-            >
-              Digital
-            </motion.h1>
-          </div>
-
-          {/* Center Content: Description & Badge */}
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 my-8 md:my-0">
-             <motion.p 
-               initial={{ opacity: 0, y: 20 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.8, delay: 0.6 }}
-               className="text-lg md:text-2xl text-gray-600 max-w-md text-center md:text-left font-light leading-relaxed"
-             >
-                Designing immersive online spaces that <span className="text-[#9a1b40] font-medium border-b border-[#9a1b40]">connect</span> and <span className="text-[#9a1b40] font-medium border-b border-[#9a1b40]">convert</span>.
-             </motion.p>
-          </div>
-
-          {/* Bottom Word: EXPERIENCES */}
-          <div className="relative z-10 w-full text-right">
-             <motion.h1 
-                initial={{ x: 100, opacity: 0, filter: "blur(20px)" }}
+        <div className="relative w-full overflow-hidden">
+          {/* DESKTOP HERO */}
+          <section className="hidden md:flex relative min-h-screen flex-col justify-between pt-32 pb-12 px-4 md:px-12 lg:px-20 max-w-[1800px] mx-auto overflow-hidden bg-[#FFFBF5]">
+            <div className="absolute inset-0 opacity-[0.15] pointer-events-none" 
+                 style={{ backgroundImage: 'radial-gradient(#9a1b40 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
+            />
+            {/* Top Word: DIGITAL */}
+            <div className="relative z-10 w-full">
+              <motion.h1 
+                initial={{ x: -100, opacity: 0, filter: "blur(20px)" }}
                 animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
-                transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[11vw] leading-[0.8] font-serif italic text-[#9a1b40] tracking-tighter select-none mix-blend-multiply"
-            >
-              Experiences
-            </motion.h1>
-          </div>
-          
-          {/* Connecting Line */}
-          <motion.div 
-             initial={{ height: 0 }}
-             animate={{ height: "100%" }}
-             transition={{ duration: 1.2, delay: 0.8, ease: "easeInOut" }}
-             className="absolute left-1/2 top-0 w-px bg-black/5 -z-0"
-          />
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                className="text-[14vw] leading-[0.8] font-bold tracking-tighter text-black uppercase select-none"
+              >
+                Digital
+              </motion.h1>
+            </div>
+            {/* Center Content: Description */}
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+               <motion.p 
+                 initial={{ opacity: 0, y: 20 }}
+                 animate={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.8, delay: 0.6 }}
+                 className="text-lg md:text-2xl text-gray-600 max-w-md text-center md:text-left font-light leading-relaxed font-serif"
+               >
+                  Designing immersive online spaces that <span className="text-[#9a1b40] font-medium border-b border-[#9a1b40]">connect</span> and <span className="text-[#9a1b40] font-medium border-b border-[#9a1b40]">convert</span>.
+               </motion.p>
+            </div>
+            {/* Bottom Word: EXPERIENCES */}
+            <div className="relative z-10 w-full text-right">
+               <motion.h1 
+                  initial={{ x: 100, opacity: 0, filter: "blur(20px)" }}
+                  animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
+                  transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-[11vw] leading-[0.8] font-serif italic text-[#9a1b40] tracking-tighter select-none mix-blend-multiply"
+              >
+                Experiences
+              </motion.h1>
+            </div>
+            {/* Connecting Line */}
+            <motion.div 
+               initial={{ height: 0 }}
+               animate={{ height: "100%" }}
+               transition={{ duration: 1.2, delay: 0.8, ease: "easeInOut" }}
+               className="absolute left-1/2 top-0 w-px bg-black/5 -z-0"
+            />
+          </section>
 
-        </section>
+          {/* MOBILE HERO */}
+          <div className="block md:hidden">
+            <DigitalExperiencesHeroMobile />
+          </div>
+        </div>
 
         <div>
         

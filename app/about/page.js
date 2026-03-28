@@ -12,8 +12,8 @@ export default function AboutPage() {
     <div className="min-h-screen w-full bg-[#f7f4ec] text-[#1e1e1e] overflow-x-hidden">
       
       {/* ------------------ HERO SECTION ------------------ */}
-      <section className="pt-32 pb-20 px-6 md:px-12 lg:px-32">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+      <section className="pt-32 md:pt-48 pb-12 md:pb-20 px-6 md:px-12 lg:px-32">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
 
           {/* LEFT — Heading + Text */}
           <motion.div
@@ -50,13 +50,13 @@ export default function AboutPage() {
             </motion.div>
           </motion.div>
 
-          {/* RIGHT — Thin Ink Stroke Illustration */}
+          {/* RIGHT — Thin Ink Stroke Illustration - Hidden on Mobile */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             animate="show"
             transition={{ duration: 1, delay: 0.3 }}
-            className="flex justify-end"
+            className="hidden md:flex justify-end"
           >
             <img
               src="/ink.png"
@@ -69,14 +69,14 @@ export default function AboutPage() {
       </section>
 
       {/* ------------------ SECTION 2: THE STORY ------------------ */}
-      <section className="py-32 px-6 md:px-12 lg:px-32 bg-white text-left">
+      <section className="py-16 md:py-32 px-6 md:px-12 lg:px-32 bg-white text-left">
         <motion.h2
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-6xl font-serif mb-14 max-w-4xl text-[#1e4389]"
+          className="text-4xl md:text-6xl font-serif mb-8 md:mb-14 max-w-4xl text-[#1e4389]"
         >
           Ink and Echo
         </motion.h2>
@@ -113,7 +113,7 @@ export default function AboutPage() {
       </section>
 
       {/* ------------------ SECTION 3: WHAT WE DO ------------------ */}
-      <section className="py-32 px-6 md:px-12 lg:px-32 bg-[#f7f4ec] text-left">
+      <section className="py-16 md:py-32 px-6 md:px-12 lg:px-32 bg-[#f7f4ec] text-left">
         <motion.h2
           variants={fadeUp}
           initial="hidden"
@@ -131,7 +131,7 @@ export default function AboutPage() {
           whileInView="show"
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-2xl font-serif italic text-[#9a1b40] mb-14"
+          className="text-xl md:text-2xl font-serif italic text-[#9a1b40] mb-8 md:mb-14"
         >
           We structure brands from the inside out.
         </motion.p>
@@ -160,14 +160,14 @@ export default function AboutPage() {
       </section>
 
       {/* ------------------ SECTION 4: APPROACH ------------------ */}
-      <section className="py-32 px-6 md:px-12 lg:px-32 bg-white text-left">
+      <section className="py-16 md:py-32 px-6 md:px-12 lg:px-32 bg-white text-left">
         <motion.h2
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-6xl font-serif mb-14 max-w-4xl text-[#1e4389]"
+          className="text-4xl md:text-6xl font-serif mb-8 md:mb-14 max-w-4xl text-[#1e4389]"
         >
           Our Approach
         </motion.h2>
@@ -180,10 +180,10 @@ export default function AboutPage() {
           transition={{ duration: 0.9 }}
           className="grid md:grid-cols-2 gap-12 md:gap-20 max-w-6xl"
         >
-          <div className="text-xl md:text-2xl text-[#1e1e1e]/80 leading-relaxed italic border-l-4 border-[#9a1b40] pl-8">
-            <p className="mb-4">Clarity comes before creativity.</p>
-            <p className="mb-4">Structure comes before style.</p>
-            <p className="mb-4">Systems come before trends.</p>
+          <div className="text-xl md:text-2xl text-[#1e1e1e]/80 leading-relaxed italic border-l-4 border-[#9a1b40] pl-6 md:pl-8">
+            <p className="mb-2 md:mb-4">Clarity comes before creativity.</p>
+            <p className="mb-2 md:mb-4">Structure comes before style.</p>
+            <p className="mb-2 md:mb-4">Systems come before trends.</p>
           </div>
 
           <div className="text-lg text-[#1e1e1e]/80 leading-relaxed space-y-6">
@@ -198,7 +198,7 @@ export default function AboutPage() {
       </section>
 
       {/* ------------------ SECTION 5: CTA ------------------ */}
-      <section className="py-32 px-6 md:px-12 lg:px-32 bg-[#f7f4ec] text-center">
+      <section className="py-20 md:py-32 px-6 md:px-12 lg:px-32 bg-[#f7f4ec] text-center">
         <motion.div 
           variants={fadeUp}
           initial="hidden"

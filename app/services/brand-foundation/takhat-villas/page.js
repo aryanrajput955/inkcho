@@ -113,12 +113,12 @@ export default function TakhatVillasCaseStudy() {
             <motion.div 
               variants={fadeInScale}
               initial="initial"
-              whileInView="whileInView"
+              whileInView="whileInView" viewport={{ once: true }}
               className="flex-1 relative lg:-mt-64 flex justify-center lg:justify-end z-20"
             >
                <div className="relative w-full aspect-[3/4] max-w-md lg:max-w-[480px] shrink-0" style={{ borderTopLeftRadius: '50% 30%', borderTopRightRadius: '50% 30%' }}>
                   <OptimizedImage
-                      src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483368/Brand_Guidelines__page-0011_mk5zld.jpg" 
+                      src="https://res.cloudinary.com/dplv15n29/image/upload/v1774695718/Screenshot_2026-03-28_163109-Photoroom_ajrgx9.png" 
                       alt="Takhat Villas Arch Vista"
                       fill
                       className="object-cover rounded-t-[50%]"
@@ -137,106 +137,96 @@ export default function TakhatVillasCaseStudy() {
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true }}
-            className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start px-6 md:px-16 lg:px-24"
+            className="flex flex-col gap-20 px-6 md:px-16 lg:px-24"
           >
-             <div className="space-y-16 md:space-y-20">
-                <motion.section variants={fadeInUp} className="space-y-6 md:space-y-8">
+             {/* The Story */}
+             <motion.section variants={fadeInUp} className="flex flex-col md:flex-row gap-12 md:gap-16 items-start max-w-6xl">
+                <div className="flex-1 space-y-6 md:space-y-8">
                     <h3 className="text-3xl md:text-4xl font-light text-[#9a1b40]">The Story of Takhat Villas</h3>
                     <div className="space-y-6 text-black leading-relaxed text-base md:text-lg">
                         <p>The Kumbhalgarh region attracts travelers seeking nature, wildlife, and cultural heritage. Surrounded by the Aravalli ranges and home to the Kumbhalgarh Wildlife Sanctuary, the area draws wildlife enthusiasts, photographers, and travelers looking for immersive experiences beyond traditional tourism.</p>
                         <p>Hospitality in this region ranges from grand heritage palace hotels to small boutique homestays. While palace hotels emphasize scale and spectacle, boutique stays offer intimacy but often lack a strong brand narrative.</p>
                         <p>Understanding this landscape revealed an opportunity for Takhat Villas to occupy a distinct position: a refined retreat that blends heritage, nature, and slower living into a calm and memorable hospitality experience.</p>
                     </div>
-                </motion.section>
-                
-                <motion.section variants={fadeInUp} className="space-y-8">
-                    <h3 className="text-3xl md:text-4xl font-light text-[#9a1b40]">The Challenge</h3>
-                    <h4 className="font-bold text-black text-xl font-serif">Defining a Distinct Identity</h4>
-                    <div className="space-y-6 text-black leading-relaxed text-base md:text-lg">
-                        <p>Despite its unique location and architectural character, Takhat Villas initially lacked a clear brand narrative.</p>
-                        <p>The hospitality market in Rajasthan is highly competitive, ranging from grand palace hotels to independent boutique stays. Without a defined strategic identity, the property risked blending into a crowded landscape.</p>
-                        <p>The challenge was to translate the villa's environment, heritage setting, and wildlife proximity into a distinctive brand experience that guests would immediately recognise and remember.</p>
-                    </div>
-                </motion.section>
-             </div>
+                </div>
 
-             <motion.div variants={fadeInScale} className="relative w-full aspect-[4/3] rounded-lg overflow-hidden shadow-xl lg:mt-8">
+                <motion.div variants={fadeInScale} className="w-full md:w-[35%] shrink-0 pt-12 md:pt-16 self-center">
+                    <div className="relative w-full aspect-[4/3] rounded-sm overflow-hidden">
+                        <OptimizedImage 
+                          src="https://res.cloudinary.com/dplv15n29/image/upload/v1774695874/copy_of_brand_guidelines__page-0028_dc5r3k_2056ad.jpg" 
+                          alt="Watercolor illustration" 
+                          fill 
+                          className="object-cover" 
+                        />
+                    </div>
+                </motion.div>
+             </motion.section>
+             
+             {/* The Challenge */}
+             <motion.section variants={fadeInUp} className="space-y-3">
+                <div>
+                    <h3 className="text-3xl md:text-4xl font-light text-[#9a1b40] mb-4">The Challenge</h3>
+                    <h4 className="font-bold text-black text-xl font-serif">Defining a Distinct Identity</h4>
+                </div>
+                <div className="space-y-1 text-black leading-relaxed text-base md:text-lg max-w-5xl">
+                    <p>Despite its unique location and architectural character, Takhat Villas initially lacked a clear brand narrative.</p>
+                    <p>The hospitality market in Rajasthan is highly competitive, ranging from grand palace hotels to independent boutique stays. Without a defined strategic identity, the property risked blending into a crowded landscape.</p>
+                    <p>The challenge was to translate the villa's environment, heritage setting, and wildlife proximity into a distinctive brand experience that guests would immediately recognise and remember.</p>
+                </div>
+                
+                {/* Large Background Image below Challenge text */}
+                <motion.div variants={fadeInScale} className="relative w-full aspect-video md:aspect-[2/1] overflow-hidden mt-12">
+                    <OptimizedImage 
+                        src="https://res.cloudinary.com/dplv15n29/image/upload/v1774696504/Screenshot_2026-03-28_164440_riabzi.png" 
+                        alt="Watercolor painting of fort"
+                        fill
+                        className="object-cover aspect-square"
+                    />
+                </motion.div>
+             </motion.section>
+          </motion.div>
+
+
+
+           {/* Research & Discovery */}
+           <div className="px-6 md:px-16 lg:px-24">
+             <motion.div variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="mt-20 md:mt-32 max-w-5xl">
+                 <h3 className="text-3xl md:text-4xl font-light text-[#9a1b40] mb-8 text-left">Research & Discovery</h3>
+                 <h4 className="font-bold text-black text-xl font-serif mb-6 text-left">Understanding the Landscape</h4>
+                 <div className="space-y-6 text-black leading-relaxed text-base md:text-lg mb-16 text-left">
+                     <p>The Kumbhalgarh region attracts travelers seeking nature, wildlife, and cultural heritage. Surrounded by the Aravalli ranges and home to the Kumbhalgarh Wildlife Sanctuary, the area draws wildlife enthusiasts, photographers, and travelers looking for immersive experiences beyond traditional tourism.</p>
+                     <p>Hospitality in this region ranges from grand heritage palace hotels to small boutique homestays. While palace hotels emphasize scale and spectacle, boutique stays offer intimacy but often lack a strong brand narrative.</p>
+                     <p>Understanding this landscape revealed an opportunity for Takhat Villas to occupy a distinct position: a refined retreat that blends heritage, nature, and slower living into a calm and memorable hospitality experience.</p>
+                 </div>
+             </motion.div>
+           </div>
+
+           {/* Full width image (Gate) */}
+           <div className="px-6 md:px-16 lg:px-24">
+             <motion.div variants={fadeInScale} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="relative w-full aspect-video md:aspect-[2.2/1] mb-20 md:mb-32 rounded-xl overflow-hidden">
                  <OptimizedImage 
-                    src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483304/Brand_Guidelines__page-0003_ohbdtm.jpg" 
-                    alt="Watercolor painting of fort"
-                    fill
-                    className="object-cover"
+                     src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483299/Brand_Guidelines__page-0004_qsnpzq.jpg" 
+                     alt="Gate Entrance"
+                     fill
+                     className="object-cover"
                  />
              </motion.div>
-          </motion.div>
-
-          {/* Grid of Images Placeholder */}
-          <motion.div 
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="mt-20 md:mt-32 grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 px-6 md:px-16 lg:px-24"
-          >
-             {[1, 2, 3].map((i) => (
-                <motion.div key={i} variants={fadeInScale} className="aspect-[4/5] relative rounded-lg overflow-hidden shadow-md">
-                   <OptimizedImage 
-                     src={i === 1 ? "https://res.cloudinary.com/dplv15n29/image/upload/v1772483334/Brand_Guidelines__page-0008_krvxdy.jpg" : 
-                          i === 2 ? "https://res.cloudinary.com/dplv15n29/image/upload/v1772483329/Brand_Guidelines__page-0006_tvtnzn.jpg" : 
-                          "https://res.cloudinary.com/dplv15n29/image/upload/v1772483326/Brand_Guidelines__page-0009_n6r0vk.jpg"} 
-                     alt={`Grid Image ${i}`} 
-                     fill 
-                     className="object-cover hover:scale-105 transition-transform duration-700" 
-                   />
-                </motion.div>
-             ))}
-             <motion.div variants={fadeInScale} className="col-span-2 lg:col-span-2 aspect-video relative rounded-lg overflow-hidden shadow-md">
-                <OptimizedImage src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483320/Brand_Guidelines__page-0007_qwzocb.jpg" alt="Grid Image 4" fill className="object-cover" />
-             </motion.div>
-             <motion.div variants={fadeInScale} className="aspect-square relative rounded-lg overflow-hidden shadow-md">
-                <OptimizedImage src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483314/Brand_Guidelines__page-0005_boz05g.jpg" alt="Grid Image 5" fill className="object-cover" />
-             </motion.div>
-          </motion.div>
-
-          {/* Research & Discovery */}
-          <div className="px-6 md:px-16 lg:px-24">
-            <motion.div variants={fadeInUp} initial="initial" whileInView="whileInView" className="mt-20 md:mt-32 max-w-4xl mx-auto">
-                <h3 className="text-3xl md:text-4xl font-light text-[#9a1b40] mb-8 text-center md:text-left">Research & Discovery</h3>
-                <h4 className="font-bold text-black text-xl font-serif mb-6 text-center md:text-left">Understanding the Landscape</h4>
-                <div className="space-y-6 text-black leading-relaxed text-base md:text-lg mb-16 text-center md:text-left">
-                    <p>The Kumbhalgarh region attracts travelers seeking nature, wildlife, and cultural heritage. Surrounded by the Aravalli ranges and home to the Kumbhalgarh Wildlife Sanctuary, the area draws wildlife enthusiasts, photographers, and travelers looking for immersive experiences beyond traditional tourism.</p>
-                    <p>Hospitality in this region ranges from grand heritage palace hotels to small boutique homestays. While palace hotels emphasize scale and spectacle, boutique stays offer intimacy but often lack a strong brand narrative.</p>
-                    <p>Understanding this landscape revealed an opportunity for Takhat Villas to occupy a distinct position: a refined retreat that blends heritage, nature, and slower living into a calm and memorable hospitality experience.</p>
-                </div>
-            </motion.div>
-          </div>
-
-          {/* Full width image (Gate) */}
-          <div className="px-6 md:px-16 lg:px-24">
-            <motion.div variants={fadeInScale} initial="initial" whileInView="whileInView" className="relative w-full aspect-[21/9] md:aspect-[2.5/1] mb-20 md:mb-32 rounded-xl overflow-hidden shadow-2xl">
-                <OptimizedImage 
-                    src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483299/Brand_Guidelines__page-0004_qsnpzq.jpg" 
-                    alt="Gate Entrance"
-                    fill
-                    className="object-cover"
-                />
-            </motion.div>
-          </div>
+           </div>
 
           {/* Audience Insights / Market Landscape */}
           <div className="space-y-20 md:space-y-32 max-w-7xl mx-auto px-6 md:px-16 lg:px-24">
-             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" className="space-y-8 md:space-y-10 max-w-4xl mx-auto">
-                <h3 className="text-3xl md:text-4xl font-light text-[#9a1b40] mb-6 md:mb-8 text-center md:text-left">Audience Insights</h3>
-                <div className="space-y-8 text-black leading-relaxed text-lg md:text-xl font-light">
+             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-8 md:space-y-10 max-w-5xl">
+                <h3 className="text-3xl md:text-4xl font-light text-[#9a1b40] mb-6 md:mb-8 text-left">Audience Insights</h3>
+                <div className="space-y-8 text-black leading-relaxed text-lg md:text-xl font-light text-left">
                    <p>Travelers visiting the Kumbhalgarh region are typically seeking experiences that feel <strong className="text-black font-medium">calm</strong>, <strong className="text-black font-medium">immersive</strong>, and <strong className="text-black font-medium">connected to nature</strong>.</p>
                    <p>The primary audience includes <strong className="text-black font-medium">wildlife enthusiasts</strong>, <strong className="text-black font-medium">photographers</strong>, and <strong className="text-black font-medium">urban travellers</strong> looking to escape busy city environments. These travellers value authenticity, atmosphere, and meaningful experiences over traditional luxury hotel formats.</p>
                    <p>For this audience, accommodation is only one part of the journey. What they truly seek is a sense of <em className="font-serif text-[#9a1b40]/80">place, story, and emotional connection</em> with the landscape.</p>
                 </div>
              </motion.section>
 
-             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" className="space-y-12 flex flex-col items-center pt-16 border-t border-black">
-                <h3 className="text-4xl md:text-6xl font-bold italic text-[#9a1b40] mb-4 text-center" style={{ fontFamily: "var(--font-heading)" }}>Market Landscape</h3>
-                <div className="text-center md:text-left w-full max-w-5xl mx-auto">
+             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-12 flex flex-col items-start pt-4">
+                <h3 className="text-4xl md:text-6xl font-bold italic text-[#9a1b40] mb-12 sm:mb-16 text-center w-full" style={{ fontFamily: "var(--font-heading)" }}>Market Landscape</h3>
+                <div className="text-left w-full max-w-5xl">
                     <h4 className="font-bold text-black text-lg md:text-xl font-serif mb-4">Mapping the Hospitality Environment</h4>
                     <p className="text-black text-base md:text-lg mb-8">The hospitality landscape in Rajasthan sits between <em className="font-serif text-[#9a1b40]">two dominant formats</em>.</p>
                     <p className="text-black text-base md:text-lg mb-6 leading-relaxed">
@@ -247,69 +237,80 @@ export default function TakhatVillasCaseStudy() {
                     </p>
                 </div>
 
-                <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 w-full max-w-5xl mx-auto mt-8">
-                     {[
-                       { title: "LUXURY PALACE HOTEL", img: "Brand_Guidelines__page-0016_ahhyjc.jpg", lines: ["Grand heritage architecture and large scale hospitality", "Emphasis on luxury, spectacle, and royal experience", "Often formal, expansive, and destination driven"] },
-                       { title: "TAKHAT VILLAS", highlights: true, img: "Brand_Guidelines__page-0016_ahhyjc.jpg", lines: ["Intimate retreat rooted in nature and heritage", "Quiet luxury with a slower, immersive experience", "Positioned between large resorts and boutique stays"] },
-                       { title: "BOUTIQUE HOMESTAYS", img: "Brand_Guidelines__page-0016_ahhyjc.jpg", lines: ["Small independent stays with personal hospitality", "Focus on comfort, simplicity, and local character", "Often limited brand identity or curated experience"] }
-                     ].map((item, idx) => (
-                       <motion.div key={idx} variants={fadeInUp} className="flex flex-col items-center text-center space-y-6">
-                          <h5 className="font-black text-black tracking-[0.1em] text-[13px] md:text-[15px] uppercase">{item.title}</h5>
-                          <div className="relative w-full aspect-[4/3] max-w-[280px]">
-                              <OptimizedImage src={`https://res.cloudinary.com/dplv15n29/image/upload/v1772483349/${item.img}`} alt={item.title} fill className="object-contain mix-blend-multiply" />
-                          </div>
-                          <div className={`text-xs md:text-sm ${item.highlights ? 'text-[#9a1b40] italic font-serif' : 'text-black font-medium'} space-y-2`}>
-                             {item.lines.map((l, i) => <p key={i}>{l}</p>)}
-                          </div>
-                       </motion.div>
-                     ))}
+                <motion.div variants={fadeInScale} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="relative w-full max-w-6xl aspect-[3/1] rounded-sm overflow-hidden bg-[#fcfbf9]/50 mt-8">
+                    <OptimizedImage 
+                      src="https://res.cloudinary.com/dplv15n29/image/upload/v1774697177/Screenshot_2026-03-28_164832-Photoroom_xrphyw.png" 
+                      alt="Market Landscape Panoramic" 
+                      fill 
+                      className="object-contain mix-blend-multiply p-4" 
+                    />
                 </motion.div>
              </motion.section>
 
              {/* Cultural Inspiration */}
-             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" className="space-y-8 flex flex-col items-center pt-20 md:pt-32 border-t border-black max-w-4xl mx-auto text-center">
-                 <h3 className="text-4xl md:text-5xl font-light text-[#9a1b40]">Cultural Inspiration</h3>
-                 <p className="text-[13px] tracking-widest text-black font-medium uppercase">A Brand Rooted in Place</p>
-                 <div className="space-y-4 text-black font-medium leading-relaxed text-base md:text-[15px] pt-4 max-w-3xl">
+             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-10 flex flex-col items-center  max-w-5xl mx-auto text-center">
+                 <h3 className="text-4xl md:text-6xl font-normal text-[#9a1b40]">Cultural Inspiration</h3>
+                 <p className="text-[14px] md:text-[16px] text-black font-medium">A Brand Rooted in Place</p>
+                 <div className="space-y-1 text-black font-medium leading-relaxed text-base md:text-[18px] max-w-4xl pt-2">
                      <p>The identity of Takhat Villas draws deeply from its surroundings. The Aravalli ranges provide a rugged and timeless landscape, while Rajasthan's architectural heritage introduces craftsmanship, stone textures, and a sense of history.</p>
                      <p>Together these elements create a visual language that feels grounded, authentic, and deeply connected to the surrounding landscape.</p>
                  </div>
              </motion.section>
-
+ 
              {/* Brand Positioning */}
-             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" className="grid md:grid-cols-2 gap-16 md:gap-24 items-center pt-20 md:pt-32 border-t border-black">
-                  <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="space-y-8">
-                     <motion.h3 variants={textReveal} className="text-4xl md:text-5xl font-light text-[#9a1b40]">Brand Positioning</motion.h3>
-                     <motion.div variants={textReveal} className="space-y-6 text-black leading-relaxed text-base md:text-[15px] font-medium">
+             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-center ">
+                  <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="md:col-span-4 space-y-6">
+                     <motion.h3 variants={textReveal} className="text-4xl md:text-6xl font-normal text-[#9a1b40]">Brand Positioning</motion.h3>
+                     <motion.div variants={textReveal} className="space-y-3 text-black leading-relaxed text-base md:text-[17px] font-medium">
                         <p>Takhat Villas is positioned as an intimate retreat where travelers reconnect with nature, heritage, and slower rhythm of living.</p>
                         <p>Rather than competing with large luxury resorts or informal homestays, the brand sits in a refined middle ground offering a calm and immersive hospitality experience.</p>
                      </motion.div>
                   </motion.div>
-                  <motion.div variants={fadeInScale} className="relative w-full aspect-[16/9] shadow-md rounded-lg overflow-hidden border border-black">
-                      <OptimizedImage src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483320/Brand_Guidelines__page-0007_qwzocb.jpg" fill alt="Brand positioning" className="object-cover" />
+                  <motion.div variants={fadeInScale} className="md:col-span-8 relative w-full aspect-video rounded-xl overflow-hidden shadow-none">
+                      <OptimizedImage 
+                        src="https://res.cloudinary.com/dplv15n29/image/upload/v1774697345/Screenshot_2026-03-28_165838_jjt0xu.png" 
+                        fill 
+                        alt="Quiet Luxury in Nature Illustration" 
+                        className=" mt-1 md:mt-24 object-contain" 
+                      />
+                      {/* Quiet Luxury overlay title as seen in screenshot */}
+                    
                   </motion.div>
              </motion.section>
 
              {/* Brand Personality */}
-             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" className="flex flex-col md:flex-row gap-12 pt-20 md:pt-32 border-t border-black items-start">
-                  <h3 className="text-4xl md:text-6xl font-bold italic text-[#9a1b40] leading-tight md:w-1/3" style={{ fontFamily: "var(--font-heading)" }}>Brand<br/>Personality</h3>
-                  <div className="md:w-2/3 space-y-8 mt-2 md:mt-0">
-                      <h4 className="text-lg md:text-xl text-black font-medium font-serif">The Character of the Brand</h4>
-                      <p className="text-black text-[15px] leading-relaxed font-medium">
-                         The personality of Takhat Villas reflects calm elegance and natural refinement. The brand communicates a sense of quiet luxury that feels grounded rather than extravagant.
-                      </p>
-                      <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="flex flex-wrap gap-3 md:gap-4 pt-4">
-                          {["Calm", "Refined", "Nature-connected", "Authentic", "Intimate"].map(tag => (
-                              <motion.span key={tag} variants={fadeInScale} className="border border-black rounded-full px-5 py-1.5 md:px-8 md:py-2 text-[#9a1b40] italic font-serif text-[14px] md:text-[15px]">
-                                  {tag}
-                              </motion.span>
-                          ))}
-                      </motion.div>
+             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-16">
+                  <div className="flex flex-col md:flex-row gap-16 md:gap-32 items-start">
+                      <h3 className="text-4xl md:text-6xl font-bold italic text-[#9a1b40] leading-tight md:w-1/2" style={{ fontFamily: "var(--font-heading)" }}>Brand<br/>Personality</h3>
+                      <div className="md:w-1/2 space-y-6">
+                          <h4 className="text-xl text-black font-bold font-serif">The Character of the Brand</h4>
+                          <p className="text-black text-base md:text-lg leading-relaxed font-medium max-w-2xl">
+                             The personality of Takhat Villas reflects calm elegance and natural refinement. The brand communicates a sense of quiet luxury that feels grounded rather than extravagant.
+                          </p>
+                      </div>
                   </div>
+ 
+                  <motion.div 
+                    variants={staggerContainer} 
+                    initial="initial" 
+                    whileInView="whileInView" 
+                    viewport={{ once: true }} 
+                    className="flex flex-wrap justify-between items-center gap-4 md:gap-8"
+                  >
+                      {["Calm", "Refined", "Nature-connected", "Authentic", "Intimate"].map(tag => (
+                          <motion.span 
+                            key={tag} 
+                            variants={fadeInScale} 
+                            className="border border-[#9a1b40]/40 rounded-full px-8 py-3 md:px-12 md:py-4 text-[#9a1b40] italic font-serif text-lg md:text-xl whitespace-nowrap"
+                          >
+                              {tag}
+                          </motion.span>
+                      ))}
+                  </motion.div>
              </motion.section>
 
              {/* Identity System */}
-             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" className="flex flex-col md:flex-row gap-16 md:gap-24 pt-20 md:pt-32 border-t border-black items-center">
+             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="flex flex-col md:flex-row gap-16 md:gap-24 pt-2 items-center">
                   <div className="space-y-10 md:w-1/2 flex-1">
                       <div className="flex flex-col sm:flex-row sm:items-center gap-6">
                            <h3 className="text-4xl md:text-[50px] font-medium text-[#9a1b40] leading-none" style={{ fontFamily: "var(--font-heading)" }}>Identity<br/>System</h3>
@@ -331,42 +332,85 @@ export default function TakhatVillasCaseStudy() {
              </motion.section>
 
              {/* Logo Variations & Typography */}
-             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" className="pt-20 md:pt-32 pb-20 md:pb-32 border-t border-black flex flex-col md:flex-row gap-16 md:gap-24 items-start">
-                 <div className="md:w-[55%] space-y-16">
-                     <div className="space-y-4">
-                         <h3 className="text-[50px] md:text-[60px] font-black text-[#111] uppercase tracking-tighter leading-[0.9]" style={{ fontFamily: "var(--font-heading)" }}>LOGO<br/>VARIATIONS</h3>
-                         <p className="text-black text-[13px] md:text-[15px] font-medium max-w-sm pt-2">Use alternative versions only when suitable and always maintain clear space and proper proportions.</p>
+             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="pt-8 pb-12">
+                 {/* Top Grid: Title and Horizontal Logo */}
+                 <div className="grid grid-cols-1 md:grid-cols-2 border-b border-black md:border-none">
+                     <div className="md:border-r border-black pr-12 pb-16 space-y-8">
+                         <h3 className="text-4xl md:text-6xl font-black text-[#111] uppercase tracking-tighter leading-[0.85]" style={{ fontFamily: "var(--font-heading)" }}>
+                             LOGO<br/>VARIATIONS
+                         </h3>
+                         <p className="text-black text-sm md:text-base font-light max-w-sm leading-relaxed">
+                            Use alternative versions only when suitable and always maintain clear space and proper proportions.
+                         </p>
                      </div>
                      
-                     <motion.div variants={fadeInUp} className="space-y-6">
-                         <h4 className="text-[17px] font-bold text-black border-b border-black pb-4 mb-8">Primary Typeface</h4>
-                         <div className="flex flex-col sm:flex-row gap-12 bg-[#ffce9e] p-8 md:p-10 rounded-sm">
-                             <div className="flex-1 space-y-6 text-white text-[13px]">
-                                <p className="font-bold text-white text-[15px]">Helvetica World</p>
-                                <p className="font-light tracking-[0.2em] break-all leading-loose">A B C D E F G H I J K L M N<br/>O P Q R S T U V W X Y Z<br/>a b c d e f h i j k l m n o p<br/>q r s t u v w x y z<br/>1 2 3 4 5 6 7 8 9 0  ! @ # $ % ^ & * ( ) _ +</p>
+                     <div className="pl-12 pb-16 flex flex-col items-center justify-center space-y-10 group">
+                         <div className="relative w-full max-w-[320px] aspect-[3/1] transition-transform duration-500 group-hover:scale-105">
+                             <OptimizedImage 
+                               src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483326/Brand_Guidelines__page-0009_n6r0vk.jpg" 
+                               fill 
+                               alt="Horizontal Logo Layout" 
+                               className="object-contain mix-blend-multiply" 
+                             />
+                         </div>
+                         <p className="text-[12px] font-bold tracking-[0.2em] uppercase text-black/60">Horizontal Layout</p>
+                     </div>
+                 </div>
+ 
+                 {/* Bottom Section: Typography */}
+                 <div className="pt-16 space-y-12">
+                     <h4 className="text-2xl font-bold text-black border-t border-black pt-12 inline-block w-full">Primary Typeface</h4>
+                     
+                     <div className="bg-[#ffce9e] p-10 md:p-16 rounded-sm">
+                         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 relative">
+                             {/* Helvtica Column */}
+                             <div className="space-y-8">
+                                 <p className="font-bold text-white text-xl">Helvetica World</p>
+                                 <div className="space-y-4">
+                                     <p className="text-white text-lg md:text-2xl font-light tracking-[0.15em] leading-tight uppercase">
+                                         A B C D E F G H I J K L M N<br />
+                                         O P Q R S T U V W X Y Z
+                                     </p>
+                                     <p className="text-white text-lg md:text-2xl font-light tracking-[0.15em] leading-tight">
+                                         a b c d e f g h i j k l m n o p<br />
+                                         q r s t u v w x y z
+                                     </p>
+                                     <p className="text-white text-lg md:text-2xl font-light tracking-[0.15em] leading-tight">
+                                         1 2 3 4 5 6 7 8 9 0 ! @ # $ % ^ & * ( ) _ +
+                                     </p>
+                                 </div>
                              </div>
-                             <div className="w-px bg-white/50 hidden sm:block"></div>
-                             <div className="flex-1 space-y-6 text-white text-[13px]">
-                                <p className="font-bold text-white text-[15px]">Canva Sans</p>
-                                <p className="font-light tracking-[0.2em] break-all leading-loose">A B C D E F G H I J K L M N<br/>O P Q R S T U V W X Y Z<br/>a b c d e f h i j k l m n o p<br/>q r s t u v w x y z<br/>1 2 3 4 5 6 7 8 9 0  ! @ # $ % ^ & * ( ) _ +</p>
+ 
+                             {/* Divider Line In Box */}
+                             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-white/40 -translate-x-1/2"></div>
+ 
+                             {/* Canva Sans Column */}
+                             <div className="space-y-8">
+                                 <p className="font-bold text-white text-xl">Canva Sans</p>
+                                 <div className="space-y-4">
+                                     <p className="text-white text-lg md:text-2xl font-light tracking-[0.15em] leading-tight uppercase">
+                                         A B C D E F G H I J K L M N O P<br />
+                                         P Q R S T U V W X Y Z
+                                     </p>
+                                     <p className="text-white text-lg md:text-2xl font-light tracking-[0.15em] leading-tight">
+                                         a b c d e f g h i j k l m n o p q<br />
+                                         r s t u v w x y z
+                                     </p>
+                                     <p className="text-white text-lg md:text-2xl font-light tracking-[0.15em] leading-tight">
+                                         1 2 3 4 5 6 7 8 9 0 ! @ # $ % ^ & * ( ) _ +
+                                     </p>
+                                 </div>
                              </div>
                          </div>
-                     </motion.div>
-                 </div>
-
-                 <motion.div variants={fadeInScale} className="md:w-[45%] flex flex-col items-center justify-center space-y-8 w-full h-full min-h-[400px] md:border-l border-black">
-                     <div className="relative w-full max-w-[280px] h-[150px]">
-                         <OptimizedImage src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483326/Brand_Guidelines__page-0009_n6r0vk.jpg" fill alt="Horizontal Logo Layout" className="object-contain mix-blend-multiply" />
                      </div>
-                     <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-black">Horizontal Layout</p>
-                 </motion.div>
+                 </div>
              </motion.section>
 
              {/* .2 Typography Section */}
-             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" className="flex flex-col md:flex-row gap-16 md:gap-24 pt-20 md:pt-32 border-t border-black items-start">
+             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="flex flex-col md:flex-row gap-16 md:gap-24 pt-8 items-start">
                  <div className="md:w-1/2 space-y-10">
                      <h4 className="text-3xl md:text-[40px] font-bold italic text-[#9a1b40]" style={{ fontFamily: "var(--font-heading)" }}>.2 Typography</h4>
-                     <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="space-y-6 text-[#111]">
+                     <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-6 text-[#111]">
                          {["light", "light oblique", "regular", "oblique", "bold", "bold oblique"].map((style) => (
                            <motion.div key={style} variants={textReveal} className="flex items-end gap-3">
                              <span className={`text-3xl sm:text-4xl md:text-5xl ${style.includes('light') ? 'font-light' : style.includes('bold') ? 'font-bold' : ''} ${style.includes('oblique') ? 'italic' : ''}`}>Helvetica</span>
@@ -392,9 +436,9 @@ export default function TakhatVillasCaseStudy() {
              </motion.section>
 
              {/* .2 Color Palette Section */}
-             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" className="flex flex-col gap-16 pt-20 md:pt-32 border-t border-black">
+             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="flex flex-col gap-16 pt-8">
                  <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start md:items-center">
-                     <h4 className="text-3xl md:text-[40px] font-bold italic text-[#9a1b40] shrink-0" style={{ fontFamily: "var(--font-heading)" }}>.2 Color Palette</h4>
+                     <h4 className="text-3xl md:text-[40px] font-bold italic text-[#9a1b40] shrink-0" style={{ fontFamily: "var(--font-heading)" }}>.3 Color Palette</h4>
                      <p className="text-black leading-relaxed text-[15px] font-medium max-w-lg">
                         The color palette reflects the natural environment surrounding Takhat Villas. Warm earth tones, soft neutrals, and muted accents create a visual language that feels grounded, natural, and timeless.
                      </p>
@@ -422,23 +466,23 @@ export default function TakhatVillasCaseStudy() {
              </motion.section>
 
              {/* .2 Brand Applications Section */}
-             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" className="flex flex-col gap-16 pt-20 md:pt-32 pb-32 border-t border-black">
+             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="flex flex-col gap-16 pt-8 pb-32">
                  <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start md:items-center">
-                     <h4 className="text-3xl md:text-[40px] font-bold italic text-[#9a1b40] shrink-0" style={{ fontFamily: "var(--font-heading)" }}>.2 Brand Applications</h4>
+                     <h4 className="text-3xl md:text-[40px] font-bold italic text-[#9a1b40] shrink-0" style={{ fontFamily: "var(--font-heading)" }}>.4 Brand Applications</h4>
                      <p className="text-black leading-relaxed text-[15px] font-medium max-w-lg">
                         The color palette reflects the natural environment surrounding Takhat Villas. Warm earth tones, soft neutrals, and muted accents create a visual language that feels grounded, natural, and timeless.
                      </p>
                  </div>
 
                  {/* Browser Mockup Gallery Grid */}
-                 <motion.div variants={fadeInScale} className="w-full rounded-tr-xl rounded-tl-xl border border-black shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] bg-white overflow-hidden mt-8">
+                 <motion.div variants={fadeInScale} className="w-full rounded-tr-xl rounded-tl-xl border border-black bg-white overflow-hidden mt-8">
                      <div className="bg-[#ebebeb] h-10 md:h-12 w-full flex items-center px-4 md:px-6 gap-2 md:gap-2.5 border-b border-black">
                          <div className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 rounded-full bg-[#ff5f56]"></div>
                          <div className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 rounded-full bg-[#ffbd2e]"></div>
                          <div className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 rounded-full bg-[#27c93f]"></div>
                      </div>
                      <div className="p-5 sm:p-8 md:p-12 lg:p-16 bg-white">
-                         <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
+                         <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
                              <motion.div variants={fadeInScale} className="md:col-span-8 aspect-[4/3] relative overflow-hidden bg-gray-100">
                                  <OptimizedImage src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483320/Brand_Guidelines__page-0007_qwzocb.jpg" alt="Application 1" fill className="object-cover" />
                              </motion.div>

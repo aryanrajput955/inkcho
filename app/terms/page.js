@@ -230,7 +230,9 @@ export default function TermsAndConditionsPage() {
             <div className="space-y-6">
               <h2 className="text-2xl font-serif font-bold text-[#1e4389]">19. CONTACT US</h2>
               <p>In order to resolve a complaint regarding the Services or to receive further information regarding use of the Services, please contact us at:</p>
-              <p className="font-bold text-[#9a1b40] text-xl">hello@inkchodesigns.com</p>
+              <p className="font-bold text-[#9a1b40] text-xl">
+                <a href="mailto:hello@inkchodesigns.com" className="hover:underline">hello@inkchodesigns.com</a>
+              </p>
             </div>
           </section>
 

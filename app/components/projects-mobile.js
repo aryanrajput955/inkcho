@@ -1,5 +1,8 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+"use client";
+
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const portfolioItems = [
   { id: 1, type: 'image', src: '/s3.webp', title: 'Brand Identity', category: 'Branding' },
@@ -8,124 +11,117 @@ const portfolioItems = [
   { id: 4, type: 'video', src: '/casio/casio.mp4', title: 'Motion Graphics', category: 'Video' },
 ];
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 60, filter: 'blur(10px)' },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    filter: 'blur(0px)',
-    transition: { 
-      duration: 1.0, 
-      ease: [0.22, 1, 0.36, 1] 
-    } 
-  }
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.1
-    }
-  }
-};
-
 export default function ScrollGalleryMobile() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const containerRef = useRef(null);
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % portfolioItems.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + portfolioItems.length) % portfolioItems.length);
+  };
+
   return (
-    <section className="bg-[#f7f4ec] py-20">
+    <section className="bg-[#f7f4ec] py-20 overflow-hidden">
       <div className="container mx-auto px-4">
-
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-10%" }}
-          variants={staggerContainer}
-        >
-          {/* Header */}
-          <motion.div 
-            variants={fadeInUp}
-            className="text-center mb-12"
+        
+        {/* Header */}
+        <div className="text-center mb-12">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-3xl font-serif font-medium tracking-tight text-[#1e4389]"
           >
-            <h2 className="text-3xl font-serif font-medium tracking-tight text-[#1e4389]">
-              Our <span className="text-[#9a1b40] italic">Creations</span>
-            </h2>
-            <p className="mt-4 text-black/80 text-base md:text-lg">
-              Swipe to explore our work
-            </p>
-          </motion.div>
+            Our <span className="text-[#9a1b40] italic">Creations</span>
+          </motion.h2>
+          <p className="mt-4 text-black/80 text-base">
+            Exploring the boundaries of design.
+          </p>
+        </div>
 
-          {/* Horizontal Scroll */}
-          <motion.div 
-            variants={fadeInUp}
-            className="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-6 scrollbar-hide"
-          >
-            {portfolioItems.map((item) => (
-              <div
-                key={item.id}
-                className="
-                  snap-center 
-                  w-[85vw]          
-                  sm:w-[70vw]       
-                  md:w-[55vw]       
-                  lg:w-[45vw]       
-                  max-w-[480px]     
-                  rounded-2xl 
-                  overflow-hidden 
-                  bg-white 
-                  shadow-md 
-                  border border-[#d6d3cd] 
-                  flex-shrink-0
-                "
+        {/* Carousel Container */}
+        <div className="relative group max-w-[500px] mx-auto">
+          
+          {/* Navigation Buttons */}
+          <div className="absolute top-1/2 -translate-y-1/2 -left-4 z-20">
+            <button 
+              onClick={handlePrev}
+              className="w-10 h-10 rounded-full bg-white/90 shadow-lg flex items-center justify-center text-[#1e4389] hover:bg-[#9a1b40] hover:text-white transition-colors border border-black/5"
+            >
+              <ChevronLeft size={20} />
+            </button>
+          </div>
+          
+          <div className="absolute top-1/2 -translate-y-1/2 -right-4 z-20">
+            <button 
+              onClick={handleNext}
+              className="w-10 h-10 rounded-full bg-white/90 shadow-lg flex items-center justify-center text-[#1e4389] hover:bg-[#9a1b40] hover:text-white transition-colors border border-black/5"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+
+          {/* Main Card */}
+          <div className="overflow-visible px-4">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, scale: 0.95, x: 20, filter: 'blur(10px)' }}
+                animate={{ opacity: 1, scale: 1, x: 0, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, scale: 1.05, x: -20, filter: 'blur(10px)' }}
+                transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+                className="w-full rounded-3xl overflow-hidden bg-white shadow-2xl border border-[#d6d3cd]"
               >
                 <div className="relative aspect-[4/5] overflow-hidden">
-                  {item.type === 'video' ? (
+                  {portfolioItems[currentIndex].type === 'video' ? (
                     <video
                       className="w-full h-full object-cover"
                       muted
                       loop
                       autoPlay
                       playsInline
-                      preload="metadata"
-                    >
-                      <source src={item.src} type="video/mp4" />
-                    </video>
+                      src={portfolioItems[currentIndex].src}
+                    />
                   ) : (
                     <img
-                      src={item.src}
-                      alt={item.title}
+                      src={portfolioItems[currentIndex].src}
+                      alt={portfolioItems[currentIndex].title}
                       className="w-full h-full object-cover"
-                      loading="lazy"
                     />
                   )}
 
-                  {/* Overlay with info (hover on desktop) */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 md:block hidden">
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <p className="text-sm font-medium text-[#9a1b40] uppercase tracking-wide">
-                        {item.category}
-                      </p>
-                      <h3 className="text-xl font-semibold mt-1">
-                        {item.title}
-                      </h3>
-                    </div>
-                  </div>
-
-                  {/* Always-visible label for mobile */}
-                  <div className="absolute bottom-0 left-0 right-0 p-5 text-white bg-gradient-to-t from-black/70 to-transparent md:hidden">
-                    <p className="text-xs font-medium text-[#9a1b40] uppercase tracking-wide">
-                      {item.category}
+                  {/* Mobile Label */}
+                  <div className="absolute bottom-0 left-0 right-0 p-8 text-white bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                    <p className="text-xs font-black text-[#9a1b40] uppercase tracking-[0.3em] mb-2">
+                       {portfolioItems[currentIndex].category}
                     </p>
-                    <h3 className="text-base font-semibold mt-1">
-                      {item.title}
+                    <h3 className="text-2xl font-serif italic tracking-tight">
+                      {portfolioItems[currentIndex].title}
                     </h3>
                   </div>
                 </div>
-              </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Nav Dots */}
+          <div className="flex justify-center gap-3 mt-10">
+            {portfolioItems.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`transition-all duration-300 rounded-full ${
+                  currentIndex === index 
+                  ? "w-8 h-2 bg-[#9a1b40]" 
+                  : "w-2 h-2 bg-[#1e4389]/20"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
             ))}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
