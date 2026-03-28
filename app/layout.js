@@ -2,6 +2,7 @@ import { Dancing_Script } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/footer";
 import Navigation from "./components/navbar";
+import SmoothScroll from "./components/SmoothScroll";
 
 const scriptFont = Dancing_Script({
   subsets: ["latin"],
@@ -50,9 +51,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${scriptFont.variable}`}>
       <body className="antialiased font-[var(--font-body)]">
-        <Navigation />
-        {children}
-        <Footer />
+        <SmoothScroll>
+          <Navigation />
+          {children}
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );

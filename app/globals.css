@@ -109,6 +109,9 @@ p {
     color: var(--color-foreground);
     box-sizing: border-box;
   }
+  button {
+    cursor: pointer;
+  }
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;

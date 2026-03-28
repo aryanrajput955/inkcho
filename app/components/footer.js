@@ -53,7 +53,7 @@ export default function Footer() {
 
               <p className="text-xs text-[#FFFBF5]/60 font-light">
                 By subscribing, you agree to our{" "}
-                <a href="#" className="underline hover:text-white">Privacy Policy</a>.
+                <a href="/privacy-policy" className="underline hover:text-white">Privacy Policy</a>.
               </p>
             </form>
           </div>
@@ -145,7 +145,7 @@ export default function Footer() {
           </div>
 
           <div className="flex gap-8 text-[#FFFBF5]/60">
-            <a href="/privacy" className="hover:text-white">Privacy</a>
+            <a href="/privacy-policy" className="hover:text-white">Privacy</a>
             <a href="/terms" className="hover:text-white">Terms</a>
             <a href="/cookies" className="hover:text-white">Cookies</a>
           </div>

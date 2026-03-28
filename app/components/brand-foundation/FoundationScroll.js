@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import OptimizedImage from '@/app/components/OptimizedImage';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -53,7 +54,8 @@ const slides = [
       "https://res.cloudinary.com/dplv15n29/image/upload/v1772483854/Brand_Guidelines__page-0026_dqsaf5.jpg",
       "https://res.cloudinary.com/dplv15n29/image/upload/v1772483867/Brand_Guidelines__page-0032_mxs0ma.jpg"
     ],
-    offset: "up"
+    offset: "up",
+    link: "/services/brand-foundation/takhat-villas"
   },
   {
     id: "04",
@@ -75,11 +77,16 @@ export default function FoundationScroll() {
   const containerRef = useRef(null);
   const triggerRef = useRef(null);
   const cardsRef = useRef([]);
+  const router = useRouter();
 
   const [selectedSlide, setSelectedSlide] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const openGallery = (slide) => {
+    if (slide.link) {
+        router.push(slide.link);
+        return;
+    }
     setSelectedSlide(slide);
     setCurrentImageIndex(0);
     document.body.style.overflow = 'hidden';

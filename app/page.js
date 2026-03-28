@@ -1,11 +1,8 @@
 'use client';
-// import EnhancedContentSection from './components/para';
 import HeroSection from './components/hero';
 import React, { useState } from 'react';
 import ServicesSection from './components/servies';
 import LoadingScreen from './components/LoadingScreen';
-
-import { useLenis } from './hooks/Lenis';
 
 import ScrollHijackGallery from './components/animated-portfolio';
 import CardsSection from './components/service2';
@@ -25,9 +22,7 @@ export default function HomePage() {
     hasLoadedOnce = true;
   };
 
-  useLenis();
   return (
-
     <div className="relative">
       
       {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}

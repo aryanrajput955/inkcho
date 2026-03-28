@@ -39,7 +39,7 @@ export default function CardsSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-10%" }}
           variants={fadeInUp}
-          className="mb-16"
+          className="mb-10"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-[#1e4389] leading-tight tracking-tight">
             Pick Your <br />
@@ -79,7 +79,7 @@ export default function CardsSection() {
                   </div>
 
                   <div className="mt-10">
-                    <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-12 h-12 group-hover:w-40 group-hover:bg-[#9a1b40] group-hover:text-white group-hover:border-white overflow-hidden">
+                    <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-10 h-10 group-hover:w-40 group-hover:bg-[#9a1b40] group-hover:text-white group-hover:border-white overflow-hidden">
                       <ArrowRight className="w-5 h-5 absolute left-1/2 -translate-x-1/2 text-black group-hover:text-white transition-all duration-500 group-hover:left-5 group-hover:rotate-[-45deg]" />
                       <span className="opacity-0 group-hover:opacity-100 text-sm font-medium ml-8 transition-all duration-500 whitespace-nowrap text-black group-hover:text-white">
                         Explore More
@@ -116,7 +116,7 @@ export default function CardsSection() {
                   </div>
 
                   <div className="mt-10">
-                    <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-12 h-12 group-hover:w-40 group-hover:bg-[#9a1b40] group-hover:text-white group-hover:border-white overflow-hidden">
+                    <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-10 h-10 group-hover:w-40 group-hover:bg-[#9a1b40] group-hover:text-white group-hover:border-white overflow-hidden">
                       <ArrowRight className="w-5 h-5 absolute left-1/2 -translate-x-1/2 text-black group-hover:text-white transition-all duration-500 group-hover:left-5 group-hover:rotate-[-45deg]" />
                       <span className="opacity-0 group-hover:opacity-100 text-sm font-medium ml-8 transition-all duration-500 whitespace-nowrap text-black group-hover:text-white">
                         Explore More
@@ -155,7 +155,7 @@ export default function CardsSection() {
                 </div>
 
                 <div className="mt-4">
-                  <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-12 h-12 group-hover:w-40 group-hover:bg-[#9a1b40] group-hover:text-white group-hover:border-white overflow-hidden">
+                  <button className="relative flex items-center justify-center bg-white text-black rounded-full border border-[#9a1b40] transition-all duration-500 ease-out w-10 h-10 group-hover:w-40 group-hover:bg-[#9a1b40] group-hover:text-white group-hover:border-white overflow-hidden">
                     <ArrowRight className="w-5 h-5 absolute left-1/2 -translate-x-1/2 text-black group-hover:text-white transition-all duration-500 group-hover:left-5 group-hover:rotate-[-45deg]" />
                     <span className="opacity-0 group-hover:opacity-100 text-sm font-medium ml-8 transition-all duration-500 whitespace-nowrap text-black group-hover:text-white">
                       Explore More
