@@ -1,10 +1,11 @@
 'use client';
-
 import { useEffect, useRef } from 'react';
 import Lenis from '@studio-freight/lenis';
+import { usePathname } from 'next/navigation';
 
 export default function SmoothScroll({ children }) {
   const lenisRef = useRef(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     // Initialize Lenis
@@ -30,13 +31,18 @@ export default function SmoothScroll({ children }) {
 
     requestAnimationFrame(raf);
 
-    // Update ScrollTrigger if GSAP is used elsewhere
-    // lenis.on('scroll', ScrollTrigger.update);
-
     return () => {
       lenis.destroy();
     };
   }, []);
+
+  // Force scroll to top on page change
+  useEffect(() => {
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    }
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return <>{children}</>;
 }

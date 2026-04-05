@@ -118,7 +118,7 @@ export default function TakhatVillasCaseStudy() {
             >
                <div className="relative w-full aspect-[3/4] max-w-md lg:max-w-[480px] shrink-0" style={{ borderTopLeftRadius: '50% 30%', borderTopRightRadius: '50% 30%' }}>
                   <OptimizedImage
-                      src="https://res.cloudinary.com/dplv15n29/image/upload/v1774695718/Screenshot_2026-03-28_163109-Photoroom_ajrgx9.png" 
+                      src="https://res.cloudinary.com/dplv15n29/image/upload/v1775223194/Layer_4_hcdfmr.png" 
                       alt="Takhat Villas Arch Vista"
                       fill
                       className="object-cover rounded-t-[50%]"
@@ -153,7 +153,7 @@ export default function TakhatVillasCaseStudy() {
                 <motion.div variants={fadeInScale} className="w-full md:w-[35%] shrink-0 pt-12 md:pt-16 self-center">
                     <div className="relative w-full aspect-[4/3] rounded-sm overflow-hidden">
                         <OptimizedImage 
-                          src="https://res.cloudinary.com/dplv15n29/image/upload/v1774695874/copy_of_brand_guidelines__page-0028_dc5r3k_2056ad.jpg" 
+                          src="https://res.cloudinary.com/dplv15n29/image/upload/v1775223196/story_of.._dopmmu.png" 
                           alt="Watercolor illustration" 
                           fill 
                           className="object-cover" 
@@ -177,7 +177,7 @@ export default function TakhatVillasCaseStudy() {
                 {/* Large Background Image below Challenge text */}
                 <motion.div variants={fadeInScale} className="relative w-full aspect-video md:aspect-[2/1] overflow-hidden mt-12">
                     <OptimizedImage 
-                        src="https://res.cloudinary.com/dplv15n29/image/upload/v1774696504/Screenshot_2026-03-28_164440_riabzi.png" 
+                        src="https://res.cloudinary.com/dplv15n29/image/upload/v1775223196/The_Challenge_szw065.png" 
                         alt="Watercolor painting of fort"
                         fill
                         className="object-cover aspect-square"
@@ -205,7 +205,7 @@ export default function TakhatVillasCaseStudy() {
            <div className="px-6 md:px-16 lg:px-24">
              <motion.div variants={fadeInScale} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="relative w-full aspect-video md:aspect-[2.2/1] mb-20 md:mb-32 rounded-xl overflow-hidden">
                  <OptimizedImage 
-                     src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483299/Brand_Guidelines__page-0004_qsnpzq.jpg" 
+                     src="https://res.cloudinary.com/dplv15n29/image/upload/v1775223195/Research_Discovery_gqqdzd.png" 
                      alt="Gate Entrance"
                      fill
                      className="object-cover"
@@ -225,7 +225,7 @@ export default function TakhatVillasCaseStudy() {
              </motion.section>
 
              <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-12 flex flex-col items-start pt-4">
-                <h3 className="text-4xl md:text-6xl font-bold italic text-[#9a1b40] mb-12 sm:mb-16 text-center w-full" style={{ fontFamily: "var(--font-heading)" }}>Market Landscape</h3>
+                <h3 className="text-4xl md:text-6xl font-bold italic text-[#9a1b40] mb-12 sm:mb-16 text-left w-full" style={{ fontFamily: "var(--font-heading)" }}>Market Landscape</h3>
                 <div className="text-left w-full max-w-5xl">
                     <h4 className="font-bold text-black text-lg md:text-xl font-serif mb-4">Mapping the Hospitality Environment</h4>
                     <p className="text-black text-base md:text-lg mb-8">The hospitality landscape in Rajasthan sits between <em className="font-serif text-[#9a1b40]">two dominant formats</em>.</p>
@@ -239,7 +239,7 @@ export default function TakhatVillasCaseStudy() {
 
                 <motion.div variants={fadeInScale} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="relative w-full max-w-6xl aspect-[3/1] rounded-sm overflow-hidden bg-[#fcfbf9]/50 mt-8">
                     <OptimizedImage 
-                      src="https://res.cloudinary.com/dplv15n29/image/upload/v1774697177/Screenshot_2026-03-28_164832-Photoroom_xrphyw.png" 
+                      src="https://res.cloudinary.com/dplv15n29/image/upload/v1775223193/Illustration_market_landscape_gtrzwi.png" 
                       alt="Market Landscape Panoramic" 
                       fill 
                       className="object-contain mix-blend-multiply p-4" 
@@ -248,7 +248,7 @@ export default function TakhatVillasCaseStudy() {
              </motion.section>
 
              {/* Cultural Inspiration */}
-             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-10 flex flex-col items-center  max-w-5xl mx-auto text-center">
+             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-10 flex flex-col items-start max-w-5xl text-left">
                  <h3 className="text-4xl md:text-6xl font-normal text-[#9a1b40]">Cultural Inspiration</h3>
                  <p className="text-[14px] md:text-[16px] text-black font-medium">A Brand Rooted in Place</p>
                  <div className="space-y-1 text-black font-medium leading-relaxed text-base md:text-[18px] max-w-4xl pt-2">
@@ -268,7 +268,7 @@ export default function TakhatVillasCaseStudy() {
                   </motion.div>
                   <motion.div variants={fadeInScale} className="md:col-span-8 relative w-full aspect-video rounded-xl overflow-hidden shadow-none">
                       <OptimizedImage 
-                        src="https://res.cloudinary.com/dplv15n29/image/upload/v1774697345/Screenshot_2026-03-28_165838_jjt0xu.png" 
+                        src="https://res.cloudinary.com/dplv15n29/image/upload/v1775223195/quite_in_luxury_ezw9cu.png" 
                         fill 
                         alt="Quiet Luxury in Nature Illustration" 
                         className=" mt-1 md:mt-24 object-contain" 
@@ -327,7 +327,7 @@ export default function TakhatVillasCaseStudy() {
                       </div>
                   </div>
                   <motion.div variants={fadeInScale} className="w-full md:w-1/2 relative aspect-[4/3] bg-[#ebebeb] rounded-[2rem] overflow-hidden flex items-center justify-center p-12 shrink-0">
-                      <OptimizedImage src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483329/Brand_Guidelines__page-0006_tvtnzn.jpg" fill alt="Logo system" className="object-contain scale-75 mix-blend-multiply" />
+                      <OptimizedImage src="https://res.cloudinary.com/dplv15n29/image/upload/v1775223192/BRAND_LOGO_rewbc6.png" fill alt="Logo system" className="object-contain scale-95 mix-blend-multiply" />
                   </motion.div>
              </motion.section>
 
@@ -347,7 +347,7 @@ export default function TakhatVillasCaseStudy() {
                      <div className="pl-12 pb-16 flex flex-col items-center justify-center space-y-10 group">
                          <div className="relative w-full max-w-[320px] aspect-[3/1] transition-transform duration-500 group-hover:scale-105">
                              <OptimizedImage 
-                               src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483326/Brand_Guidelines__page-0009_n6r0vk.jpg" 
+                               src="https://res.cloudinary.com/dplv15n29/image/upload/v1775223194/logo_exlopration_1_yf6l4w.png" 
                                fill 
                                alt="Horizontal Logo Layout" 
                                className="object-contain mix-blend-multiply" 
@@ -357,53 +357,7 @@ export default function TakhatVillasCaseStudy() {
                      </div>
                  </div>
  
-                 {/* Bottom Section: Typography */}
-                 <div className="pt-16 space-y-12">
-                     <h4 className="text-2xl font-bold text-black border-t border-black pt-12 inline-block w-full">Primary Typeface</h4>
-                     
-                     <div className="bg-[#ffce9e] p-10 md:p-16 rounded-sm">
-                         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 relative">
-                             {/* Helvtica Column */}
-                             <div className="space-y-8">
-                                 <p className="font-bold text-white text-xl">Helvetica World</p>
-                                 <div className="space-y-4">
-                                     <p className="text-white text-lg md:text-2xl font-light tracking-[0.15em] leading-tight uppercase">
-                                         A B C D E F G H I J K L M N<br />
-                                         O P Q R S T U V W X Y Z
-                                     </p>
-                                     <p className="text-white text-lg md:text-2xl font-light tracking-[0.15em] leading-tight">
-                                         a b c d e f g h i j k l m n o p<br />
-                                         q r s t u v w x y z
-                                     </p>
-                                     <p className="text-white text-lg md:text-2xl font-light tracking-[0.15em] leading-tight">
-                                         1 2 3 4 5 6 7 8 9 0 ! @ # $ % ^ & * ( ) _ +
-                                     </p>
-                                 </div>
-                             </div>
- 
-                             {/* Divider Line In Box */}
-                             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-white/40 -translate-x-1/2"></div>
- 
-                             {/* Canva Sans Column */}
-                             <div className="space-y-8">
-                                 <p className="font-bold text-white text-xl">Canva Sans</p>
-                                 <div className="space-y-4">
-                                     <p className="text-white text-lg md:text-2xl font-light tracking-[0.15em] leading-tight uppercase">
-                                         A B C D E F G H I J K L M N O P<br />
-                                         P Q R S T U V W X Y Z
-                                     </p>
-                                     <p className="text-white text-lg md:text-2xl font-light tracking-[0.15em] leading-tight">
-                                         a b c d e f g h i j k l m n o p q<br />
-                                         r s t u v w x y z
-                                     </p>
-                                     <p className="text-white text-lg md:text-2xl font-light tracking-[0.15em] leading-tight">
-                                         1 2 3 4 5 6 7 8 9 0 ! @ # $ % ^ & * ( ) _ +
-                                     </p>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
+
              </motion.section>
 
              {/* .2 Typography Section */}

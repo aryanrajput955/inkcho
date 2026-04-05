@@ -74,7 +74,7 @@ export default function PremiumPillNavbar() {
           animate={{ y: 0, x: '-50%', opacity: 1 }}
           exit={{ y: -100, x: '-50%', opacity: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed top-8 left-1/2 z-[100] w-[92vw] max-w-5xl"
+          className="fixed top-8 left-1/2 z-[100] w-[85vw] max-w-4xl"
         >
           <motion.div 
             layout
@@ -83,17 +83,17 @@ export default function PremiumPillNavbar() {
                 ease: [0.22, 1, 0.36, 1] 
             }}
             className={`w-full bg-[#9a1b40]/95 backdrop-blur-3xl px-6 sm:px-10 md:px-14 flex flex-col border border-white/10 relative shadow-2xl shadow-black/20 ${
-                isMobile && isMenuOpen ? 'overflow-hidden rounded-[2.5rem] h-[85vh] pt-6 pb-12' : 'rounded-full h-[72px] py-4'
+                isMobile && isMenuOpen ? 'overflow-hidden rounded-[2.5rem] h-[85vh] pt-6 pb-12' : 'rounded-full h-[60px] py-2.5'
             }`}
           >
             {/* TOP BAR */}
-            <motion.div layout="position" className="flex items-center justify-between w-full relative z-[130] shrink-0 h-10">
+            <motion.div layout="position" className="flex items-center justify-between w-full relative z-[130] shrink-0 h-9">
               {/* LOGO */}
               <Link href="/" onClick={() => setIsMenuOpen(false)} className="shrink-0 transition-transform hover:scale-105 duration-500">
                 <img 
                   src="/logo.png" 
                   alt="INKCHO" 
-                  className="h-7 sm:h-9 md:h-10 w-auto brightness-0 invert" 
+                  className="h-6 sm:h-7 md:h-8 w-auto brightness-0 invert" 
                 />
               </Link>
  
