@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import OptimizedImage from '@/app/components/OptimizedImage';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Soothing Animation Variants
 const fadeInUp = {
@@ -33,6 +33,8 @@ const textReveal = {
 };
 
 export default function TakhatVillasCaseStudy() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   return (
     <main className="bg-[#FFFBF5] min-h-screen">
       {/* Hero Background Banner */}
@@ -71,7 +73,7 @@ export default function TakhatVillasCaseStudy() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
             >
-              <p className="text-lg md:text-2xl text-[#9a1b40]/80 font-light mb-2 md:mb-4">Project 1</p>
+              <p className="text-lg md:text-2xl text-[#9a1b40]/80 font-light mb-2 md:mb-4">Project 2</p>
               <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold text-[#9a1b40] tracking-tight">Takhat Villas</h1>
             </motion.div>
            </div>
@@ -429,7 +431,7 @@ export default function TakhatVillasCaseStudy() {
                  </div>
 
                  {/* Browser Mockup Gallery Grid */}
-                 <motion.div variants={fadeInScale} className="w-full rounded-tr-xl rounded-tl-xl border border-black bg-white overflow-hidden mt-8">
+                 <motion.div variants={fadeInScale} className="w-full rounded-tr-xl rounded-tl-xl border border-black bg-white overflow-hidden mt-8 cursor-default">
                      <div className="bg-[#ebebeb] h-10 md:h-12 w-full flex items-center px-4 md:px-6 gap-2 md:gap-2.5 border-b border-black">
                          <div className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 rounded-full bg-[#ff5f56]"></div>
                          <div className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 rounded-full bg-[#ffbd2e]"></div>
@@ -437,20 +439,26 @@ export default function TakhatVillasCaseStudy() {
                      </div>
                      <div className="p-5 sm:p-8 md:p-12 lg:p-16 bg-white">
                          <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
-                             <motion.div variants={fadeInScale} className="md:col-span-8 aspect-[4/3] relative overflow-hidden bg-gray-100">
-                                 <OptimizedImage src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483320/Brand_Guidelines__page-0007_qwzocb.jpg" alt="Application 1" fill className="object-cover" />
+                             <motion.div 
+                                variants={fadeInScale} 
+                                className="md:col-span-12 aspect-[4/3] md:aspect-[16/9] relative overflow-hidden rounded-xl cursor-pointer group bg-transparent flex items-center justify-center"
+                                onClick={() => setSelectedImage('https://res.cloudinary.com/dplv15n29/image/upload/v1775223194/assest_1_o0o8vs.png')}
+                             >
+                                 <OptimizedImage src="https://res.cloudinary.com/dplv15n29/image/upload/v1775223194/assest_1_o0o8vs.png" alt="Application 1" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
                              </motion.div>
-                             <motion.div variants={fadeInScale} className="md:col-span-4 aspect-square md:aspect-[3/4] relative overflow-hidden bg-gray-100">
-                                 <OptimizedImage src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483329/Brand_Guidelines__page-0006_tvtnzn.jpg" alt="Application 2" fill className="object-cover" />
+                             <motion.div 
+                                variants={fadeInScale} 
+                                className="md:col-span-6 aspect-square md:aspect-[4/3] relative overflow-hidden rounded-xl cursor-pointer group bg-transparent flex items-center justify-center p-2"
+                                onClick={() => setSelectedImage('https://res.cloudinary.com/dplv15n29/image/upload/v1775223193/assest_2_g8rmgk.png')}
+                             >
+                                 <OptimizedImage src="https://res.cloudinary.com/dplv15n29/image/upload/v1775223193/assest_2_g8rmgk.png" alt="Application 2" fill className="object-contain transition-transform duration-700 group-hover:scale-105" />
                              </motion.div>
-                             <motion.div variants={fadeInScale} className="md:col-span-4 aspect-square relative overflow-hidden bg-gray-100">
-                                 <OptimizedImage src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483314/Brand_Guidelines__page-0005_boz05g.jpg" alt="Application 3" fill className="object-cover" />
-                             </motion.div>
-                             <motion.div variants={fadeInScale} className="md:col-span-4 aspect-square relative overflow-hidden bg-gray-100">
-                                 <OptimizedImage src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483326/Brand_Guidelines__page-0009_n6r0vk.jpg" alt="Application 4" fill className="object-cover" />
-                             </motion.div>
-                             <motion.div variants={fadeInScale} className="md:col-span-4 aspect-square relative overflow-hidden bg-gray-100">
-                                 <OptimizedImage src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483334/Brand_Guidelines__page-0008_krvxdy.jpg" alt="Application 5" fill className="object-cover" />
+                             <motion.div 
+                                variants={fadeInScale} 
+                                className="md:col-span-6 aspect-square md:aspect-[4/3] relative overflow-hidden rounded-xl cursor-pointer group bg-transparent flex items-center justify-center p-2"
+                                onClick={() => setSelectedImage('https://res.cloudinary.com/dplv15n29/image/upload/v1775223194/assest_3_scvoes.png')}
+                             >
+                                 <OptimizedImage src="https://res.cloudinary.com/dplv15n29/image/upload/v1775223194/assest_3_scvoes.png" alt="Application 3" fill className="object-contain transition-transform duration-700 group-hover:scale-105" />
                              </motion.div>
                          </motion.div>
                      </div>
@@ -458,6 +466,45 @@ export default function TakhatVillasCaseStudy() {
              </motion.section>
           </div>
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 sm:p-8"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full h-full max-w-6xl max-h-[90vh] rounded-xl overflow-hidden shadow-2xl bg-transparent"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <OptimizedImage
+                src={selectedImage}
+                alt="Enlarged view"
+                fill
+                className="object-contain"
+              />
+              <button 
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-4 right-4 bg-black/40 hover:bg-black/60 backdrop-blur-md text-white rounded-full p-2 md:p-3 transition-colors z-10"
+                aria-label="Close modal"
+              >
+                <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </main>
   );
 }

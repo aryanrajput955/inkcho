@@ -22,9 +22,7 @@ export default function FoundationHero() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col gap-4"
           >
-            <span className="text-[10px] font-black tracking-[0.6em] text-[#9a1b40] uppercase">
-                Section • 01
-            </span>
+       
             <h1 className="text-[16vw] leading-[0.75] font-bold tracking-tighter text-black uppercase select-none">
               Brand
             </h1>
