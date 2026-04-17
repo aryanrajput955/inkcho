@@ -82,7 +82,7 @@ export default function PremiumPillNavbar() {
                 duration: 0.8, 
                 ease: [0.22, 1, 0.36, 1] 
             }}
-            className={`w-full bg-[#9a1b40]/95 backdrop-blur-3xl px-6 sm:px-10 md:px-14 flex flex-col border border-white/10 relative shadow-2xl shadow-black/20 ${
+            className={`w-full bg-[#9a1b40]/95 backdrop-blur-3xl px-6 sm:px-10 md:px-14 flex flex-col border border-white/10 relative shadow-2xl shadow-black/20 font-[ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe_UI,Roboto,Helvetica,Arial,sans-serif] ${
                 isMobile && isMenuOpen ? 'overflow-hidden rounded-[2.5rem] h-[85vh] pt-6 pb-12' : 'rounded-full h-[60px] py-2.5'
             }`}
           >
@@ -103,7 +103,7 @@ export default function PremiumPillNavbar() {
                   <Link 
                     key={item}
                     href={item === 'Home' ? '/' : '/about'}
-                    className="group relative text-[#FFFBF5]/70 hover:text-white text-[11px] font-bold tracking-[0.25em] transition-all duration-300 uppercase"
+                    className="group relative text-[#FFFBF5]/70 hover:text-white text-[11px] font-medium tracking-[0.25em] transition-all duration-300 uppercase"
                   >
                     {item}
                     <motion.span 
@@ -119,7 +119,7 @@ export default function PremiumPillNavbar() {
                   onMouseLeave={() => setHoveredService(false)}
                 >
                   <div className="flex items-center gap-1.5 cursor-pointer py-2 group-hover/parent:text-white text-[#FFFBF5]/70 transition-colors duration-300">
-                    <span className="text-[11px] font-bold tracking-[0.25em] uppercase">
+                    <span className="text-[11px] font-medium tracking-[0.25em] uppercase">
                       Services
                     </span>
                     <ChevronDown size={14} className={`transition-transform duration-500 ${hoveredService ? 'rotate-180' : ''}`} />
@@ -168,7 +168,7 @@ export default function PremiumPillNavbar() {
               <div className="hidden lg:flex shrink-0 items-center">
                 <Link 
                   href="/contact" 
-                  className="px-6 sm:px-8 py-3 rounded-full border border-white/20 text-[#FFFBF5] text-[10px] font-black tracking-[0.3em] hover:bg-white hover:text-[#9a1b40] transition-all duration-500 uppercase flex items-center gap-2.5"
+                  className="px-6 sm:px-8 py-3 rounded-full border border-white/20 text-[#FFFBF5] text-[10px] font-medium tracking-[0.3em] hover:bg-white hover:text-[#9a1b40] transition-all duration-500 uppercase flex items-center gap-2.5"
                 >
                   Contact Us
                   <ArrowUpRight size={14} />
@@ -236,7 +236,7 @@ export default function PremiumPillNavbar() {
                           <Link 
                             href={item === 'Home' ? '/' : '/about'} 
                             onClick={() => setIsMenuOpen(false)}
-                            className="text-[#FFFBF5] text-4xl font-black font-heading tracking-tight transition-colors hover:text-white/60"
+                            className="text-[#FFFBF5] text-4xl font-medium tracking-tight transition-colors hover:text-white/60"
                           >
                             {item}
                           </Link>
@@ -279,7 +279,7 @@ export default function PremiumPillNavbar() {
                       <Link 
                         href="/contact" 
                         onClick={() => setIsMenuOpen(false)}
-                        className="w-full py-5 rounded-full bg-white text-[#9a1b40] text-sm font-black tracking-[0.4em] uppercase text-center shadow-2xl transition-transform active:scale-95 block"
+                        className="w-full py-5 rounded-full bg-white text-[#9a1b40] text-sm font-medium tracking-[0.4em] uppercase text-center shadow-2xl transition-transform active:scale-95 block"
                       >
                         Contact Us
                       </Link>
