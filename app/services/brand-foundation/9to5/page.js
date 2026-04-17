@@ -189,7 +189,7 @@ export default function NineToFiveCaseStudy() {
         <div className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-14 items-center">
             <motion.div {...fadeInUp}>
-              <h3 className="text-3xl md:text-5xl lg:text-6xl 2xl:text-7xl font-bold tracking-tight mb-6 leading-tight uppercase" style={{ color: BRAND_BLUE }}>
+              <h3 className="text-3xl md:text-5xl lg:text-5xl 2xl:text-7xl font-bold tracking-tight mb-6 leading-tight uppercase" style={{ color: BRAND_BLUE }}>
                 UNDERSTANDING<br/>THE LANDSCAPE
               </h3>
               <p className="text-lg md:text-xl 2xl:text-3xl font-light max-w-md 2xl:max-w-xl text-black/70 leading-relaxed">
