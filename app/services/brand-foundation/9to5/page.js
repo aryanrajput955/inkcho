@@ -225,8 +225,8 @@ export default function NineToFiveCaseStudy() {
       <section className="py-16 md:py-24 2xl:py-32 bg-[#f4f1ec]">
         <div className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24 text-center">
           <motion.div {...fadeInUp} className="mb-20 md:mb-20">
-            <h3 className="text-3xl md:text-5xl lg:text-6xl 2xl:text-7xl font-bold tracking-tight mb-6 uppercase" style={{ color: BRAND_BLUE }}>THE INSIGHT</h3>
-            <p className="text-xl md:text-3xl 2xl:text-5xl italic font-light">"Presence speaks before words do."</p>
+            <h3 className="text-3xl md:text-5xl lg:text-4xl 2xl:text-5xl font-bold tracking-tight mb-6 uppercase" style={{ color: BRAND_BLUE }}>THE INSIGHT</h3>
+            <p className="text-xl md:text-2xl 2xl:text-3xl italic font-light">"Presence speaks before words do."</p>
           </motion.div>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24">
