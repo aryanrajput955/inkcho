@@ -91,8 +91,8 @@ export default function TakhatVillasCaseStudy() {
             {/* Left Intro Text (on white bg) */}
             <div className="flex-1 lg:pr-12 pt-16">
                 <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-6 max-w-xl text-black">
-                    <motion.h2 variants={textReveal} className="text-xl md:text-2xl text-[#9a1b40] font-light leading-snug">Quiet luxury retreat in the Aravalli hills</motion.h2>
-                    <motion.p variants={textReveal} className="font-medium text-lg md:text-xl text-black">Brand Strategy & Visual Identity</motion.p>
+                    <motion.h2 variants={textReveal} className="text-3xl md:text-4xl font-light text-[#9a1b40]">Quiet luxury retreat in the Aravalli hills</motion.h2>
+                    <motion.p variants={textReveal} className="font-bold text-lg md:text-xl text-black">Brand Strategy & Visual Identity</motion.p>
                     <motion.div variants={textReveal} className="flex flex-wrap gap-4 text-xs italic text-[#9a1b40] font-serif pt-2 pb-2">
                         <span className="border border-black rounded-full px-5 py-1.5">Hospitality Brand</span>
                         <span className="border border-black rounded-full px-5 py-1.5">Rajasthan, India</span>
@@ -173,7 +173,7 @@ export default function TakhatVillasCaseStudy() {
                 <div className="space-y-1 text-black leading-relaxed text-base md:text-lg max-w-5xl">
                     <p>Despite its unique location and architectural character, Takhat Villas initially lacked a clear brand narrative.</p>
                     <p>The hospitality market in Rajasthan is highly competitive, ranging from grand palace hotels to independent boutique stays. Without a defined strategic identity, the property risked blending into a crowded landscape.</p>
-                    <p>The challenge was to translate the villa's environment, heritage setting, and wildlife proximity into a distinctive brand experience that guests would immediately recognise and remember.</p>
+                    <p>The challenge was to translate the villa&apos;s environment, heritage setting, and wildlife proximity into a distinctive brand experience that guests would immediately recognise and remember.</p>
                 </div>
                 
                 {/* Large Background Image below Challenge text */}
@@ -216,18 +216,18 @@ export default function TakhatVillasCaseStudy() {
            </div>
 
           {/* Audience Insights / Market Landscape */}
-          <div className="space-y-20 md:space-y-32 max-w-7xl mx-auto px-6 md:px-16 lg:px-24">
-             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-8 md:space-y-10 max-w-5xl">
-                <h3 className="text-3xl md:text-4xl font-light text-[#9a1b40] mb-6 md:mb-8 text-left">Audience Insights</h3>
-                <div className="space-y-8 text-black leading-relaxed text-lg md:text-xl font-light text-left">
+          <div className="space-y-16 md:space-y-24 max-w-7xl mx-auto px-6 md:px-16 lg:px-24">
+             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-3 max-w-5xl">
+               <h3 className="text-3xl md:text-4xl font-light text-[#9a1b40] mb-4 text-left">Audience Insights</h3>
+               <div className="space-y-1 text-black leading-relaxed text-lg md:text-xl font-light text-left">
                    <p>Travelers visiting the Kumbhalgarh region are typically seeking experiences that feel <strong className="text-black font-medium">calm</strong>, <strong className="text-black font-medium">immersive</strong>, and <strong className="text-black font-medium">connected to nature</strong>.</p>
                    <p>The primary audience includes <strong className="text-black font-medium">wildlife enthusiasts</strong>, <strong className="text-black font-medium">photographers</strong>, and <strong className="text-black font-medium">urban travellers</strong> looking to escape busy city environments. These travellers value authenticity, atmosphere, and meaningful experiences over traditional luxury hotel formats.</p>
                    <p>For this audience, accommodation is only one part of the journey. What they truly seek is a sense of <em className="font-serif text-[#9a1b40]/80">place, story, and emotional connection</em> with the landscape.</p>
                 </div>
              </motion.section>
 
-             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-12 flex flex-col items-start pt-4">
-                <h3 className="text-4xl md:text-6xl font-bold italic text-[#9a1b40] mb-12 sm:mb-16 text-left w-full" style={{ fontFamily: "var(--font-heading)" }}>Market Landscape</h3>
+             <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-12 flex flex-col items-start pt-2">
+               <h3 className="text-3xl md:text-4xl font-light text-[#9a1b40] mb-6 md:mb-8 text-left">Market Landscape</h3>
                 <div className="text-left w-full max-w-5xl">
                     <h4 className="font-bold text-black text-lg md:text-xl font-serif mb-4">Mapping the Hospitality Environment</h4>
                     <p className="text-black text-base md:text-lg mb-8">The hospitality landscape in Rajasthan sits between <em className="font-serif text-[#9a1b40]">two dominant formats</em>.</p>
@@ -251,10 +251,10 @@ export default function TakhatVillasCaseStudy() {
 
              {/* Cultural Inspiration */}
              <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-10 flex flex-col items-start max-w-5xl text-left">
-                 <h3 className="text-4xl md:text-6xl font-normal text-[#9a1b40]">Cultural Inspiration</h3>
-                 <p className="text-[14px] md:text-[16px] text-black font-medium">A Brand Rooted in Place</p>
+               <h3 className="text-3xl md:text-4xl font-light text-[#9a1b40] mb-6 md:mb-8 text-left">Cultural Inspiration</h3>
+                 <h4 className="font-bold text-black text-lg md:text-xl font-serif mb-4">A Brand Rooted in Place</h4>
                  <div className="space-y-1 text-black font-medium leading-relaxed text-base md:text-[18px] max-w-4xl pt-2">
-                     <p>The identity of Takhat Villas draws deeply from its surroundings. The Aravalli ranges provide a rugged and timeless landscape, while Rajasthan's architectural heritage introduces craftsmanship, stone textures, and a sense of history.</p>
+                     <p>The identity of Takhat Villas draws deeply from its surroundings. The Aravalli ranges provide a rugged and timeless landscape, while Rajasthan&apos;s architectural heritage introduces craftsmanship, stone textures, and a sense of history.</p>
                      <p>Together these elements create a visual language that feels grounded, authentic, and deeply connected to the surrounding landscape.</p>
                  </div>
              </motion.section>
@@ -262,7 +262,7 @@ export default function TakhatVillasCaseStudy() {
              {/* Brand Positioning */}
              <motion.section variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-center ">
                   <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="md:col-span-4 space-y-6">
-                     <motion.h3 variants={textReveal} className="text-4xl md:text-6xl font-normal text-[#9a1b40]">Brand Positioning</motion.h3>
+                    <motion.h3 variants={textReveal} className="text-3xl md:text-4xl font-light text-[#9a1b40] mb-6 md:mb-8 text-left">Brand Positioning</motion.h3>
                      <motion.div variants={textReveal} className="space-y-3 text-black leading-relaxed text-base md:text-[17px] font-medium">
                         <p>Takhat Villas is positioned as an intimate retreat where travelers reconnect with nature, heritage, and slower rhythm of living.</p>
                         <p>Rather than competing with large luxury resorts or informal homestays, the brand sits in a refined middle ground offering a calm and immersive hospitality experience.</p>

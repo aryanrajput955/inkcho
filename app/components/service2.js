@@ -60,7 +60,7 @@ export default function CardsSection() {
                 className="relative h-full min-h-[320px] rounded-3xl overflow-hidden group border border-gray-300 bg-[#f7f4ec] transition-all duration-700 cursor-pointer block"
               >
                 <OptimizedImage
-                  src="https://res.cloudinary.com/dplv15n29/image/upload/v1772527853/brand_foundation_tgzkkz.png"
+                  src="https://res.cloudinary.com/dplv15n29/image/upload/v1776408658/brand_foundation_BG_wyiv0t.png"
                   alt="Brand Foundations"
                   fill
                   className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
@@ -97,7 +97,7 @@ export default function CardsSection() {
                 className="relative h-full min-h-[320px] rounded-3xl overflow-hidden group border border-gray-300 bg-[#f7f4ec] transition-all duration-700 cursor-pointer block"
               >
                 <OptimizedImage
-                  src="https://res.cloudinary.com/dplv15n29/image/upload/v1772459199/ChatGPT_Image_Feb_22_2026_12_14_03_PM_pz8ene.png"
+                  src="https://res.cloudinary.com/dplv15n29/image/upload/v1776408658/visual_identity_2_cbgltw.png"
                   alt="Visual Identity"
                   fill
                   className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
@@ -136,7 +136,7 @@ export default function CardsSection() {
               className="relative h-full min-h-[320px] md:min-h-full rounded-3xl overflow-hidden group border border-gray-300 bg-[#f7f4ec] transition-all duration-700 cursor-pointer block"
             >
               <OptimizedImage
-                src="https://res.cloudinary.com/dplv15n29/image/upload/v1772483326/Brand_Guidelines__page-0009_n6r0vk.jpg"
+                src="https://res.cloudinary.com/dplv15n29/image/upload/v1776408658/Digital_experience_fptoky.png"
                 alt="Digital Experiences"
                 fill
                 className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
