@@ -192,7 +192,7 @@ export default function NineToFiveCaseStudy() {
               <h3 className="text-3xl md:text-5xl lg:text-5xl 2xl:text-6xl font-bold tracking-tight mb-6 leading-tight uppercase" style={{ color: BRAND_BLUE }}>
                 UNDERSTANDING<br/>THE LANDSCAPE
               </h3>
-              <p className="text-lg md:text-xl 2xl:text-3xl font-light max-w-md 2xl:max-w-xl text-black/70 leading-relaxed">
+              <p className="text-lg md:text-lg 2xl:text-2xl font-light max-w-md 2xl:max-w-xl text-black/70 leading-relaxed">
                 The Indian womenswear market continues to evolve, shaped by shifting lifestyles, climate, and changing expectations of modern workwear.
               </p>
             </motion.div>
