@@ -83,7 +83,7 @@ export default function LoadingScreen({ onComplete }) {
                     />
                 </div>
                 <div className="hidden md:block text-xs font-light tracking-[0.2em] opacity-80">
-                    EST. 2026
+                    EST. 2025
                 </div>
             </div>
 

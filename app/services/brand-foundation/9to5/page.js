@@ -39,7 +39,7 @@ export default function NineToFiveCaseStudy() {
     
     // 2. BRAND OVERVIEW & CHALLENGE
     brandOverviewBg: "https://res.cloudinary.com/dplv15n29/image/upload/v1775387905/Soft_beige_to_taupe_gradient__endoftext___ixfxgy.png",
-    hangerIcon: "https://res.cloudinary.com/dplv15n29/image/upload/v1775382678/brand_overview_icon__ywv0xg.png",
+    brandOverviewTextImg: "https://res.cloudinary.com/dplv15n29/image/upload/v1777189351/Brand_overview_skmk2a.png", // Add your text image link here
     
     // 3. INSIGHT & IDEA
     insightImg: "https://res.cloudinary.com/dplv15n29/image/upload/v1775382680/Image_2_hngjxu.jpg",
@@ -49,17 +49,25 @@ export default function NineToFiveCaseStudy() {
     strategyPortrait: "https://res.cloudinary.com/dplv15n29/image/upload/v1775382680/image_4_cth9un.jpg",
     
     // 8. MATERIAL & CRAFT (Gallery 01-05)
-    craft01: "https://res.cloudinary.com/dplv15n29/image/upload/v1775382680/Image_2_hngjxu.jpg",
-    craft02: "https://res.cloudinary.com/dplv15n29/image/upload/v1775382680/Image_2_hngjxu.jpg",
-    craft03: "https://res.cloudinary.com/dplv15n29/image/upload/v1772483329/Brand_Guidelines__page-0006_tvtnzn.jpg",
-    craft04: "https://res.cloudinary.com/dplv15n29/image/upload/v1772483326/Brand_Guidelines__page-0009_n6r0vk.jpg",
-    craft05: "https://res.cloudinary.com/dplv15n29/image/upload/v1772483334/Brand_Guidelines__page-0008_krvxdy.jpg",
+    craft01: "https://res.cloudinary.com/dplv15n29/image/upload/v1777194736/925_label_post_juxeam.png",
+    craft02: "https://res.cloudinary.com/dplv15n29/image/upload/v1777194885/Brand_Board_Page_1_Image_0008_wwizyn.jpg",
+    craft03: "https://res.cloudinary.com/dplv15n29/image/upload/v1777195588/copy_of_brand_board_page_1_image_0007_qeqrqa_4caa9b.jpg",
+    craft04: "https://res.cloudinary.com/dplv15n29/image/upload/v1777194756/_AR71235_tr4vyz.jpg",
+    craft05: "https://res.cloudinary.com/dplv15n29/image/upload/v1777194749/_AR70644_esmwqg.jpg",
     // 9. BRAND VOICE
     voiceLogo: "https://res.cloudinary.com/dplv15n29/image/upload/v1775385243/copy_of_drilldown_czu9kb_b064f2.png",
     
     // 10. CAMPAIGN & SOCIAL
     campaignImg: "https://res.cloudinary.com/dplv15n29/image/upload/v1775382680/image_4_cth9un.jpg",
     socialImg: "https://res.cloudinary.com/dplv15n29/image/upload/v1775382680/Image_2_hngjxu.jpg",
+    
+    // 11. EXTRA ASSETS
+    brandVoiceBanner: "https://res.cloudinary.com/dplv15n29/image/upload/v1777199010/nine_to_5_pqkedj.png",
+    logoImg1: "https://res.cloudinary.com/dplv15n29/image/upload/v1777209039/logo_1_sukb6r.png",
+    logoImg2: "https://res.cloudinary.com/dplv15n29/image/upload/v1777209039/logo_2_bouuyh.png",
+    logoImg3: "https://res.cloudinary.com/dplv15n29/image/upload/v1777209040/logo_3_gwf5qa.png",
+    typographyImg1: "https://res.cloudinary.com/dplv15n29/image/upload/v1777210356/typography_9to5_nts5gi.png",
+    typographyImg2: "https://res.cloudinary.com/dplv15n29/image/upload/v1777210356/typography_9to5_FONT_2_zrkgw9.png",
   };
 
   return (
@@ -123,54 +131,55 @@ export default function NineToFiveCaseStudy() {
       </section>
 
       {/* 2. BRAND OVERVIEW & CHALLENGE */}
-      <section className="relative py-16 md:py-24 2xl:py-32 overflow-hidden">
+      <section className="relative min-h-screen pt-12 md:pt-24 pb-16 md:pb-24 overflow-hidden flex flex-col justify-start">
         {/* Background Gradient Image */}
         <div className="absolute inset-0 z-0">
-          <OptimizedImage src={images.brandOverviewBg} alt="Background Gradient" fill className="object-cover opacity-60" />
+          <OptimizedImage src={images.brandOverviewBg} alt="Background Gradient" fill className="object-cover opacity-40" />
         </div>
 
-        <div className="relative z-10 max-w-[1700px] mx-auto px-6 md:px-16 lg:px-24">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
-            {/* Left: Icon Cluster (4 columns) */}
+        <motion.div 
+          {...fadeInUp}
+          className="relative z-10 max-w-[1700px] mx-auto px-6 md:px-16 lg:px-24"
+        >
+          <div className="w-full flex flex-col items-center">
+            {/* BRAND OVERVIEW IMAGE CONTAINER (Replace src with your text image) */}
             <motion.div 
               {...fadeInUp}
-              className="md:col-span-4 flex flex-col justify-start md:pr-16 mb-20 md:mb-0"
+              className="relative w-full max-w-5xl aspect-[16/3] md:aspect-[16/4] flex items-center justify-center"
             >
-              <div className="flex flex-col gap-8">
-                <span className="text-[10px] font-black tracking-[0.5em] uppercase text-black/30">Brand Essence</span>
-                <motion.div variants={fadeInScale} initial="initial" whileInView="whileInView" className="relative w-40 h-40 lg:w-56 lg:h-56">
-                  <OptimizedImage src={images.hangerIcon} alt="Brand Overview Icon" fill className="object-contain" />
-                </motion.div>
-              </div>
-            </motion.div>
-
-            {/* Right: Content Cluster (8 columns) */}
-            <motion.div 
-              {...fadeInUp}
-              transition={{ delay: 0.2 }}
-              className="md:col-span-8 md:pl-20 2xl:pl-32 flex flex-col justify-center"
-            >
-              <div className="max-w-4xl space-y-12">
-                <h3 className="text-2xl md:text-3xl lg:text-4xl 2xl:text-6xl font-light leading-[1.2] tracking-tight">
-                  Designed for modern professionals, <span className="font-medium" style={{ color: BRAND_BLUE }}>9to5</span> bridges the gap between everyday wearability and <span className="italic">elevated design.</span>
-                </h3>
-                <div className="w-20 h-[1.5px] bg-black/10 origin-left scale-x-100" />
-                <p className="text-lg md:text-xl 2xl:text-3xl font-light text-black/60 leading-relaxed max-w-2xl">
-                  Offering refined essentials that feel considered, adaptable, and timeless for the contemporary woman.
-                </p>
+              {/* 
+                The user has an image of the text. 
+                Replacing the previous text and icon cluster with this container.
+              */}
+              <div className="w-full h-full relative">
+                 {images.brandOverviewTextImg !== "PASTE_YOUR_CLOUDINARY_LINK_HERE" ? (
+                   <OptimizedImage 
+                     src={images.brandOverviewTextImg} 
+                     alt="Brand Overview Text" 
+                     fill 
+                     className="object-contain"
+                   />
+                 ) : (
+                   <div className="text-center py-20 border-2 border-dashed border-black/10 rounded-xl">
+                      <span className="text-xs uppercase tracking-widest text-black/40 mb-4 block">Brand Overview Image Placeholder</span>
+                      <p className="text-sm text-black/30">Replace 'brandOverviewTextImg' link at line 42</p>
+                      <h3 className="text-2xl md:text-3xl lg:text-4xl 2xl:text-6xl font-light leading-[1.2] tracking-tight opacity-10 mt-8">
+                        Designed for modern professionals...
+                      </h3>
+                   </div>
+                 )}
               </div>
             </motion.div>
           </div>
 
-          {/* THE CHALLENGE (Vertical Separator moved to spacer) */}
           
-          <motion.div {...fadeInUp} className="max-w-7xl mt-24 md:mt-40">
-            <h3 className="text-3xl md:text-5xl lg:text-6xl 2xl:text-7xl mb-12 flex flex-wrap items-center gap-x-4 tracking-tight uppercase" style={{ color: BRAND_BLUE }}>
+          <motion.div {...fadeInUp} className="max-w-7xl mt-4 md:mt-8 2xl:mt-10">
+            <h3 className="text-3xl md:text-5xl lg:text-5xl 2xl:text-6xl mb-8 flex flex-wrap items-center gap-x-4 tracking-tight uppercase" style={{ color: BRAND_BLUE }}>
               <span className="font-extralight">THE</span> 
               <span className="font-bold">CHALLENGE</span>
             </h3>
             
-            <motion.div className="space-y-10 text-lg md:text-2xl font-light leading-relaxed max-w-5xl text-black/80">
+            <motion.div className="space-y-6 md:space-y-8 text-lg md:text-xl 2xl:text-2xl font-light leading-relaxed max-w-5xl text-black/80">
               <p>For years, office wear has remained unchanged, structured, restrictive, and often disconnected from the way women move through their day.</p>
               <p>At one end, fast fashion offers accessibility but lacks longevity. At the other, premium brands deliver quality but remain out of reach. Between the two, there is very little that feels both considered and attainable.</p>
               <p className="font-normal opacity-90">
@@ -181,12 +190,12 @@ export default function NineToFiveCaseStudy() {
               </p>
             </motion.div>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
       {/* 3. UNDERSTANDING THE LANDSCAPE */}
       <section className="py-16 md:py-24 2xl:py-32 bg-white">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24">
+        <motion.div {...fadeInUp} className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-14 items-center">
             <motion.div {...fadeInUp}>
               <h3 className="text-3xl md:text-5xl lg:text-5xl 2xl:text-6xl font-bold tracking-tight mb-6 leading-tight uppercase" style={{ color: BRAND_BLUE }}>
@@ -218,43 +227,52 @@ export default function NineToFiveCaseStudy() {
               ))}
             </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* 4. THE INSIGHT */}
-      <section className="py-16 md:py-24 2xl:py-32 bg-[#f4f1ec]">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24 text-center">
-          <motion.div {...fadeInUp} className="mb-20 md:mb-20">
-            <h3 className="text-3xl md:text-5xl lg:text-4xl 2xl:text-6xl font-bold tracking-tight mb-6 uppercase" style={{ color: BRAND_BLUE }}>THE INSIGHT</h3>
-            <p className="text-xl md:text-2xl 2xl:text-3xl italic font-light">"Presence speaks before words do."</p>
-          </motion.div>
-
-          <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24">
-            <motion.div {...fadeInUp} className="flex-1 text-right">
-              <p className="text-2xl md:text-4xl font-light leading-tight">
-                Confidence today<br/>is <span className="font-bold italic">quiet.</span>
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeInScale} initial="initial" whileInView="whileInView" className="relative w-full max-w-sm aspect-[4/5] bg-gray-200 overflow-hidden rounded-sm">
-              <OptimizedImage src={images.insightImg} alt="Insight Portrait" fill className="object-cover" />
-            </motion.div>
-
-            <motion.div {...fadeInUp} className="flex-1 text-left space-y-6">
-              <p className="text-xl md:text-3xl font-light">
-                It does not demand <span className="font-bold italic">attention.</span>
-              </p>
-              <p className="text-xl md:text-3xl font-light">
-                It does not need <span className="font-bold italic">validation.</span>
-              </p>
-            </motion.div>
+      <section className="h-screen min-h-[700px] flex items-center justify-center bg-[#f4f1ec] overflow-hidden">
+        <motion.div {...fadeInUp} className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24 text-center w-full">
+          <div className="mb-6 md:mb-8">
+            <h3 className="text-3xl md:text-5xl lg:text-6xl 2xl:text-7xl mb-4 flex flex-wrap items-center justify-center gap-x-3 tracking-tight uppercase" style={{ color: BRAND_BLUE }}>
+              <span className="font-extralight">THE</span> 
+              <span className="font-bold">INSIGHT</span>
+            </h3>
+            <p className="text-lg md:text-2xl 2xl:text-4xl font-light italic leading-none">Presence speaks before words do.</p>
           </div>
-        </div>
+
+          <div className="flex flex-col md:flex-row items-center w-full mt-6 md:mt-8 gap-12 md:gap-0">
+            {/* Left Side (60%) - Contains first text and Image */}
+            <div className="w-full md:w-[60%] flex flex-col md:flex-row items-center justify-center md:justify-end gap-8 md:pr-12">
+              <motion.div {...fadeInUp} className="md:text-right">
+                <p className="text-xl md:text-2xl 2xl:text-3xl font-light leading-tight">
+                  Confidence today<br/>is <span className="font-bold italic">quiet.</span>
+                </p>
+              </motion.div>
+
+              <motion.div variants={fadeInScale} initial="initial" whileInView="whileInView" className="relative w-full max-w-[280px] md:max-w-[400px] 2xl:max-w-[500px] aspect-square bg-gray-200 overflow-hidden rounded-sm">
+                <OptimizedImage src={images.insightImg} alt="Insight Portrait" fill className="object-cover" />
+              </motion.div>
+            </div>
+
+            {/* Right Side (40%) - Contains remaining text */}
+            <div className="w-full md:w-[40%] flex items-center justify-center md:justify-start md:pl-12">
+              <motion.div {...fadeInUp} className="space-y-2 text-center md:text-left">
+                <p className="text-xl md:text-2xl 2xl:text-4xl font-light">
+                  It does not demand <span className="font-bold italic">attention.</span>
+                </p>
+                <p className="text-xl md:text-2xl 2xl:text-4xl font-light">
+                  It does not need <span className="font-bold italic">validation.</span>
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       {/* 5. THE IDEA */}
       <section className="h-screen min-h-[750px] flex items-center justify-center bg-white text-center py-12 overflow-hidden">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24 flex flex-col justify-between h-full">
+        <motion.div {...fadeInUp} className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24 flex flex-col justify-between h-full">
           <motion.div {...fadeInUp} className="text-center mb-4 md:mb-6">
             <h3 className="text-3xl md:text-5xl lg:text-6xl 2xl:text-7xl mb-2 flex flex-wrap items-center justify-center gap-x-3 tracking-tight uppercase" style={{ color: BRAND_BLUE }}>
               <span className="font-extralight ">THE</span> 
@@ -275,18 +293,18 @@ export default function NineToFiveCaseStudy() {
               The brand does not amplify the wearer, it <span className="italic">refines her presence.</span>
             </h4>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
       {/* 6. BRAND PHILOSOPHY */}
-      <section className="py-16 md:py-24 2xl:py-32 bg-white overflow-hidden">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24">
-          <motion.div {...fadeInUp} className="text-center mb-24 md:mb-32">
+      <section className="py-16 md:py-18 2xl:py-24 bg-white overflow-hidden">
+        <motion.div {...fadeInUp} className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24">
+          <div className="text-center mb-24 md:mb-32">
              <h3 className="text-3xl md:text-5xl lg:text-6xl 2xl:text-7xl mb-2 flex flex-wrap items-center justify-center gap-x-3 tracking-tight uppercase" style={{ color: BRAND_BLUE }}>
               <span className="font-extralight">BRAND</span> 
               <span className="font-bold">PHILOSOPHY</span>
             </h3>
-          </motion.div>
+          </div>
 
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
@@ -298,7 +316,7 @@ export default function NineToFiveCaseStudy() {
                 <span className="font-bold">power</span>
               </motion.div>
 
-              <motion.div {...fadeInUp} transition={{ delay: 0.3 }} className="text-center md:text-right space-y-8 md:space-y-12 text-black">
+              <motion.div {...fadeInUp} transition={{ delay: 0.3 }} className="text-center space-y-8 md:space-y-12 text-black">
                 <p className="text-lg md:text-2xl 2xl:text-3xl font-light italic leading-tight">
                   There is a certain kind of confidence<br />
                   that does not ask for attention.
@@ -318,12 +336,12 @@ export default function NineToFiveCaseStudy() {
               </motion.div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* 7. PRODUCT STRATEGY */}
       <section className="h-screen min-h-[700px] flex items-center  justify-center bg-[#f4f1ec] overflow-hidden">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24 w-full flex flex-col items-center">
+        <motion.div {...fadeInUp} className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24 w-full flex flex-col items-center">
           <motion.div {...fadeInUp} className="text-center mb-8 md:mb-12">
              <h3 className="text-3xl md:text-5xl lg:text-6xl 2xl:text-7xl mb-2 flex flex-wrap items-center justify-center gap-x-3 tracking-tight uppercase" style={{ color: BRAND_BLUE }}>
               <span className="font-extralight">PRODUCT</span> 
@@ -353,21 +371,21 @@ export default function NineToFiveCaseStudy() {
               </motion.div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* 8. MATERIAL & CRAFT */}
-      <section className="py-16 md:py-24 2xl:py-32 bg-white overflow-hidden">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24">
-          <motion.div {...fadeInUp} className="text-center mb-24 md:mb-40">
+      <section className="pt-16 md:pt-24 2xl:pt-32 pb-12 md:pb-16 bg-white overflow-hidden">
+        <motion.div {...fadeInUp} className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24">
+          <div className="text-center mb-12 md:mb-16">
              <h3 className="text-3xl md:text-5xl lg:text-6xl 2xl:text-7xl mb-2 flex flex-wrap items-center justify-center gap-x-3 tracking-tight uppercase" style={{ color: BRAND_BLUE }}>
               <span className="font-extralight">MATERIAL</span> 
               <span className="font-bold">& CRAFT</span>
             </h3>
-          </motion.div>
+          </div>
 
           {/* Masonry-style Geometry Gallery (Scaled down with animations) */}
-          <div className="max-w-5xl mx-auto mb-16 md:mb-24">
+          <div className="max-w-5xl mx-auto mb-10 md:mb-12">
             <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10">
               <motion.div variants={fadeInScale} className="md:col-span-4 aspect-square relative bg-gray-100 rounded-sm overflow-hidden shadow-sm">
                  <OptimizedImage src={images.craft01} alt="Craft Detail 1" fill className="object-cover" />
@@ -402,32 +420,37 @@ export default function NineToFiveCaseStudy() {
                 </h5>
              </div>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
         {/* 9. BRAND VOICE */}
-      <section className="h-screen min-h-[750px] flex items-center justify-center bg-white px-4 md:px-0">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24 text-center w-full">
-          <motion.div {...fadeInUp} className="mb-12 md:mb-16">
+      <section className="pt-12 md:pt-16 pb-24 md:pb-32 bg-white px-4 md:px-0">
+        <motion.div {...fadeInUp} className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24 text-center w-full">
+          <div className="mb-6 md:mb-8">
              <h3 className="text-3xl md:text-5xl lg:text-6xl 2xl:text-7xl mb-2 flex flex-wrap items-center justify-center gap-x-3 tracking-tight uppercase" style={{ color: BRAND_BLUE }}>
               <span className="font-extralight">BRAND</span> 
               <span className="font-bold">VOICE</span>
             </h3>
-          </motion.div>
+          </div>
 
-          {/* Banner Strip */}
-          <div className="w-full bg-[#E5D5C5] rounded-sm py-12 md:py-20 px-6 mb-12 md:mb-16 overflow-hidden relative">
-             <motion.div {...fadeInUp} className="relative z-10 space-y-8">
-                <div className="space-y-4">
-                   <h4 className="text-6xl md:text-8xl lg:text-9xl font-serif italic lowercase tracking-tight" style={{ color: BRAND_BLUE }}>ninetofive</h4>
-                   <p className="text-base md:text-xl lg:text-2xl tracking-[0.3em] font-light uppercase" style={{ color: BRAND_BLUE }}>Tailored to Lead</p>
-                </div>
-                
-                <div className="flex flex-wrap justify-center gap-4">
-                   {['Clear', 'Composed', 'Intentional'].map((pill) => (
-                     <span key={pill} className="px-6 md:px-8 py-2 border border-[#1e4389]/30 rounded-full text-sm md:text-base font-light" style={{ color: BRAND_BLUE }}>{pill}</span>
-                   ))}
-                </div>
-             </motion.div>
+          {/* Banner Strip - Replaced with Full Width Image */}
+          <div className="w-full rounded-sm mb-6 md:mb-8 overflow-hidden relative aspect-[21/9] md:aspect-[21/7]">
+             {images.brandVoiceBanner !== "PASTE_YOUR_CLOUDINARY_LINK_HERE" ? (
+               <motion.div {...fadeInUp} className="relative w-full h-full">
+                 <OptimizedImage 
+                   src={images.brandVoiceBanner} 
+                   alt="Brand Voice Banner" 
+                   fill 
+                   className="object-cover" 
+                 />
+               </motion.div>
+             ) : (
+               <div className="w-full h-full bg-[#E5D5C5] flex items-center justify-center p-12">
+                 <div className="text-center">
+                   <span className="text-xs uppercase tracking-widest text-black/30 mb-4 block">Brand Voice Banner Placeholder</span>
+                   <p className="text-sm text-black/20">Replace 'brandVoiceBanner' link at line 64</p>
+                 </div>
+               </div>
+             )}
           </div>
 
           <motion.div {...fadeInUp} className="max-w-4xl mx-auto">
@@ -436,69 +459,164 @@ export default function NineToFiveCaseStudy() {
              </p>
              <p className="text-lg md:text-2xl lg:text-3xl font-bold text-black mt-2">Only clarity and presence.</p>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* 10. VISUAL DIRECTION */}
-      <section className="py-16 md:py-24 2xl:py-32 bg-white border-t border-black/5">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24">
-          <motion.div {...fadeInUp} className="text-center mb-24">
-             <h3 className="text-3xl md:text-5xl lg:text-6xl 2xl:text-7xl mb-8 flex flex-wrap items-center justify-center gap-x-3 tracking-tight uppercase" style={{ color: BRAND_BLUE }}>
-              <span className="font-extralight">VISUAL</span> 
-              <span className="font-bold">DIRECTION</span>
+      {/* 10. THE LOGO */}
+      <section className="pt-24 md:pt-32 pb-12 md:pb-16 bg-[#F8F5F0]">
+        <motion.div {...fadeInUp} className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24">
+          <div className="text-center mb-16 md:mb-24">
+             <h3 className="text-3xl md:text-5xl lg:text-6xl 2xl:text-7xl mb-4 flex flex-wrap items-center justify-center gap-x-3 tracking-tight uppercase" style={{ color: BRAND_BLUE }}>
+              <span className="font-extralight">THE</span> 
+              <span className="font-bold">LOGO</span>
             </h3>
-            
-            <div className="max-w-3xl mx-auto space-y-6 text-xl md:text-2xl font-light text-black/70 italic">
-               <p>A visual system defined by restraint and clarity.</p>
-               <p>Neutral tones, structured compositions, and controlled imagery create a balance between authority and softness.</p>
-               <p className="not-italic font-bold text-black pt-4">Every element is intentional. Nothing is excessive.</p>
-            </div>
-          </motion.div>
+          </div>
 
-          <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="flex flex-col items-center justify-center space-y-6 md:space-y-10">
-             {['Logo', 'Typography', 'Color palette', 'Layout system'].map((item) => (
-               <motion.div key={item} variants={fadeInUp} className="text-4xl md:text-6xl lg:text-8xl 2xl:text-9xl font-light tracking-tighter text-black hover:italic hover:translate-x-4 transition-all duration-500 cursor-default">
-                 {item}
-               </motion.div>
-             ))}
-          </motion.div>
-        </div>
+          <div className="space-y-8 md:space-y-12">
+            {/* Top Row: Two Symmetrical Squares */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+              <motion.div variants={fadeInScale} initial="initial" whileInView="whileInView" className="relative aspect-square overflow-hidden bg-white shadow-sm">
+                {images.logoImg1 !== "PASTE_YOUR_CLOUDINARY_LINK_HERE" ? (
+                  <OptimizedImage src={images.logoImg1} alt="Logo Construction" fill className="object-contain p-8 md:p-12" />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-black/20 uppercase tracking-[0.2em]">Logo Construction</div>
+                )}
+              </motion.div>
+              <motion.div variants={fadeInScale} initial="initial" whileInView="whileInView" className="relative aspect-square overflow-hidden bg-white shadow-sm">
+                {images.logoImg2 !== "PASTE_YOUR_CLOUDINARY_LINK_HERE" ? (
+                  <OptimizedImage src={images.logoImg2} alt="Logo Color System" fill className="object-cover" />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-black/20 uppercase tracking-[0.2em]">Logo System</div>
+                )}
+              </motion.div>
+            </div>
+
+            {/* Bottom Row: Full Width Banner */}
+            <motion.div variants={fadeInScale} initial="initial" whileInView="whileInView" className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-white shadow-sm">
+              {images.logoImg3 !== "PASTE_YOUR_CLOUDINARY_LINK_HERE" ? (
+                <OptimizedImage src={images.logoImg3} alt="Logo Detail" fill className="object-cover" />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-black/20 uppercase tracking-[0.3em]">Logo Detail Banner</div>
+              )}
+            </motion.div>
+          </div>
+        </motion.div>
       </section>
 
-      {/* 11. CAMPAIGN & SOCIAL DIRECTION */}
-      <section className="py-16 md:py-24 2xl:py-32 bg-white border-t border-black/5">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24">
-          <motion.div {...fadeInUp} className="text-center mb-24 md:mb-32">
-             <h3 className="text-3xl md:text-5xl lg:text-6xl 2xl:text-7xl mb-8 flex flex-wrap items-center justify-center gap-x-3 tracking-tight uppercase" style={{ color: BRAND_BLUE }}>
-              <span className="font-extralight">CAMPAIGN &</span> 
-              <span className="font-bold">SOCIAL DIRECTION</span>
+      {/* 11. TYPOGRAPHY */}
+      <section className="py-24 md:py-32 bg-[#F8F5F0]">
+        <motion.div {...fadeInUp} className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24">
+          <div className="mb-12 md:mb-16">
+             <h3 className="text-3xl md:text-5xl lg:text-6xl 2xl:text-7xl mb-4 flex flex-wrap items-center justify-center gap-x-3 tracking-tight uppercase" style={{ color: BRAND_BLUE }}>
+              <span className="font-extralight">THE</span> 
+              <span className="font-bold">TYPOGRAPHY</span>
             </h3>
-            
-            <div className="max-w-3xl mx-auto space-y-8 text-xl md:text-2xl font-light text-black/70">
-               <p>The brand extends beyond design into how it is seen, experienced, and remembered.</p>
-               <p>From campaign storytelling to everyday social presence, 9to5 maintains a consistent language of quiet confidence.</p>
-            </div>
-          </motion.div>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
-             <motion.div variants={fadeInScale} initial="initial" whileInView="whileInView" viewport={{ amount: 0.2 }} className="relative aspect-[3/4] rounded-sm overflow-hidden group shadow-xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            <motion.div variants={fadeInScale} initial="initial" whileInView="whileInView" className="relative aspect-square overflow-hidden bg-white shadow-sm">
+               {images.typographyImg1 !== "PASTE_YOUR_CLOUDINARY_LINK_HERE" ? (
+                 <OptimizedImage src={images.typographyImg1} alt="Typography 1" fill className="object-contain p-8 md:p-12" />
+               ) : (
+                 <div className="w-full h-full flex items-center justify-center text-black/20 uppercase tracking-[0.2em]">Typography 1</div>
+               )}
+            </motion.div>
+            <motion.div variants={fadeInScale} initial="initial" whileInView="whileInView" className="relative aspect-square overflow-hidden bg-white shadow-sm">
+               {images.typographyImg2 !== "PASTE_YOUR_CLOUDINARY_LINK_HERE" ? (
+                 <OptimizedImage src={images.typographyImg2} alt="Typography 2" fill className="object-contain p-8 md:p-12" />
+               ) : (
+                 <div className="w-full h-full flex items-center justify-center text-black/20 uppercase tracking-[0.2em]">Typography 2</div>
+               )}
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* 12. COLOR PALETTE */}
+      <section className="pt-12 md:pt-16 pb-24 md:pb-32 bg-[#F8F5F0]">
+        <motion.div {...fadeInUp} className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24">
+          <div className="text-center mb-8 md:mb-12">
+             <h3 className="text-3xl md:text-5xl lg:text-6xl 2xl:text-7xl mb-4 flex flex-wrap items-center justify-center gap-x-3 tracking-tight uppercase" style={{ color: BRAND_BLUE }}>
+              <span className="font-extralight">COLOR</span> 
+              <span className="font-bold">PALETTE</span>
+            </h3>
+          </div>
+
+          <div className="space-y-4 md:space-y-6 max-w-5xl mx-auto">
+            {[
+              { name: 'ABSTRACT NAVY', hex: '#1A2B44', text: 'white' },
+              { name: 'WHITE TINT', hex: '#F5F5F5', text: '#1A2B44' },
+              { name: 'FRENCH OAK', hex: '#B5A595', text: 'white' },
+              { name: 'CORK', hex: '#A68266', text: 'white' }
+            ].map((color, index) => (
+              <motion.div
+                key={color.name}
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="h-20 md:h-28 rounded-sm flex items-center justify-between px-8 md:px-12 origin-left relative overflow-hidden group shadow-sm"
+                style={{ backgroundColor: color.hex }}
+              >
+                <span className="text-xl md:text-3xl font-light tracking-[0.1em] z-10" style={{ color: color.text }}>
+                  {color.name}
+                </span>
+                <span className="text-sm md:text-base font-mono opacity-50 group-hover:opacity-100 transition-opacity duration-300 z-10" style={{ color: color.text }}>
+                  {color.hex}
+                </span>
+                {/* Subtle shine effect */}
+                <motion.div 
+                  initial={{ x: '-100%' }}
+                  whileInView={{ x: '100%' }}
+                  transition={{ duration: 2, delay: index * 0.1 + 0.5 }}
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12"
+                />
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* 13. CAMPAIGN & SOCIAL DIRECTION */}
+      <section className="py-24 md:py-32 bg-white">
+        <motion.div {...fadeInUp} className="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24">
+          {/* Header */}
+          <div className="flex flex-col items-center mb-16 md:mb-24">
+            <div className="flex items-center mb-10">
+              <h3 className="text-3xl md:text-5xl lg:text-6xl tracking-tight uppercase flex flex-wrap items-center justify-center gap-x-4 text-center" style={{ color: BRAND_BLUE }}>
+                <span className="font-extralight">CAMPAIGN &</span> 
+                <span className="font-bold">SOCIAL DIRECTION</span>
+              </h3>
+            </div>
+            
+            <div className="max-w-4xl text-center space-y-6">
+              <p className="text-lg md:text-2xl font-light text-black/70 leading-relaxed">
+                The brand extends beyond design into how it is seen, experienced, and remembered.
+              </p>
+              <p className="text-lg md:text-2xl font-light text-black/70 leading-relaxed">
+                From campaign storytelling to everyday social presence, 9to5 maintains a consistent language of quiet confidence.
+              </p>
+            </div>
+          </div>
+
+          {/* Symmetrical Grid with Overlays */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-7xl mx-auto">
+             <motion.div variants={fadeInScale} initial="initial" whileInView="whileInView" className="relative aspect-[3/4] rounded-sm overflow-hidden group shadow-xl">
                 <OptimizedImage src={images.campaignImg} alt="Campaign Direction" fill className="object-cover group-hover:scale-105 transition-transform duration-1000" />
-                <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                   <span className="text-white text-4xl md:text-6xl lg:text-7xl font-bold tracking-widest uppercase">Campaign</span>
+                <div className="absolute inset-0 bg-black/10 flex items-center justify-center">
+                   <h4 className="text-white text-4xl md:text-6xl font-bold tracking-[0.2em] uppercase drop-shadow-2xl">Campaign</h4>
                 </div>
              </motion.div>
              
-             <motion.div variants={fadeInScale} initial="initial" whileInView="whileInView" viewport={{ amount: 0.2 }} transition={{ delay: 0.2 }} className="relative aspect-[3/4] rounded-sm overflow-hidden group shadow-xl">
+             <motion.div variants={fadeInScale} initial="initial" whileInView="whileInView" transition={{ delay: 0.2 }} className="relative aspect-[3/4] rounded-sm overflow-hidden group shadow-xl">
                 <OptimizedImage src={images.socialImg} alt="Social Direction" fill className="object-cover group-hover:scale-105 transition-transform duration-1000" />
-                <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                   <span className="text-white text-4xl md:text-6xl lg:text-7xl font-bold tracking-widest uppercase">Social</span>
+                <div className="absolute inset-0 bg-black/10 flex items-center justify-center">
+                   <h4 className="text-white text-4xl md:text-6xl font-bold tracking-[0.2em] uppercase drop-shadow-2xl">Social</h4>
                 </div>
              </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
-
-      {/* Floating Noise Texture (Global Feel) */}
       <div 
         className="fixed inset-0 opacity-[0.03] pointer-events-none z-50 mix-blend-overlay"
         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}

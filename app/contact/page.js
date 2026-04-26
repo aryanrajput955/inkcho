@@ -265,10 +265,10 @@ export default function ContactPage() {
                     {isSubmitting ? (
                       <>
                         <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin" />
-                        SENDING...
+                        Sending...
                       </>
                     ) : (
-                      'SEND MESSAGE'
+                      'Send Message'
                     )}
                   </span>
                 </button>
