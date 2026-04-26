@@ -117,8 +117,6 @@ export default function Footer() {
                 {[
                   { label: 'LinkedIn', href: '#' },
                   { label: 'Instagram', href: '#' },
-                  { label: 'Dribbble', href: '#' },
-                  { label: 'Behance', href: '#' },
                   { label: 'Twitter', href: '#' },
                 ].map((item, i) => (
                   <li key={i}>
