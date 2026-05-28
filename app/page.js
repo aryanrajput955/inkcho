@@ -7,6 +7,7 @@ import LoadingScreen from './components/LoadingScreen';
 import ScrollHijackGallery from './components/animated-portfolio';
 import CardsSection from './components/service2';
 
+import ManifestoSection from './components/ManifestoSection';
 import LightRaysContainer from './components/cta';
 import TestimonialCarousel from './components/testimonials';
 import ScrollGalleryMobile from './components/projects-mobile';
@@ -28,6 +29,7 @@ export default function HomePage() {
       {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
  
       <HeroSection startAnimation={!isLoading} />
+      <ManifestoSection />
       <div className="hidden md:block">
         <ScrollHijackGallery />
       </div>

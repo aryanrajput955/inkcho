@@ -149,14 +149,15 @@ export default function LogoIdentitySystemsPage() {
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
         
-        <div className="relative flex flex-col items-center justify-center text-center ">
-            <div className="relative w-full max-w-5xl aspect-[21/9]">
-              <OptimizedImage 
-                 src="https://res.cloudinary.com/dplv15n29/image/upload/v1772463623/visual_tcvyh7.png" // Hero Cloudinary ID
-                 alt="Visual Identity Hero"
-                 fill
-                 priority
-                 className="object-contain"
+        <div className="relative flex flex-col items-center justify-center text-center pt-24 pb-10">
+            <div className="relative w-full max-w-5xl h-[45vh]">
+              <video
+                src="/assets/logo-and-identity-systems-hero.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover rounded-2xl"
               />
             </div>
         </div>

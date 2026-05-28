@@ -2,9 +2,9 @@
 
 import VisualIdentityHeroMobile from '@/app/components/services/mobile/VisualIdentityHeroMobile';
 import OptimizedImage from "@/app/components/OptimizedImage";
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 const categories = [
@@ -12,36 +12,45 @@ const categories = [
     id: "01",
     title: "LOGO & IDENTITY SYSTEMS",
     description: "We design identity systems, not standalone logos. Each mark is built to work across contexts, scales, and mediums—so your brand stays recognisable, consistent, and confident wherever it appears.",
-    image: "https://res.cloudinary.com/dplv15n29/image/upload/v1772470476/img1_jehkeg.jpg", // Cloudinary ID
+    image: "https://res.cloudinary.com/dplv15n29/image/upload/v1772470476/img1_jehkeg.jpg",
+    link: "/services/visual-identity/logo-identity-systems",
   },
   {
     id: "02",
     title: "TYPOGRAPHY, COLOUR & BRAND ASSETS",
     description: "We build visual languages that communicate before words do. From type pairings to color psychology, we ensure every element reinforces your brand's story and emotional impact.",
-    image: "https://res.cloudinary.com/dplv15n29/image/upload/v1772470474/img2_ffrxjh.jpg", // Cloudinary ID
-  },
-   {
-    id: "03",
-    title: "Visual, Motion & Art Direction",
-    description: "We craft visual narratives that bring brands to life. Through illustration, motion guidelines, and art direction, we create dynamic experiences that captivate and engage your audience.",
-    image: "https://res.cloudinary.com/dplv15n29/image/upload/v1772470476/img1_jehkeg.jpg", // Cloudinary ID
+    image: "https://res.cloudinary.com/dplv15n29/image/upload/v1772470474/img2_ffrxjh.jpg",
+    link: "/services/visual-identity/typography-color-brand-assets",
   },
 ];
 
 export default function VisualIdentityPage() {
-  const [activeCategory, setActiveCategory] = React.useState(null);
-  
-  // Force scroll to top on mount to fix navigation issues
+  const router = useRouter();
+  const [expanding, setExpanding] = React.useState(null);
+  const navigatedRef = React.useRef(false);
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const handleCircleClick = (destination) => {
+    if (expanding) return;
+    setExpanding(destination);
+  };
+
+  const handleRevealComplete = () => {
+    if (expanding && !navigatedRef.current) {
+      navigatedRef.current = true;
+      router.push(`/services/${expanding}`);
+    }
+  };
+
   return (
     <main className="relative min-h-screen bg-[#FFFBF5] text-black overflow-hidden">
-      
+
       {/* Animated Grid Background */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div 
+        <div
           className="absolute inset-0 opacity-[0.4]"
           style={{
             backgroundImage: `linear-gradient(#E5E5E5 1px, transparent 1px), linear-gradient(90deg, #E5E5E5 1px, transparent 1px)`,
@@ -52,36 +61,30 @@ export default function VisualIdentityPage() {
         >
           <motion.div
             className="absolute inset-0"
-            animate={{
-              y: [0, 80]
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "linear"
-            }}
+            animate={{ y: [0, 80] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
             style={{
-                backgroundImage: `linear-gradient(#ccc 1px, transparent 1px), linear-gradient(90deg, #ccc 1px, transparent 1px)`,
-                backgroundSize: '80px 80px',
+              backgroundImage: `linear-gradient(#ccc 1px, transparent 1px), linear-gradient(90deg, #ccc 1px, transparent 1px)`,
+              backgroundSize: '80px 80px',
             }}
           />
         </div>
-        {/* Soft Radial Gradient for depth */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#FFFBF5_90%)]" />
       </div>
 
-      <div className="relative z-10 space-y-0">
-        
+      <div className="relative z-10">
+
         {/* === HERO SECTION === */}
         <div className="relative w-full overflow-hidden">
-          {/* DESKTOP HERO */}
-          <section className="hidden md:flex relative min-h-screen flex-col justify-between pt-32 pb-12 px-4 md:px-12 lg:px-20 max-w-[1800px] mx-auto overflow-hidden bg-[#FFFBF5]">
-            <div className="absolute inset-0 opacity-[0.15] pointer-events-none" 
-                 style={{ backgroundImage: 'radial-gradient(#9a1b40 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
+          {/* DESKTOP */}
+          <section className="hidden md:flex relative min-h-screen flex-col justify-between pt-48 pb-32 px-4 md:px-12 lg:px-20 max-w-[1800px] mx-auto overflow-hidden bg-[#FFFBF5]">
+            <div
+              className="absolute inset-0 opacity-[0.15] pointer-events-none"
+              style={{ backgroundImage: 'radial-gradient(#9a1b40 1px, transparent 1px)', backgroundSize: '40px 40px' }}
             />
-            {/* Top Word: VISUAL */}
+
             <div className="relative z-10 w-full">
-              <motion.h1 
+              <motion.h1
                 initial={{ x: -100, opacity: 0, filter: "blur(20px)" }}
                 animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -90,142 +93,188 @@ export default function VisualIdentityPage() {
                 Visual
               </motion.h1>
             </div>
-            {/* Center Content: Description */}
+
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
-               <motion.p 
-                 initial={{ opacity: 0, y: 20 }}
-                 animate={{ opacity: 1, y: 0 }}
-                 transition={{ duration: 0.8, delay: 0.6 }}
-                 className="text-lg md:text-2xl text-gray-600 max-w-md text-center md:text-left font-light leading-relaxed font-serif"
-               >
-                  Crafting a distinctive look that <span className="text-[#9a1b40] font-medium border-b border-[#9a1b40]">speaks</span>, <span className="text-[#9a1b40] font-medium border-b border-[#9a1b40]">resonates</span>, and <span className="text-[#9a1b40] font-medium border-b border-[#9a1b40]">stays</span>.
-               </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="text-lg md:text-2xl text-gray-600 max-w-md text-center md:text-left font-light leading-relaxed font-serif"
+              >
+                Crafting a distinctive look that{" "}
+                <span className="text-[#9a1b40] font-medium border-b border-[#9a1b40]">speaks</span>,{" "}
+                <span className="text-[#9a1b40] font-medium border-b border-[#9a1b40]">resonates</span>, and{" "}
+                <span className="text-[#9a1b40] font-medium border-b border-[#9a1b40]">stays</span>.
+              </motion.p>
             </div>
-            {/* Bottom Word: IDENTITY */}
+
             <div className="relative z-10 w-full text-right">
-               <motion.h1 
-                  initial={{ x: 100, opacity: 0, filter: "blur(20px)" }}
-                  animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
-                  transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[14vw] leading-[0.8] font-serif italic text-[#9a1b40] tracking-tighter select-none mix-blend-multiply"
+              <motion.h1
+                initial={{ x: 100, opacity: 0, filter: "blur(20px)" }}
+                animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
+                transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="text-[14vw] leading-[0.8] font-serif italic text-[#9a1b40] tracking-tighter select-none mix-blend-multiply"
               >
                 Identity
               </motion.h1>
             </div>
-            {/* Connecting Line */}
-            <motion.div 
-               initial={{ height: 0 }}
-               animate={{ height: "100%" }}
-               transition={{ duration: 1.2, delay: 0.8, ease: "easeInOut" }}
-               className="absolute left-1/2 top-0 w-px bg-black/5 -z-0"
+
+            <motion.div
+              initial={{ height: 0 }}
+              animate={{ height: "100%" }}
+              transition={{ duration: 1.2, delay: 0.8, ease: "easeInOut" }}
+              className="absolute left-1/2 top-0 w-px bg-black/5 -z-0"
             />
           </section>
 
-          {/* MOBILE HERO */}
+          {/* MOBILE */}
           <div className="block md:hidden">
             <VisualIdentityHeroMobile />
           </div>
         </div>
 
-        <div>
-        
-        {categories.map((cat, index) => (
-          <motion.section 
-            key={index} 
-            initial={{ backgroundColor: "rgba(255, 251, 245, 0)" }}
-            animate={{ backgroundColor: activeCategory === index ? "rgba(154, 27, 64, 0.08)" : "rgba(255, 251, 245, 0)" }}
-            onViewportEnter={() => setActiveCategory(index)}
-            viewport={{ margin: "-48% 0px -48% 0px" }} // Strict central viewport trigger
+        {/* === 2-CARD SERVICES SECTION === */}
+        <section className="relative py-20 px-6 md:px-14 lg:px-20 bg-[#FFFBF5] pb-52">
+
+          {/* Section label */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className={`w-full py-16 md:py-24 relative ${index !== categories.length - 1 ? 'border-b border-black/10' : ''}`}
+            className="mb-16 flex items-center gap-3"
           >
-            <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 grid lg:grid-cols-2 gap-12 lg:gap-40 items-center">
-            
-              {/* Left Content */}
-              <div className="space-y-8">
-                <div className="space-y-4">
-                  {/* Category ID */}
-                  <motion.span 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                    className="block text-xs font-medium tracking-widest text-[#9a1b40] uppercase"
-                  >
-                    {cat.id}
-                  </motion.span>
-                  
-                  {/* Category Title */}
-                  <motion.h2 
-                    initial={{ opacity: 0, y: 30, rotate: 2 }}
-                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-3xl md:text-5xl font-sans font-bold leading-[1.1] text-black tracking-tight uppercase origin-bottom-left"
-                  >
+            <div className="w-8 h-px bg-[#9a1b40]" />
+            <span className="text-[10px] font-semibold tracking-[0.35em] text-[#9a1b40] uppercase">What We Offer</span>
+          </motion.div>
+
+          <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
+            {categories.map((cat, index) => (
+              <Link href={cat.link} key={cat.id}>
+                <motion.article
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.9, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                  className="flex flex-col items-center gap-5 cursor-pointer"
+                >
+                  {/* Title — centered at top */}
+                  <h2 className="text-sm md:text-base font-bold tracking-[0.14em] text-black uppercase text-center leading-snug px-2">
                     {cat.title}
-                  </motion.h2>
-                </div>
-                
-                <motion.p 
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-base md:text-lg text-gray-700 leading-relaxed max-w-xl"
-                >
-                  {cat.description}
-                </motion.p>
+                  </h2>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <Link 
-                    href={
-                      cat.id === "01" ? "/services/visual-identity/logo-identity-systems" :
-                      cat.id === "02" ? "/services/visual-identity/typography-color-brand-assets" :
-                      "/services/visual-identity/visual-motion-art-direction"
-                    }
-                  >
-                      <button className="group relative inline-flex items-center justify-center px-6 py-3 bg-[#9a1b40] text-white rounded-full overflow-hidden transition-all hover:shadow-xl hover:shadow-[#9a1b40]/30 hover:scale-105">
-                         <span className="relative z-10 font-medium tracking-wide text-xs uppercase">
-                            Explore More Here
-                         </span>
-                         <div className="absolute inset-0 bg-[#7a1532] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
-                      </button>
-                  </Link>
-                </motion.div>
-              </div>
+                  {/* Image row — ghost number left, image fills remaining */}
+                  <div className="relative w-full">
+                    {/* Ghost number — sits at top-left, partially behind the image */}
+                    <span
+                      aria-hidden="true"
+                      className="absolute left-0 top-2 text-[5.5rem] md:text-[6.5rem] font-black text-black/[0.07] leading-none select-none pointer-events-none z-0"
+                    >
+                      {index + 1}.
+                    </span>
 
-              {/* Right Image Composition */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9, y: 50 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true, margin: "-10%" }}
-                transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="relative w-full"
-              >
-                  {/* Single Image Layout */}
-                  <div className="relative w-full overflow-hidden shadow-xl group">
-                      <div className="absolute inset-0 bg-gray-200 animate-pulse" />
-                      <OptimizedImage 
-                        src={cat.image} 
-                        alt={cat.title} 
-                        className="relative z-10 w-full h-auto block transition-transform duration-700 group-hover:scale-105" 
-                      />
+                    {/* Image container — pl exposes ghost number, relative+fill for proper rendering */}
+                    <div className="pl-14 md:pl-16 relative z-10">
+                      <div className="relative overflow-hidden rounded-[1.25rem] aspect-square shadow-sm bg-gray-100 group">
+                        <OptimizedImage
+                          src={cat.image}
+                          alt={cat.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                        />
+                      </div>
+                    </div>
                   </div>
-              </motion.div>
-            
-            </div>
 
-          </motion.section>
-        ))}
-        
+                  {/* Description — small, centered, italic serif */}
+                  <p className="text-[12px] md:text-[13px] text-gray-500 text-center font-serif italic leading-relaxed max-w-[260px]">
+                    {cat.description}
+                  </p>
+                </motion.article>
+              </Link>
+            ))}
+          </div>
+        </section>
       </div>
-    </div>
+
+      {/* === BOTTOM-LEFT CIRCLE: Brand Foundation === */}
+      <motion.button
+        className="fixed bottom-8 left-8 z-50 cursor-pointer group"
+        onClick={() => handleCircleClick('brand-foundation')}
+        aria-label="Go to Brand Foundation"
+        initial={{ opacity: 0, y: 28, scale: 0.75, filter: "blur(10px)" }}
+        animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+        transition={{ duration: 1.1, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <motion.div
+          whileHover={{ scale: 1.12 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="relative w-24 h-24 rounded-full shadow-2xl shadow-black/30 overflow-hidden"
+        >
+          <img
+            src="/assets/visual-identity-left-circle.png"
+            alt="Brand Foundation"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          {/* Hover: dark overlay + service name fades in */}
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-400" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-400 gap-0.5 px-3">
+            <span className="text-[7.5px] font-semibold tracking-[0.22em] text-white uppercase leading-relaxed text-center">Brand<br />Foundation</span>
+          </div>
+        </motion.div>
+      </motion.button>
+
+      {/* === BOTTOM-RIGHT CIRCLE: Digital Experiences === */}
+      <motion.button
+        className="fixed bottom-8 right-8 z-50 cursor-pointer group"
+        onClick={() => handleCircleClick('digital-experiences')}
+        aria-label="Go to Digital Experiences"
+        initial={{ opacity: 0, y: 28, scale: 0.75, filter: "blur(10px)" }}
+        animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+        transition={{ duration: 1.1, delay: 1.05, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <motion.div
+          whileHover={{ scale: 1.12 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="relative w-24 h-24 rounded-full shadow-2xl shadow-black/20 overflow-hidden"
+        >
+          <img
+            src="/assets/visual-identity-right-circle.png"
+            alt="Digital Experiences"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          {/* Hover: dark overlay + service name fades in */}
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-400" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-400 gap-0.5 px-3">
+            <span className="text-[7.5px] font-semibold tracking-[0.22em] text-white uppercase leading-relaxed text-center">Digital<br />Experiences</span>
+          </div>
+        </motion.div>
+      </motion.button>
+
+      {/* === PAGE TRANSITION OVERLAYS === */}
+      <AnimatePresence>
+        {expanding === 'brand-foundation' && (
+          <motion.div
+            key="bf-overlay"
+            className="fixed inset-0 z-[100] bg-[#9a1b40] pointer-events-none"
+            initial={{ clipPath: 'circle(48px at 80px calc(100vh - 80px))' }}
+            animate={{ clipPath: 'circle(250vmax at 80px calc(100vh - 80px))' }}
+            transition={{ duration: 0.85, ease: [0.76, 0, 0.24, 1] }}
+            onAnimationComplete={handleRevealComplete}
+          />
+        )}
+        {expanding === 'digital-experiences' && (
+          <motion.div
+            key="de-overlay"
+            className="fixed inset-0 z-[100] bg-[#9a1b40] pointer-events-none"
+            initial={{ clipPath: 'circle(48px at calc(100vw - 80px) calc(100vh - 80px))' }}
+            animate={{ clipPath: 'circle(250vmax at calc(100vw - 80px) calc(100vh - 80px))' }}
+            transition={{ duration: 0.85, ease: [0.76, 0, 0.24, 1] }}
+            onAnimationComplete={handleRevealComplete}
+          />
+        )}
+      </AnimatePresence>
     </main>
   );
 }
