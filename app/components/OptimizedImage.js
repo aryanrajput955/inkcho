@@ -39,7 +39,7 @@ export default function OptimizedImage({ src, alt, fill, width, height, classNam
 // Removed debug log
 
   if (isCloudinary) {
-    const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+    const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "dplv15n29";
     
     // Construct a high-performance optimization URL manually
     // We add w_1200 specifically to fix the "too large" error by forcing resize first
