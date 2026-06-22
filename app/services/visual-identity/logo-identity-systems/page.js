@@ -22,7 +22,7 @@ const serviceCards = [
     category: "Branding Systems",
     size: "h-[450px]",
     image: "https://res.cloudinary.com/dplv15n29/image/upload/v1772459194/BWP_qwg1c7.jpg",
-    link: "/services/visual-identity/logo-identity-systems/logo"
+    link: "/services/visual-identity/logo-identity-systems/logo-design"
   },
   { 
     id: "social-media",
