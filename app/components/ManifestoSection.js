@@ -66,7 +66,7 @@ export default function ManifestoSection() {
 
   return (
     <section className="h-screen bg-white flex items-center px-8 md:px-16 lg:px-24">
-      <div className="w-full max-w-[1400px] mx-auto grid grid-cols-[3fr_2fr] gap-8 items-end">
+      <div className="w-full max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 lg:gap-16 items-center">
 
         {/* Left — heading + description */}
         <div className="flex flex-col gap-6">
