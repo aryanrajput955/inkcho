@@ -29,14 +29,18 @@ const socialProjects = [
     bgImage: "https://res.cloudinary.com/dplv15n29/image/upload/v1782116821/b1_yzbyxu.png",
     cardImage: "https://res.cloudinary.com/dplv15n29/image/upload/v1782109712/s2_vko79y.jpg",
     posts: [
-      { id: 1, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782109713/s1_p9dvwq.jpg", likes: "2,341", comments: "102" },
-      { id: 2, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782109712/s2_vko79y.jpg", likes: "1,894", comments: "76" },
-      { id: 3, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782109713/s3_e7feie.jpg", likes: "3,110", comments: "148" },
-      { id: 4, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782109712/s4_ulgdml.jpg", likes: "2,987", comments: "129" },
-      { id: 5, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782109875/s5_i4lxvh.jpg", likes: "1,524", comments: "62" },
-      { id: 6, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782109875/s6_qco5mu.jpg", likes: "2,045", comments: "93" },
-      { id: 7, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782109875/s7_samsvc.jpg", likes: "1,732", comments: "81" },
-      { id: 8, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782109875/s8_e5axvd.jpg", likes: "2,190", comments: "110" }
+      { id: 1, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782925902/p1_liqepo.jpg", likes: "1,540", comments: "85" },
+      { id: 2, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782925902/p2_iyuerv.jpg", likes: "2,120", comments: "105" },
+      { id: 3, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782925901/p3_pyu8hd.jpg", likes: "1,890", comments: "92" },
+      { id: 4, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782109875/s5_i4lxvh.jpg", likes: "1,524", comments: "62" },
+      { id: 5, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782109875/s7_samsvc.jpg", likes: "1,732", comments: "81" },
+      { id: 6, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782109875/s8_e5axvd.jpg", likes: "2,190", comments: "110" },
+      { id: 7, src: "https://res.cloudinary.com/dplv15n29/video/upload/v1782927173/reel1_memyil.mp4", type: "video" },
+      { id: 8, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782927173/so2_z98a0e.jpg", likes: "2,420", comments: "135" },
+      { id: 9, src: "https://res.cloudinary.com/dplv15n29/video/upload/v1782927173/reel2_zl1gaj.mp4", type: "video" },
+      { id: 10, src: "https://res.cloudinary.com/dplv15n29/video/upload/v1782930766/rel3_wazwsq.mp4", type: "video" },
+      { id: 11, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782930765/so10_mpuvmg.jpg", likes: "1,654", comments: "78" },
+      { id: 12, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782930765/so4_ucyrvx.jpg", likes: "2,091", comments: "105" }
     ]
   },
   {
@@ -57,8 +61,15 @@ const socialProjects = [
       { id: 4, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782111380/e2_afst0d.jpg", likes: "1,675", comments: "81" },
       { id: 5, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782111380/e1_qvg0m8.jpg", likes: "2,091", comments: "110" },
       { id: 6, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782111547/e4_b68lz2.jpg", likes: "1,542", comments: "72" },
-      { id: 7, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782111546/e7_q2gokd.jpg", likes: "1,884", comments: "90" },
-      { id: 8, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782111379/e6_qwb6co.jpg", likes: "1,921", comments: "105" }
+      { id: 7, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782923534/so1_vumbua.jpg", likes: "1,452", comments: "67" },
+      { id: 8, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782923535/so2_satt4d.jpg", likes: "1,204", comments: "48" },
+      { id: 9, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782923535/so3_oa7bdy.jpg", likes: "1,892", comments: "94" },
+      { id: 10, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782923534/so4_uxyggb.jpg", likes: "1,675", comments: "81" },
+      { id: 11, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782923845/so9_lpow8w.jpg", likes: "2,091", comments: "110" },
+      { id: 12, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782923534/so5_ehvvic.jpg", likes: "1,542", comments: "72" },
+      { id: 13, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782923534/so6_k72tkh.jpg", likes: "1,884", comments: "90" },
+      { id: 14, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782923534/so7_t5rbku.jpg", likes: "1,921", comments: "105" },
+      { id: 15, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782923534/so8_rch6u0.jpg", likes: "2,314", comments: "115" }
     ]
   },
   {
@@ -80,7 +91,8 @@ const socialProjects = [
       { id: 5, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782112619/r5_h0lbcd.jpg", likes: "1,940", comments: "81" },
       { id: 6, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782112618/r6_utdxqv.jpg", likes: "2,752", comments: "142" },
       { id: 7, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782112619/r7_rrjcvs.jpg", likes: "2,110", comments: "99" },
-      { id: 8, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782112618/r8_nuj0ie.jpg", likes: "3,043", comments: "167" }
+      { id: 8, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782112618/r8_nuj0ie.jpg", likes: "3,043", comments: "167" },
+      { id: 9, src: "https://res.cloudinary.com/dplv15n29/video/upload/v1782921656/vid_bbcbpc.mp4", type: "video" }
     ]
   }
 ];
@@ -406,13 +418,24 @@ export default function SocialMediaPage() {
                     onClick={() => setSelectedPost(post)}
                     className="relative aspect-square cursor-pointer group bg-zinc-950 overflow-hidden border border-black/5 rounded-xl sm:rounded-2xl shadow-lg shadow-black/30"
                   >
-                    <OptimizedImage
-                      src={post.src}
-                      alt={`${selectedGridProject.brandName} kit item`}
-                      fill
-                      sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 360px"
-                      className="object-cover group-hover:scale-103 transition-transform duration-500 ease-out"
-                    />
+                    {post.type === 'video' ? (
+                      <video
+                        src={post.src}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="object-cover w-full h-full group-hover:scale-103 transition-transform duration-500 ease-out"
+                      />
+                    ) : (
+                      <OptimizedImage
+                        src={post.src}
+                        alt={`${selectedGridProject.brandName} kit item`}
+                        fill
+                        sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 360px"
+                        className="object-cover group-hover:scale-103 transition-transform duration-500 ease-out"
+                      />
+                    )}
                     
                     {/* Dimming overlay on hover */}
                     <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-350 pointer-events-none" />
@@ -454,13 +477,25 @@ export default function SocialMediaPage() {
               </div>
 
               <div className="relative w-full aspect-square md:aspect-video flex items-center justify-center bg-zinc-950 max-h-[80vh] rounded-2xl overflow-hidden border border-white/10">
-                <OptimizedImage
-                  src={selectedPost.src}
-                  alt="Enlarged branding preview"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 1200px"
-                  className="object-contain"
-                />
+                {selectedPost.type === 'video' ? (
+                  <video
+                    src={selectedPost.src}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    controls
+                    className="object-contain w-full h-full"
+                  />
+                ) : (
+                  <OptimizedImage
+                    src={selectedPost.src}
+                    alt="Enlarged branding preview"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 1200px"
+                    className="object-contain"
+                  />
+                )}
               </div>
             </div>
           </motion.div>

@@ -49,7 +49,9 @@ export default function ProjectShowcase() {
     let ctx = gsap.context(() => {
       const panels = gsap.utils.toArray('.project-panel');
       
-      panels.forEach((panel) => {
+      panels.forEach((panel, i) => {
+        if (i === panels.length - 1) return;
+        
         ScrollTrigger.create({
           trigger: panel,
           start: "top top",
@@ -73,7 +75,7 @@ export default function ProjectShowcase() {
       {projects.map((project) => (
         <section 
             key={project.id} 
-            className="project-panel relative h-screen w-full flex items-center justify-center p-4 md:p-8 lg:p-12 bg-[#FFFBF5]"
+            className="project-panel relative h-screen w-full flex items-center justify-center p-4 md:p-8 lg:p-12 bg-transparent"
         >
           <div className="w-full max-w-[1400px] h-[92vh] md:h-[90vh] max-h-[1000px] bg-[#F5F2EC] border border-black/30 rounded-[2rem] md:rounded-[3rem] overflow-y-auto overflow-x-hidden md:overflow-hidden flex flex-col md:flex-row shadow-sm">
             {/* Left Content */}

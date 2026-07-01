@@ -148,15 +148,15 @@ export default function VisualIdentityPage() {
             <span className="text-[10px] font-semibold tracking-[0.35em] text-[#9a1b40] uppercase">What We Offer</span>
           </motion.div>
 
-          <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
+          <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
             {categories.map((cat, index) => (
-              <Link href={cat.link} key={cat.id}>
+              <Link href={cat.link} key={cat.id} className="w-full">
                 <motion.article
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.9, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex flex-col items-center gap-5 cursor-pointer"
+                  className="flex flex-col items-center gap-5 cursor-pointer max-w-[420px] mx-auto w-full"
                 >
                   {/* Title — centered at top */}
                   <h2 className="text-sm md:text-base font-bold tracking-[0.14em] text-black uppercase text-center leading-snug px-2">
@@ -210,7 +210,7 @@ export default function VisualIdentityPage() {
         <motion.div
           whileHover={{ scale: 1.12 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-24 h-24 rounded-full shadow-2xl shadow-black/30 overflow-hidden"
+          className="relative w-24 h-24 rounded-full shadow-[0_10px_40px_rgba(154,27,64,0.6)] overflow-hidden"
         >
           <img
             src="/assets/visual-identity-left-circle.png"
@@ -237,7 +237,7 @@ export default function VisualIdentityPage() {
         <motion.div
           whileHover={{ scale: 1.12 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-24 h-24 rounded-full shadow-2xl shadow-black/20 overflow-hidden"
+          className="relative w-24 h-24 rounded-full shadow-[0_10px_40px_rgba(154,27,64,0.6)] overflow-hidden"
         >
           <img
             src="/assets/visual-identity-right-circle.png"

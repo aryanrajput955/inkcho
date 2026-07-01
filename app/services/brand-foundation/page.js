@@ -25,13 +25,13 @@ export default function BrandFoundationPage() {
         <FoundationHero />
         
         {/* Full-Screen Sticky Showcase */}
-        <div className="bg-black">
+        <div className="bg-[#FFFBF5]">
             <ProjectShowcase />
         </div>
 
         {/* Minimal Footer Space */}
-        <div className="h-[20vh] bg-black flex items-center justify-center">
-            <div className="w-12 h-px bg-white/20" />
+        <div className="h-[20vh] bg-[#FFFBF5] flex items-center justify-center">
+            <div className="w-12 h-px bg-black/20" />
         </div>
       </div>
     </main>

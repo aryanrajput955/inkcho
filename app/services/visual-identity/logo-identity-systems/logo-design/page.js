@@ -40,7 +40,7 @@ const brandProjects = [
   },
   {
     id: "construction-brand-logo",
-    title: "TR.constructions and Groundworks",
+    title: "TR.constructions\nand Groundworks",
     subtitle: "Industrial Identity System",
     gallery: [
       "https://res.cloudinary.com/dplv15n29/image/upload/v1772459167/mockup-of-a-snapback-hat-on-a-solid-surface-1489-el_zgions.png",
@@ -79,23 +79,6 @@ const brandProjects = [
       "https://res.cloudinary.com/dplv15n29/image/upload/v1772462833/ChatGPT_Image_Feb_22_2026_01_35_28_PM_ezah99.png",
       "https://res.cloudinary.com/dplv15n29/image/upload/v1772462832/BSG_Icon_Lily_Golden_copy_frvgtg.png",
       "https://res.cloudinary.com/dplv15n29/image/upload/v1772462832/Visiting_Card_Back_uqgqd9.jpg"
-    ]
-  },
-  {
-    id: "raghukulam-logo",
-    title: "Raghukulam",
-    subtitle: "Heritage Food System",
-    gallery: [
-      "https://res.cloudinary.com/dplv15n29/image/upload/v1772459042/ChatGPT_Image_Feb_22_2026_03_03_33_PM_mfzxyj.png",
-      "https://res.cloudinary.com/dplv15n29/image/upload/v1772459042/Raghukulam_Stand_Packet_final_copy_ixegrp.png"
-    ]
-  },
-  {
-    id: "salahuddin-logo",
-    title: "Salahuddin",
-    subtitle: "Corporate Trust Emblem",
-    gallery: [
-      "https://res.cloudinary.com/dplv15n29/image/upload/v1772458973/msk_02_dtqbr1.jpg"
     ]
   }
 ];
@@ -256,64 +239,68 @@ export default function LogoShowcasePage() {
             
             {/* Scattered Layout Images - Desktop (md and above) */}
             <div className="absolute inset-0 pointer-events-none z-10">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={`cards-${activeIndex}`}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  className="absolute inset-0"
-                >
-                  {activeProject.gallery.slice(0, 4).map((imgUrl, cardIdx) => {
-                    const pos = sideCardPositions[cardIdx] || sideCardPositions[0];
-                    
-                    return (
-                      <motion.div
-                        key={cardIdx}
-                        variants={{
-                          initial: { opacity: 0, scale: 0.9, y: 50 },
-                          animate: { opacity: 1, scale: 1, y: 0 },
-                          exit: { opacity: 0, scale: 0.9, y: -50 }
-                        }}
-                        transition={{ 
-                          duration: 0.6, 
-                          delay: cardIdx * 0.05,
-                          ease: [0.16, 1, 0.3, 1]
-                        }}
-                        className={`side-img-card ${pos.containerClass} cursor-pointer pointer-events-auto rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.22)] bg-[#F5F2EC] hover:shadow-[0_30px_60px_rgba(0,0,0,0.35)] transition-all duration-500 hover:scale-[1.03]`}
-                        style={{
-                          transform: `rotate(${pos.tiltAngle}deg)`,
-                        }}
-                        onClick={() => openLightbox(activeProject, cardIdx)}
-                      >
-                        <OptimizedImage
-                          src={imgUrl}
-                          alt={`${activeProject.title} mockup`}
-                          fill
-                          sizes="(max-width: 1024px) 20vw, 300px"
-                          className="object-cover"
-                        />
-                      </motion.div>
-                    );
-                  })}
-                </motion.div>
-              </AnimatePresence>
+              {brandProjects.map((project, idx) => {
+                const isActive = idx === activeIndex;
+                return (
+                  <div key={`project-cards-${project.id}`} className="absolute inset-0" style={{ pointerEvents: isActive ? 'auto' : 'none', zIndex: isActive ? 20 : 0 }}>
+                    {project.gallery.slice(0, 4).map((imgUrl, cardIdx) => {
+                      const pos = sideCardPositions[cardIdx] || sideCardPositions[0];
+                      
+                      return (
+                        <motion.div
+                          key={cardIdx}
+                          initial={false}
+                          animate={{ 
+                            opacity: isActive ? 1 : 0, 
+                            scale: isActive ? 1 : 0.9, 
+                            y: isActive ? 0 : (idx < activeIndex ? -50 : 50) 
+                          }}
+                          transition={{ 
+                            duration: 0.5, 
+                            delay: isActive ? cardIdx * 0.05 : 0,
+                            ease: [0.16, 1, 0.3, 1]
+                          }}
+                          className={`side-img-card ${pos.containerClass} cursor-pointer rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.22)] bg-[#F5F2EC] hover:shadow-[0_30px_60px_rgba(0,0,0,0.35)] transition-shadow duration-500 hover:scale-[1.03]`}
+                          style={{
+                            transform: `rotate(${pos.tiltAngle}deg)`,
+                          }}
+                          onClick={() => openLightbox(project, cardIdx)}
+                        >
+                          <OptimizedImage
+                            src={imgUrl}
+                            alt={`${project.title} mockup`}
+                            fill
+                            sizes="(max-width: 1024px) 20vw, 300px"
+                            className="object-cover"
+                          />
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                );
+              })}
             </div>
 
             {/* Center Content Section */}
-            <div className="z-30 max-w-[90%] md:max-w-2xl text-center px-4 md:px-0 flex flex-col items-center justify-center">
-              <AnimatePresence mode="wait">
-                <motion.h2
-                  key={`title-${activeIndex}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-black uppercase leading-none select-none my-6"
-                >
-                  {activeProject.title}
-                </motion.h2>
-              </AnimatePresence>
+            <div className="z-30 absolute inset-0 flex items-center justify-center text-center px-4 md:px-0 pointer-events-none">
+              {brandProjects.map((project, idx) => {
+                const isActive = idx === activeIndex;
+                return (
+                  <motion.h2
+                    key={`title-${project.id}`}
+                    initial={false}
+                    animate={{ 
+                      opacity: isActive ? 1 : 0, 
+                      y: isActive ? 0 : (idx < activeIndex ? -30 : 30) 
+                    }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-black uppercase leading-tight select-none w-full text-center whitespace-pre-line"
+                    style={{ pointerEvents: isActive ? 'auto' : 'none' }}
+                  >
+                    {project.title}
+                  </motion.h2>
+                );
+              })}
             </div>
 
           </div>
