@@ -38,7 +38,7 @@ const serviceCards = [
     category: "Visual Assets",
     size: "h-[400px]",
     image: "https://res.cloudinary.com/dplv15n29/image/upload/v1772458973/msk_02_dtqbr1.jpg",
-    link: "#"
+    link: "/services/visual-identity/logo-identity-systems/photography"
   },
   { 
     id: "art-direction",
