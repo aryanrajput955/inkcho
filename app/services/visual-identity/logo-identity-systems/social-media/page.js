@@ -94,6 +94,29 @@ const socialProjects = [
       { id: 8, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782112618/r8_nuj0ie.jpg", likes: "3,043", comments: "167" },
       { id: 9, src: "https://res.cloudinary.com/dplv15n29/video/upload/v1782921656/vid_bbcbpc.mp4", type: "video" }
     ]
+  },
+  {
+    id: "9to5",
+    brandName: "9to5",
+    username: "9to5.workspace",
+    tagline: "Elevate your daily grind",
+    cardTitle: "9to5 Work Essentials",
+    cardSubtitle: "Professional Identity Kit",
+    progress: "100%",
+    stats: "9 templates • $20k budget",
+    bgImage: "https://res.cloudinary.com/dplv15n29/image/upload/v1782990848/bghero_igjjzi.png",
+    cardImage: "https://res.cloudinary.com/dplv15n29/image/upload/v1782990618/91_ijr88k.jpg",
+    posts: [
+      { id: 1, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782990618/91_ijr88k.jpg", likes: "2,420", comments: "135" },
+      { id: 2, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782990619/92_aju26s.jpg", likes: "1,540", comments: "85" },
+      { id: 3, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782990618/93_amjrw6.jpg", likes: "1,890", comments: "92" },
+      { id: 4, src: "https://res.cloudinary.com/dplv15n29/video/upload/v1782991903/reel4_kj0ttn.mp4", type: "video" },
+      { id: 5, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782990618/95_zba1un.jpg", likes: "3,100", comments: "160" },
+      { id: 6, src: "https://res.cloudinary.com/dplv15n29/video/upload/v1782991903/reel5_fk8b1c.mp4", type: "video" },
+      { id: 7, src: "https://res.cloudinary.com/dplv15n29/video/upload/v1782991901/reel6_dcfrtt.mp4", type: "video" },
+      { id: 8, src: "https://res.cloudinary.com/dplv15n29/image/upload/v1782990617/94_p98drr.jpg", likes: "2,190", comments: "110" },
+      { id: 9, src: "https://res.cloudinary.com/dplv15n29/video/upload/v1782991901/reel7_bfyzlt.mp4", type: "video" }
+    ]
   }
 ];
 
